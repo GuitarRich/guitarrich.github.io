@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Fortis V4 Beta Changes | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fortis V4 Beta Changes">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fortis V4 Beta Changes">
+<meta name="twitter:description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Fortis/">Fortis</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Fortis-V4-Beta-Changes" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Fortis V4 Beta Changes
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/03/28/Fortis-V4-Beta-Changes/" class="article-date">
+  <time datetime="2016-03-28T19:45:19.000Z" itemprop="datePublished">2016-03-28</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>We are working on new version of <a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a> so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github: <a href="https://github.com/Fortis-Collection/fortis/issues" target="_blank" rel="noopener">https://github.com/Fortis-Collection/fortis/issues</a>.</p>
+<p>###Supporting Habitat<br>A breaking change to Fortis is how the configuration is handled. Previously, the core Fortis package modified the <code>web.config</code> to add a section that allowed the developer to identify the assembley that the Fortis model classes were held in. This limited the development team to a single assembly for all the models. </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configSections</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span> <span class="attr">name</span>=<span class="string">"fortis"</span> <span class="attr">type</span>=<span class="string">"System.Configuration.NameValueSectionHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configSections</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">"assembly"</span> <span class="attr">value</span>=<span class="string">"LM.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This was limiting to the development team. It meant that you could not build a module using Fortis and install that to a Sitecore implementation without serializing the templates for the module in your site and having the model classes for the module in your own project.</p>
+<p>Recently the big talking point has been <a href="https://github.com/Sitecore/Habitat" target="_blank" rel="noopener">Sitecore Habitat</a> and how that is archtected into Features/Components. Again, having a single assembly forces all the model classes and interfaces to live in the same project, breaking the architectural pattern.</p>
+<p>In Fortis V4 this has all been changed. To be more aligned with standard Sitecore modules, we have moved the configuration out of the <code>Web.config</code> and into an include file. This file lives by default in <code>/app_config/include/fortis/fortis.config</code>.</p>
+<p>Also the models can now live in multiple assemblies. This is done by adding each assembly to the <code>models</code> list in the config. Because this is now inside the Sitecore config, you can do this via an include file for each of your modules:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">"Fortis.Model"</span> <span class="attr">assembley</span>=<span class="string">"Fortis.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">"MyFeature.Model"</span> <span class="attr">assembley</span>=<span class="string">"MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Patch example:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">model</span> <span class="attr">patch:after</span>=<span class="string">"*[name='Fortis.Model']"</span> <span class="attr">name</span>=<span class="string">"MyFeature.Model"</span> <span class="attr">assembley</span>=<span class="string">"MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>###Custom Field Types<br>Another bug bear has been dealing with custom field types in Fortis. Previously the field type support was hard coded into the <code>SpawnProvider</code>. To support a custom field type you would have to roll your own <code>SpawnProvider</code> and implement the <code>GetField</code> method for your field type.</p>
+<p>This has now been moved to the configuration:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldTypes</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.BooleanFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"image"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ImageFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"date"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.DateTimeFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"datetime"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.DateTimeFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"checklist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelistex"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multilist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multilist with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelist with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.FileFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droplink"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.LinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droptree"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.LinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"general link"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"general link with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"single-line text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multi-line text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droplist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"rich text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.RichTextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"number"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.NumberFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"integer"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.IntegerFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name value list"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.NameValueListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldTypes</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Now its as simple as adding a new <code>field</code> to the config to support a custom field type. Again, this can be patched in via an include file. If the custom field type stores its Raw Value in the same way as one of the in built fields, you can just use one of the existing <code>IFieldWrapper</code> classes. Or you can roll your own field wrapper as long as it implements <code>IFieldWrapper</code>.</p>
+<p>###Other changes</p>
+<p>Issues from GitHub:</p>
+<ul>
+<li><a href="https://github.com/Fortis-Collection/fortis/issues/23" target="_blank" rel="noopener">#23</a>: The <code>.Value</code> property on the <code>TextFieldWrapper</code> now returns the raw value as a string rather than running through the <code>FieldRenderer</code>. The <code>RichTextFieldWrapper.Value</code> property has been changed to return an <code>IHtmlString</code> and renders the rich text content with <code>Editing</code> set to false.</li>
+<li><a href="https://github.com/Fortis-Collection/fortis/issues/19" target="_blank" rel="noopener">#19</a>: The <code>IItemFactory.Save</code> method has new overloads to match the <code>.Save(bool silent)</code> and <code>.Save(bool updateStatistics, bool silent)</code>.</li>
+<li><a href="https://github.com/Fortis-Collection/fortis/issues/18" target="_blank" rel="noopener">#18</a>: Added a new <code>.HasValue</code> property that can be used to check if a value is blank or has not been assigned.</li>
+</ul>
+<p>###Unit Testing Changes<br>Finally we have made some changes to the unit tests. Previously the unit tests had been created using Microsoft Fakes, but this relied on the developer having a Visual Studio Ultimate edition or higher. These tests have been removed in favor of using <a href="https://github.com/sergeyshushlyapin/Sitecore.FakeDb" target="_blank" rel="noopener">Sitecore FakeDb</a>. This will make the unit tests more accessible to developers that do not have access to the ultimate editions of VS. More tests will be ported to the new version in the coming weeks.</p>
+<p>This has now been released on Nuget as <a href="https://www.nuget.org/packages/Fortis/4.0.0-beta3" target="_blank" rel="noopener">v4.0.0-beta3</a> - have a play and let us know what you think!</p>
+<p>Well thats all for now - there will be more updates coming soon, please submit issues or feature requests on Github or hit us up on Slack!</p>
+<p>– Richard.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/" data-id="cka5tzg910027gsvrppdibd10" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/26/Advanced-Cache-Clearing/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Advanced Cache Clearing
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2016/03/18/Site-Definition-Gotcha/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Site Definition Gotcha</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

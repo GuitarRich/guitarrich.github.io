@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Unit Testing with Sitecore and Fortis - Part 1 | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This post is the start of a series of articles looking at unit testing using Sitecore and Fortis. There are already a lot of great posts on unit testing with Sitecore using fakes and other tools, so w">
+<meta name="keywords" content="Sitecore,Fortis,Unit Testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unit Testing with Sitecore and Fortis - Part 1">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="This post is the start of a series of articles looking at unit testing using Sitecore and Fortis. There are already a lot of great posts on unit testing with Sitecore using fakes and other tools, so w">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/Project-Setup.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unit Testing with Sitecore and Fortis - Part 1">
+<meta name="twitter:description" content="This post is the start of a series of articles looking at unit testing using Sitecore and Fortis. There are already a lot of great posts on unit testing with Sitecore using fakes and other tools, so w">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/Project-Setup.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Fortis/">Fortis</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Unit-Testing-with-Sitecore-and-Fortis-Part-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Unit Testing with Sitecore and Fortis - Part 1
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/" class="article-date">
+  <time datetime="2014-11-11T14:35:41.000Z" itemprop="datePublished">2014-11-11</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>This post is the start of a series of articles looking at unit testing using <a href="http://www.sitecore.net/" target="_blank" rel="noopener">Sitecore</a> and <a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a>. There are already a lot of great posts on unit testing with Sitecore using fakes and other tools, so we are going to primarily focus on how to setup unit testing when using the Fortis framework. <em>We will go into some of the other benefits of using Fortis in a future post.</em></p>
+<p>One of the really useful things about Fortis is how it abstracts away the Sitecore API and models your data templates. All this is done via the <strong>IItemFactory</strong> and <strong>IItemWrapper</strong> intefaces, allowing you to easily unit test your code logic without having to worry about mocking/faking Sitecore.</p>
+<p>In this post we will discuss how to setup the unit tests and give some simple examples. In following posts we will go more in depth and cover unit tests for more complex code.</p>
+<h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><p>Here at Lightmaker we group our components logically by function rather than by type. Each component consists of one or more of the following:</p>
+<ul>
+<li><strong>Rendering</strong>: A view or controller rendering that holds the presentation elements</li>
+<li><strong>Controller</strong>: A simple controller action that requests the data from a manager class and sends the model to the view/rendering</li>
+<li><strong>Manager</strong>: The object that does the heavy lifting and logic. This is the main part of our code that gets unit tested</li>
+<li><strong>Rendering Model</strong>: The model for the view. This always inherits from Fortis.Models.IRenderingModel so that all views have access to the PageItem, the RenderingItem and the RenderingParametersItem<sup>*</sup></li>
+</ul>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>So let’s look at a code example. Let’s take a component that display’s frequently asked questions. For this we have the following items created in Sitecore:</p>
+<ul>
+<li><strong>Templates:</strong><ul>
+<li><strong>Frequently Asked Question</strong>: This template contains 2 fields, Question [a single-line text field] and Answer [Rich Text]</li>
+<li><strong>Frequently Asked Questions Folder</strong>: Inherits from the system/common/folder template, has insert options set to Frequently Asked Question.</li>
+<li><strong>Content Page</strong>: A generic page type that contains the scaffolding for site pages.</li>
+</ul>
+</li>
+<li><strong>Renderings:</strong><ul>
+<li><strong>Frequently Asked Question</strong>: A simple controller rendering</li>
+</ul>
+</li>
+<li><strong>Managers:</strong><ul>
+<li><strong>IFAQManager</strong> : The main manager class to handle the business logic</li>
+</ul>
+</li>
+</ul>
+<h3 id="Project-Setup"><a href="#Project-Setup" class="headerlink" title="Project Setup"></a>Project Setup</h3><p>Here is the basic project setup:<br><img src="/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/Project-Setup.jpg" title="Project Setup"></p>
+<h3 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h3><p>The IFAQManager contains a single method – <strong>GetFAQsFromParent</strong> – that takes an <strong>IFrequentlyAskedQuestionsFolder</strong> object and return an <strong>IEnumerable</strong>.</p>
+<p>The interface and implementation:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFAQManager</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">IEnumerable <span class="title">GetFAQsFromParent</span>(<span class="params">IFrequentlyAskedQuestionsFolder parentFolder</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FAQManager</span> : <span class="title">IFAQManager</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerable <span class="title">GetFAQsFromParent</span>(<span class="params">IFrequentlyAskedQuestionsFolder parentFolder</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">var</span> childItems = parentFolder.Children().OrderBy(x =&gt; x.Name);</span><br><span class="line">        <span class="keyword">return</span> childItems;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The controller:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FAQController</span> : <span class="title">BaseController</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">readonly</span> IFAQManager FAQManager;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FAQController</span>(<span class="params">ICustomItemFactory itemFactory, ILoggingManager log, IFAQManager faqManager</span>)</span></span><br><span class="line"><span class="function">		: <span class="title">base</span>(<span class="params">itemFactory, log</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">this</span>.FAQManager = faqManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ActionResult <span class="title">FAQList</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> model =</span><br><span class="line">            <span class="keyword">new</span> FAQRenderingModel(</span><br><span class="line">                <span class="keyword">this</span>.ItemFactory</span><br><span class="line">                    .GetRenderingContextItems&lt;IContentPage, IFrequentlyAskedQuestionsFolder, IFAQRenderingParameters&gt;(</span><br><span class="line">                        <span class="keyword">this</span>.ItemFactory));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (model.RenderingItem == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RenderingParametersException(<span class="string">"Data source"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        model.FrequentlyAskedQuestions = <span class="keyword">this</span>.FAQManager.GetFAQsFromParent(model.RenderingItem);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.View(model);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The model:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class FAQRenderingModel : RenderingModel&lt;IContentPage, IFrequentlyAskedQuestionsFolder, IFAQRenderingParameters&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FAQRenderingModel</span>(<span class="params">IRenderingModel&lt;IContentPage, IFrequentlyAskedQuestionsFolder, IFAQRenderingParameters&gt; model</span>)</span></span><br><span class="line"><span class="function">		: <span class="title">base</span>(<span class="params">model.PageItem, model.RenderingItem, model.RenderingParametersItem, model.Factory</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> IEnumerable&lt;IFrequentlyAskedQuestion&gt; FrequentlyAskedQuestions &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="The-Unit-Test"><a href="#The-Unit-Test" class="headerlink" title="The Unit Test"></a>The Unit Test</h3><p>We will be using <a href="https://github.com/Moq/moq4" title="Moq" target="_blank" rel="noopener">Moq</a> and <a href="http://www.nunit.org/" title="NUnit" target="_blank" rel="noopener">NUnit</a> to complete the testing. Here is the code for the Unit Test:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">TestFixture</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FAQManagerTests</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">Test</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GetFAQsFromParentTest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="comment">// Create a mock of the datasource item</span></span><br><span class="line">        <span class="keyword">var</span> dataSource = <span class="keyword">new</span> Mock&lt;IFrequentlyAskedQuestionsFolder&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create some test data</span></span><br><span class="line">        <span class="keyword">var</span> faq1 = <span class="keyword">new</span> Mock&lt;IFrequentlyAskedQuestion&gt;();</span><br><span class="line">        <span class="keyword">var</span> faq2 = <span class="keyword">new</span> Mock&lt;IFrequentlyAskedQuestion&gt;();</span><br><span class="line">        <span class="keyword">var</span> faq3 = <span class="keyword">new</span> Mock&lt;IFrequentlyAskedQuestion&gt;();</span><br><span class="line">        <span class="keyword">var</span> faq4 = <span class="keyword">new</span> Mock&lt;IFrequentlyAskedQuestion&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> faqList = <span class="keyword">new</span> List&lt;IFrequentlyAskedQuestion&gt; &#123; faq1.Object, faq2.Object, faq3.Object, faq4.Object &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Setup the datasource to return the child items.</span></span><br><span class="line">        dataSource.Setup(x =&gt; x.Children&lt;IFrequentlyAskedQuestion&gt;(recursive: <span class="literal">false</span>)).Returns(faqList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create the FAQ Manager</span></span><br><span class="line">        <span class="keyword">var</span> faqManager = <span class="keyword">new</span> FAQManager();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> returnedItems = faqManager.GetFAQsFromParent(dataSource);</span><br><span class="line">        Assert.AreEqual(faqList.Count, returnedItems.Count());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This is a very basic example of how to unit test with Fortis. In the next posts in this series, we will breakdown whats happening here and look at some more complex test cases, including testing the controllers.</p>
+<p><sup>*</sup> The Fortis rendering model has the following properties:</p>
+<ul>
+<li><strong>PageItem</strong>: A model of the current Sitecore context item. Equivalent of Sitecore.Context.Item</li>
+<li><strong>RenderingItem</strong>: A model of the item set by the renderings DataSource</li>
+<li><strong>RenderingParametersItem</strong>: A model of the rendering parameters associated with the current rendering</li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/" data-id="cka5tzgam006bgsvr2szsg113" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fortis/">Fortis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unit-Testing/">Unit Testing</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/02/Sitecore-MVC-Custom-Caching-Vary-by-External-Data/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore MVC Custom Caching - Vary by External Data
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore - Sorting by Date with SOLR</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

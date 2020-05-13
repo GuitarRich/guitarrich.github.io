@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Fixing the All Templates Index Field | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="One of the really nice features in Fortis is the ability to be able to search based on template type. Because we create an interface for every template in Sitecore, we can use the full inheritance tre">
+<meta name="keywords" content="Sitecore,SOLR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fixing the All Templates Index Field">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2014/09/07/Fixing-the-All-Templates-Index-Field/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="One of the really nice features in Fortis is the ability to be able to search based on template type. Because we create an interface for every template in Sitecore, we can use the full inheritance tre">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fixing the All Templates Index Field">
+<meta name="twitter:description" content="One of the really nice features in Fortis is the ability to be able to search based on template type. Because we create an interface for every template in Sitecore, we can use the full inheritance tre">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Fixing-the-All-Templates-Index-Field" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Fixing the All Templates Index Field
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2014/09/07/Fixing-the-All-Templates-Index-Field/" class="article-date">
+  <time datetime="2014-09-07T13:29:16.000Z" itemprop="datePublished">2014-09-07</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>One of the really nice features in <a href="http://fortis.ws/" target="_blank" rel="noopener">Fortis</a> is the ability to be able to search based on template type. Because we create an interface for every template in Sitecore, we can use the full inheritance tree to bring out the data we need.</p>
+<p>A good example of this would be when building navigation. At Lightmaker we have a standard Navigation template. This template gives us all the fields we need to build navigational elements. Our main Page Type template, inherits from the Navigation Template. We can use this to get a list of items in Sitecore.</p>
+<h4 id="Fortis-Method"><a href="#Fortis-Method" class="headerlink" title="Fortis Method"></a>Fortis Method</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IEnumerable&lt;INavigation&gt; <span class="title">GetNavigation</span>(<span class="params">IItemWrapper rootNode</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> searchContext = ContentSearchManager.GetIndex(<span class="string">"sitecore_web_index"</span>).CreateSearchContext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> ItemFactory.Search&lt;INavigation&gt;(searchContext)</span><br><span class="line">               .Where(item =&gt; item.LongID.Contains(rootNode.ItemShortID)).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Standard-Sitecore-Method"><a href="#Standard-Sitecore-Method" class="headerlink" title="Standard Sitecore Method"></a>Standard Sitecore Method</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IEnumerable&lt;INavigation&gt; <span class="title">GetNavigation</span>(<span class="params">IItemWrapper rootNode</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> searchContext = ContentSearchManager.GetIndex(<span class="string">"sitecore_web_index"</span>).CreateSearchContext())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">            searchContext.GetQueryable&lt;SearchResultItem&gt;()</span><br><span class="line">                .Where(item =&gt; item.Templates.Contains(<span class="string">"&#123;AB86861A-6030-46C5-B394-E8F99E8B87DB&#125;"</span>))</span><br><span class="line">                .ToList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="The-Problem"><a href="#The-Problem" class="headerlink" title="The Problem"></a>The Problem</h2><p>This works fine out of the box. But there is a problem when the template you want to filter is further down in the inheritance tree. The standard GetAllTemplates method used for the AllTemplates computed field, only uses the item.TemplateID and item.Template.BaseTemplates. Consider the scenario where you have 3 templates, <code>Template A</code>, <code>Template B</code> and <code>Template C</code>. <code>Template B</code> inherits from <code>Template A</code> and <code>Template C</code> inherits from <code>Template B</code>. If we want do a search for all items that have <code>Template A</code> in the inheritance tree, only items that directly use <code>Template A</code> or <code>Template B</code> will be returned. The expected result is that items that use ANY of the 3 templates should be returned.</p>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>The solution is a custom AllTemplates computed field. This just iterates through all the base templates and builds the field.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> Sitecore.ContentSearch;</span><br><span class="line"><span class="keyword">using</span> Sitecore.ContentSearch.ComputedFields;</span><br><span class="line"><span class="keyword">using</span> Sitecore.ContentSearch.Utilities;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Data.Items;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Diagnostics;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Lightmaker.Search.ComputedFields</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AllTemplates</span> : <span class="title">IComputedIndexField</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> Stack&lt;TemplateItem&gt; stack;</span><br><span class="line">        <span class="keyword">private</span> List&lt;<span class="keyword">string</span>&gt; allTemplates; </span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">ComputeFieldValue</span>(<span class="params">IIndexable indexable</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">            <span class="keyword">var</span> item = (Item)(indexable <span class="keyword">as</span> SitecoreIndexableItem);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.allTemplates = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt; &#123; IdHelper.NormalizeGuid(item.TemplateID) &#125;;</span><br><span class="line">            <span class="keyword">this</span>.stack = <span class="keyword">new</span> Stack&lt;TemplateItem&gt;();</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> template <span class="keyword">in</span> item.Template.BaseTemplates)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">this</span>.stack.Push(template);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">this</span>.stack.Count &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> templatesToProcess = <span class="keyword">this</span>.ProcessTemplate(<span class="keyword">this</span>.stack.Pop());</span><br><span class="line">                <span class="keyword">foreach</span> (<span class="keyword">var</span> t <span class="keyword">in</span> templatesToProcess)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">this</span>.stack.Push(t);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.allTemplates;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> IEnumerable&lt;TemplateItem&gt; <span class="title">ProcessTemplate</span>(<span class="params">TemplateItem templateItem</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">            <span class="keyword">if</span> (templateItem == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> TemplateItem[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.allTemplates.Add(IdHelper.NormalizeGuid(templateItem.ID));</span><br><span class="line">            <span class="keyword">return</span> templateItem.BaseTemplates;</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> FieldName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> ReturnType &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Notice that we are not using recursion here to build the list of templates. We could, but as this code gets called every time an item is indexed, recursion would be a bottle neck here. Instead we are using a stack object and iterating through the list. We could also make this code more robust and check for circular references, as that would cause an out of memory error eventually.</p>
+<p>The final part of the puzzle is to setup the configuration, this would be the include file to use the new AllTemplates computed field:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">contentSearch</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">indexConfigurations</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">defaultSolrIndexConfiguration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fields</span> <span class="attr">hint</span>=<span class="string">"raw:AddComputedIndexField"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">field</span> <span class="attr">fieldName</span>=<span class="string">"_templates"</span> <span class="attr">returnType</span>=<span class="string">"string"</span>&gt;</span>Lightmaker.Search.ComputedFields.AllTemplates, Lightmaker.Search<span class="tag">&lt;/<span class="name">field</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">fields</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">defaultSolrIndexConfiguration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">indexConfigurations</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">contentSearch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Coming up, more articles on how we use Fortis to streamline our Sitecore development and how we implemented a real time breaking news module using SignalR.</p>
+<p>– Richard Seal</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2014/09/07/Fixing-the-All-Templates-Index-Field/" data-id="cka5tzg8r001ogsvr0c690ku6" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2014/09/07/Fixing-the-All-Templates-Index-Field/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SOLR/">SOLR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Using Require to Organize Your Sitecore Javascript
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2014/09/07/Fixing-the-All-Templates-Index-Field/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

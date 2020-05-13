@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore.React - Getting Started - 3. Data | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is the 3rd tutorial in the series on Sitecore.React. If you have not read the previous 2 yet, read this Sitecore.React - Getting Started - 1. Webpack and this Sitecore.React - Getting Started - 2">
+<meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore.React - Getting Started - 3. Data">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="This is the 3rd tutorial in the series on Sitecore.React. If you have not read the previous 2 yet, read this Sitecore.React - Getting Started - 1. Webpack and this Sitecore.React - Getting Started - 2">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/foldersetup.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/website.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/devtools.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore.React - Getting Started - 3. Data">
+<meta name="twitter:description" content="This is the 3rd tutorial in the series on Sitecore.React. If you have not read the previous 2 yet, read this Sitecore.React - Getting Started - 1. Webpack and this Sitecore.React - Getting Started - 2">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/foldersetup.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-React-Getting-Started-3-Data" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore.React - Getting Started - 3. Data
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" class="article-date">
+  <time datetime="2017-07-11T16:45:57.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>This is the 3rd tutorial in the series on <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">Sitecore.React</a>. If you have not read the previous 2 yet, read this <a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a> and this <a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" title="Sitecore.React - Getting Started - 2. Creating Components">Sitecore.React - Getting Started - 2. Creating Components</a> first.</p>
+<p>All the code for this tutorial can be found here: <a href="https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-3" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-3</a>.</p>
+<p>In this tutorial we will be taking the fairly static site that we built in the previous 2 tutorials and make them dynamic - this is an important step in the process of building a react site that can be rendered by Sitecore. By the end of this tutorial we will be ready to start work on the Sitecore parts and integrate the React components as Sitecore renderings.</p>
+<h2 id="Defining-the-data-structure"><a href="#Defining-the-data-structure" class="headerlink" title="Defining the data structure"></a>Defining the data structure</h2><p>The 2 renderings we created in the previous tutorial were the <code>PageTitle</code> and the <code>PageBody</code> components, in Sitecore these will both render fields on a template called <code>PageContent</code>. So lets use a JSON object to define the structure of that data template. Normally this would be something the backend and front end developers would agree upon before building the components.</p>
+<p>Depending on your style of architecture, this data structure can either match exactly with the data template (<em>For simplicity, that is what I am doing here</em>), or a more common/better approach would be to create data structures that will match your view model. This is a better practice so that you are not passing in un-needed properties through to the view (react component).</p>
+<p>Here we are defining some standard fields that might be used on a <code>PageContent</code> template:</p>
+<h3 id="PageContent-data-template"><a href="#PageContent-data-template" class="headerlink" title="PageContent data template:"></a><code>PageContent data template:</code></h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"Title"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"Summary"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"Body"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"PageImage"</span>: <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now we have a defined structure for the data template, lets create a data layer for our React front end website. This layer will <em>only</em> be used for the frond end site and will be replaced by Sitecore for the main implementation. Because of this, the data layer should <em>ONLY</em> be referenced in our <code>Page</code> components and never in the actual components. </p>
+<p>Remember that the <code>Page</code> components (<em>located in <code>src/app/pages</code></em>) are effectively a JavaScript representation of the Sitecore presentation layer, a <code>PageComponent</code> will bring together the structure of the components (Presentation details) with the data (Content) and present it to the user.</p>
+<p>For the first step, lets create a <code>data</code> folder under <code>src/app</code> to store our data in. Inside that create a folder called <code>json</code> and a file called <code>data.js</code>. It should look like this:</p>
+<img src="/2017/07/11/Sitecore-React-Getting-Started-3-Data/foldersetup.png" title="Data folder setup">
+<p>The <code>data.js</code> file will contain a static class that will be used to mimic how Sitecore.React passes the data through to the props of the React components. We will add some static methods in there that return a json object containing the data structure with some dummy data in.</p>
+<p>First lets create the dummy <code>PageContent</code> data for the home page. In the <code>src/app/data/json</code> folder, create a file called <code>homePageContent.json</code> and add the following content:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"Title"</span>: <span class="string">"Getting Started with Sitecore.React"</span>,</span><br><span class="line">    <span class="attr">"Summary"</span>: <span class="string">"Getting Started with Sitecore.React Summary Text"</span>,</span><br><span class="line">    <span class="attr">"Body"</span>: <span class="string">"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ipsum lacus, mattis auctor dolor vitae, porttitor efficitur ex. Pellentesque convallis ante a purus maximus, a ornare neque faucibus. Curabitur dolor magna, dictum non pulvinar convallis, luctus vitae augue. Aenean a nulla nec metus euismod dignissim vitae nec ipsum. Mauris at purus eget mi pellentesque pharetra. Aenean mi eros, euismod sed efficitur vitae, egestas sed enim. Suspendisse potenti. Ut elementum nisl et ligula pellentesque accumsan. Proin varius convallis odio sed congue. Cras finibus felis eget odio lobortis pellentesque vel et eros. Morbi tincidunt tellus a justo porttitor, eu malesuada mi mollis. Nunc vulputate ipsum at tortor tristique semper. Morbi sit amet metus ac quam scelerisque pellentesque.&lt;/p&gt;"</span>,</span><br><span class="line">    <span class="attr">"PageImage"</span>: <span class="string">""</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Creating-the-Data-Access-Layer"><a href="#Creating-the-Data-Access-Layer" class="headerlink" title="Creating the Data Access Layer"></a>Creating the Data Access Layer</h2><p>Now we need to create the data access layer and setup the <code>home</code> page component to pass the data into the <code>PageTitle</code> and <code>PageBody</code> react components. First lets look at <code>data.js</code>. Add the following code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Data</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> getData(templateName, callback) &#123;</span><br><span class="line">        <span class="keyword">var</span> jsonUrl = <span class="string">"/data/json/"</span> + templateName + <span class="string">".json"</span>;</span><br><span class="line">        fetch(jsonUrl)</span><br><span class="line">            .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">            .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">                callback(data);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here we are just creating a generic function that can be used to load in some json from a file. Because the app runs from <code>src/app</code>, we are making sure the url is correct when running under the webpack server, then using <code>fetch</code> to get the data. The response is converted to a json object and passed through to the callback.</p>
+<p>Next we need to call that from the <code>Home.jsx</code> page. First here is the updated code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> PageTitle <span class="keyword">from</span> <span class="string">"../views/PageContent/PageTitle"</span>;</span><br><span class="line"><span class="keyword">import</span> PageBody <span class="keyword">from</span> <span class="string">"../views/PageContent/PageBody"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Data <span class="keyword">from</span> <span class="string">"../data/data"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            pageContent: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        Data.getData(<span class="string">"pageContent"</span>, (data) =&gt; &#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                pageContent: data</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;PageTitle data=&#123;<span class="keyword">this</span>.state.pageContent&#125; /&gt;</span><br><span class="line">                &lt;PageBody data=&#123;<span class="keyword">this</span>.state.pageContent&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>What has changed? First we need to import the <code>Data</code> class:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Data <span class="keyword">from</span> <span class="string">"../data/data"</span>;</span><br></pre></td></tr></table></figure>
+<p>First we need to setup the components <code>state</code> object to have a propery for the data. To do this we have created a constructor for the <code>Home</code> class. We have to make sure that we still run the base constructor and pass <code>props</code> into there. Then we setup the initial <code>state</code> object. Here we have just added a propery called <code>pageContent</code>.</p>
+<p>Now we can access the static <code>Data.getData</code> function we created earlier and pass in the name of the json file we want to get. In the <a href="https://facebook.github.io/react/docs/react-component.html#componentdidmount" target="_blank" rel="noopener"><code>componentDidMount</code></a> method, we call the <code>Data.getData</code> method and which gets the data and then we set the <code>pageContent</code> property on the components <code>state</code> object to hold the returned json object.</p>
+<p><code>componentDidMount</code> is an event on a react component that is invoked immediately after a component is mounted, this is a standard place to load data in a react component.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Data.getData(<span class="string">"pageContent"</span>, (data) =&gt; &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        pageContent: data</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Finally, you will see that we have passed in the <code>this.state.pageContent</code> object as a prop of the <code>PageTitle</code> and <code>PageBody</code> components called <code>data</code>. This is important as the Sitecore.React code will also pass in the view model to the component as a prop called <code>data</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">PageTitle</span> <span class="attr">data</span>=<span class="string">&#123;this.state.pageContent&#125;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">PageBody</span> <span class="attr">data</span>=<span class="string">&#123;this.state.pageContent&#125;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Setting-Up-The-Components"><a href="#Setting-Up-The-Components" class="headerlink" title="Setting Up The Components"></a>Setting Up The Components</h2><p>Now we need to setup our components to use those props. When we left them last time they just contained static html in the <code>render</code> method. So lets update the components to render the content from the <code>props</code> instead of the static html. Here is the new code for the components:</p>
+<h3 id="PageTitle"><a href="#PageTitle" class="headerlink" title="PageTitle"></a><code>PageTitle</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">PageTitle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1 dangerouslySetInnerHTML=&#123;&#123;<span class="attr">__html</span>: <span class="keyword">this</span>.props.data.Title&#125;&#125;&gt;<span class="xml"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">            &lt;<span class="regexp">/header&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br></pre></td></tr></table></figure>
+<h3 id="PageBody"><a href="#PageBody" class="headerlink" title="PageBody"></a><code>PageBody</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">PageBody</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div dangerouslySetInnerHTML=&#123;&#123;<span class="attr">__html</span>: <span class="keyword">this</span>.props.data.Body &#125;&#125;&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Danger-Danger"><a href="#Danger-Danger" class="headerlink" title="Danger, Danger!"></a>Danger, Danger!</h3><p>One of the things you may have noticed is the <code>dangerouslySetInnerHTML</code> part when rendering the fields. Why are we doing it that way instead of just using the property? The reason is that React, like Razor script, html encodes all content rendered to the page from a prop. This prevents things like injection attacks etc… But for some sitecore fields and also for Experience Editor support, we need those fields rendered <em>without</em> being html encoded. This is what <code>dangerouslySetInnerHTML</code> does, it renders the contents of the field as they are. Its the React equivalent of <a href="mailto:`@Html.Raw" target="_blank" rel="noopener">`@Html.Raw</a>()`. So if you want to render rich text fields and have Experience Editor support, it is important to let your front end developers know that they need to do that.</p>
+<h2 id="Final-Setup-for-Sitecore"><a href="#Final-Setup-for-Sitecore" class="headerlink" title="Final Setup for Sitecore"></a>Final Setup for Sitecore</h2><p>We are finally in a place now where we can start to integrate this with Sitecore. But before we do, we have a couple of setup things to do with our JavaScript files. Remember that we setup webpack to generate 3 files: <code>fed.js</code>, <code>server.js</code> and <code>client.js</code>. Up to now we have only worked with <code>fed.js</code> - now we need to setup <code>server.js</code> and <code>client.js</code>.</p>
+<p>First what is the difference? Why do we need 2 files? Well <code>server.js</code> is going to be used on… yup, the server. It will be used by <a href="https://reactjs.net/" target="_blank" rel="noopener">ReactJS.Net</a> to render the react components server side. Because of this, it must not contain any code that would manipulate DOM elements that runs on page initialization (<em>Things like button click handlers, responding to events etc… are ok, just nothing on initialization</em>). This is what the <code>client.js</code> file is for. Any DOM manipulation that needs to happen on page initialization should go here.</p>
+<p>Before we add code to those files, lets create a helper script so we don’t have to do things multiple times. In the folder <code>src/app/views</code> create a file called <code>index.js</code>. This file is going to export all our React components.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    MainLayout: <span class="built_in">require</span>(<span class="string">'./layout/MainLayout'</span>),</span><br><span class="line">    Placeholder: <span class="built_in">require</span>(<span class="string">'sitecore.react.placeholders'</span>),</span><br><span class="line">    PageTitle: <span class="built_in">require</span>(<span class="string">'./PageContent/PageTitle'</span>),</span><br><span class="line">    PageBody: <span class="built_in">require</span>(<span class="string">'./PageContent/PageBody'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now we can use that in both <code>server.js</code> and <code>client.js</code>. Here is the code for <code>server.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// All JavaScript in here will be loaded server-side</span></span><br><span class="line"><span class="comment">// Export the views globally so ReactJS.Net can use them</span></span><br><span class="line"><span class="keyword">var</span> Components = <span class="built_in">require</span>(<span class="string">'expose-loader?Components!./views'</span>);</span><br></pre></td></tr></table></figure>
+<p>We are just adding all the components exported by <code>./views/index.js</code> into a global variable called <code>Components</code>. This will be used by ReactJS.Net later.</p>
+<p>And <code>client.js</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">global.jQuery = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'jquery-ui'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Components = <span class="built_in">require</span>(<span class="string">'expose-loader?Components!./views'</span>);</span><br></pre></td></tr></table></figure>
+<p>Notice that in here we have added in things like <code>bootstrap</code> and <code>jquery</code> - we would also import any extra classes that are needed on the client only here.</p>
+<p>Finally lets run our dev server and see how it looks. Go to your console and run <code>npm run dev</code>. Your site should now look like this:</p>
+<img src="/2017/07/11/Sitecore-React-Getting-Started-3-Data/website.png">
+<p>If you install the <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en" target="_blank" rel="noopener">React DevTools Chrome extension</a> you can open the <code>React</code> tab in Chromes developer tools and see the components listed there:</p>
+<img src="/2017/07/11/Sitecore-React-Getting-Started-3-Data/devtools.png">
+<p>In the next tutorial, we will finally get into some Sitecore code, build the renderings and look at how we integrate the front end react site.</p>
+<hr>
+<p>This is the third article in a series of tutorials on Sitecore.React:</p>
+<ol>
+<li><a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a></li>
+<li><a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" title="Sitecore.React - Getting Started - 2. Creating Components">Sitecore.React - Getting Started - 2. Creating Components</a></li>
+<li><a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" title="Sitecore.React - Getting Started - 3. Data">Sitecore.React - Getting Started - 3. Data</a>
+</li>
+</ol>
+<p>If you have any questions - feel free to hit me up on <a href="https://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack</a> - my user is @GuitarRich!</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/" data-id="cka5tzga3004tgsvroo6w62sx" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-React/">Sitecore.React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Getting to the FXM Beacon using TLS 1.2
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore.React - Getting Started - 2. Creating Components</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/07/11/Sitecore-React-Getting-Started-3-Data/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

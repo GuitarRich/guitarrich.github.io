@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Using Require to Organize Your Sitecore Javascript | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="One of the problems when implementing a Sitecore website is how to include your JavaScript files. Each rendering/sublayout has the potential for custom JavaScript to enable the functionality for that">
+<meta name="keywords" content="Sitecore,JavaScript,requirejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Require to Organize Your Sitecore Javascript">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="One of the problems when implementing a Sitecore website is how to include your JavaScript files. Each rendering/sublayout has the potential for custom JavaScript to enable the functionality for that">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using Require to Organize Your Sitecore Javascript">
+<meta name="twitter:description" content="One of the problems when implementing a Sitecore website is how to include your JavaScript files. Each rendering/sublayout has the potential for custom JavaScript to enable the functionality for that">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Using-Require-to-Organize-Your-Sitecore-Javascript" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Using Require to Organize Your Sitecore Javascript
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/" class="article-date">
+  <time datetime="2014-11-03T14:35:11.000Z" itemprop="datePublished">2014-11-03</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>One of the problems when implementing a Sitecore website is how to include your JavaScript files. Each rendering/sublayout has the potential for custom JavaScript to enable the functionality for that component.</p>
+<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><p>So what are the options?</p>
+<ol>
+<li><p>We could just add all our JavaScript files as links in the head tag of the Main Layout for the site.</p>
+<p> While this would make sure that all the JavaScript is loaded and ready for the components to use, we know that loading a lot of JavaScript in the head tag is bad practice, it blocks the rest of the html on the page and could cause slow rendering times for the user.</p>
+</li>
+<li><p>We could add the JavaScript files in at the bottom of the page in the Main Layout for the site. </p>
+<p> This follows JavaScript best practice, our script now does not block the page load, but it does leave us with another problem. Because we don’t know which modules will be loaded on the page, we have difficulty initializing our components. We could check for each elements existence on the page, but this would lead to a lot of DOM checking and again potentially slow down the rendering of our page.</p>
+</li>
+<li><p>We could customize the rendering template to allow us to define which JavaScript files should be loaded for the rendering, and write a custom pipeline to make sure they are loaded. </p>
+<p> This is getting better, but we would still have to load the JavaScript in the head tag to make sure it is available.</p>
+</li>
+</ol>
+<h3 id="RequireJS-to-the-Rescue"><a href="#RequireJS-to-the-Rescue" class="headerlink" title="RequireJS to the Rescue"></a>RequireJS to the Rescue</h3><p>Fortunately there is another solution – in many large sites <a href="http://requirejs.org/" title="RequireJS" target="_blank" rel="noopener">RequireJs</a> can be used to help organize and load only those scripts that are required for the components on the page. Each component can require the JavaScript modules needed and RequireJS handles loading those files asynchronously, no blocking. So how can we use that with Sitecore?</p>
+<h4 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h4><p>These steps assume some knowledge of RequireJS, if you haven’t used it before I highly recommend looking through the require site. <a href="http://requirejs.org/" title="RequireJS" target="_blank" rel="noopener">http://requirejs.org</a>  </p>
+<p>First we need to set our MainLayout and RequireJS scaffolding up. The following code assumes your JavaScript is located at <strong>“/assets/js”</strong> and organized into logical folders. The main JavaScript file sets up the require config and any initial setup:</p>
+<p>main.js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">  baseUrl: <span class="string">"/assets/js"</span>,</span><br><span class="line">  paths: &#123;</span><br><span class="line">    jquery: <span class="string">"vendor/jquery.min"</span>,</span><br><span class="line">    <span class="string">"jquery.migrate"</span>: <span class="string">"vendor/migrate"</span>,</span><br><span class="line">    <span class="string">"jquery.mobile.events"</span>: <span class="string">"vendor/mobile.events"</span>,</span><br><span class="line">    <span class="string">"jquery.royalslider"</span>: <span class="string">"vendor/jquery.royalslider"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  shim: &#123;</span><br><span class="line">    <span class="string">"jquery.migrate"</span>: &#123;</span><br><span class="line">      deps: [<span class="string">"jquery"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"jquery.mobile.events"</span>: &#123;</span><br><span class="line">      deps: [<span class="string">"jquery"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"jquery.royalslider"</span>: &#123;</span><br><span class="line">      deps: [<span class="string">"jquery"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now run any initialization javascript for the site:</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">"jquery"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Init code here</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Add the following script tags to your Main Layout in the head tags. This is ok as RequireJS loads in the JavaScript files async, so it doesn’t block the page.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/assets/js/vendor/require.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/assets/js/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h4><p>Now we have the setup we can write the JavaScript for our components as RequireJS modules and require them directly from our renderings/sublayouts</p>
+<p>Example Require Module (Located at: <strong>/assets/js/modules/slider.js</strong>)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"jquery"</span>, <span class="string">"jquery.royalslider"</span>, <span class="string">"jquery.mobile.events"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> BasicSlider;</span><br><span class="line">  <span class="keyword">return</span> BasicSlider = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">BasicSlider</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.options = options;</span><br><span class="line">      <span class="keyword">this</span>.options = $.extend(&#123;&#125;, <span class="keyword">this</span>.defaults, <span class="keyword">this</span>.options);</span><br><span class="line">      <span class="keyword">this</span>.initSlider();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    DetailCarousel.prototype.defaults = &#123;</span><br><span class="line">      element: <span class="string">"#basicSlider"</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    DetailCarousel.prototype.initSlider = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Initialise the slider here</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> DetailCarousel;</span><br><span class="line">  &#125;)();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Example Rendering (Razor Script)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slider"</span>&gt;</span><span class="comment">&lt;!-- Slider Html Structure Here --&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">require</span>([<span class="string">"jquery"</span>, <span class="string">"modules/slider"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, Slider</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">new</span> Slider(&#123;</span></span><br><span class="line"><span class="javascript">        element: <span class="string">'.slider'</span></span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Using this method, we can write reusable RequireJS modules for our JavaScript and include only what is required for the page without any page blocking and any hacky work arounds to get the components working.</p>
+<p>Another nice side effect of this, is that it all works nicely with the page editor. Because of the way RequireJS loads the JavaScript in and then executes the function, when components are added via the page editor, the script is executed as normal. Of course you can turn this off if you don’t want the JavaScript to execute in page edit mode.</p>
+<p>– Richard Seal</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/" data-id="cka5tzgap006mgsvr99b7mbwo" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/requirejs/">requirejs</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore - Sorting by Date with SOLR
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2014/09/07/Fixing-the-All-Templates-Index-Field/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Fixing the All Templates Index Field</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

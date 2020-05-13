@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore.React - Getting Started - 2. Creating Components | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is the second in a series of posts looking at how to use the Sitecore.React v2 module. If you haven’t read the first post yet, I suggest you start here: Sitecore.React - Getting Started - 1. Webp">
+<meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore.React - Getting Started - 2. Creating Components">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="This is the second in a series of posts looking at how to use the Sitecore.React v2 module. If you haven’t read the first post yet, I suggest you start here: Sitecore.React - Getting Started - 1. Webp">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/homepage.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/projectfolder.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.811Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore.React - Getting Started - 2. Creating Components">
+<meta name="twitter:description" content="This is the second in a series of posts looking at how to use the Sitecore.React v2 module. If you haven’t read the first post yet, I suggest you start here: Sitecore.React - Getting Started - 1. Webp">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/homepage.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-React-Getting-Started-Creating-Components" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore.React - Getting Started - 2. Creating Components
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" class="article-date">
+  <time datetime="2017-07-05T23:44:47.000Z" itemprop="datePublished">2017-07-05</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>This is the second in a series of posts looking at how to use the <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">Sitecore.React v2</a> module. If you haven’t read the first post yet, I suggest you start here: <a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a>.</p>
+<p>All the code for this tutorial can be found here: <a href="https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-2" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-2</a>.</p>
+<p>For this second post we will look at creating React components that are going to be compatible with Sitecore.React, how we setup the main JavaScript files and also how to setup the data structure to match what will be coming from Sitecore.</p>
+<p>Again, I will make the assumption that you already know a bit about ReactJS and the syntax involved in creating components etc… so I will not be explaining those portions of the example code.</p>
+<h2 id="Placeholders"><a href="#Placeholders" class="headerlink" title="Placeholders"></a>Placeholders</h2><p>Before we can start building Sitecore components with Placeholder support, we need to install the <code>sitecore.react.placholders</code> react module. In your console run the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sitecore.react.placeholders --save-dev</span><br></pre></td></tr></table></figure>
+<p>In your <code>package.json</code> file, you should see this <code>&quot;sitecore.react.placeholders&quot;: &quot;^2.0.0&quot;,</code> in the <code>devDependencies</code> section.</p>
+<p>We can now import placeholders into our react components. So lets create a layout.</p>
+<h2 id="Layouts"><a href="#Layouts" class="headerlink" title="Layouts"></a>Layouts</h2><p>In Sitecore one of the first things we do is create a main layout. With a React site, our main layout in Sitecore will be slightly different, unlike a normal Mvc layout, our layout will just contain a single placeholder called <strong>app</strong>, this is where the react application will be rendered too. So we need a layout creating as a rendering where we place our main page scaffolding. So lets create a React component for that.</p>
+<p>In our last tutorial we created our main source folders. For this tutorial we will work in the <code>src/App</code> folder. Create a new folder in <code>src/App</code> called <code>views</code>, then create a folder inside that one called <code>layout</code>.</p>
+<p>In this folder we will create the <code>MainLayout.jsx</code> component. Here is the code for the main layout:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MainLayout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div id=<span class="string">"main-container"</span>&gt;</span><br><span class="line">                &lt;header <span class="class"><span class="keyword">class</span></span>=<span class="string">"navbar navbar-default navbar-static-top container-fluid"</span>&gt;</span><br><span class="line">                &lt;<span class="regexp">/header&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &lt;main role="main" class="container"&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/m</span>ain&gt;</span><br><span class="line"></span><br><span class="line">                &lt;footer <span class="class"><span class="keyword">class</span></span>=<span class="string">"footer bg-primary"</span>&gt;</span><br><span class="line">                &lt;<span class="regexp">/footer&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So lets break this down again. First we need to import <code>React</code>, once we have those we can create the React component ready to export. Now we can create the <code>MainLayout</code> class, for this we are using a JavaScript class and extending <code>React.Component</code>. Using the <code>render()</code> method, we can then layout our scaffolding Html. This is an example of some fairly standard markup, we will just use a bootstrap swatch for styling etc…</p>
+<p>Now we want to add 3 placeholders, a header, body and footer. The syntax for a placeholder component looks like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Placeholder placeholderKey=&#123;<span class="string">'key'</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">&lt;<span class="regexp">/Placeholder&gt;</span></span><br></pre></td></tr></table></figure>
+<p>So lets add that to the markup above and put the placeholder keys in. Make sure you add the import line for the Placeholder component. The final component should look like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> Placeholder <span class="keyword">from</span> <span class="string">"sitecore.react.placeholders"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MainLayout</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div id=<span class="string">"main-container"</span>&gt;</span><br><span class="line">                &lt;header <span class="class"><span class="keyword">class</span></span>=<span class="string">"navbar navbar-default navbar-static-top container-fluid"</span>&gt;</span><br><span class="line">                    &lt;Placeholder placeholderKey=&#123;<span class="string">'header'</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">                        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"navbar-header"</span>&gt;</span><br><span class="line">                            &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">"navbar-brand"</span>&gt;Sitecore.React: Frontend Site&lt;<span class="regexp">/h1&gt; </span></span><br><span class="line"><span class="regexp">                        &lt;/</span>div&gt;</span><br><span class="line">                    &lt;<span class="regexp">/Placeholder&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>header&gt;</span><br><span class="line"></span><br><span class="line">                &lt;main role=<span class="string">"main"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">                    &lt;Placeholder placeholderKey=&#123;<span class="string">'main'</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">                        &#123;<span class="keyword">this</span>.props.children&#125;</span><br><span class="line">                    &lt;<span class="regexp">/Placeholder&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/m</span>ain&gt;</span><br><span class="line"></span><br><span class="line">                &lt;footer <span class="class"><span class="keyword">class</span></span>=<span class="string">"footer bg-primary"</span>&gt;</span><br><span class="line">                    &lt;Placeholder placeholderKey=&#123;<span class="string">'footer'</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">                    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">                        &lt;p&gt;Footer content goes here&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;/</span>div&gt;</span><br><span class="line">                    &lt;<span class="regexp">/Placeholder&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>footer&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>A couple of things to note here. First all these placeholders are standard placeholders, not dynamic ones. We can make the placeholder a dynamic one by adding the attribute <code>isDynamic={true}</code> to the component. Also notice that we have this attribute: <code>placeholder={this.props.placeholder}</code> being sent to each placeholder. This is important - without it the placeholders will not work. When being rendered by Sitecore, a prop is created called <code>placeholder</code> and the contents of that are sent to the component. This property contains the rendered versions of all the components assigned to the matching placeholder key in Sitecore.</p>
+<p>For completeness this is the <code>index.html</code> code that I am working with - it adds in the bootstrap CSS and JavaScript:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sitecore React | Front End Files<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">integrity</span>=<span class="string">"sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Custom Fonts --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/fed.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>One final thing to look at is the contents of the placeholder. When the application is rendered by the front end application, the Placeholder component renders any child elements as the contents of the placeholder. When rendered by Sitecore, this is ignored.</p>
+<h2 id="Pages"><a href="#Pages" class="headerlink" title="Pages"></a>Pages</h2><p>Now we have a layout, lets add a page of dummy content for the front end team. This part is only for the front end team. The page components take the place of the Sitecore items and presentation applied to them. In the next few steps we will create more components and start building the page in the same way we would build the Sitecore presentation, but for now lets just get some mark up in there and see it working.</p>
+<p>Create the following folder: <code>src/App/Pages</code>, then in that folder create a page file: <code>Home.jsx</code>. Again, we need to import <code>React</code> and create a class called <code>Home</code>. Here is the sample code. In the render method I have just added some dummy markup:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;HTML Ipsum Presents&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &lt;p&gt;&lt;strong&gt;Pellentesque habitant morbi tristique&lt;/</span>strong&gt; senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. &lt;em&gt;Aenean ultricies mi vitae est.&lt;<span class="regexp">/em&gt; Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, &lt;code&gt;commodo vitae&lt;/</span>code&gt;, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. &lt;a href=<span class="string">"#"</span>&gt;Donec non enim&lt;<span class="regexp">/a&gt; in turpis pulvinar facilisis. Ut felis.&lt;/</span>p&gt;</span><br><span class="line"></span><br><span class="line">            &lt;h2&gt;Header Level <span class="number">2</span>&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/</span>li&gt;</span><br><span class="line">            &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>ol&gt;</span><br><span class="line"></span><br><span class="line">            &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">            &lt;h3&gt;Header Level <span class="number">3</span>&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/</span>li&gt;</span><br><span class="line">            &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/u</span>l&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Putting-it-together"><a href="#Putting-it-together" class="headerlink" title="Putting it together"></a>Putting it together</h2><p>So we have a layout some content for the home page, now we need to setup the <code>React</code> app to use that. If you have been through the first tutorial your <code>fed.js</code> file should look like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">global.jQuery = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'jquery-ui'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Router, Route, IndexRoute, hashHistory &#125; <span class="keyword">from</span> <span class="string">"react-router"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;h1&gt;Hello World&lt;<span class="regexp">/h1&gt;,</span></span><br><span class="line"><span class="regexp">app);</span></span><br></pre></td></tr></table></figure>
+<p>Now we want to remove the <strong>Hello World</strong> part and start using the React router. Here is the sample code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">global.jQuery = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'jquery-ui'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; BrowserRouter , Switch, Route, Link &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> MainLayout <span class="keyword">from</span> <span class="string">"./views/layout/MainLayout"</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">"./pages/home"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">    &lt;MainLayout&gt;</span><br><span class="line">        &lt;Switch&gt;</span><br><span class="line">            &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>MainLayout&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;BrowserRouter &gt;</span><br><span class="line">        &lt;App /&gt;</span><br><span class="line">    &lt;<span class="regexp">/BrowserRouter &gt;,</span></span><br><span class="line"><span class="regexp">document.getElementById('app'));</span></span><br></pre></td></tr></table></figure>
+<p>Notice that we have now imported the <code>MainLayout</code> and <code>Home</code> components that we have just created. Now we can setup the React router. We are just going to use the <code>BrowserRouter</code>, we could also use <code>HashRouter</code> if we wanted too.</p>
+<p>First lets create the main <code>App</code> - the app will render the <code>MainLayout</code> and then use the <code>Switch</code> component to add in the routes for the static site. For now we will just add a route for the home page and tell it to use the <code>Home</code> page component we created earlier. This component will be passed through to the <code>MainLayout</code> as <code>{this.props.children}</code>, that is why we added that to the main body placeholder as thats where we want it rendered in the static site.</p>
+<p>One thing to note here is that I’m using v4 of the React Router, if you are used to using an earlier version, the syntax may seem a little differernt, that is because v4 was a complete rewrite of the router. If you are new to v4 there are some great tutorials out there. Here are a couple:</p>
+<ul>
+<li><a href="https://themeteorchef.com/tutorials/getting-started-with-react-router-v4" target="_blank" rel="noopener">Getting Started with React Router v4</a></li>
+<li><a href="https://medium.com/@pshrmn/a-simple-react-router-v4-tutorial-7f23ff27adf" target="_blank" rel="noopener">A Simple React Router v4 Tutorial</a></li>
+</ul>
+<p>If you go to your console now and run <code>npm run dev</code>, then navigate to `<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> in your browser you should see the page looking something like this:</p>
+<img src="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/homepage.png" title="Home Page">
+<p>One of the nice things about webpack is that it is setup for hot reloading. That means that if any changes are made to the source files, the browser will automatically reload the page for you, so stick that browser window on your other monitor and as you make the following updates, you should see the screen update for each one. Nice!</p>
+<h2 id="Creating-Sitecore-Components"><a href="#Creating-Sitecore-Components" class="headerlink" title="Creating Sitecore Components"></a>Creating Sitecore Components</h2><p>So far all we have created is a single page of static content. As it stands we could not use this in a Sitecore site, so lets look at breaking the static markup into Sitecore ready components.</p>
+<p>We will create <code>PageTitle</code> and <code>PageBody</code> components. First thing we need to do is create a folder for our components. The naming of these folders is important. Sitecore.React renderings are just modified Controller renderings, so the folder they live in should match the Controller name we are using for the action code. In Sitecore for this we will create a <code>PageContent</code> controler - so we need to create a <code>PageContent</code> folder under <code>src/Apps/views</code>. Once you have created that, Create 2 files <code>PageTitle.jsx</code> and <code>PageBody.jsx</code>. Again, its important to remeber that the name of the jsx file should really match our action name in the controller, so plan ahead with the naming of components with your front end team.</p>
+<p>I wont bother breaking these down, as we have created a few components now. Here is the sample code for both components:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">PageTitle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;HTML Ipsum Presents&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>header&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">PageBody</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Pellentesque habitant morbi tristique<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. &lt;em&gt;Aenean ultricies mi vitae est.&lt;<span class="regexp">/em&gt; Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, &lt;code&gt;commodo vitae&lt;/</span>code&gt;, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. &lt;a href=<span class="string">"#"</span>&gt;Donec non enim&lt;<span class="regexp">/a&gt; in turpis pulvinar facilisis. Ut felis.&lt;/</span>p&gt;</span><br><span class="line"></span><br><span class="line">                &lt;h2&gt;Header Level <span class="number">2</span>&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &lt;ol&gt;</span></span><br><span class="line"><span class="regexp">                &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/</span>li&gt;</span><br><span class="line">                &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>ol&gt;</span><br><span class="line"></span><br><span class="line">                &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">                &lt;h3&gt;Header Level <span class="number">3</span>&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">                &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/</span>li&gt;</span><br><span class="line">                &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/u</span>l&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Now we can update the <code>Home</code> page to use those components intead of hard coding the markup into it. So the <code>Home.jsx</code> file now looks like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> PageTitle <span class="keyword">from</span> <span class="string">"../views/PageContent/PageTitle"</span>;</span><br><span class="line"><span class="keyword">import</span> PageBody <span class="keyword">from</span> <span class="string">"../views/PageContent/PageBody"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Home</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;PageTitle /&gt;</span><br><span class="line">          &lt;PageBody /&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Now your browser should look exactly the same as the screenshot above, but the content is coming from the components instead of the static markup in the <code>Home</code> page file.</p>
+<p>You may be thinking right now - so what, its still static markup and the <code>PageTitle</code> and <code>PageBody</code> components as they stand, still can’t be ported into Sitecore as they are. And you would be right - so the next step will be to add in the structured data part - but for that you will have to wait until the next tutorial…</p>
+<p>By the end of this tutorial, your project folder should look like this:</p>
+<img src="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/projectfolder.png">
+<hr>
+<p>This is the second article in a series of tutorials on Sitecore.React:</p>
+<ol>
+<li><a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a></li>
+<li><a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" title="Sitecore.React - Getting Started - 2. Creating Components">Sitecore.React - Getting Started - 2. Creating Components</a></li>
+<li><a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" title="Sitecore.React - Getting Started - 3. Data">Sitecore.React - Getting Started - 3. Data</a>
+</li>
+</ol>
+<p>If you have any questions - feel free to hit me up on <a href="https://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack</a> - my user is @GuitarRich!</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" data-id="cka5tzga4004xgsvrfwkc5s90" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-React/">Sitecore.React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore.React - Getting Started - 3. Data
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/07/04/Sitecore-React-Getting-Started/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore.React - Getting Started - 1. Webpack</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

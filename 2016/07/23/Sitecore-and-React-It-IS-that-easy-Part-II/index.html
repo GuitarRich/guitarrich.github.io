@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore and React - It IS that easy - Part II | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Well the last post was getting a bit long, so I decided to split it up! Please read it here if you haven’t already.   We left Sitecore with a new rendering type called React Controller Rendering, we">
+<meta name="keywords" content="Sitecore,Habitat,ReactJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore and React - It IS that easy - Part II">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Well the last post was getting a bit long, so I decided to split it up! Please read it here if you haven’t already.   We left Sitecore with a new rendering type called React Controller Rendering, we">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/hero.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.849Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore and React - It IS that easy - Part II">
+<meta name="twitter:description" content="Well the last post was getting a bit long, so I decided to split it up! Please read it here if you haven’t already.   We left Sitecore with a new rendering type called React Controller Rendering, we">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/hero.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-and-React-It-IS-that-easy-Part-II" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore and React - It IS that easy - Part II
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/" class="article-date">
+  <time datetime="2016-07-23T11:58:02.000Z" itemprop="datePublished">2016-07-23</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <img src="/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/hero.jpg" title="Things are getting pretty serious!">
+<p>Well the last post was getting a bit long, so I decided to split it up! Please read it <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy/" title="here">here</a> if you haven’t already.  </p>
+<p>We left Sitecore with a new rendering type called <code>React Controller Rendering</code>, we have a <code>JsxResult</code>, a <code>JsxViewEngine</code> and finally a <code>JsxView</code> that takes our model from the controller action and passes it to <a href="http://reactjs.net" target="_blank" rel="noopener">ReactJS.net</a> to create the React component.</p>
+<p>But we have a few questions hanging still. First we need to register our <code>jsx</code> file with ReactJS so it knows what the component is. Also we need to render the compiled JavaScript of the <code>jsx</code> file somewhere, otherwise this becomes just a server side component and we lose a lot of the fun bits with React.</p>
+<h3 id="Lets-use-a-pipeline"><a href="#Lets-use-a-pipeline" class="headerlink" title="Lets use a pipeline!"></a>Lets use a pipeline!</h3><p>As with a lot of things in Sitecore, pipelines and processors are great things to hook into. To register our <code>jsx</code> files we will use the <code>mvc.getPageRendering</code> pipeline. This pipeline is executed once per page, and in the args contains a list of all the renderings on the page.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AddJsxFIles</span> : <span class="title">GetPageRenderingProcessor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">GetPageRenderingArgs args</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">this</span>.AddRenderingAssets(args.PageContext.PageDefinition.Renderings);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Create the bundle for the render</span></span><br><span class="line">        <span class="keyword">var</span> bundle = <span class="keyword">new</span> BabelBundle(<span class="string">"~/bundles/react"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> jsxFile <span class="keyword">in</span> JsxRepository.Current.Items)</span><br><span class="line">        &#123;</span><br><span class="line">            bundle.Include(jsxFile);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!ReactSiteConfiguration.Configuration.Scripts.Any(s =&gt; s.Equals(jsxFile)))</span><br><span class="line">            &#123;</span><br><span class="line">                ReactSiteConfiguration.Configuration.AddScript(jsxFile);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BundleTable.Bundles.Add(bundle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AddRenderingAssets</span>(<span class="params">IEnumerable&lt;Rendering&gt; renderings</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> rendering <span class="keyword">in</span> renderings)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> renderingItem = <span class="keyword">this</span>.GetRenderingItem(rendering);</span><br><span class="line">            <span class="keyword">if</span> (renderingItem == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (renderingItem.TemplateID != Templates.JsxRendering.ID)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.AddScriptAssetsFromRendering(renderingItem);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">AddScriptAssetsFromRendering</span>(<span class="params">Item renderingItem</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">var</span> jsxFile = renderingItem[Templates.JsxRendering.Fields.JsxFile];</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(jsxFile))</span><br><span class="line">        &#123;</span><br><span class="line">            JsxRepository.Current.AddScript(jsxFile, renderingItem.ID);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> Item <span class="title">GetRenderingItem</span>(<span class="params">Rendering rendering</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">if</span> (rendering.RenderingItem == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Log.Warn(<span class="string">$"rendering.RenderingItem is null for <span class="subst">&#123;rendering.RenderingItemPath&#125;</span>"</span>, <span class="keyword">this</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> rendering.RenderingItem.InnerItem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So for each rendering, we check if it is a <code>Jsx Controller Rendering</code> and then we use the <code>Jsx File</code> field from that rendering to register the script with React. Notice too that we are building a bundle at the same time. This bundle will be used later. But we have to do both these things to run the code server side and client side.</p>
+<h3 id="Bundles-Bundles-Bundles"><a href="#Bundles-Bundles-Bundles" class="headerlink" title="Bundles, Bundles, Bundles"></a>Bundles, Bundles, Bundles</h3><p>The last step is to make sure that we include the bundled javascript in the main layout. Add this to your main layout towards the bottom.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//fb.me/react-15.0.1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//fb.me/react-dom-15.0.1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">@Scripts.Render("~/bundles/react")</span><br></pre></td></tr></table></figure>
+<h3 id="Putting-it-all-together"><a href="#Putting-it-all-together" class="headerlink" title="Putting it all together"></a>Putting it all together</h3><p>Now we have all the component parts (pun intended!), we can create our first React Controller Rendering.  For this I chose the FAQ Accordion in the Habitat project as its a nice example of component parts. First I re-factored the view rendering into a new <code>React Controller Rendering</code>. The controller returns an <code>ActionResult</code>. We get the FAQ items from the repository and build the view model. Then we can return a new <code>JsxResult</code> - to simplify this process I added a an extension method to the <code>Controller</code> class to return the <code>JsxResult</code></p>
+<p>The controller action code is now:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ActionResult <span class="title">FaqAccordionReact</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> renderingItem = RenderingContext.Current.Rendering.Item;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!renderingItem?.IsDerived(Templates.FaqGroup.ID) ?? <span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> Context.PageMode.IsExperienceEditor ? <span class="keyword">this</span>.InfoMessage(<span class="keyword">new</span> InfoMessage(AlertTexts.InvalidDataSourceTemplateFriendlyMessage, InfoMessage.MessageType.Warning)) : <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> model = <span class="keyword">this</span>._faqRepository.GetFaqAccordion(renderingItem);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"FaqAccordionReact"</span>, model);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Now all we need is our <code>jsx</code> file that contains the React component:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> FaqItem = React.createClass(&#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"panel panel-default"</span>&gt;</span><br><span class="line">            &lt;div className=<span class="string">"panel-heading"</span> role=<span class="string">"tab"</span> id=<span class="string">"headingcollapse0"</span> &gt;</span><br><span class="line">                &lt;div className=<span class="string">"panel-title"</span>&gt;</span><br><span class="line">                    &lt;a role=<span class="string">"button"</span> className=<span class="string">"accordion-toggle"</span> data-toggle=<span class="string">"collapse"</span> data-parent=<span class="string">"#accordion"</span> href=&#123;<span class="string">'#faq'</span> + <span class="keyword">this</span>.props.data.Id&#125;&gt;</span><br><span class="line">                        &lt;span className=<span class="string">"glyphicon glyphicon-search"</span> aria-hidden=<span class="string">"true"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">                        &lt;span dangerouslySetInnerHTML=&#123;&#123; <span class="attr">__html</span>: <span class="keyword">this</span>.props.data.Question &#125;&#125; /&gt;</span><br><span class="line">                    &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>div&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">			&lt;div id=&#123;'faq' + this.props.data.Id&#125; className="panel-collapse collapse" role="tabpanel" aria-labelledby="headingcollapse0"&gt;</span></span><br><span class="line"><span class="regexp">				&lt;div className="panel-body" dangerouslySetInnerHTML=&#123;&#123; __html: this.props.data.Answer &#125;&#125; /</span>&gt;</span><br><span class="line">            &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">		&lt;/</span>div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> FaqAccordionReact = React.createClass(&#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div className=<span class="string">"panel-group"</span> id=<span class="string">"accordion"</span> role=<span class="string">"tablist"</span> aria-multiselectable=<span class="string">"true"</span>&gt;</span><br><span class="line">                &#123;<span class="keyword">this</span>.props.data.Items.map(<span class="function"><span class="keyword">function</span>(<span class="params">faq</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">FaqItem</span> <span class="attr">key</span>=<span class="string">&#123;faq.Id&#125;</span> <span class="attr">data</span>=<span class="string">&#123;faq&#125;/</span>&gt;</span>;</span></span><br><span class="line"><span class="xml">				&#125;)&#125;</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Notes-on-the-Model"><a href="#Notes-on-the-Model" class="headerlink" title="Notes on the Model"></a>Notes on the Model</h3><p>Note that we are setting the fields by using <code>dangerouslySetInnerHTML</code> - this allows us to support the page editor when rendering the fields. Also note that when creating the model, the fields need to be rendered into a string property that we can pass through to the React component.</p>
+<p>This is the code to build the FaqItems:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">faqItems.Add(<span class="keyword">new</span> FaqItem</span><br><span class="line">&#123;</span><br><span class="line">    Id = item.ID.ToShortID().ToString(),</span><br><span class="line">    Question = FieldRenderer.Render(item, Templates.Faq.Fields.Question.ToString()),</span><br><span class="line">    Answer = FieldRenderer.Render(item, Templates.Faq.Fields.Answer.ToString())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="In-Action"><a href="#In-Action" class="headerlink" title="In Action:"></a>In Action:</h3><p>It’s hard to get everything here in the post, so please checkout my <a href="https://github.com/GuitarRich/Habitat" target="_blank" rel="noopener">fork of Habitat</a> with this integration enabled. Specifically the <a href="https://github.com/GuitarRich/Habitat/tree/master/src/Foundation/React" target="_blank" rel="noopener">React Foundation Layer</a>, and the <a href="https://github.com/GuitarRich/Habitat/tree/master/src/Feature/faq/code" target="_blank" rel="noopener">modified FAQ Accordion rendering</a>. Just follow the normal steps to install Habitat and you should be able to see the accordion rendering at <a href="http://habitat.dev.local/en/Modules/Feature/FAQ" target="_blank" rel="noopener">http://habitat.dev.local/en/Modules/Feature/FAQ</a>.</p>
+<p>Here is the rendering running with dev tools open so you can see the react markup:<br></p>
+<h2 id="Tada-and-Next-Steps"><a href="#Tada-and-Next-Steps" class="headerlink" title="Tada!! and Next Steps"></a>Tada!! and Next Steps</h2><p>So far we have had some excellent results from the renderings we have created with React. Next steps we are going to look at the performance of the react renderings and how they cope with caching. Also I want to do a bit more to enable dynamic placeholders.</p>
+<p>Well thats all for now - I’m sure I didn’t cover everything, so please ask any questions in the comments or on the <a href="http://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore slack community</a>.</p>
+<h4 id="Credits"><a href="#Credits" class="headerlink" title="Credits"></a>Credits</h4><hr>
+<ul>
+<li>Alex Shyba &amp; Jacob Christensen for previous posts and inspiration</li>
+<li>Justin Laster at <a href="http://lightmaker.com" target="_blank" rel="noopener">Lightmaker</a> for collaborating and putting up with constant questions on what might be the best way of doing this!</li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/" data-id="cka5tzgaj0061gsvrmt6tz21c" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Habitat/">Habitat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/02/Sitecore-React-a-new-Sitecore-module/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore.React - a new Sitecore module
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore and React - It IS that easy!</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

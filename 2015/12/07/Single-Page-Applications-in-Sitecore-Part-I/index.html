@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Single Page Applications in Sitecore - Part I | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="At SUGCON #NOLA I was priveledged to be able to present on how we delivered a Single Page Application Sitecore implementation - I like to call is a SPAS :)  A number of people have been asking for mor">
+<meta name="keywords" content="Sitecore,Single Page Application,Backbonejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Single Page Applications in Sitecore - Part I">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="At SUGCON #NOLA I was priveledged to be able to present on how we delivered a Single Page Application Sitecore implementation - I like to call is a SPAS :)  A number of people have been asking for mor">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/spaallthethings.jpg">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/spa-overview.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/backbone-routing.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/ajax-device-setup.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Single Page Applications in Sitecore - Part I">
+<meta name="twitter:description" content="At SUGCON #NOLA I was priveledged to be able to present on how we delivered a Single Page Application Sitecore implementation - I like to call is a SPAS :)  A number of people have been asking for mor">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/spaallthethings.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Single-Page-Applications-in-Sitecore-Part-I" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Single Page Applications in Sitecore - Part I
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/" class="article-date">
+  <time datetime="2015-12-07T22:31:18.000Z" itemprop="datePublished">2015-12-07</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>At SUGCON #NOLA I was priveledged to be able to present on how we delivered a Single Page Application Sitecore implementation - I like to call is a SPAS :)</p>
+<img src="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/spaallthethings.jpg" title="Single Page All All The Things">
+<p>A number of people have been asking for more information on how we did it, so here goes!</p>
+<p>###Why a Single Page Application?<br>The main readon that many want a Single Page Application is that they allow us to offer a more-native-app-like experience to the user. There are also some other benefits, because only part of the page is downloaded each time, bandwidth costs can be reduced. It also allows for extra fancy bits like page transition animations etc…</p>
+<p>###The Challenges of a Single Page Application in Sitecore<br>A standard SPA would generally be structured like this:</p>
+<img src="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/spa-overview.png" title="Single Page Application Architecture">
+<p>A server side API used to get the data, usually in a <code>JSON</code> format, no real presentation is applied. Then on the client/browser a JavaScript framework like <a href="https://angularjs.org/" target="_blank" rel="noopener">Angular</a> or <a href="http://backbonejs.org/" target="_blank" rel="noopener">Backbone</a> is used to get the data from the API and present it via its templating engine.</p>
+<p>We could do this in Sitecore, there is the ItemWebApi or we could roll out our own API, but there are a number of downsides with this approach:</p>
+<ul>
+<li>No in page editing (Experience Editor)</li>
+<li>No personalization</li>
+<li>No Sitecore Html caching on renderings</li>
+<li>Developers may have to learn a new framework</li>
+<li>Issues with older browsers - not such a big issue anymore, but could be depending on your client</li>
+</ul>
+<p>###How We Can do this in Sitecore<br>So we needed to come up with a solution that would enable us to have a single-page application <em>feel</em> and benefits, but still used standard Sitecore methodologies and practices to build the site. It also needed to fully support the Experience Editor and Personalization.</p>
+<p>Also we didn’t want to have to write a lot of custom JavaScript, there are already frameworks out there that can help, so lets use them and save time and money!</p>
+<p>####Decision Time<br>For the framework we decided on <a href="http://backbonejs.org" target="_blank" rel="noopener">backbone.js</a> for our framework. It is nice and lightweight, simple to use and has great community support.</p>
+<p>The next descision made was to render all the html/markup on the server. This gave us a few really quick wins. The developers were already used to writing Sitecore renderings this way, we can use Sitecore field renderers still so we get all the benefits of in page editing and personalization. We can also still use Sitecore Html Caching on the renderings.</p>
+<p>This was the flow diagram for the process:</p>
+<img src="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/backbone-routing.png" title="Backbone.js Flow Diagram">
+<p>###Devices and Views<br>To achive this, every page on the site needs to have 2 versions of the presentation. The default version is a standard page, built in Sitecore with all the presentation applied. It contains headers, footers, navigation and content.  The second version of the page contains <em>only</em> the content that we want to change on the page when the user clicks a navigational element.</p>
+<p>To do this, we simply setup a new <code>device</code> in Sitecore called <code>Ajax</code> and enabled that device when the query string was set to <code>ajax=true</code></p>
+<img src="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/ajax-device-setup.png" title="Ajax Device Setup">
+<p><em>You many notice that the query string is checked via a rule, rather than the standard <code>Query String</code> field. This enables the query string to have multiple values and still work. It will be the subject of a later blog post.</em></p>
+<p>Now we have our Device setup, we can use that query string to enable Backbone.js to load in the correct version of the page when transitioning.</p>
+<p>###Backbone Setup<br>There are many excellent tutorials on how to setup Backbone, so I wont go into a lot of detail, but the basics of a backbone application are:</p>
+<ol>
+<li>Router - handles the requests and routes them to the correct view</li>
+<li>View - handles a specific request and renders data to the screen</li>
+<li>Application View - handles views in the application</li>
+</ol>
+<p>First we will setup a catch all route in Backbone. This will allow us to match any url request to the backbone view. It means that the same url that is used for the direct page, can be used for the backbone/ajax version of the page:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"jquery"</span>, <span class="string">"backbone"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, Backbone</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Router;</span><br><span class="line">  <span class="keyword">return</span> Router = Backbone.Router.extend(&#123;</span><br><span class="line">    routes: &#123;</span><br><span class="line">      <span class="string">"*actions"</span>: <span class="string">"defaultAction"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    defaultAction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> view;</span><br><span class="line">      view = <span class="keyword">new</span> app.Views.DefaultAction();</span><br><span class="line">      <span class="keyword">return</span> app.instance.navigateTo(view);</span><br><span class="line">    &#125;,</span><br><span class="line">    trackPageView: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> url;</span><br><span class="line">      url = <span class="string">"/"</span> + Backbone.history.getFragment();</span><br><span class="line">      <span class="keyword">return</span> app.Analytics.trackPageView(url, <span class="built_in">document</span>.title);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Notice that we are also tracking out page views here.</p>
+<p>We have a base view:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"jquery"</span>, <span class="string">"backbone"</span>, <span class="string">"underscore"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, Backbone, _</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> BaseView;</span><br><span class="line">  <span class="keyword">return</span> BaseView = &#123;</span><br><span class="line">    View: Backbone.View.extend(&#123;</span><br><span class="line">      initialize: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.router = <span class="keyword">new</span> app.Router();</span><br><span class="line">      &#125;,</span><br><span class="line">      render: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">        options = options || &#123;&#125;;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>We need a main application view:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"jquery"</span>, <span class="string">"backbone"</span>, <span class="string">"views/baseView"</span>, <span class="string">"util/pageTransitions"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, Backbone, BaseView, PageTransitions</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> AppView;</span><br><span class="line">  <span class="keyword">return</span> AppView = BaseView.View.extend(&#123;</span><br><span class="line">    el: <span class="string">"#backbonePlaceholder"</span>,</span><br><span class="line">    navigateTo: <span class="function"><span class="keyword">function</span>(<span class="params">view</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> self;</span><br><span class="line">      self = <span class="keyword">this</span>;</span><br><span class="line">      PageTransitions.get().transitionStart();</span><br><span class="line">      <span class="keyword">return</span> view.render(&#123;</span><br><span class="line">        page: <span class="literal">true</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>This view handles begining page transitions and calling the render method on the view that is passed in by the router.</p>
+<p>Finally we have the <code>SitecorePage</code> view - this view handles the incoming request, makes the ajax call to our Sitecore site, loads in the result to the DOM and completes any page transition animations.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">"jquery"</span>, <span class="string">"backbone"</span>, <span class="string">"views/baseView"</span>, <span class="string">"util/pageTransitions"</span>, <span class="string">"util/backboneUtil"</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$, Backbone, BaseView, PageTransitions, BackboneUtil</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> SitecorePage;</span><br><span class="line">  <span class="keyword">return</span> SitecorePage = BaseView.View.extend(&#123;</span><br><span class="line">    className: <span class="string">"main-container"</span>,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> hashIndex, hrefLength, linkPart, self, url, _ref;</span><br><span class="line">      self = <span class="keyword">this</span>;</span><br><span class="line">      hrefLength = location.href.length;</span><br><span class="line">      linkPart = <span class="string">"?"</span>;</span><br><span class="line">      <span class="keyword">if</span> (location.search) &#123;</span><br><span class="line">        linkPart = <span class="string">"&amp;"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (location.hash) &#123;</span><br><span class="line">        hashIndex = location.href.indexOf(<span class="string">"#"</span>);</span><br><span class="line">        url = location.href.substring(<span class="number">0</span>, hashIndex) + linkPart + <span class="string">"ajax=true"</span> + location.href.substring(hashIndex, hrefLength);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (location.href.indexOf(<span class="string">'?'</span>) !== <span class="number">-1</span> &amp;&amp; (location.search === <span class="keyword">void</span> <span class="number">0</span> || location.search === <span class="string">""</span>)) &#123;</span><br><span class="line">          linkPart = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        url = location.href + linkPart + <span class="string">"ajax=true"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> ((_ref = app.ajaxRequest) != <span class="literal">null</span>) &#123;</span><br><span class="line">        _ref.abort();</span><br><span class="line">      &#125;</span><br><span class="line">      app.ajaxRequest = $.<span class="keyword">get</span>(url, function(data) &#123;</span><br><span class="line">        <span class="keyword">var</span> pageTransitions;</span><br><span class="line">        self.router.trackPageView();</span><br><span class="line">        pageTransitions = PageTransitions.get();</span><br><span class="line">        pageTransitions.response = data;</span><br><span class="line">        pageTransitions.transitionEnd();</span><br><span class="line">        BackboneUtil.get().initializeEvents($(<span class="string">'#mainContainer'</span>));</span><br><span class="line">        BackboneUtil.get().initializeEvents($(<span class="string">'#pageHeader'</span>));</span><br><span class="line">        <span class="keyword">return</span> BackboneUtil.get().initializeEvents($(<span class="string">'#subNavigation'</span>));</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> BaseView.View.prototype.render.apply(self, <span class="built_in">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Notice here that we are aborting any previous ajax requests, this stops the pages loading twice if a link is double clicked, or stops wierd page loading if a user clicks on links faster than the ajax call can load them.</p>
+<p>Well thats it for part 1, in part 2 - we will go on to look at some modifications to the presentation pipelines in Sitecore help setup the renderings and how we can turn the backbone part of the Site on or off depending on whether we are in the Experience Editor or not.</p>
+<p>– Richard Seal </p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/" data-id="cka5tzg9k003vgsvr4od85amb" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Backbonejs/">Backbonejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Single-Page-Application/">Single Page Application</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Multi-Item Publish with Sitecore Powershell Extensions
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/11/30/Securing-the-Assets-data-folder/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Securing the Assets data folder</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore - Sorting by Date with SOLR | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="With the introduction of Item Buckets and the fantastic Sitecore Search API in Sitecore 7, we are using the search API more and more to get lists of content. Recently I was working on a site that had">
+<meta name="keywords" content="SOLR,Sitecore 8,Item Buckets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore - Sorting by Date with SOLR">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="With the introduction of Item Buckets and the fantastic Sitecore Search API in Sitecore 7, we are using the search API more and more to get lists of content. Recently I was working on a site that had">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore - Sorting by Date with SOLR">
+<meta name="twitter:description" content="With the introduction of Item Buckets and the fantastic Sitecore Search API in Sitecore 7, we are using the search API more and more to get lists of content. Recently I was working on a site that had">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-Sorting-by-Date-with-SOLR" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore - Sorting by Date with SOLR
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/" class="article-date">
+  <time datetime="2014-11-06T14:35:25.000Z" itemprop="datePublished">2014-11-06</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>With the introduction of Item Buckets and the fantastic Sitecore Search API in Sitecore 7, we are using the search API more and more to get lists of content. Recently I was working on a site that had a massive news article repository (000’s of articles). These made a great candidate for Item Buckets – and all was working well until we wanted to pull out the top 10 most recent articles. Simple you might think, and the code was pretty simple:</p>
+<h4 id="Search-result-poco"><a href="#Search-result-poco" class="headerlink" title="Search result poco:"></a>Search result poco:</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NewsArticleSearchResultItem</span> : <span class="title">SearchResultItem</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">IndexField(<span class="meta-string">"authored_date"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> DateTime AuthoredDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Search-code"><a href="#Search-code" class="headerlink" title="Search code:"></a>Search code:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">using (var context = ContentSearchManager.GetIndex(&quot;sitecore_web_index&quot;).CreateSearchContext())</span><br><span class="line">&#123;</span><br><span class="line">    var searchQuery = context.GetQueryable&lt;NewsArticleSearchResultItem&gt;()</span><br><span class="line">        .Where(x =&gt; x.TemplateID = NewsArticleTemplateId)</span><br><span class="line">        .OrderByDescending(x =&gt; x.AuthoredDate)</span><br><span class="line">        .Take(10)</span><br><span class="line">        .ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Results"><a href="#Results" class="headerlink" title="Results:"></a>Results:</h4><ul>
+<li>Article 1: Date 2014/11/01</li>
+<li>Article 2: Date 2014/11/02</li>
+<li>Article 3: Date 2014/11/03</li>
+</ul>
+<p>But the results are not sorted. I tried a few different ways, ascending and descending sorts, but the list was always in the same order.</p>
+<h3 id="Stackoverflow-to-the-Rescue"><a href="#Stackoverflow-to-the-Rescue" class="headerlink" title="Stackoverflow to the Rescue"></a>Stackoverflow to the Rescue</h3><p>I found this post: <a href="http://stackoverflow.com/questions/14035043/solr-sort-does-not-seem-to-work" target="_blank" rel="noopener">Solr sort does not seem to work</a> on stack overflow which lead me to the fix.<br> According to the Solr <a href="http://wiki.apache.org/solr/CommonQueryParameters#sort" target="_blank" rel="noopener">documentation</a> –<br> <em>“Sorting can be done on the “score” of the document, or on any multiValued=”false” indexed=”true” field provided that the field is either non-tokenized (ie: has no Analyzer) or uses an Analyzer that only produces a single Term (ie: uses the KeywordTokenizer).”</em></p>
+<h3 id="The-Fix"><a href="#The-Fix" class="headerlink" title="The Fix"></a>The Fix</h3><p>To fix this we need to add the sort field to the Solr Schema.xml and copy the data from the original field.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"authored_date_tdt_sort"</span> <span class="attr">type</span>=<span class="string">"tdate"</span> <span class="attr">indexed</span>=<span class="string">"true"</span> <span class="attr">stored</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">copyField</span> <span class="attr">source</span>=<span class="string">"authored_date_tdt"</span> <span class="attr">dest</span>=<span class="string">"authored_date_tdt_sort"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Once you have added the fields to the Schema.xml, reload your Solr core and rebuild your indexes. Now you can sort by the new field.</p>
+<h4 id="Search-result-poco-1"><a href="#Search-result-poco-1" class="headerlink" title="Search result poco:"></a>Search result poco:</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">NewsArticleSearchResultItem</span> : <span class="title">SearchResultItem</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">IndexField(<span class="meta-string">"authored_date"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> DateTime AuthoredDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">IndexField(<span class="meta-string">"authored_date_tdt_sort"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> DateTime AuthoredDateSort &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Search-code-1"><a href="#Search-code-1" class="headerlink" title="Search code:"></a>Search code:</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> context = ContentSearchManager.GetIndex(<span class="string">"sitecore_web_index"</span>).CreateSearchContext())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> searchQuery = context.GetQueryable&lt;NewsArticleSearchResultItem&gt;()</span><br><span class="line">        .Where(x =&gt; x.TemplateID = NewsArticleTemplateId)</span><br><span class="line">        .OrderByDescending(x =&gt; x.AuthoredDateSort)</span><br><span class="line">        .Take(<span class="number">10</span>)</span><br><span class="line">        .ToList();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Results-1"><a href="#Results-1" class="headerlink" title="Results:"></a>Results:</h4><ul>
+<li>Article 3: Date 2014/11/03</li>
+<li>Article 2: Date 2014/11/02</li>
+<li>Article 1: Date 2014/11/01</li>
+</ul>
+<p>Perfect – works exactly how we wanted it to. The copy field, copies the data from the dynamic field added to the index by the Sitecore crawler and adds it to the non-stored custom field. We have to add the field to the search result poco class separately as the field is not stored and so the property cannot be used to display the content. The field is only to be used for sorting.</p>
+<p>Until next time…</p>
+<p>– Richard Seal</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/" data-id="cka5tzgae005rgsvra1fb1mfw" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Item-Buckets/">Item Buckets</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SOLR/">SOLR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-8/">Sitecore 8</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/11/Unit-Testing-with-Sitecore-and-Fortis-Part-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Unit Testing with Sitecore and Fortis - Part 1
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Using Require to Organize Your Sitecore Javascript</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

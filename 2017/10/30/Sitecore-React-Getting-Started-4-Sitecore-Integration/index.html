@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore.React - Getting Started - 4. Sitecore Integration | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
+<meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore.React - Getting Started - 4. Sitecore Integration">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newinstance.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/templates.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject1.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject2.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/websiteproject.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/foundationproject.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/featureproject.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/visualstudiosolution.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/defaultlayout.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/mainlayout.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore.React - Getting Started - 4. Sitecore Integration">
+<meta name="twitter:description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-React-Getting-Started-4-Sitecore-Integration" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore.React - Getting Started - 4. Sitecore Integration
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" class="article-date">
+  <time datetime="2017-10-30T22:50:31.000Z" itemprop="datePublished">2017-10-30</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <h3 id="OPENING-CAVEAT"><a href="#OPENING-CAVEAT" class="headerlink" title="OPENING CAVEAT"></a>OPENING CAVEAT</h3><p>So many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclosure this is why its taken so long. The main reason is - ReactJS.net appears to not work very well with React 15.5 and above. Most of the reason for this delay is that I cannot get my tutorial repo to work with the versions of react that were used in parts 1-3. That said, it does work with earlier versions of React, so I thought it best right now to at least finish off the tutorial so you can see the Sitecore parts and then hopefully as a collective we can work out the issues with the newer versions of React.</p>
+<p>Another big part of me is wondering about the benefit of this implementation of React with Sitecore now that JSS has gone into tech preview. So let me know if you think this module is still helpful to keep going or whether most of you will just move to JSS once it is available.</p>
+<h2 id="Episode-4-A-New-Hope"><a href="#Episode-4-A-New-Hope" class="headerlink" title="Episode 4 - A New Hope:"></a>Episode 4 - A New Hope:</h2><p>FINALLY!!! We have got to some Sitecore stuffs!! All the front end is in place now and we can start the integration into Sitecore.</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
+<p>This is the 4th tutorial in the series on <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">Sitecore.React</a>. If you have not read the previous 3 yet, start here: <a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a> first. This turorial is going to be pretty image heavy to get the Visual Studio part setup!</p>
+<h2 id="Lets-get-the-Sitecore-environment-setup"><a href="#Lets-get-the-Sitecore-environment-setup" class="headerlink" title="Lets get the Sitecore environment setup"></a>Lets get the Sitecore environment setup</h2><p>For the purposes of this tutorial I will assume you are familiar with <a href="https://github.com/Sitecore/Sitecore-Instance-Manager" target="_blank" rel="noopener">SIM</a> and have the latest version installed. Using SIM install Sitecore with the following setup:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newinstance.png" title="installing the new instance">
+<p>Once Sitecore is installed we need to install the <a href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx" target="_blank" rel="noopener">Sitecore.React</a> package. You can download this from the Sitecore Marketplace: <a href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx" target="_blank" rel="noopener">https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx</a>.</p>
+<p>This package contains the Sitecore templates required to get up and running. Once installed you should see the following templates installed:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/templates.png" title="Sitcore.React templates">
+<blockquote>
+<p>Note that the <code>React View Rendering</code> is for a future version, it is not currently supported!</p>
+</blockquote>
+<h2 id="Visual-Studio-Setup"><a href="#Visual-Studio-Setup" class="headerlink" title="Visual Studio Setup"></a>Visual Studio Setup</h2><p>For this tutorial we are going to use <a href="https://twitter.com/AndersLaub" target="_blank" rel="noopener">Anders Laub’s</a> awesome Visual Studio templates (<a href="https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates</a>). If you haven’t used them yet and are building Helix based Sitecore implementations, then I guarantee you need to install them!</p>
+<p>In Visual Studio, create a new project, find the <strong>Sitecore Helix Modules and Solutions</strong>, set the project name and folder setup as follows. <strong>Important - Make sure that the folder you select is the folder where you have been building your Sitecore.React front end project</strong></p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject1.png">
+<p>On the next screen, set the project up like this:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject2.png">
+<p>This will go away and setup all your solution, folders and gulp scripts etc… all along side your existing React application files.</p>
+<p>Using the same templates, add a Project module, a Foundation module and a Feature module. Here are the values you should use for each:</p>
+<hr>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/websiteproject.png" title="Project.Sitecore.React.Website module">
+<hr>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/foundationproject.png" title="Foundation.React module">
+<hr>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/featureproject.png" title="Feature.Content module">
+<hr>
+<p>Once you have set all that up - your visual studio project should look like this:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/visualstudiosolution.png" title="Visual Studio Solution">
+<blockquote>
+<p>Alternatively, checkout the <code>gettingstarted-4</code> branch in the tutorial git repository!</p>
+</blockquote>
+<h2 id="Setup-Sitecore-React"><a href="#Setup-Sitecore-React" class="headerlink" title="Setup Sitecore.React"></a>Setup Sitecore.React</h2><p>Now we need to setup <code>Sitecore.React</code> and add the nuget packages. First in the <code>Foundation.React</code> project, add the <code>Sitecore.React.Web</code> nuget package:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package Sitecore.React.Web</span><br></pre></td></tr></table></figure>
+<p>For the other 2 projects, just install the <code>Sitecore.React</code> package:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package Sitecore.React</span><br></pre></td></tr></table></figure>
+<p>The <code>.web</code> version contains all the configuration files for <code>Sitecore.React</code>, so this should go into the foundation project.</p>
+<h3 id="Create-a-default-layout"><a href="#Create-a-default-layout" class="headerlink" title="Create a default layout"></a>Create a default layout</h3><p>Once the references are all setup, we need to create a default layout for Sitecore. This will be the main layout that we use in presentation and the part where we add our react components. It replaces the <code>index.html</code> file from the react application.</p>
+<p>In the <code>Project.Sitecore.React.Website</code> web project, add a <code>DefaultLayout.cshtml</code> razor file to <code>/views/Website/Layout</code>:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/defaultlayout.png" title="DefaultLayout.cshtml">
+<p>In here we will copy the contents of the <code>index.html</code> file, but replace the app div element with a Sitecore placeholder. Also we are removing the front end script tag and adding in the script tag from the Sitecore.React module:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@using Sitecore.Mvc</span><br><span class="line">@using Sitecore.React.Configuration</span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sitecore React | Front End Files<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">integrity</span>=<span class="string">"sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Custom Fonts --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  @Html.Sitecore().Placeholder("app")</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"@Url.Content(ReactSettingsProvider.Current.ClientScript)"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>A couple of things here that some have had problems with. Just because I used a single placeholder here and called it <code>app</code> doesn’t mean that you have too - Sitecore.React works just like a standard Sitecore MVC implementation. It has a layout and renderings for each page, renderings are added to placeholder keys - just like a regular MVC Sitecore application.</p>
+<p>Now we need to create the Sitecore item. In the content editor, navigate to <code>/sitecore/layout/Layouts/</code> Create a folder called <code>Project</code> and then create a new <code>MVC Layout</code> item called <code>DefaultLayout</code>. Make sure that the <strong>Path</strong> field is pointing at the razor view we just created.</p>
+<h3 id="Creating-the-Scaffolding"><a href="#Creating-the-Scaffolding" class="headerlink" title="Creating the Scaffolding"></a>Creating the Scaffolding</h3><p>In our React application, the first component we created was the <code>MainLayout.jsx</code> component. This provided some scaffolding for the site. So lets create that one.</p>
+<p>We already have our front end from the ReactJS application we created earlier, so we just need to create the backend. In the <code>Project.Sitecore.React.Website</code> Visual Studio project, lets create a controller for scaffolding elements. (<em>In a proper solution, you may put these scaffolding components in the Common website project or maybe a feature project. We are just using the main website project here for the sake of time and ease of setting up the tutorial</em>)</p>
+<p>First create a <code>ScaffoldingController</code> class in <code>Project.Sitecore.React.Website\Controllers</code> - make sure it inherits from <code>System.Web.Mvc.Controller</code>. Then add an <code>ActionResult</code>, lets call it <code>MainLayout</code>. There is no need for a datasource for this component. We just need the controller rendering for now. Your action result will use the extension method <code>React()</code> to return;</p>
+<blockquote>
+<p>NOTE: Currently view react renderings are not supported with the <code>Sitecore.React</code> module. This is on the roadmap for a future enhancement.</p>
+</blockquote>
+<p>Your controller should look like this:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Project.Sitecore.React.Website.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScaffoldingController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">MainLayout</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"MainLayout"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Next create the <code>React Controller Rendering</code> item in <code>/sitecore/layout/Renderings/Project/Website/MainLayout</code>. You can leave the <code>JSX File</code> field empty for this. Fill in the <code>Controller</code> and <code>Controller Action</code> fields like this:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/mainlayout.png" title="Main Layout Rendering Item">
+<p>Notice that instead of returning <code>this.View()</code> we are using <code>this.React()</code> - this is the extension method that tells the application to use the React view engine instead of the razor script view engine.</p>
+<h3 id="Page-Title-amp-Body-Components"><a href="#Page-Title-amp-Body-Components" class="headerlink" title="Page Title &amp; Body Components"></a>Page Title &amp; Body Components</h3><p>Now we can get into creating some data driven components. Remember for our react application, we created <code>Page Title</code> and <code>Page Body</code> components. So lets create those in the <code>Feature.Content</code> project. First create a controller for the components, lets create <code>ContentController</code>, again make sure it derives from <code>System.Web.Mvc.Controller</code>.</p>
+<p>We will create 2 <code>ActionResult</code> methods - <code>PageTitle</code> and <code>PageBody</code>. In this tutorial we wont use an ORM or Mapper, so we will hit the Sitecore API directly. In the <code>Feature.Content</code> Visual Studio project, lets create the controller and add actin result methods for both of the components:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"><span class="keyword">using</span> Feature.Content.Models;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Mvc.Presentation;</span><br><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Web.UI.WebControls;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Feature.Content.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ContentController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageTitle</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageTitleViewMode</span><br><span class="line">            &#123;</span><br><span class="line">                PageTitle = FieldRenderer.Render(item, <span class="string">"PageTitle"</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"PageTitle"</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageBody</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageBodyViewTitle</span><br><span class="line">            &#123;</span><br><span class="line">                PageBody = FieldRenderer.Render(item, <span class="string">"PageBody"</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"PageBody"</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So let’s again break down the 2 controller actions. If you are used to using the Sitecore API directly, this may look fairly familiar, React controller actions are almost identical to a standard MVC controller action. The first parts are fairly standard Sitecore, we are just getting the rendering item. Next we build the view model - here is where it gets a little different. In a standard controller, we might just add the Sitecore field to the view model, or Glass/Fortis/Synthesis model to our view model, and then use the <code>FieldRenderer</code> to render the contents of that field in the razor view.</p>
+<p>The problem is that with React, we can’t put server side code into the <code>jsx</code> comonent. So we are using the <code>FieldRenderer</code> in the controller action and populating our view model with the rendered output of the field. This means that when rendered by React, we still get Experience Editor capabilities.</p>
+<p>Now we need to create the 2 components in Sitecore - in your <code>sitecore/Layout/Renderings/Feature/Content</code> folder, create 2 <code>React Controller Renderings</code> - <code>PageTitle</code> and <code>PageBody</code>. Make sure that the controller and action fields are set with a fully qualified controller. This is what I have: Both renderings have the <code>Controller</code> field set to: <code>Feature.Content.Controllers.ContentController, Feature.Content</code> and then the <code>Action</code> fields set respectively.</p>
+<h3 id="Set-the-Presentation"><a href="#Set-the-Presentation" class="headerlink" title="Set the Presentation"></a>Set the Presentation</h3><p>Make sure you set some presentation and add the components to the <code>app</code> placeholder on the default layout.</p>
+<h3 id="Deploying-the-Code"><a href="#Deploying-the-Code" class="headerlink" title="Deploying the Code"></a>Deploying the Code</h3><p>Finally we can deploy the code. In the github repo I have setup some gulp tasks similar to the Habitat demo ones. There is an extra couple in there to handle deploying the JavaScript and JSX component files to the site.</p>
+<h3 id="Why-are-we-deploying-the-JSX-files"><a href="#Why-are-we-deploying-the-JSX-files" class="headerlink" title="Why are we deploying the JSX files?"></a>Why are we deploying the JSX files?</h3><p>All the JavaScript is in the webpack created files right? So why do we need to copy over the JSX files to the website instance?</p>
+<p>Well, there are 2 main reasons for this:</p>
+<ol>
+<li>First, with the Sitecore.React componenet, it creates a new ViewEngine for ASP.NET MVC. The base view engine in MVC requires you to have a physical (or compiled) view file. It searches for the file and passes this through to the rendering engine of the view. To keep this following a standard MVC view engine pattern, the React View Engine, keeps this default functionality. So if the jsx file doesn’t exist, your component will fail.</li>
+<li>Secondly, to work out where Placeholder are created and also to render out the contents of a placeholder, the Sitecore.React module, parses out the content of the jsx file. This is much simpler to do in a jsx file with a single component in vs trying to parse the entire bundled Javascript file.</li>
+</ol>
+<p>There may be better options for this in the future, but for now - we just need to get those files deployed.</p>
+<h3 id="What-is-next"><a href="#What-is-next" class="headerlink" title="What is next"></a>What is next</h3><p>Well as mentioned earlier, currently this only works with earlier versions of React, so I will be looking into that more if people find value in this module. Also JSS is in tech preview now - so more focus will be on that.</p>
+<p>What do you want to see with Sitecore and React? Lets take the discussion to the Slack channels and see what the future holds!</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" data-id="cka5tzga50051gsvryzg9ysip" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-React/">Sitecore.React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/02/Share-Your-Data-Between-Components/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Share Your Data Between Components
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/10/17/Sitecore-9-Dynamic-Placeholders-At-Last/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore 9: Dynamic Placeholders At Last!</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

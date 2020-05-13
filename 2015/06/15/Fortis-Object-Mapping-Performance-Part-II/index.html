@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Fortis Object Mapping Performance - Part II | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Last week I wrote a blog on Fortis Object Mapping Performance, I have a few updates! Kam pointed out a flaw in my original code. I populated an array of Fortis objects, but I did not read out a field">
+<meta name="keywords" content="Sitecore,Fortis,ORM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fortis Object Mapping Performance - Part II">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/06/15/Fortis-Object-Mapping-Performance-Part-II/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Last week I wrote a blog on Fortis Object Mapping Performance, I have a few updates! Kam pointed out a flaw in my original code. I populated an array of Fortis objects, but I did not read out a field">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fortis Object Mapping Performance - Part II">
+<meta name="twitter:description" content="Last week I wrote a blog on Fortis Object Mapping Performance, I have a few updates! Kam pointed out a flaw in my original code. I populated an array of Fortis objects, but I did not read out a field">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Fortis/">Fortis</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Fortis-Object-Mapping-Performance-Part-II" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Fortis Object Mapping Performance - Part II
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/06/15/Fortis-Object-Mapping-Performance-Part-II/" class="article-date">
+  <time datetime="2015-06-15T14:15:03.000Z" itemprop="datePublished">2015-06-15</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Last week I wrote a blog on Fortis Object Mapping Performance, I have a few updates!</p>
+<p>Kam pointed out a flaw in my original code. I populated an array of Fortis objects, but I did not read out a field as Kam had done in his code. So the comparison was not fair. I have now updated my <a href="https://gist.github.com/GuitarRich/7deb0f6eb689d8027c99" target="_blank" rel="noopener">Gist</a> to read out the Display name. As expected, this does add a hit to performance, but Fortis still performs very well and in the real world you would not really notice the hit by using <a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a>.</p>
+<p>The new performance figures after running the code 100 times are:</p>
+<ul>
+<li>Native: 5-12ms</li>
+<li>Fortis: 16-32ms</li>
+<li>Sample Size: 4716</li>
+</ul>
+<p>So we are really happy with the object mapping performance on Fortis.</p>
+<p>Also there was a follow up on the Glass Performance by Nat - <a href="http://cardinalcore.co.uk/2015/06/15/life-through-a-lens-glass-mapper-relative-performance/" target="_blank" rel="noopener">Life Through a Lens – ORM Mythology &amp; Glass Mapper Relative Performance</a>. He makes some very good points, and also fixed the test code where it now has much better performance.</p>
+<h3 id="Are-these-tests-Usefull"><a href="#Are-these-tests-Usefull" class="headerlink" title="Are these tests Usefull?"></a>Are these tests Usefull?</h3><p>My favourite quote from Nats blog:</p>
+<blockquote>
+<p>In truth – I would shoot a developer that attempted to manipulate 20,000 records worth of data through an ORM – just plain silly ;)</p>
+</blockquote>
+<p>I completely agree on this. In the real world we would rarely be working with that number of items (Maybe in bulk data imports/exports etc…). But when dealing with websites that have page views in the millions per day rather than hunderds/thousands, milliseconds do make a big difference. So I do find it interesting on the performance figures.</p>
+<p>True, in those cases for large volume websites - Caching plays a much bigger part in performance. Hopefully this week I will get to finish off my blog post on output caching and get the shared source module up on the <a href="http://marketplace.sitecore.net" target="_blank" rel="noopener">Market Place</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/06/15/Fortis-Object-Mapping-Performance-Part-II/" data-id="cka5tzg8z001zgsvrxxjcm6kj" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/06/15/Fortis-Object-Mapping-Performance-Part-II/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fortis/">Fortis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM/">ORM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/24/Cleaning-up-the-log-files/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Cleaning up the log files
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/06/11/Fortis-Object-Mapping-Performance/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Fortis Object Mapping Performance</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/06/15/Fortis-Object-Mapping-Performance-Part-II/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

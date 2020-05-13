@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Share Your Data Between Components | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Recently there was this blog post about 9 Grievances that make Sitecore development a challenge, and while I agree at times, Sitecore development can be a challenge (although, isn’t that really why we">
+<meta name="keywords" content="Sitecore,Presentation,IoC,Components">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Share Your Data Between Components">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Recently there was this blog post about 9 Grievances that make Sitecore development a challenge, and while I agree at times, Sitecore development can be a challenge (although, isn’t that really why we">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/whereismypageobject.jpg">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/racecondition.gif">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/youarewelcome.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Share Your Data Between Components">
+<meta name="twitter:description" content="Recently there was this blog post about 9 Grievances that make Sitecore development a challenge, and while I agree at times, Sitecore development can be a challenge (although, isn’t that really why we">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/whereismypageobject.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Share-Your-Data-Between-Components" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Share Your Data Between Components
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/11/02/Share-Your-Data-Between-Components/" class="article-date">
+  <time datetime="2017-11-02T23:35:45.000Z" itemprop="datePublished">2017-11-02</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Recently there was this blog post about <a href="https://blog.saberkarmous.nl/2017/11/nine-grievances-that-make-sitecore-a-challenge/" target="_blank" rel="noopener">9 Grievances that make Sitecore development a challenge</a>, and while I agree at times, <del>Sitecore</del> development can be a challenge (although, isn’t that really why we are developers - because of the challenge?), I wanted to address one of the grievances and how to solve that without too much effort.</p>
+<h2 id="Yeah-yeah-everything-is-an-item-But-where’s-my-page"><a href="#Yeah-yeah-everything-is-an-item-But-where’s-my-page" class="headerlink" title="Yeah yeah, everything is an item. But where’s my page?"></a>Yeah yeah, everything is an item. But where’s my page?</h2><img src="/2017/11/02/Share-Your-Data-Between-Components/whereismypageobject.jpg" title="Where is my page?">
+<p>One of the greivances is that there is no concept of a “Page Object” that you can use to store something. For example, a dashboard that pulls in user information on 3 renderings, because of the way that Sitecore works, each controller action will get that data. So you end up getting the data 3 times. The common answer there would be to cache the data, but that isn’t always the best option and depending on how your cache is invalidated, could lead to stale data being presented on the site.</p>
+<h2 id="How-to-solve-the-problem"><a href="#How-to-solve-the-problem" class="headerlink" title="How to solve the problem?"></a>How to solve the problem?</h2><p>The thing is that if you follow some good development practices, this perceived problem doesn’t have to be a problem at all. Let’s take the example of a dashboard with some user information that we are getting from a CRM. For the purposes here, we assume that the repository to call the CRM is written and called <code>ICRMRepository</code>.</p>
+<p>The first thing to make sure is that we are following good practice and <em>not</em> doing everything in the controller. So we would have a service class that is responsible for getting user CRM data - lets call that <code>IUserCRMService</code>. The interface might look like this:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IUserCRMService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">UserData <span class="title">GetUserData</span>(<span class="params">Guid userId</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>What about the implementation, well this can have a dependency on the <code>ICRMRepository</code> and use that to get the data for the user. But instead of just using <code>IUserCRMService</code> as a stateless object, lets add some state to it. Lets add the user object to the service:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IUserCRMService</span></span><br><span class="line">&#123;</span><br><span class="line">    UserData User &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SetUserId</span>(<span class="params">Guid Id</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now we can implement that:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserCRMService</span> : <span class="title">IUserCRMService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ICRMRepository _crmRepository;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserCRMService</span>(<span class="params">ICRMRepository crmRepository</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _crmRepository = crmRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> UserData User &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetUserId</span>(<span class="params">Guid userId</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Validate the user id</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Don't get the data again if we already have it</span></span><br><span class="line">        <span class="keyword">if</span> (User != <span class="literal">null</span> &amp;&amp; User.UserId == userId)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> crmData = _crmRepository.GetUser(userId);</span><br><span class="line">        User = <span class="keyword">new</span> UserData</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// add model mapping here</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So now we can use the <code>SetUserId</code> to tell the service which user we are getting and then use the <code>User</code> property to get the data. Caveat - this is not supposed to be technically perfect and I’m sure there are neater ways to setup the stateful class, this is just to convey the idea!</p>
+<p>The magic happens when we register the implementation with our container. For this I’ll use Sitecore’s builtin IoC services:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Configurator</span> : <span class="title">IServicesConfigurator</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IServiceCollection serviceCollection</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        serviceCollection.AddScoped&lt;IUserCRMService, UserCRMService&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Instead of the usual <code>Transient</code> registration, we are using <code>Scoped</code>. This means it is registered as a singleton per web request. So now we can inject that dependency (<code>IUserCRMService</code>) into as many controllers as we want and be sure that the CRM repository is only called once.</p>
+<p>Ah - but what about race conditions? What if a second controller calls the service before the first one finishes? Well that <em>shouldn’t</em> happen in Sitecore, controllers are not called asynchronusly. But we <em>should</em> is never a guarantee! So lets code against that.</p>
+<img src="/2017/11/02/Share-Your-Data-Between-Components/racecondition.gif" title="I" alt="m winning.... Oh no!">
+<p>Because we are a singleton per web request, we can safely use a lock here and not have to worry about requests blocking other requests coming in. So lets see the updated implementation of <code>IUserCRMService</code>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">UserCRMService</span> : <span class="title">IUserCRMService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">object</span> _userLock = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ICRMRepository _crmRepository;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserCRMService</span>(<span class="params">ICRMRepository crmRepository</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        _crmRepository = crmRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> UserData User &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SetUserId</span>(<span class="params">Guid userId</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Validate the user id</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">lock</span> (_userLock)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Don't get the data again if we already have it</span></span><br><span class="line">            <span class="keyword">if</span> (User != <span class="literal">null</span> &amp;&amp; User.UserId == userId)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> crmData = _crmRepository.GetUser(userId);</span><br><span class="line">            User = <span class="keyword">new</span> UserData</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// add model mapping here</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now if multiple controllers try to set the user Id at the same time, the first will lock and the others will wait until it is complete. The others will then see the <code>User</code> property populated and use that rather than calling the <code>ICRMRepository</code> again.</p>
+<img src="/2017/11/02/Share-Your-Data-Between-Components/youarewelcome.jpg">
+<p>I’m sure this is only one option of many to solve this problem, but its one that I have used a number of times and had great results with. Feel free to post comments on how you solve this below!</p>
+<ul>
+<li>Richard</li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/" data-id="cka5tzg9g003kgsvr4i3eadv7" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Components/">Components</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IoC/">IoC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Presentation/">Presentation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/12/Sitecore-9-Installation-Could-not-load-file-or-assembly-ChilkatDotNet46/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore 9 Installation - Could not load file or assembly &#39;ChilkatDotNet46&#39;
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore.React - Getting Started - 4. Sitecore Integration</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/11/02/Share-Your-Data-Between-Components/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

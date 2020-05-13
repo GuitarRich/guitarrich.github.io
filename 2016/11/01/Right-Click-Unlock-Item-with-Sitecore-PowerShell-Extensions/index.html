@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Right Click Unlock Item with Sitecore PowerShell Extensions | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I have been asked many times if it is possible for non admin users in Sitecore to be able to unlock items that have been locked by others. The short answer is no, the Sitecore command (Sitecore.Shell.">
+<meta name="keywords" content="Sitecore,Sitecore PowerShell Extensions,PowerShell,Users">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Right Click Unlock Item with Sitecore PowerShell Extensions">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="I have been asked many times if it is possible for non admin users in Sitecore to be able to unlock items that have been locked by others. The short answer is no, the Sitecore command (Sitecore.Shell.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/rule.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/unlockitem.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/itemunlocked.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/nomenuitem.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/security.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Right Click Unlock Item with Sitecore PowerShell Extensions">
+<meta name="twitter:description" content="I have been asked many times if it is possible for non admin users in Sitecore to be able to unlock items that have been locked by others. The short answer is no, the Sitecore command (Sitecore.Shell.">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/rule.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/PowerShell/">PowerShell</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Right Click Unlock Item with Sitecore PowerShell Extensions
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/" class="article-date">
+  <time datetime="2016-11-02T00:52:47.000Z" itemprop="datePublished">2016-11-01</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>I have been asked many times if it is possible for non admin users in Sitecore to be able to unlock items that have been locked by others. The short answer is no, the Sitecore command (<code>Sitecore.Shell.Framework.Commands.CheckIn</code>) only allows the user who owns the lock, or an administrator to unlock the item. And due to the fact that being an Adminstrator in Sitecore is <em>not</em> a role, but a custom attribute on the user account, you can’t assign this to any other user roles:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Context.IsAdministrator)</span><br><span class="line">    <span class="keyword">return</span> !obj.Locking.IsLocked() ? CommandState.Hidden : CommandState.Enabled;</span><br></pre></td></tr></table></figure>
+<p>But this is a feature that many clients want/need, its a simple thing to write a custom command to unlock the items, then you can code in a role for that command and assign users to that. Unlocking an item is as simple as:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">item.Editing.BeginEdit();</span><br><span class="line">item.Locking.Unlock();</span><br><span class="line">item.Editing.EndEdit();</span><br></pre></td></tr></table></figure>
+<p>Not rocket science. But having to write that in code, compile the binary and deploy that, just seems like a lot of effort. Also you have to either hard code a role, or add some configuration to specify which role gets the unlock etc… </p>
+<h3 id="Sitecore-PowerShell-Extensions"><a href="#Sitecore-PowerShell-Extensions" class="headerlink" title="Sitecore PowerShell Extensions"></a>Sitecore PowerShell Extensions</h3><p>With <a href="https://marketplace.sitecore.net/en/Modules/Sitecore_PowerShell_console.aspx" target="_blank" rel="noopener">Sitecore PowerShell Extensions</a> this task becomes trivial. So here is the first of my <strong>Sitecore Nuts and Bolts</strong> PowerShell script library scripts. I’ll update this over the next few months with some scripts that I find really useful in my development and also for content editors too.</p>
+<p>The SPE version of the unlocking code is even more simple than the C# version:</p>
+<figure class="highlight ps"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$item</span> = <span class="built_in">Get-Item</span> .</span><br><span class="line"><span class="variable">$item</span>.Locking.Unlock()</span><br><span class="line">Close-Window</span><br></pre></td></tr></table></figure>
+<p>Just to go through it - <code>Get-Item .</code> gets the current context item, in this case I have created the module on the right-click Context menu, so it will be which ever item you have selected in the Content Editor. The next line is self explanitory, finally <code>Close-Window</code> closes the SPE script window so the user doesn’t have to….. Simples!</p>
+<p>To make the <em>eXperience</em> just right for the user, I added a rule to the <code>Show if rules are met or not defined</code> field, so that this option will only show if the current item is already locked:</p>
+<img src="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/rule.png" title="Only show the menu if the item is locked">
+<h3 id="In-Use"><a href="#In-Use" class="headerlink" title="In Use"></a>In Use</h3><p>Now if I select the <code>/sitecore/Content/home</code> item and click the <code>Edit</code> button to lock the item. On right-clicking I get the option to <code>Unlock Item</code>:</p>
+<img src="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/unlockitem.png" title="Unlock the item">
+<p>On clicking the menu option, the item is unlocked:</p>
+<img src="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/itemunlocked.png" title="Unlock the item">
+<p>Now when right-clicking the menu option is not visible because of the rule for display:</p>
+<img src="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/nomenuitem.png" title="No menu item">
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><p>Now we can add Security in the standard Sitecore way. Just select the script module item, and add security to it like you would to any other Sitecore item:</p>
+<img src="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/security.png" title="Add security to the script module">
+<h3 id="Download-it-here"><a href="#Download-it-here" class="headerlink" title="Download it here!"></a>Download it here!</h3><p>If you want to try it out, download a package with the PowerShell Script Module items: <a href="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/SitecoreNutsandBoltsUnlockUser.zip" title="Unlock User - Sitecore Nuts & Bolts SPE Module">Unlock User - Sitecore Nuts & Bolts SPE Module</a></p>
+<ul>
+<li>Richard</li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/" data-id="cka5tzg9b0033gsvrmhiy42r1" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-PowerShell-Extensions/">Sitecore PowerShell Extensions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Users/">Users</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/28/Sitecore-Stack-Exchange-The-First-6-Months/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore Stack Exchange - The First 6 Months
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Habitat Dependency Injection with Sitecore 8.2</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

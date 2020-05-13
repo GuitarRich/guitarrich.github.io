@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Simple Injector and WFFM Controller Injection Woes | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="We had a client recently upgrade to Sitecore 8 Update 4, who used both Ninject and Web Forms For Marketers. During the upgrade, we also migrated the Ninject code over to Simple Injector as the perform">
+<meta name="keywords" content="Sitecore,IoC,WFFM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simple Injector and WFFM Controller Injection Woes">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="We had a client recently upgrade to Sitecore 8 Update 4, who used both Ninject and Web Forms For Marketers. During the upgrade, we also migrated the Ninject code over to Simple Injector as the perform">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/WFFM-Server-Error.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple Injector and WFFM Controller Injection Woes">
+<meta name="twitter:description" content="We had a client recently upgrade to Sitecore 8 Update 4, who used both Ninject and Web Forms For Marketers. During the upgrade, we also migrated the Ninject code over to Simple Injector as the perform">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/WFFM-Server-Error.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Simple-Injector-and-WFFM-Controller-Injection-Woes" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Simple Injector and WFFM Controller Injection Woes
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/" class="article-date">
+  <time datetime="2015-07-27T19:33:32.000Z" itemprop="datePublished">2015-07-27</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>We had a client recently upgrade to Sitecore 8 Update 4, who used both Ninject and Web Forms For Marketers. During the upgrade, we also migrated the Ninject code over to Simple Injector as the performance benefits have been proven. <a href="http://cardinalcore.co.uk/2015/02/12/ioc-container-performance-the-impact-on-sitecore/" target="_blank" rel="noopener">IoC Container Performance – The impact on Sitecore</a> and <a href="http://www.palmmedia.de/Blog/2011/8/30/ioc-container-benchmark-performance-comparison" target="_blank" rel="noopener">IoC container benchmarks and features</a>.</p>
+<p>But after we did this, the Form Reports stopped reporting data. After some investigation it was clear that the data was being written to both the MongoDB and the SQL Reporting databases. On closer inspection on the reports form, the ajax calls being made to retrive the data were throwing errors.</p>
+<img src="/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/WFFM-Server-Error.jpg">
+<p>The WFFM <code>FormsController</code> has 2 constructors and out of the box Simple Injector does now allow that. One of the Simple Instructor desgin decisions is <a href="https://simpleinjector.readthedocs.org/en/latest/decisions.html#allow-only-a-single-constructor" target="_blank" rel="noopener">Allow only a single constructor</a>. In most cases that is a great thing, all the code at Lightmaker follows that standard anyway. But this Controller is part of the WFFM code base, so we are limited in our options. </p>
+<p>Looking at the 2 constructors we can see that one has an <code>IWFFMDataProvider</code> injected in, but the default one populates that object from the config. It looks like that is the one we want to use. So how to get Simple Injector to ignore the 2nd constructor?</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FormController</span> : <span class="title">SitecoreController</span>, <span class="title">IHasModelFactory</span>, <span class="title">IHasFormDataManager</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> IModelFactory ModelFactory &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> IFormDataManager FormManager &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FormController</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">		: <span class="title">this</span>(<span class="params">(IModelFactory</span>) Factory.<span class="title">CreateObject</span>(<span class="params"><span class="string">"wffm/modelFactory"</span>, <span class="literal">true</span></span>), </span></span><br><span class="line"><span class="function">			(<span class="params">IFormDataManager</span>) Factory.<span class="title">CreateObject</span>(<span class="params"><span class="string">"wffm/formDataManager"</span>, <span class="literal">true</span></span>))</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FormController</span>(<span class="params">IModelFactory modelFactory, IFormDataManager formDataManager</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        Assert.ArgumentNotNull((<span class="keyword">object</span>) modelFactory, <span class="string">"modelFactory"</span>);</span><br><span class="line">        Assert.ArgumentNotNull((<span class="keyword">object</span>) formDataManager, <span class="string">"formDataManager"</span>);</span><br><span class="line">        <span class="keyword">this</span>.ModelFactory = modelFactory;</span><br><span class="line">        <span class="keyword">this</span>.FormManager = formDataManager;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Constructor-Behavior-Options"><a href="#Constructor-Behavior-Options" class="headerlink" title="Constructor Behavior Options"></a>Constructor Behavior Options</h3><p>Fortunately Simple Injector can be extended to cope with this. We can use a custom <code>ConstructorResolutionBehavior</code> class to “tell” Simple Injector which constructor to use.</p>
+<p>Here is the resolution:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DefaultFirstConstructorBehavior</span> : <span class="title">IConstructorResolutionBehavior</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConstructorInfo <span class="title">GetConstructor</span>(<span class="params">Type serviceType, Type implementationType</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">var</span> constructors = implementationType.GetConstructors();</span><br><span class="line">        <span class="keyword">if</span> (constructors.Any())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                <span class="keyword">from</span> ctor <span class="keyword">in</span> constructors</span><br><span class="line">                <span class="keyword">orderby</span> ctor.GetParameters().Length <span class="keyword">ascending</span> </span><br><span class="line">                <span class="keyword">select</span> ctor)</span><br><span class="line">                .First();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And set this when you create the container:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> container = <span class="keyword">new</span> Container();</span><br><span class="line">container.Options.ConstructorResolutionBehavior = <span class="keyword">new</span> DefaultFirstConstructorBehavior();</span><br></pre></td></tr></table></figure></p>
+<p>Now, Simple Injector selects the default constructor for WFFM FormController actions and the reports are showing data again. I feel that we could make this a little safer by explicitly stating the controllers that get the default constructor. But for now in our project this works nicely. There hasn’t been any ill effects on any other part of the CMS environment yet!</p>
+<p>– Richard.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/" data-id="cka5tzg9h003ngsvr39t8eek7" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IoC/">IoC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WFFM/">WFFM</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/11/Sitecore-Instance-Manager-Tools-You-Might-Not-Know-About/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore Instance Manager - Tools You Might Not Know About
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/07/24/Cleaning-up-the-log-files/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Cleaning up the log files</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/07/27/Simple-Injector-and-WFFM-Controller-Injection-Woes/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

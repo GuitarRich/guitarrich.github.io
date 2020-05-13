@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Fortis Model Generation with Unicorn 3 | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="After using Unicorn 2.x for a while now, I was excited at the prospect of Unicorn 3 - with its new serialization format that solves a lot of the problems with the standard Sitecore serialization API (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fortis Model Generation with Unicorn 3">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="After using Unicorn 2.x for a while now, I was excited at the prospect of Unicorn 3 - with its new serialization format that solves a lot of the problems with the standard Sitecore serialization API (">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/Unicorn_logo.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Fortis Model Generation with Unicorn 3">
+<meta name="twitter:description" content="After using Unicorn 2.x for a while now, I was excited at the prospect of Unicorn 3 - with its new serialization format that solves a lot of the problems with the standard Sitecore serialization API (">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/Unicorn_logo.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Fortis/">Fortis</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Fortis-Model-Generation-with-Unicorn-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Fortis Model Generation with Unicorn 3
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/" class="article-date">
+  <time datetime="2015-10-14T21:38:38.000Z" itemprop="datePublished">2015-10-14</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>After using Unicorn 2.x for a while now, I was excited at the prospect of <a href="http://kamsar.net/index.php/2015/10/Unicorn-3-0-Released/" target="_blank" rel="noopener">Unicorn 3</a> - with its new serialization format that solves a lot of the problems with the standard Sitecore serialization API (<em>cough</em> long file names <em>cough</em>)! I can also confirm that the speed increases are pretty dramatic, I believe the claims of 50% faster than Unicorn 2!</p>
+<img src="/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/Unicorn_logo.png" title="Unicorn 3">
+<p>The new serialization format caused a small problem tho. With <a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a>, all the model classes are auto generated using a T4 template. The current code uses the <a href="http://fortis.ws/fortis-collection/transitus/" target="_blank" rel="noopener">Transitus</a> NuGet package to read those files into strongly typed objects and then the T4 template iterates through those objects to build the interfaces and classes for our Sitecore models.</p>
+<p>This didn’t work as Transitus uses the Sitecore serialization API to read the files.</p>
+<p>###Rainbow API<br>With some pointers from <a href="http://kamsar.net" target="_blank" rel="noopener">Kamsar</a> and digging around the <a href="https://github.com/kamsar/Rainbow" target="_blank" rel="noopener">Rainbow</a> source code - I found I could just use the <a href="https://github.com/kamsar/Rainbow/blob/master/src/Rainbow.Storage.Yaml/YamlSerializationFormatter.cs" target="_blank" rel="noopener">YamlSerializationFormatter.cs</a> to read the YAML files and deserialize them into the same strongly typed objects that were used in Transitus.</p>
+<p>Just pass in the filename and the <code>RainbowItem</code> object is returned:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public IItem ReadItem(string filePath)</span><br><span class="line">&#123;</span><br><span class="line">    var file = new FileInfo(filePath);</span><br><span class="line"></span><br><span class="line">    lock (FileUtil.GetFileLock(file.FullName))</span><br><span class="line">    &#123;</span><br><span class="line">        using (var reader = file.OpenRead())</span><br><span class="line">        &#123;</span><br><span class="line">            var readItem = this.SerializationFormatter.ReadSerializedItem(reader, filePath);</span><br><span class="line">            readItem.DatabaseName = &quot;master&quot;;</span><br><span class="line">            return new RainbowItem(readItem);					</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###Transitus.Rainbow<br>So <a href="https://www.nuget.org/packages/Transitus.Rainbow/" target="_blank" rel="noopener">Transitus.Rainbow</a> was born. This is available for download now from <a href="http://nuget.org" target="_blank" rel="noopener">Nuget</a>.</p>
+<p>To use, add <code>Transitus.Rainbow</code> to your project using the Nuget package manager or entering the following command in the Package Manager Console:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PM&gt; Install-Package Transitus.Rainbow</span><br></pre></td></tr></table></figure>
+<p>This should install the <code>Rainbow.Core</code> and <code>Rainbow.Storage.Yaml</code> packages also.  </p>
+<p>Now you can use the <code>TransitusProvider.FolderDeserializer</code> to get all the items deserialized into useable objects:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var items = Transitus.Rainbow.TransitusProvider.FolderDeserializer.Deserialize(@&quot;C:\Projects\transitus.rainbow\Files&quot;);</span><br><span class="line">var templates = Transitus.Rainbow.TransitusProvider.TemplateFactory.Create(items);</span><br></pre></td></tr></table></figure>
+<p>These template items can then be used to generate the code.</p>
+<p>###Fortis.Model Project<br>To see this in use you can clone this repo: <a href="https://github.com/Fortis-Collection/fortis.codegen.transitus.rainbow" target="_blank" rel="noopener">https://github.com/Fortis-Collection/fortis.codegen.transitus.rainbow</a>.</p>
+<p>This project is a sample of how to generate the Fortis models:</p>
+<ul>
+<li><code>AssembleyReferences.tt</code> : This template contains the refernces needed by the <code>Fortis.t4</code> template. Is is added to the includes.</li>
+<li><code>Fortis/Fortis.t4</code> : This is the main code generation template. It gets all the files from the folders supplied by <code>Model.tt</code>, gets the templates available in the files and generates an interface and implementation for each Sitecore template.</li>
+<li><code>Model.tt</code> : This file sets up all the folders and the base settings for the <code>Fortis.t4</code> template to use. This file should be customized for each project.</li>
+</ul>
+<p>Please checkout the demo repo and give me or <a href="http://www.jasonbert.com/" target="_blank" rel="noopener">Jason Bert</a> a shout with any questions!</p>
+<p>– Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/" data-id="cka5tzg8x001vgsvriwpb3x2o" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Using RequireJs with Sitecore 8 - Update
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/10/05/Single-Page-Application-SUGCON-Slides/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Single Page Application SUGCON Slides</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Multi-Item Publish with Sitecore Powershell Extensions | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A question came up on the Sitecore community today about being able to publish multiple items in one go. As a developer you can do this easily in Sitecore Rocks as you can multi-select items in the tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multi-Item Publish with Sitecore Powershell Extensions">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="A question came up on the Sitecore community today about being able to publish multiple items in one go. As a developer you can do this easily in Sitecore Rocks as you can multi-select items in the tr">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/sessionpersistency.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/modulescripts.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/StartQueue.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/AddItems.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/PublishQueue.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/Finished.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/SPEPoster.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Multi-Item Publish with Sitecore Powershell Extensions">
+<meta name="twitter:description" content="A question came up on the Sitecore community today about being able to publish multiple items in one go. As a developer you can do this easily in Sitecore Rocks as you can multi-select items in the tr">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/sessionpersistency.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Multi-Item-Publish-with-Sitecore-Powershell-Extensions" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Multi-Item Publish with Sitecore Powershell Extensions
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/" class="article-date">
+  <time datetime="2015-12-14T20:53:16.000Z" itemprop="datePublished">2015-12-14</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>A question came up on the Sitecore community today about being able to <a href="https://community.sitecore.net/developers/f/8/p/2255/6614#6614" target="_blank" rel="noopener">publish multiple items in one go</a>. As a developer you can do this easily in <a href="https://marketplace.sitecore.net/Modules/Sitecore_Rocks.aspx?sc_lang=en" target="_blank" rel="noopener">Sitecore Rocks</a> as you can multi-select items in the tree and publish fromn the right-click menu. But in the Content Editor, there is no option to multi-select items. </p>
+<p>You can of-course publish all <strong>sub-items</strong> of an item, and you can publish <strong>related items</strong> also. An <strong>Incremental</strong> publish, runs through the current publish queue. But none of those options would allow the content editor to select a disparate set of items and publish them. It got me thinking, I wonder if I could do this with a <a href="https://marketplace.sitecore.net/Modules/Sitecore_PowerShell_console.aspx?sc_lang=en" target="_blank" rel="noopener">Sitecore Powershell Extensions</a> module/script.</p>
+<p>If you haven’t heard of it yet, Sitecore Powershell Extensions is, IMO, the best market place module you can get for Sitecore. I can’t imagine how I used to get on without it being installed! <a href="https://vimeo.com/134196432" target="_blank" rel="noopener">Watch this for a great overview of SPE</a>.</p>
+<p>###SPE Module<br>At its core, an SPE module, is a group of scripts that work together to provide some functionality. In our case, we want to be able to:</p>
+<ul>
+<li>Create a new Publish Queue</li>
+<li>Add single items to the queue</li>
+<li>Add an item and all its children to the queue</li>
+<li>Publish/Process and clear the queue</li>
+</ul>
+<p>###Session Persistency<br>A really nice feature of SPE is that you can have session persistency, that is variables set in one script can be read by another script. This allows us to have multiple steps.</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/sessionpersistency.png" title="Session Persistency">
+<p>###Muilti-Item Publish Module<br>Here are the scripts in our multi-item publish module:</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/modulescripts.png" title="Module Scripts">
+<p>So we start with a script that starts a new publish queue. For the queue, we will just use 2 arrays, 1 for the single items, and 1 for recursive publishes.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Initialize the arrays</span></span><br><span class="line"><span class="variable">$singleItems</span> = @()</span><br><span class="line"><span class="variable">$branchItems</span> = @()</span><br><span class="line">Close-Window</span><br></pre></td></tr></table></figure>
+<p>Then we want to just add the currently selected item to each array:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add Single Item </span></span><br><span class="line"><span class="variable">$item</span> = <span class="built_in">Get-Item</span> .</span><br><span class="line"><span class="variable">$singleItems</span> += <span class="variable">$item</span></span><br><span class="line">Close-Window</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add Branch Item </span></span><br><span class="line"><span class="variable">$item</span> = <span class="built_in">Get-Item</span> .</span><br><span class="line"><span class="variable">$branchItems</span> += <span class="variable">$item</span></span><br><span class="line">Close-Window</span><br></pre></td></tr></table></figure>
+<p>Finally - we want to process the items and publish them to all publish targets:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$publishingTargetsFolderId</span> = <span class="built_in">New-Object</span> Sitecore.Data.ID <span class="string">"&#123;D9E44555-02A6-407A-B4FC-96B9026CAADD&#125;"</span></span><br><span class="line"><span class="variable">$targetDatabaseFieldId</span> = <span class="built_in">New-Object</span> Sitecore.Data.ID <span class="string">"&#123;39ECFD90-55D2-49D8-B513-99D15573DE41&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Find the publishing targets item folder</span></span><br><span class="line"><span class="variable">$publishingTargetsFolder</span> = [Sitecore.Context]::ContentDatabase.GetItem(<span class="variable">$publishingTargetsFolderId</span>)</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$publishingTargetsFolder</span> <span class="nomarkup">-eq</span> <span class="literal">$null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">$null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$totalItems</span> = <span class="variable">$singleItems</span>.Length + <span class="variable">$branchItems</span>.Length</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$totalItems</span> <span class="nomarkup">-eq</span> <span class="number">0</span>) &#123;</span><br><span class="line">    Write-Log <span class="string">"No items in the publish queue"</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">$null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Retrieve the publishing targets database names</span></span><br><span class="line"><span class="comment"># Check for item existance in publishing targets</span></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$publishingTargetDatabase</span> <span class="keyword">in</span> <span class="variable">$publishingTargetsFolder</span>.GetChildren()) &#123;</span><br><span class="line">    Write-Log <span class="string">"Publishing items to the  $(<span class="variable">$publishingTargetDatabase</span>[<span class="variable">$targetDatabaseFieldId</span>]) publishing target"</span></span><br><span class="line">    </span><br><span class="line">    <span class="variable">$publishTarget</span> = <span class="variable">$publishingTargetDatabase</span>[<span class="variable">$targetDatabaseFieldId</span>]</span><br><span class="line">    <span class="variable">$itemCount</span> = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="variable">$singleItems</span> | Publish-Item -PublishMode Full -Target <span class="variable">$publishTarget</span></span><br><span class="line">    <span class="variable">$branchItems</span> | Publish-Item -Recurse -PublishMode Full -Target <span class="variable">$publishTarget</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Show-Alert <span class="string">"Finished publishing $&#123;totalItems&#125; items"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Clear the publish queue</span></span><br><span class="line"><span class="variable">$singleItems</span> = @()</span><br><span class="line"><span class="variable">$branchItems</span> = @()</span><br><span class="line"></span><br><span class="line">Close-Window</span><br></pre></td></tr></table></figure>
+<p>And hey presto, we have a module that allows the user to right-click items and queue them for publishing, and then just process that queue.</p>
+<p>###Using the Module</p>
+<p>Now a content editor can right-click an item, go to the <code>Publishing</code> menu under <code>Scripts</code>:</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/StartQueue.png">
+<p>Then add items:</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/AddItems.png">
+<p>Finally, publish and clear the queue:</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/PublishQueue.png">
+<p>At the end, we give an indication of the items processed:</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/Finished.png">
+<p>###This is just a start<br>This really was more for fun and to see if it was possible, so there are a number of features mssing that we might want to add. There is no language parameter, we might want to limit the publish targets etc… We could have better reporting on what is getting published too - but its a nice start.</p>
+<p>The module code was losely based on the <code>Package Generator</code> module that ships with SPE.</p>
+<a href="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/MultiItemPublish-1.0.zip" title="Click here to download a package to install the module!">Click here to download a package to install the module!</a>
+<p>– Richard Seal</p>
+<img src="/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/SPEPoster.jpg">
+<p>.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/" data-id="cka5tzg94002fgsvr3zopklzv" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/18/Sitecore-MVP-2016/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore MVP 2016
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Single Page Applications in Sitecore - Part I</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/12/14/Multi-Item-Publish-with-Sitecore-Powershell-Extensions/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

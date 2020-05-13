@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Getting to the FXM Beacon using TLS 1.2 | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I have recently been playing around with FXM - I do like how simple it is to setup and get running. But I hit an issue when trying to connect FXM to a client site that had been secured using a certifi">
+<meta name="keywords" content="Sitecore,FXM,Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Getting to the FXM Beacon using TLS 1.2">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="I have recently been playing around with FXM - I do like how simple it is to setup and get running. But I hit an issue when trying to connect FXM to a client site that had been secured using a certifi">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/dissapointed.jpg">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Getting to the FXM Beacon using TLS 1.2">
+<meta name="twitter:description" content="I have recently been playing around with FXM - I do like how simple it is to setup and get running. But I hit an issue when trying to connect FXM to a client site that had been secured using a certifi">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/dissapointed.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header">uncategorized</h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Getting-to-the-FXM-Beacon-using-TLS-1-2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Getting to the FXM Beacon using TLS 1.2
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/" class="article-date">
+  <time datetime="2017-07-24T18:45:18.000Z" itemprop="datePublished">2017-07-24</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>I have recently been playing around with FXM - I do like how simple it is to setup and get running. But I hit an issue when trying to connect FXM to a client site that had been secured using a certificate that used TLS 1.2 security protocal.</p>
+<p>When FxM tried to search for the beacon JavaScript or when its trying to load in the pages for Experience Editor:</p>
+<blockquote>
+<p>47456 14:38:10 ERROR The request was aborted: Could not create SSL/TLS secure channel. Exception: System.Net.WebException Message: The request was aborted: Could not create SSL/TLS secure channel. Source: System at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest&amp; request) at System.Net.WebClient.DownloadString(Uri address) at Sitecore.FXM.Service.Abstractions.WebClientWrapper.Download(Uri address) at Sitecore.FXM.Service.Controllers.BeaconController.Ping(Uri address)</p>
+</blockquote>
+<p>At first I thought there may be an issue with the cerificate, but that worked fine in browsers. So using the Sitecore developers favorite tool - dotPeek (or other decompiler) - I started tracing the code where the error was occuring.</p>
+<h2 id="The-Sea-of-Dissapointment"><a href="#The-Sea-of-Dissapointment" class="headerlink" title="The Sea of Dissapointment"></a>The Sea of Dissapointment</h2><p>It turns out that FXM just uses a simple <code>WebClient</code> call to download the target html serverside and then it uses that to check for the beacon script and/or to load in the Experience Editor. Here is the code:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.FXM.Service.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WebClientWrapper</span> : <span class="title">IWebClient</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">readonly</span> WebClient client;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">WebClientWrapper</span>(<span class="params">WebClient client</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">this</span>.client = client;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">Download</span>(<span class="params">Uri address</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.client.DownloadString(address);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (WebException ex)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The problem here is that by default, the <code>System.Net.WebClient</code> class uses <code>System.Net.ServicePointManager.SecurityProtocal</code> to control which security protocal version to use when creating the request object. By default this is set to <code>SecurityProtocolType.Tls|SecurityProtocolType.Ssl3</code> in .Net 4.0/4.5 - adding <code>SecurityProtocolType.Tls12</code> to this solves the issue - but where to add that.</p>
+<p>I got excited at first, because this class is in the <code>Sitecore.FXM.Service.Abstractions</code> and implements an interface <code>IWebClient</code> - Bingo! I can just write a new implementation of that class, set the security protocal and register it instead of the standard Sitecore one. </p>
+<img src="/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/dissapointed.jpg" title="Nope!">
+<p>How silly of me! I guess the FXM team haven’t got to fully implementing DI yet. Looking at the list of registrations in Sitecore (<code>/sitecore/admin/showserviceconfig.aspx</code>), the <code>IWebClient</code> and <code>WebClientWrapper</code> classes were not listed. Then looking at the <code>BeaconController</code> - which did have dependencies injected into the constructor, there was another constructor doing poor mans DI:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BeaconController</span>(<span class="params">IRepository&lt;BeaconEntity&gt; repository</span>)</span></span><br><span class="line"><span class="function">   : <span class="title">this</span>(<span class="params">repository, (ILog</span>) new <span class="title">LogWrapper</span>(<span class="params"></span>), (<span class="params">ICorePipeline</span>) new <span class="title">CorePipelineWrapper</span>(<span class="params"></span>), (<span class="params">ITrackerProvider</span>) new <span class="title">TrackerProviderWrapper</span>(<span class="params"></span>), (<span class="params">ISitecoreContext</span>) new <span class="title">SitecoreContextWrapper</span>(<span class="params"></span>), (<span class="params">ISettings</span>) new <span class="title">SettingsWrapper</span>(<span class="params"></span>), (<span class="params">IRequestHelper</span>) new <span class="title">RequestHelper</span>(<span class="params"></span>), (<span class="params">HttpContextBase</span>) new <span class="title">HttpContextWrapper</span>(<span class="params">HttpContext.Current</span>), (<span class="params">IWebClient</span>) new <span class="title">WebClientWrapper</span>(<span class="params">new WebClient(</span>)), (<span class="params">ITrackingManager</span>) new <span class="title">TrackingManager</span>(<span class="params">(ICorePipeline</span>) new <span class="title">CorePipelineWrapper</span>(<span class="params"></span>), (<span class="params">ITrackerProvider</span>) new <span class="title">TrackerProviderWrapper</span>(<span class="params"></span>), (<span class="params">ISitecoreContext</span>) new <span class="title">SitecoreContextWrapper</span>(<span class="params"></span>)))</span></span><br><span class="line"><span class="function"></span> &#123;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>There doesn’t seem to be a good place in any of the FXM code to set the security protocal.</p>
+<h2 id="Good-Old-Initialize-Pipeline"><a href="#Good-Old-Initialize-Pipeline" class="headerlink" title="Good Old Initialize Pipeline!"></a>Good Old Initialize Pipeline!</h2><p>Fortunately - the <code>System.Net.ServicePointManager</code> class is a static class (<em>never thought I’d hear myself saying that!</em>) - So if we set that protocal when the application initializes, as long as nothing else changes it back, we should be good. So thats what I did. Create a simple <code>initialize</code> pipeline processor and set the protocal:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.Foundation.SitecoreExtensions.Pipelines.Initialize</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> System.Net;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Diagnostics;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Pipelines;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SetupSecurityProtocol</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">PipelineArgs args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            Log.Info(<span class="string">"Setting SecurityProtocol to include TLS 1.2"</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol | SecurityProtocolType.Tls12;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Notice that, I’m keeping the original values too - this makes sure that it will still work with other versions of TLS or SSL.</p>
+<p>Now patch that in:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span> <span class="attr">xmlns:set</span>=<span class="string">"http://www.sitecore.net/xmlconfig/set/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">initialize</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">"Sitecore.Foundation.SitecoreExtensions.Pipelines.Initialize.SetupSecurityProtocol, Sitecore.Foundation.SitecoreExtensions"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">initialize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>And finally - FXM can now create the connection correctly to a website certified with the TLS 1.2 protocal!</p>
+<p>Hopefully this will help someone out there who has the same issue!</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/" data-id="cka5tzg96002ngsvrabhhs1cg" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FXM/">FXM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Security/">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/25/The-Sitecore-Stack-Exchange-5K-Club/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          The Sitecore Stack Exchange 5K Club!
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore.React - Getting Started - 3. Data</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/07/24/Getting-to-the-FXM-Beacon-using-TLS-1-2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

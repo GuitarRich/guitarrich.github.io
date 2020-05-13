@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Octopus Deploy Step for Unicorn Sync | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Two products that I love and have become an essential part of my Sitecore life are Unicorn and Octopus Deploy - I plan on writing about my adventures with setting up CI/CD using Octopus Deploy soon, b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Octopus Deploy Step for Unicorn Sync">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Two products that I love and have become an essential part of my Sitecore life are Unicorn and Octopus Deploy - I plan on writing about my adventures with setting up CI/CD using Octopus Deploy soon, b">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/import-step.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/step-template.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Octopus Deploy Step for Unicorn Sync">
+<meta name="twitter:description" content="Two products that I love and have become an essential part of my Sitecore life are Unicorn and Octopus Deploy - I plan on writing about my adventures with setting up CI/CD using Octopus Deploy soon, b">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/import-step.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Octopus-Deploy-Step-for-Unicorn-Sync" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Octopus Deploy Step for Unicorn Sync
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/" class="article-date">
+  <time datetime="2016-03-14T14:52:26.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Two products that I love and have become an essential part of my Sitecore life are <a href="https://github.com/kamsar/Unicorn" target="_blank" rel="noopener">Unicorn</a> and <a href="https://octopus.com" target="_blank" rel="noopener">Octopus Deploy</a> - I plan on writing about my adventures with setting up CI/CD using Octopus Deploy soon, but for now here is a useful Step Template for calling the Unicorn sync methods remotely during your deployment in Octopus.</p>
+<p>For the purposes of this post, I’ll assume that you are familiar with both Octopus and Unicorn.</p>
+<p>To install the step template, copy the json string at the bottom of the post and import into the Step Template library:</p>
+<img src="/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/import-step.png" title="Import Step Template">
+<p>This will give you a new template you can use in your projects. Add the step to your project and you will get the following options:</p>
+<img src="/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/step-template.png">
+<p>Fill in the following fields:</p>
+<ul>
+<li><strong>Shared Secret</strong> : This is the shared secret key that is held in the <code>Unicorn.UI.config</code> file. See this page for instructions on setting up the automated tool security: <a href="https://github.com/kamsar/Unicorn#use-the-automated-tool-api" target="_blank" rel="noopener">https://github.com/kamsar/Unicorn#use-the-automated-tool-api</a></li>
+<li><strong>Site Url</strong> : Set this to the url of the site that the Octopus Tentacle can use to call the unicorn api. You can type the url here or use an Octopus Variable</li>
+<li><strong>MicroCHAP DLL Location</strong> : You need to make sure that the <strong>MicroCHAP.dll</strong> file is included in your project and that the Tentacle canread that file. This is for the newer style authentication that Unicorn uses</li>
+<li><strong>Configurations</strong> : This is a list of all the configurations that you want to sync. You can add as many as you want here, separate each configuration with a new line</li>
+</ul>
+<p>And thats it. Add that to your deployment process and it will automate the Unicorn sync.</p>
+<p>###Whats in the step template?<br>For those that are interested in the PowerShell script, here it is:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ErrorActionPreference</span> = <span class="string">'Stop'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Add-Type</span> -Path <span class="string">"$&#123;MicroChap&#125;\MicroCHAP.dll"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">Function</span> Sync-Unicorn &#123;</span><br><span class="line">    <span class="keyword">Param</span>(</span><br><span class="line">        [Parameter(Mandatory=<span class="literal">$True</span>)]</span><br><span class="line">        [string]<span class="variable">$ControlPanelUrl</span>,</span><br><span class="line"></span><br><span class="line">        [Parameter(Mandatory=<span class="literal">$True</span>)]</span><br><span class="line">        [string]<span class="variable">$SharedSecret</span>,</span><br><span class="line"></span><br><span class="line">        [Parameter(Mandatory=<span class="literal">$True</span>)]</span><br><span class="line">        [string[]]<span class="variable">$Configurations</span>,</span><br><span class="line"></span><br><span class="line">        [string]<span class="variable">$Verb</span> = <span class="string">'Sync'</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># PARSE THE URL TO REQUEST</span></span><br><span class="line">    <span class="variable">$parsedConfigurations</span> = (<span class="variable">$Configurations</span>) -join <span class="string">"^"</span></span><br><span class="line">    <span class="variable">$url</span> = <span class="string">"&#123;0&#125;?verb=&#123;1&#125;&amp;configuration=&#123;2&#125;"</span> -f <span class="variable">$ControlPanelUrl</span>, <span class="variable">$Verb</span>, <span class="variable">$parsedConfigurations</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Sync-Unicorn: Preparing authorization for <span class="variable">$url</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># GET AN AUTH CHALLENGE</span></span><br><span class="line">    <span class="variable">$challenge</span> = Get-Challenge -ControlPanelUrl <span class="variable">$ControlPanelUrl</span></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Sync-Unicorn: Received challenge: <span class="variable">$challenge</span>"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># CREATE A SIGNATURE WITH THE SHARED SECRET AND CHALLENGE</span></span><br><span class="line">    <span class="variable">$signatureService</span> = <span class="built_in">New-Object</span> MicroCHAP.SignatureService -ArgumentList <span class="variable">$SharedSecret</span></span><br><span class="line">    <span class="variable">$signature</span> = <span class="variable">$signatureService</span>.CreateSignature(<span class="variable">$challenge</span>, <span class="variable">$url</span>, <span class="literal">$null</span>)</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Sync-Unicorn: Created signature <span class="variable">$signature</span>, executing <span class="variable">$Verb</span>..."</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># USING THE SIGNATURE, EXECUTE UNICORN</span></span><br><span class="line">    <span class="variable">$result</span> = <span class="built_in">Invoke-WebRequest</span> -Uri <span class="variable">$url</span> -Headers @&#123; <span class="string">"X-MC-MAC"</span> = <span class="variable">$signature</span>; <span class="string">"X-MC-Nonce"</span> = <span class="variable">$challenge</span> &#125; -TimeoutSec <span class="number">10800</span> -UseBasicParsing</span><br><span class="line">    <span class="variable">$result</span>.Content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Function</span> Get-Challenge &#123;</span><br><span class="line">    <span class="keyword">Param</span>(</span><br><span class="line">        [Parameter(Mandatory=<span class="literal">$True</span>)]</span><br><span class="line">        [string]<span class="variable">$ControlPanelUrl</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="variable">$url</span> = <span class="string">"$(<span class="variable">$ControlPanelUrl</span>)?verb=Challenge"</span></span><br><span class="line">    <span class="variable">$result</span> = <span class="built_in">Invoke-WebRequest</span> -Uri <span class="variable">$url</span> -TimeoutSec <span class="number">360</span> -UseBasicParsing</span><br><span class="line">    <span class="variable">$result</span>.Content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$configs</span> = <span class="variable">$Configurations</span>.split(<span class="string">"`n"</span>)</span><br><span class="line">Sync-Unicorn -ControlPanelUrl <span class="string">"$(<span class="variable">$SiteUrl</span>)/unicorn.aspx"</span> -SharedSecret <span class="variable">$SharedSecret</span> -Configurations <span class="variable">$configs</span></span><br></pre></td></tr></table></figure>
+<p>First we set the <code>$ErrorActionPreference</code>, this tells Octopus what the default action to take on an error is. This can be overridden in the process step when you add it to a project.</p>
+<p>Next we add the <code>MicroCHAP.dll</code> so that it can be used by the rest of the script. The <code>Sync-Unicorn</code> and <code>Get-Challenge</code> functions are from the <code>Unicorn.psm1</code> file in the repo <a href="https://github.com/kamsar/Unicorn/tree/master/doc/PowerShell%20Remote%20Scripting" target="_blank" rel="noopener">https://github.com/kamsar/Unicorn/tree/master/doc/PowerShell%20Remote%20Scripting</a>.</p>
+<p>Finally we split the configurations variable on a new line and call the <code>Sync-Unicorn</code> function with all the variables set in the UI. Simples :)</p>
+<p>##TL/DR;</p>
+<p>Here is the json object that you can use to import the Step Template into Octopus Deploy:</p>
+<script src="//gist.github.com/0d3b30ec36a2368b7b1e.js"></script>
+<p>Here is a gist that contains the step template for importing into Octopus - <a href="https://gist.github.com/GuitarRich/0d3b30ec36a2368b7b1e#file-octopusdeploy-unicorn-step-template-json" target="_blank" rel="noopener">OctopusDeploy-Unicorn-Step-Template.json</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/" data-id="cka5tzg95002jgsvrx3xnq0ld" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/18/Site-Definition-Gotcha/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Site Definition Gotcha
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2016/02/25/Value-cannot-be-null-error-with-Fortis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Value cannot be null error with Fortis</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore and React - It IS that easy! | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="At Lightmaker we have had a number of discussions recently about how to streamline the front end build into a Sitecore environment. Our front end devs are all Mac based, so currently can’t run a loca">
+<meta name="keywords" content="Sitecore,Habitat,ReactJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore and React - It IS that easy!">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="At Lightmaker we have had a number of discussions recently about how to streamline the front end build into a Sitecore environment. Our front end devs are all Mac based, so currently can’t run a loca">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/hero.jpg">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/JsxControllerRendering.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore and React - It IS that easy!">
+<meta name="twitter:description" content="At Lightmaker we have had a number of discussions recently about how to streamline the front end build into a Sitecore environment. Our front end devs are all Mac based, so currently can’t run a loca">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/hero.jpg">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-and-React-It-IS-that-easy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore and React - It IS that easy!
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy/" class="article-date">
+  <time datetime="2016-07-23T11:58:02.000Z" itemprop="datePublished">2016-07-23</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <img src="/2016/07/23/Sitecore-and-React-It-IS-that-easy/hero.jpg" title="Richard was almost ready to implement his Hello World React app">
+<p>At <a href="http://lightmaker.com" target="_blank" rel="noopener">Lightmaker</a> we have had a number of discussions recently about how to streamline the front end build into a Sitecore environment. Our front end devs are all Mac based, so currently can’t run a local instance of Sitecore. TBH - it would be overkill for them to do that anyway. But how can they accurately test their code before it gets into a Sitecore rendering? Also how can we remove the process where front end make a fix and that fix has to then be applied to a razor view etc… The front end team should just be able to update markup and not have to worry about then integrating that back into a Sitecore rendering - warning - this may be a long post!</p>
+<h5 id="ReactJS-Is-it-an-option"><a href="#ReactJS-Is-it-an-option" class="headerlink" title="ReactJS - Is it an option?"></a>ReactJS - Is it an option?</h5><hr>
+<p>Various ideas were discussed, <a href="https://angularjs.org/" target="_blank" rel="noopener">Angular</a>, a <a href="http://jade-lang.com/" target="_blank" rel="noopener">Jade</a> view engine etc… Ultimately we looked to <a href="https://facebook.github.io/react/" target="_blank" rel="noopener">React</a> as a tool to build the front end code with. </p>
+<p>Why?</p>
+<ul>
+<li>Component-Based: Just like Sitecore React is component based, we can easily take a React component and match that to a rendering we would have built in Sitecore</li>
+<li>Front End Development doesn’t need to worry about Sitecore, ASP.NET MVC or Razor script. As long as they know React, they can build Sitecore components</li>
+<li>React is very efficient with DOM updates. React calculates the changes that need to be made in the DOM before making them and updates the DOM tree, avoiding costly DOM operations</li>
+<li>We can render the components on the server, making it great for SEO</li>
+</ul>
+<p>At the same time we have been looking into this, some other blog posts have popped up with React+Sitecore ideas. These were an inspiration for our final solution: <a href="http://sitecoreblog.alexshyba.com/sitecore-and-react-how-hard-can-it-be/" target="_blank" rel="noopener">Sitecore and React: How Hard Can it Be</a> showed a nice way that a react component could be built with WebForms, that takes the renderings datasource and adds it to the React model. But I didn’t want to use WebForms. On to <a href="https://github.com/JakobChristensen/Sitecore.Pathfinder/tree/master/src/Features/Sitecore.Pathfinder.React" target="_blank" rel="noopener">Sitecore.Pathfinder</a>, Here Jakob had taken what Alex did with WebForms and build a <code>JsxRenderer</code> - now we are not tied down to WebForms, which is great. But both of these solutions only cope with very simple renderings that only read data from a single Item without any manipulation before rendering it.</p>
+<h3 id="What-are-we-trying-to-Achieve"><a href="#What-are-we-trying-to-Achieve" class="headerlink" title="What are we trying to Achieve?"></a>What are we trying to Achieve?</h3><p>So what are our goals for this?</p>
+<ul>
+<li>Experience Editor must still work</li>
+<li>We must be able to build the data model as needed from the code</li>
+<li>FED should be able to develop components independently of Sitecore </li>
+<li>It should be easy to create a new React component in Sitecore. No jumping through hoops if we can help it!</li>
+</ul>
+<p>This post will outline the method that Justin Laster @ <a href="http://lightmaker.com" target="_blank" rel="noopener">Lightmaker</a> and I came up with to use React with Sitecore. Note that our solution has been inspired by others and these will be credited throughout the post.</p>
+<h3 id="Controller-Rendering-Not-a-great-option"><a href="#Controller-Rendering-Not-a-great-option" class="headerlink" title="Controller Rendering - Not a great option"></a>Controller Rendering - Not a great option</h3><p>One option that we looked at was to use a <code>Controller Rendering</code> and then in the razor view use <a href="http://reactjs.net/" target="_blank" rel="noopener">ReactJS.net</a> to generate the React component. This worked, but had some major drawbacks.</p>
+<p>First every React rendering would need 2 files creating. The <code>jsx</code> file and a <code>cshtml</code> file. It would look something like this:</p>
+<ul>
+<li><p>Helloworld.jsx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HelloWorld = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Helloworld.cshtml</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@model MyComponent.HelloWorldModel</span><br><span class="line"></span><br><span class="line">@Html.React("HelloWorld", Model)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>On top of that, we need to register the jsx file with ReactJS and add it to a bundle. So multiple places that we have to set this up make it a bit of a maintenance headache!</p>
+<h3 id="JsxViewEngine-Lets-get-serious"><a href="#JsxViewEngine-Lets-get-serious" class="headerlink" title="JsxViewEngine - Lets get serious"></a>JsxViewEngine - Lets get serious</h3><p>Lets crack this baby open! Here is the github repo for the React/Sitecore module can be found <a href="https://github.com/GuitarRich/Habitat" target="_blank" rel="noopener">here</a> - I have integrated this into the <a href="https://github.com/Sitecore/Habitat" target="_blank" rel="noopener">Habitat</a> project so we have a site to work with.</p>
+<p>First lets start by creating a new <code>React Controller Rendering</code> - we are creating this because we need to add a couple of fields that are not on a standard controller rendering:</p>
+<img src="/2016/07/23/Sitecore-and-React-It-IS-that-easy/JsxControllerRendering.png" title="Task Runner Explorer">
+<p>The new fields are:</p>
+<ul>
+<li><code>Jsx File</code>: Pretty self explanatory, but this specifies the location of the Jsx file that contains our React component. While we can work this out from the controller action. This gives more flexibility if we want to include multiple components in a single Jsx file.</li>
+<li><code>Placeholders</code>: This lists any placeholders that are present in our component. We need this here as currently we are not parsing the Jsx code directly to get the placeholders. This is on the roadmap to make easier.</li>
+</ul>
+<p>Of course, we can’t forget to set a snappy icon - <a href="https://twitter.com/jammykam" target="_blank" rel="noopener">@jammykam</a> would not be happy!</p>
+<p>At this point we are still using a Controller Action to render our component. So we need to make that action return a <code>JsxResult</code> rather than a <code>ViewResult</code>.  </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">JsxResult</span> : <span class="title">ViewResult</span></span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Wait - where is the code!! For the <code>JsxResult</code> class we are just inheriting from the standard Mvc <code>ViewResult</code>. We don’t need to change any of the implementation here, but we have the class ready for future updates.</p>
+<p>Next we need a view engine. The view engine tells us where to look for the jsx files:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">JsxViewEngine</span> : <span class="title">BuildManagerViewEngine</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>Initializes a new instance of the <span class="doctag">&lt;see cref="T:System.Web.Mvc.RazorViewEngine" /&gt;</span> class.<span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JsxViewEngine</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">		: <span class="title">this</span>(<span class="params"><span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>Initializes a new instance of the <span class="doctag">&lt;see cref="T:System.Web.Mvc.RazorViewEngine" /&gt;</span> </span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> class using the view page activator.<span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="viewPageActivator"&gt;</span>The view page activator.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">JsxViewEngine</span>(<span class="params">IViewPageActivator viewPageActivator</span>)</span></span><br><span class="line"><span class="function">		: <span class="title">base</span>(<span class="params">viewPageActivator</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">this</span>.AreaViewLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.AreaMasterLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.AreaPartialViewLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Areas/&#123;2&#125;/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.ViewLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.MasterLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.PartialViewLocationFormats = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"~/Views/&#123;1&#125;/&#123;0&#125;.jsx"</span>,</span><br><span class="line">            <span class="string">"~/Views/Shared/&#123;0&#125;.jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">this</span>.FileExtensions = <span class="keyword">new</span> []</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"jsx"</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>Creates a partial view using the specified controller </span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> context and partial path.<span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>The partial view.<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="controllerContext"&gt;</span>The controller context.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="partialPath"&gt;</span>The path to the partial view.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> IView <span class="title">CreatePartialView</span>(<span class="params">ControllerContext controllerContext, <span class="keyword">string</span> partialPath</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JsxView(controllerContext, partialPath, <span class="literal">null</span>, <span class="literal">false</span>, <span class="keyword">this</span>.FileExtensions, <span class="keyword">this</span>.ViewPageActivator)</span><br><span class="line">        &#123;</span><br><span class="line">            DisplayModeProvider = <span class="keyword">this</span>.DisplayModeProvider</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>Creates a view by using the specified controller context and the </span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> paths of the view and master view.<span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>The view.<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="controllerContext"&gt;</span>The controller context.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="viewPath"&gt;</span>The path to the view.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="masterPath"&gt;</span>The path to the master view.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> IView <span class="title">CreateView</span>(<span class="params">ControllerContext controllerContext, <span class="keyword">string</span> viewPath, <span class="keyword">string</span> masterPath</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JsxView(controllerContext, viewPath, masterPath, <span class="literal">true</span>, <span class="keyword">this</span>.FileExtensions, <span class="keyword">this</span>.ViewPageActivator)</span><br><span class="line">        &#123;</span><br><span class="line">            DisplayModeProvider = <span class="keyword">this</span>.DisplayModeProvider</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Again fairly standard stuff here. Its worth noting the paths for the <code>.jsx</code> files. They are setup to be in the same place as you would put your <code>.cshtml</code> files. This means we can still keep all our component parts together in the same project. We could customize this to be whatever folder structure fits the project, but this seemed like a good fit.</p>
+<p>We need to make sure that the view engine is registered with asp.net. We can do this by adding an <code>App_Start</code> class and calling <code>ViewEngines.Engines.Add(new JsxViewEngine());</code></p>
+<p>Also notice that the <code>CreateView</code> and <code>CreatePartialView</code> methods are returning a <code>JsxView</code> object. Lets see what is in there:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">JsxView</span> : <span class="title">BuildManagerCompiledView</span></span><br><span class="line">&#123;</span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * Properties and constructors removed for brevity</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">internal</span> Sitecore.Mvc.Presentation.Rendering Rendering =&gt; RenderingContext.Current.Rendering;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span>Renders the specified view context by using the specified writer and Jsx component.<span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="viewContext"&gt;</span>The view context.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="writer"&gt;</span>The writer that is used to render the view to the response.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="instance"&gt;</span>Not used in this view engine<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">RenderView</span>(<span class="params">ViewContext viewContext, TextWriter writer, <span class="keyword">object</span> instance</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">if</span> (writer == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="keyword">nameof</span>(writer));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> componentName = Path.GetFileNameWithoutExtension(<span class="keyword">this</span>.ViewPath)?.Replace(<span class="string">"-"</span>, <span class="keyword">string</span>.Empty);</span><br><span class="line">        <span class="keyword">var</span> props = <span class="keyword">this</span>.GetProps(viewContext.ViewData.Model);</span><br><span class="line"></span><br><span class="line">        IReactComponent reactComponent = <span class="keyword">this</span>.Environment.CreateComponent(componentName, props);</span><br><span class="line">        writer.WriteLine(reactComponent.RenderHtml());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> IReactEnvironment Environment</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> ReactEnvironment.Current;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (TinyIoCResolutionException ex)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ReactNotInitialisedException(<span class="string">"ReactJS.NET has not been initialised correctly."</span>, ex);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">dynamic</span> <span class="title">GetProps</span>(<span class="params"><span class="keyword">object</span> viewModel</span>)</span></span><br><span class="line"><span class="function"></span>	&#123;</span><br><span class="line">        <span class="keyword">dynamic</span> props = <span class="keyword">new</span> ExpandoObject();</span><br><span class="line">        <span class="keyword">var</span> propsDictionary = (IDictionary&lt;<span class="keyword">string</span>, <span class="keyword">object</span>&gt;)props;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">dynamic</span> placeholders = <span class="keyword">new</span> ExpandoObject();</span><br><span class="line">        <span class="keyword">var</span> placeholdersDictionary = (IDictionary&lt;<span class="keyword">string</span>, <span class="keyword">object</span>&gt;)placeholders;</span><br><span class="line"></span><br><span class="line">        propsDictionary[<span class="string">"placeholders"</span>] = placeholders;</span><br><span class="line">        propsDictionary[<span class="string">"data"</span>] = viewModel;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> placeholdersField = <span class="keyword">this</span>.Rendering.RenderingItem.InnerItem[<span class="string">"Place Holders"</span>];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(placeholdersField))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> props;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> controlId = <span class="keyword">this</span>.Rendering.Parameters[<span class="string">"id"</span>] ?? <span class="keyword">string</span>.Empty;</span><br><span class="line">        <span class="keyword">dynamic</span> placeholderId = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> placeholderKeys = placeholdersField.Split(Constants.Comma, StringSplitOptions.RemoveEmptyEntries).Select(p =&gt; p.Trim()).ToList();</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> placeholderKey <span class="keyword">in</span> placeholderKeys)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (placeholderKey.StartsWith(<span class="string">"$Id."</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (placeholderId == <span class="literal">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    placeholderId = <span class="keyword">new</span> ExpandoObject();</span><br><span class="line">                    placeholdersDictionary[<span class="string">"$Id"</span>] = placeholderId;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ((IDictionary&lt;<span class="keyword">string</span>, <span class="keyword">object</span>&gt;)placeholderId)[placeholderKey.Mid(<span class="number">3</span>)] = PageContext.Current.HtmlHelper.Sitecore().Placeholder(controlId + placeholderKey.Mid(<span class="number">3</span>)).ToString();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                placeholdersDictionary[placeholderKey] = PageContext.Current.HtmlHelper.Sitecore().Placeholder(placeholderKey).ToString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> props;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Ok - now we are getting to the bit that does the work. Ultimately its a pretty simple bit of code. First we get the component name from the ViewPath: <code>var componentName = Path.GetFileNameWithoutExtension(this.ViewPath)?.Replace(&quot;-&quot;, string.Empty);</code>. Then we can build the data model to be serialized and sent to the React component: <code>var props = this.GetProps(viewContext.ViewData.Model);</code>.</p>
+<p><code>GetProps</code> builds us a dynamic object with 2 root properties, <code>data</code> and <code>placeholders</code>. The <code>data</code> property will hold all the properties on the view model. Note that our view model <strong>must</strong> be serializable. The <code>placeholders</code> property holds the rendered contents of that placeholder. The contents of each placeholder is then added via the React code.</p>
+<p>Finally we create the React component using ReactJS: <code>IReactComponent reactComponent = this.Environment.CreateComponent(componentName, props);</code> and then write that out to the <code>TextWriter</code>: <code>writer.WriteLine(reactComponent.RenderHtml());</code>. </p>
+<p>You may be wondering tho - how does that work? Don’t you need to render the JavaScript somewhere, or register the <code>jsx</code> file with ReactJS? Well yes, we do. This is where we have taken a slightly different approach to previous posts. And it will all be dealt with in <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/" title="Part II here">Part II here</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/" data-id="cka5tzgak0064gsvrxha54i26" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Habitat/">Habitat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/23/Sitecore-and-React-It-IS-that-easy-Part-II/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore and React - It IS that easy - Part II
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2016/06/28/Setting-up-Solr-on-Habitat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Setting up Solr on Habitat</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/07/23/Sitecore-and-React-It-IS-that-easy/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

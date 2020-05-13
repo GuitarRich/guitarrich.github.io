@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore.React v2.0 - Released | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Finally I have managed to get to launching version 2.0 of my Sitecore.React module. This post will highlight some of the new bits and also introduce the sample project built with Sitecore.React/. My h">
+<meta name="keywords" content="Sitecore,ReactJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore.React v2.0 - Released">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/06/26/Sitecore-React-v2-0-Released/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Finally I have managed to get to launching version 2.0 of my Sitecore.React module. This post will highlight some of the new bits and also introduce the sample project built with Sitecore.React/. My h">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore.React v2.0 - Released">
+<meta name="twitter:description" content="Finally I have managed to get to launching version 2.0 of my Sitecore.React module. This post will highlight some of the new bits and also introduce the sample project built with Sitecore.React/. My h">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-React-v2-0-Released" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore.React v2.0 - Released
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/06/26/Sitecore-React-v2-0-Released/" class="article-date">
+  <time datetime="2017-06-27T01:36:30.000Z" itemprop="datePublished">2017-06-26</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Finally I have managed to get to launching version 2.0 of my <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">Sitecore.React</a> module. This post will highlight some of the new bits and also introduce the sample project built with Sitecore.React/. My hope is that this sample project will be to Sitecore.React what Habitat is to Sitecore - an example of how you can use Sitecore.React to build a project using ReactJS and Sitecore.</p>
+<p>These are the updates I presented at the fabulous <a href="http://www.sugcon.eu/" target="_blank" rel="noopener">SUCGON</a> in Amsterdam this year. Thanks to all who stopped by to listen to the presentation. There was an issue with the recording of the demo, so I’m going to get a new recording done soon for any that care!</p>
+<p>Over the next few weeks, I will add a series of posts and examples of how the project can be used and how this is one of the options to use ReactJS in a Sitecore environment.</p>
+<p>The Nuget packages have been published. There are now 2 packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Sitecore.React/" target="_blank" rel="noopener">sitecore.react</a> : this is the core binary and can be referenced in any project</li>
+<li><a href="https://www.nuget.org/packages/Sitecore.React.Web/" target="_blank" rel="noopener">sitecore.react.web</a> : this just contains the config files for use by the website project</li>
+</ul>
+<h1 id="Sitecore-React-v2-0-What’s-New"><a href="#Sitecore-React-v2-0-What’s-New" class="headerlink" title="Sitecore.React v2.0 - What’s New"></a>Sitecore.React v2.0 - What’s New</h1><h2 id="Placeholders"><a href="#Placeholders" class="headerlink" title="Placeholders"></a>Placeholders</h2><p>The big change in v2 is how Sitecore placeholders are handled. In v1 we handled placeholders as part of the prop data.</p>
+<p>For example, a placeholder with a key of <code>main</code> was added like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="keyword">this</span>.props.placeholder.main&#125;</span><br></pre></td></tr></table></figure>
+<p>While this works, it means that for the React developer, the component stops there. For them to composite components together to build a functional React site, they would have to note down where the Sitecore placeholder should be added. This kinda kills one of the big benefits of using React, we don’t want the backend developer to have to make any changes to the front end files.</p>
+<p>So we now have a new <code>npm</code> package called <code>[sitecore.react.placeholders](https://www.npmjs.com/package/sitecore.react.placeholders)</code> - now adding a placeholder changes to:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Placeholder placeholderKey=<span class="string">'main'</span> isDynamic=&#123;<span class="literal">true</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">&lt;<span class="regexp">/Placeholder&gt;</span></span><br></pre></td></tr></table></figure>
+<p>As you can see, the placeholder is now a component and can have children. Now we can use this to build a component. Lets break down a typical Page Header component:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> Placeholder <span class="keyword">from</span> <span class="string">'sitecore.react.placeholders'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> PageHeader = React.createClass(&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;header <span class="class"><span class="keyword">class</span></span>=<span class="string">"page-header"</span>&gt;</span><br><span class="line">                &lt;Placeholder placeholderKey=&#123;<span class="string">'page-header'</span>&#125; placeholder=&#123;<span class="keyword">this</span>.props.placeholder&#125;&gt;</span><br><span class="line">                    &#123;<span class="keyword">this</span>.props.children&#125;</span><br><span class="line">                &lt;<span class="regexp">/Placeholder&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>header&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = PageHeader;</span><br></pre></td></tr></table></figure>
+<p>This is the jsx code for the component. First we include <code>React</code> and <code>Placeholder</code> - you can do this via the ES6 <code>import</code> statement or by using <code>require</code>.</p>
+<p>Next we are defining the <code>PageHeader</code> class, in the render method we have added markup and a placeholder. Notice that nested in the placeholder is <code>{this.props.children}</code>. This tells the placeholder component to render any child elements of the current react component as child elements of the placeholder when running in Non-Sitecore mode.</p>
+<p>When this component is rendered by Sitecore, the contents of the placeholder will be passed into the component by the Sitecore react module and the placeholder component will render that instead. In following posts I will expand how this happens.</p>
+<p><strong>IMPORTANT</strong> - you may have noticed the <code>placeholder={this.props.placeholder}</code>. This property must be passed into the placeholder component. It is part of how the component knows if it should render child elements or replace those with Sitecore content.</p>
+<h2 id="JavaScript-Bundling-Parsing"><a href="#JavaScript-Bundling-Parsing" class="headerlink" title="JavaScript Bundling/Parsing"></a>JavaScript Bundling/Parsing</h2><p>Another big change is how we are handling the JavaScript bundling for the project. Previously the jsx components were added into the bundle at runtime and we used ReactJS.Net to transpile the jsx to raw JavaScript. While this worked there were some disadvantages:</p>
+<ul>
+<li><strong>Performance:</strong> Because the transpiling was done on the fly - there was a small performance impact. Also each page could have a different bundle identifier, meaning that you could not take advantage of browser caching for the JavaScript files easily.</li>
+<li><strong>Caching:</strong> Again because the bundled js files did not exist prior to a request, we could not use a CDN to host the files. </li>
+<li><strong>ES6/ReactJS.Net:</strong> While the guys writing ReactJS.net have done an amazing job, not all features of ES6 are supported. The most annoying being modules. With pure ReactJS.Net transpiling you cannot use: <code>import React from &#39;react&#39;;</code> - you are forced to use <code>var React = require(&#39;react&#39;);</code> - its a small thing, but there are other small quirks like that. These are things that a pure ReactJS developer would expect to be in place, and so they shouldn’t have to work around those things.</li>
+</ul>
+<p>So to work around this <code>Sitecore.React</code> now supports pre-bundling of your jsx components. This is most commonly done using <code>[webpack](https://webpack.github.io/)</code> or another front end tool. The advantage of using <code>webpack</code> is that all of your components are created in the bundled JavaScript up front. Then we can use ReactJS.Net to render that pre-built component server side, saving us from having to transpile on the fly before each rendering.</p>
+<p>It also means less differences from how the front end team are working, leading to fewer issues caused by differing processes.</p>
+<p>There will be a section in the tutorials on getting started with webpack.</p>
+<h2 id="Bugs-and-tweaks"><a href="#Bugs-and-tweaks" class="headerlink" title="Bugs and tweaks"></a>Bugs and tweaks</h2><p>There have been a few other tweaks and bugs fixed in the code too. Big thanks go out to <a href>@Sean Holmesby
+</a> for many conversations about React and helping out in the early stages with this. Credits also to <a href="https://github.com/altearius" target="_blank" rel="noopener">Chris Nielson</a> and <a href="https://github.com/RyanTuckNZ" target="_blank" rel="noopener">Ryan Tuck</a> for contributing.</p>
+<p>Also big thanks to <a href="https://twitter.com/LonghornTaco" target="_blank" rel="noopener">@Jason Wilkerson</a> for supplying a laptop at SUGCON so I could complete my presentation, as mine decided to die on the flight over!</p>
+<p>Keep an eye out over the next few days and the tutorials will be coming and if you have any questions - please reach out. I’m on the <a href="https://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack Chat</a> most days and go by the name <strong>GuitarRich</strong> - or hit me up on twitter <a href="https://twitter.com/rich_seal" target="_blank" rel="noopener">@rich_seal</a>.</p>
+<p>You can find the source to the module here: <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore.react</a><br>And the sample project here: <a href="https://github.com/GuitarRich/sitecore.react.project" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore.react.project</a> </p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/06/26/Sitecore-React-v2-0-Released/" data-id="cka5tzga60054gsvragjawx9r" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/06/26/Sitecore-React-v2-0-Released/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/04/Sitecore-React-Getting-Started/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore.React - Getting Started - 1. Webpack
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/06/14/Sitecore-Stack-Exchange-vs-Slack-What-should-I-use/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore Stack Exchange vs Slack - What should I use?</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/06/26/Sitecore-React-v2-0-Released/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

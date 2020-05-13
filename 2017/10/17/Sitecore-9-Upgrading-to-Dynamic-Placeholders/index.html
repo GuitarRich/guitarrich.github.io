@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore 9: Upgrading to Dynamic Placeholders | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="So with the new Dynamic Placeholders implementation finally here, how can we go about upgrading. Well, a lot depends on which implementation of Dynamic Placeholders you have used. In this example, we">
+<meta name="keywords" content="Sitecore,Sitecore 9,Dynamic Placeholders">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore 9: Upgrading to Dynamic Placeholders">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="So with the new Dynamic Placeholders implementation finally here, how can we go about upgrading. Well, a lot depends on which implementation of Dynamic Placeholders you have used. In this example, we">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/doitnow.gif">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore 9: Upgrading to Dynamic Placeholders">
+<meta name="twitter:description" content="So with the new Dynamic Placeholders implementation finally here, how can we go about upgrading. Well, a lot depends on which implementation of Dynamic Placeholders you have used. In this example, we">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/doitnow.gif">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-9/">Sitecore 9</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-9-Upgrading-to-Dynamic-Placeholders" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore 9: Upgrading to Dynamic Placeholders
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/" class="article-date">
+  <time datetime="2017-10-17T12:00:00.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        
+<p>So with the new Dynamic Placeholders implementation finally here, how can we go about upgrading. Well, a lot depends on which implementation of Dynamic Placeholders you have used. In this example, we will assume that you have used the <a href="https://github.com/Fortis-Collection/dynamic-placeholders" target="_blank" rel="noopener">Fortis</a> module. But the principles used here can also be applied to other implementations.</p>
+<h2 id="What-are-the-differences"><a href="#What-are-the-differences" class="headerlink" title="What are the differences"></a>What are the differences</h2><p>First, we want to see the differences between what Sitecore outputs and what Fortis does.</p>
+<p>The Fortis placeholder generation uses <code>placeholderKey_renderingId</code> as the pattern to generate the key. This gives you keys like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column_cdff3b6c-c0a7-4d6c-9a48-da82d186804c</span><br></pre></td></tr></table></figure>
+<p>The Sitecore implementation is very similar, but formats the Guid differently and also adds a unique key like this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">column_&#123;CDFF3B6C-C0A7-4D6C-9A48-DA82D186804C&#125;_0</span><br></pre></td></tr></table></figure>
+<h2 id="Updating-the-module"><a href="#Updating-the-module" class="headerlink" title="Updating the module"></a>Updating the module</h2><p>When dealing with the project, the first thing to do will be to remove the Dynamic Placeholder binary and config from your solution. You can uninstall the nuget package for this.</p>
+<p>In your deployed instance, you will need to make sure that the following files are removed:</p>
+<ul>
+<li><code>\App_Config\Include\DynamicPlaceholders\DynamicPlaceholders.config</code></li>
+<li><code>\bin\DynamicPlaceholders.dll</code></li>
+</ul>
+<h2 id="Updating-the-code"><a href="#Updating-the-code" class="headerlink" title="Updating the code"></a>Updating the code</h2><p>Once those files have been removed we need to make sure that all code referencing the namespace is changed to the new Sitecore namespace. So a search and remove this namespace: <code>DynamicPlaceholders.Mvc.Extensions</code> in your code. If you have used <a href="mailto:`@Html.Sitecore" target="_blank" rel="noopener">`@Html.Sitecore</a>()<code>in your razor views, you probably already have the namespace set correctly. If not, make sure you have these namespaces added to your views</code>web.config`:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">add</span> <span class="attr">namespace</span>=<span class="string">"Sitecore.Mvc"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">add</span> <span class="attr">namespace</span>=<span class="string">"Sitecore.Mvc.Presentation"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Once we have done that, most of the code should work in the razor views. Unless you have used the overload and passed in a unique key to the Fortis ones. All the calls to <a href="mailto:`@Html.Sitecore" target="_blank" rel="noopener">`@Html.Sitecore</a>().DynamicPlaceholder()` will just be calling the default overload with the placeholder key.</p>
+<h2 id="Update-your-presentation"><a href="#Update-your-presentation" class="headerlink" title="Update your presentation"></a>Update your presentation</h2><p>The big problem now is going to be your presentation in Sitecore. Because the format of the placeholder key has changed, all the existing renderings will need thier placeholder keys updating too. In a small implementation, you might be able to manually do this, but that wil take a long time!</p>
+<h3 id="Sitecore-PowerShell-Extensions-to-the-rescue"><a href="#Sitecore-PowerShell-Extensions-to-the-rescue" class="headerlink" title="Sitecore PowerShell Extensions to the rescue"></a>Sitecore PowerShell Extensions to the rescue</h3><p>That is a phrase that have used so many times! SPE is going to help a lot here. If you have never used <a href="https://marketplace.sitecore.net/Modules/Sitecore_PowerShell_console.aspx?sc_lang=en" target="_blank" rel="noopener">Sitecore Powershell Extensions</a> - go download it now!</p>
+<img src="/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/doitnow.gif" title="Just do it now!">
+<p>With SPE we can recurse through the content tree and update the presentation details. So lets look at a script that we can use to do that:</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$startPath</span> = <span class="string">"/sitecore/content"</span></span><br><span class="line"><span class="variable">$placeholderKey</span> = <span class="string">"main_*"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Write-Progress</span> -Activity <span class="string">"Upgrading dynamic placeholders that for the key [$(<span class="variable">$placeholderKey</span>)]"</span> `</span><br><span class="line">    -Status <span class="string">"Getting content items"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Get-ChildItem</span> -Path <span class="variable">$startPath</span> -Recurse | <span class="built_in">ForEach-Object</span> &#123;</span><br><span class="line">    <span class="variable">$item</span> = <span class="variable">$_</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Progress</span> -Activity <span class="string">"Upgrading dynamic placeholders that for the key [$(<span class="variable">$placeholderKey</span>)]"</span> `</span><br><span class="line">        -CurrentOperation <span class="string">"Updating [$(<span class="variable">$item</span>.Name)]..."</span></span><br><span class="line"></span><br><span class="line">    Get-Rendering -Item <span class="variable">$_</span>  -Placeholder <span class="variable">$placeholderKey</span> | <span class="built_in">Foreach-Object</span> &#123;</span><br><span class="line">        <span class="comment"># Double check that this is an old style dynamic placeholder - should have a lowercase guid at the end of the string</span></span><br><span class="line">        <span class="variable">$matches</span> = [regex]::Matches(<span class="variable">$_</span>.Placeholder,<span class="string">'([0-9a-f]&#123;8&#125;[-][0-9a-f]&#123;4&#125;[-][0-9a-f]&#123;4&#125;[-][0-9a-f]&#123;4&#125;[-][0-9a-f]&#123;12&#125;)$'</span>)</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$matches</span>.Success) &#123;</span><br><span class="line">            <span class="variable">$renderingId</span> = <span class="variable">$matches</span>.Groups[<span class="number">0</span>].Value</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Replace the old style guid with the new style guid and add the unique number</span></span><br><span class="line">            <span class="comment"># for this upgrade, that will always be 0</span></span><br><span class="line">            <span class="variable">$newPlaceholder</span> = <span class="variable">$_</span>.Placeholder.Replace(<span class="variable">$renderingId</span>, <span class="string">"&#123;$(<span class="variable">$renderingId</span>.ToUpper())&#125;_0"</span>)</span><br><span class="line">            <span class="variable">$_</span>.Placeholder = <span class="variable">$newPlaceholder</span></span><br><span class="line">            Set-Rendering -Item <span class="variable">$item</span> -Instance <span class="variable">$_</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Write-Progress</span> -Completed -Activity <span class="string">"Done"</span></span><br></pre></td></tr></table></figure>
+<p>This is a very basic script. First, set your start item. The script will recurse through the content tree from there and find all renderings that are in a placeholder that match the pattern in <code>$placeholderKey</code> - use a wildcard to find all dynamic placeholders.</p>
+<p>Then for each rendering, we double check that the key contains a guid in the format of the old implementation - this will be the last element of the string and a lowercase guid with no braces.</p>
+<p>Next, we build the new format placeholder key and set that on the rendering.</p>
+<p>This script will need to be run as an admin user in Sitecore and depending on your content tree, could take a while to run. Future options would be to make this cope with more than just a single placeholder key per pass. But its a good place to start. Run this script for every dynamic placeholder key you have in your solution. Once done, you should be upgraded.</p>
+<h2 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h2><p>This is just one way that an upgrade could be done. If you don’t want to use SPE (What is wrong with you?) - the same approach could be used with some custom C# code. Whichever way you do it, upgrading to the new Sitecore Dynamic Placeholders is a pretty simple task and you can then get the benefits of the new additions.</p>
+<p>Of course - upgrading is just the first step. Once you have done this, you really should look at how you have used Dynamic Placeholders and see whether you should change that based on some of the new features not previously available.</p>
+<p>– Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/" data-id="cka5tzg9r004cgsvr0xwig8hq" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamic-Placeholders/">Dynamic Placeholders</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-9/">Sitecore 9</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/17/Sitecore-9-Dynamic-Placeholders-At-Last/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore 9: Dynamic Placeholders At Last!
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/09/25/The-Sitecore-Stack-Exchange-5K-Club/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">The Sitecore Stack Exchange 5K Club!</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/10/17/Sitecore-9-Upgrading-to-Dynamic-Placeholders/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

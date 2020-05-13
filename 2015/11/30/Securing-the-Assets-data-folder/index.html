@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Securing the Assets data folder | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="There was an interesting conversation on the Sitecore Slack Community about where the best place to store single-use data items for components. The consensus was that a folder that sits under the page">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Securing the Assets data folder">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="There was an interesting conversation on the Sitecore Slack Community about where the best place to store single-use data items for components. The consensus was that a folder that sits under the page">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/folderstructure.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/datasourcelocation.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/basetemplate.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.715Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing the Assets data folder">
+<meta name="twitter:description" content="There was an interesting conversation on the Sitecore Slack Community about where the best place to store single-use data items for components. The consensus was that a folder that sits under the page">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/folderstructure.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Securing-the-Assets-data-folder" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Securing the Assets data folder
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/11/30/Securing-the-Assets-data-folder/" class="article-date">
+  <time datetime="2015-11-30T22:14:10.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>There was an interesting conversation on the Sitecore Slack Community about where the best place to store <em>single-use</em> data items for components. The consensus was that a folder that sits under the page item is generally the best place to put it, it makes it easy to find for the content editors and simple to package up a single page and deploy elsewhere. This is the method that we have been using at <a href="http://www.lightmaker.com" target="_blank" rel="noopener">Lightmaker</a> for a while now and I know a number of other agencies use a similar practice.</p>
+<p>But as <a href="https://twitter.com/AgileStCyr" target="_blank" rel="noopener">Jason St-Cry</a> pointed out, it does have the side effect that the asset folder and data items become urls that can be resolved by Sitecore. Most of the time these items do not have any presentation associated with them, but that just means that they will throw a <code>LayoutNotFoundException</code> where really any urls that point to data items, should really throw a 404.</p>
+<p>###Folder Structure<br>Lets have a look at the folder structure in place here:</p>
+<img src="/2015/11/30/Securing-the-Assets-data-folder/folderstructure.png" title="Folder Structure">
+<p>You can see here, under each <code>Page Item</code> there is an <code>Assets</code> folder. In here we can create all the content required for that page, where the content is only for use on that page. (See here for tips on styling the content tree - <a href="http://www.jasonbert.com/2015/01/23/tip-style-items-sitecore-content-editor-tree/" target="_blank" rel="noopener">Style Items for the Sitecore Content Editor tree - Jason Bert</a>)</p>
+<p>Normally we will have a shared content folder somewhere in the site also.</p>
+<p>To help the editors, we can set these paths in the <code>Datasource Location</code> field on the <code>Rendering Item</code>, notice the query for the path, this helps in a multi-site solution.</p>
+<img src="/2015/11/30/Securing-the-Assets-data-folder/datasourcelocation.png" title="Datasource Location and Template settings">
+<p>We can also set the <code>Datasource Template</code> field to enable the content editor to create content easily from the page editor.</p>
+<p>So how do we filter these content items out of the request so that any urls that reference them become 404 errors? </p>
+<p>###Time for a Custom Pipeline Processor!<br>We can do this pretty simply with a custom processor right after the <code>ItemResolver</code> in the <code>httpRequestBegin</code> pipeline. First we need to be able to identify the items that are <em>not</em> page items. To do that we have a base template that all our templates inherit from, we add a field to this to identify if the item should resolve a url or not. This field is set to true in the Standard Values of the base template.</p>
+<img src="/2015/11/30/Securing-the-Assets-data-folder/basetemplate.png" title="Base Template item resolution field">
+<p>Now for each template that is pure data, we can simply untick the <code>Resolve to Url</code> field in the standard values of the template. </p>
+<p>###Procesor</p>
+<p>Here is the code for the processor:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyProject</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> Sitecore;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Data.Fields;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Diagnostics;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Pipelines.HttpRequest;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ContentOnlyItemResolver</span> : <span class="title">HttpRequestProcessor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">HttpRequestArgs args</span>)</span></span><br><span class="line"><span class="function"></span>		&#123;</span><br><span class="line">            Profiler.StartOperation(<span class="string">"Resolve any Content only items."</span>);</span><br><span class="line">    </span><br><span class="line">            Assert.ArgumentNotNull(args, <span class="string">"args"</span>);</span><br><span class="line">            <span class="keyword">if</span> (Context.Item == <span class="literal">null</span> || Context.Database == <span class="literal">null</span> || args.Url.ItemPath.Length == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// Only check this if we have a valid context item</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">            <span class="comment">// Check the "Resolve to Url" field - if the field is false or doesn't exist, we</span></span><br><span class="line">            <span class="comment">// can just carry on as normal.</span></span><br><span class="line">            CheckboxField resolveToUrl = Context.Item.Fields[<span class="string">"Resolve to Url"</span>];</span><br><span class="line">            <span class="keyword">if</span> (resolveToUrl == <span class="literal">null</span> || resolveToUrl.Checked)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> Implement a 404 here, or alternatively set the Context.Item to </span></span><br><span class="line">            <span class="comment">// null and let the Sitecore or other 404 processor take care of the redirect</span></span><br><span class="line">            Context.Item = <span class="literal">null</span>;</span><br><span class="line">    </span><br><span class="line">            Profiler.EndOperation();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>and then we can simply patch it in with an include file. Make sure it is patched <strong>after</strong> the <code>ItemResolver</code> but before any 404 processors:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">httpRequestBegin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">processor</span> <span class="attr">patch:after</span>=<span class="string">"processor[@type='Sitecore.Pipelines.HttpRequest.ItemResolver, Sitecore.Kernel']"</span></span></span><br><span class="line"><span class="tag">						   <span class="attr">type</span>=<span class="string">"MyProject.ContentOnlyItemResolver, LM.Ignite.Core"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">processor</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">httpRequestBegin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Now when we visit a standard page item, we get the content as we should, but try to visit any of the <em>non</em>-page items, or anything that has the <code>Resolve to Url</code> field un-checked, a 404 will be returned.</p>
+<p>###Why not just check the template/base templates<br>That was an option that we thought of, but doing it with a field means we can override on an item by item basis if we decide for some reason that one or more of the content items need to have presentation and resolve.</p>
+<p>Hope this helps someone!</p>
+<p>–Richard Seal</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/" data-id="cka5tzg9e003egsvriw8lbn2q" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/07/Single-Page-Applications-in-Sitecore-Part-I/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Single Page Applications in Sitecore - Part I
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/11/24/Powershell-from-your-current-folder/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Powershell from your current folder</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/11/30/Securing-the-Assets-data-folder/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

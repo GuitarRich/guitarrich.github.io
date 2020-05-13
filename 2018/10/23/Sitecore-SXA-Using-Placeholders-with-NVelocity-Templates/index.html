@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore SXA: Using Placeholders with NVelocity Templates | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Recently I came across a situation where I needed to use an NVelocity template in a Rendering Variant. We were creating a custom slider and using the awesome Slick Slider as it gives us a lot of nice">
+<meta name="keywords" content="Sitecore,SxA,Rendering Variants,NVelocity,Placeholders">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore SXA: Using Placeholders with NVelocity Templates">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Recently I came across a situation where I needed to use an NVelocity template in a Rendering Variant. We were creating a custom slider and using the awesome Slick Slider as it gives us a lot of nice">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/variantsetup.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore SXA: Using Placeholders with NVelocity Templates">
+<meta name="twitter:description" content="Recently I came across a situation where I needed to use an NVelocity template in a Rendering Variant. We were creating a custom slider and using the awesome Slick Slider as it gives us a lot of nice">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/variantsetup.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/SxA/">SxA</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore SXA: Using Placeholders with NVelocity Templates
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/" class="article-date">
+  <time datetime="2018-10-23T14:03:23.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Recently I came across a situation where I needed to use an NVelocity template in a Rendering Variant. We were creating a custom slider and using the awesome <a href>Slick Slider</a> as it gives us a lot of nice options, and it has some good extras for accessibility that the OOTB Carousel component does not have at the time of writing. For the slide content, we still used a <code>Page Content</code> component and a custom Rendering Variant, but on the slide I wanted to make the <code>Slide Image</code> field a background image on the main <code>&lt;div&gt;</code> element. The second requirement was that the design called for 2 types of slide, one with just the background image, and one where we could add a child component into a placeholder. This could be used as a promo/call to action, but needed to be detached from the slide content. This would allow the client to personalize and test the call to action separately from the slide imagery.</p>
+<p>Here is an example of the markup I needed to reproduce in the Rendering Variant:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide"</span> <span class="attr">style</span>=<span class="string">"background-image:url('/-/media/mybackgroundimage.jpg');"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide-content"</span>&gt;</span></span><br><span class="line">        @Html.Sitecore().Placeholder("carousel-slide-placeholder-key");</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The first problem is that currently OOTB you can’t set an image field as a background image on a html tag. Fortunately there are some nice blog posts already out there on how to extend the NVelocity template:</p>
+<ul>
+<li>Michael West has post post on a <a href="https://michaellwest.blogspot.com/2017/04/custom-rendering-variant-token-tool-for-sxa.html" target="_blank" rel="noopener">Custom Rendering Variant Token Tool for SXA</a></li>
+<li>Chaitanya Marwah hit prettly close with this post on <a href="http://www.cmsitecore.com/2017/09/design-sitecore-sxa-components-using.html" target="_blank" rel="noopener">Design Sitecore SXA components using Variant Template</a></li>
+</ul>
+<h2 id="Quick-Reminder-on-how-to-Extend-the-Template"><a href="#Quick-Reminder-on-how-to-Extend-the-Template" class="headerlink" title="Quick Reminder on how to Extend the Template"></a>Quick Reminder on how to Extend the Template</h2><p>Just as a refersher on how to extend the template, first we need a new processor adding to the <code>getVelocityTemplateRenderers</code> pipeline. Implement <code>IGetTemplateRenderersPipelineProcessor</code> and add your code to the <code>Process</code> method:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AddTemplateRenderers</span> : <span class="title">IGetTemplateRenderersPipelineProcessor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">GetTemplateRenderersPipelineArgs args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Assert.ArgumentNotNull(args.Context, <span class="string">"args.Context"</span>);</span><br><span class="line">        args.Context.Put(<span class="string">"fieldTokens"</span>, <span class="keyword">new</span> FieldTokens());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And patch it in:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span> <span class="attr">xmlns:set</span>=<span class="string">"http://www.sitecore.net/xmlconfig/set/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">getVelocityTemplateRenderers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">"Foundation.SXA.Pipelines.Variants.GetVelocityTemplateRenderers.AddTemplateRenderers, Foundation.SXA"</span> <span class="attr">resolve</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">getVelocityTemplateRenderers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Next, create the static method to get the url from an image field:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FieldTokens</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">GetImageUrl</span>(<span class="params">Item item, <span class="keyword">string</span> fieldName</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> url = <span class="keyword">string</span>.Empty;</span><br><span class="line">        <span class="keyword">if</span> (item != <span class="literal">null</span> &amp;&amp; fieldName != <span class="keyword">string</span>.Empty)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> field = (ImageField)item.Fields[fieldName];</span><br><span class="line">            <span class="keyword">if</span> (field != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                url = ItemExtensions.ImageUrl(item, fieldName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This now lets us create the Template definition with the following code:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide"</span> <span class="attr">style</span>=<span class="string">'background-image: url("$fieldTokens.GetImageUrl($item, "SlideImage")")'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide-content"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- <span class="doctag">TODO:</span> Add Placeholder Here --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Creating-the-Rendering-Variant"><a href="#Creating-the-Rendering-Variant" class="headerlink" title="Creating the Rendering Variant"></a>Creating the Rendering Variant</h2><p>So the next task is to add the placeholder in the right place. This is where the problem started. There is no way to add a placeholder into a template out of the box. Adding a placeholder requires a valid view context, so trying to add one in the same way that we added the token for the image url would be overly complex.</p>
+<p><a href="https://twitter.com/MichaelWest101" target="_blank" rel="noopener">Michael West</a> came up with a great suggestion, in the template we create the start of the <code>&lt;div&gt;</code> markup. Like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;carousel-slide&quot; style=&apos;background-image: url(&quot;$fieldTokens.GetImageUrl($item, &quot;SlideImage&quot;)&quot;)&apos;&gt;</span><br></pre></td></tr></table></figure>
+<p>I would set the <code>Tag</code> field to empty, so that there is no other markup added. Next we create a section that contains the placeholder items. Finally we can add a <code>Text</code> item in the variant definition with <code>&lt;/div&gt;</code> in the text to close the earlier <code>div</code>.</p>
+<p>Now all I need to do is to add the placeholder item in between those 2 items and I should be golden!</p>
+<img src="/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/variantsetup.png" title="Rendering Variant Setup">
+<h2 id="Huston…-We-have-a-problem"><a href="#Huston…-We-have-a-problem" class="headerlink" title="Huston… We have a problem"></a>Huston… We have a problem</h2><p>Or so I thought… it turns out that even with the <code>Tag</code> field empty in a <code>VariantTemplate</code> item still adds a <code>div</code> surrounding the contents of the <code>Template</code> field. So the markup looked like this:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide"</span> <span class="attr">style</span>=<span class="string">"background-image:url('/-/media/mybackgroundimage.jpg');"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-slide-content"</span>&gt;</span></span><br><span class="line">        @Html.Sitecore().Placeholder("carousel-slide-placeholder-key");</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Which is invalid and although most browsers helpfully try to close the div’s, it didn’t give me what I needed. After a bit of digging, the offending code can be found here in the <code>Sitecore.XA.Foundation.RenderingVariants.Pipelines.RenderVariantField.RenderTemplate</code> processor. Here is the <code>RenderField</code> method:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">RenderField</span>(<span class="params">RenderVariantFieldArgs args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  Sitecore.XA.Foundation.RenderingVariants.Fields.VariantTemplate variantField = args.VariantField <span class="keyword">as</span> Sitecore.XA.Foundation.RenderingVariants.Fields.VariantTemplate;</span><br><span class="line">  <span class="keyword">if</span> (variantField == <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  HtmlGenericControl tag = <span class="keyword">new</span> HtmlGenericControl(<span class="keyword">string</span>.IsNullOrWhiteSpace(variantField.Tag) ? <span class="string">"div"</span> : variantField.Tag);</span><br><span class="line">  <span class="keyword">this</span>.AddClass(tag, variantField.CssClass);</span><br><span class="line">  <span class="keyword">this</span>.AddWrapperDataAttributes((RenderingVariantFieldBase) variantField, args, tag);</span><br><span class="line">  Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">object</span>&gt; parameters = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">object</span>&gt;()</span><br><span class="line">  &#123;</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"item"</span>,</span><br><span class="line">      (<span class="keyword">object</span>) args.Item</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">if</span> (args.Parameters != <span class="literal">null</span> &amp;&amp; args.Parameters.ContainsKey(<span class="string">"geospatial"</span>))</span><br><span class="line">    parameters.Add(<span class="string">"geospatial"</span>, args.Parameters[<span class="string">"geospatial"</span>]);</span><br><span class="line">  tag.InnerHtml = ServiceLocator.ServiceProvider.GetService&lt;ITemplateRenderer&gt;().ExecuteTemplate(args.Item.Name, variantField.Template, parameters);</span><br><span class="line">  args.ResultControl = (Control) tag;</span><br><span class="line">  args.Result = <span class="keyword">this</span>.RenderControl(args.ResultControl);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can see here on line 6, that if the <code>varitantField.Tag</code> property is null or white space, then a <code>div</code> tag will be defaulted too! So now I knew where the problem was, I can set about fixing it! </p>
+<p>First we need to override the <code>RenderTemplate</code> processor in the <code>RenderVariantField</code> pipeline. So create a new processor class and inherit from the existing one. Then override the <code>RenderField</code> method:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RenderTemplate</span> :</span> Sitecore.XA.Foundation.RenderingVariants.Pipelines.RenderVariantField.RenderTemplate</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> override <span class="keyword">void</span> <span class="title">RenderField</span><span class="params">(RenderVariantFieldArgs args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var variantField = args.VariantField as VariantTemplate;</span><br><span class="line">        <span class="keyword">if</span> (variantField == null)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrWhiteSpace(variantField.Tag))</span><br><span class="line">        &#123;</span><br><span class="line">            base.RenderField(args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            var templateRenderer = ServiceLocator.ServiceProvider.GetService&lt;ITemplateRenderer&gt;();</span><br><span class="line">            var parameters = <span class="keyword">new</span> Dictionary&lt;<span class="built_in">string</span>, object&gt;() &#123; &#123; <span class="string">"item"</span>, args.Item &#125; &#125;;</span><br><span class="line">            <span class="keyword">if</span> (args.Parameters != null &amp;&amp; args.Parameters.ContainsKey(<span class="string">"geospatial"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                parameters.Add(<span class="string">"geospatial"</span>, args.Parameters[<span class="string">"geospatial"</span>]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// There is no surrounding html tag, so just render the resulting string from the template.</span></span><br><span class="line">            args.Result = templateRenderer.ExecuteTemplate(args.Item.Name, variantField.Template, parameters);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now on line 12, we check to see if the <code>variantField.Tag</code> has been filled in or not. If it has, we pass this through to the base method and let it do its thing. If not, we will take over. We have to get the <code>templateRenderer</code> and build the <code>parameters</code> object to be able to render the field. But now we are not creating any surrounding tag, we are just executing the template and adding the resuling html to the <code>args.Result</code> property.</p>
+<p>Now our variant renders exactly as I wanted it to, with a <code>div</code> containing a background image, the placeholder in the middle and then the closing <code>&lt;/div&gt;</code> tag.</p>
+<p>I’m not sure why the default behaviour is to force a <code>div</code> tag around template variants if the <code>Tag</code> field is left empty. But hopefully this option will help others who need to be a bit more creative with the rendering variant definitions!</p>
+<p>Thanks to Michael West for helping out with the original idea!</p>
+<p>–Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/" data-id="cka5tzgad005ngsvrd3m71d5g" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NVelocity/">NVelocity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Placeholders/">Placeholders</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering-Variants/">Rendering Variants</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SxA/">SxA</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/20/SXA-Security-Headers-1-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          SXA Security Headers 1.1
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore SXA: Using HTTP Headers to Secure Your Site</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

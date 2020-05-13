@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Using RequireJs with Sitecore 8 - Update | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This update has been a long time in coming! Last year I blogged about using Require.js to organize your Sitecore JavaScript. In the post we looked at setting up require js with jQuery. This was the ma">
+<meta name="keywords" content="Sitecore,JavaScript,RequireJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using RequireJs with Sitecore 8 - Update">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="This update has been a long time in coming! Last year I blogged about using Require.js to organize your Sitecore JavaScript. In the post we looked at setting up require js with jQuery. This was the ma">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Using RequireJs with Sitecore 8 - Update">
+<meta name="twitter:description" content="This update has been a long time in coming! Last year I blogged about using Require.js to organize your Sitecore JavaScript. In the post we looked at setting up require js with jQuery. This was the ma">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Using-RequireJs-with-Sitecore-8-Update" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Using RequireJs with Sitecore 8 - Update
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/" class="article-date">
+  <time datetime="2015-10-19T17:37:58.000Z" itemprop="datePublished">2015-10-19</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>This update has been a long time in coming! Last year I blogged about using <a href="http://requirejs.org" target="_blank" rel="noopener">Require.js</a> to <a href="http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/">organize your Sitecore JavaScript</a>. In the post we looked at setting up require js with <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery</a>. This was the <code>main.js</code> config file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">require.config(&#123;</span><br><span class="line">    baseUrl: &quot;/assets/js&quot;,</span><br><span class="line">    paths: &#123;</span><br><span class="line">        jquery: &quot;vendor/jquery.min&quot;,</span><br><span class="line">        &quot;jquery.migrate&quot;: &quot;vendor/migrate&quot;,</span><br><span class="line">        &quot;jquery.mobile.events&quot;: &quot;vendor/mobile.events&quot;,</span><br><span class="line">        &quot;jquery.royalslider&quot;: &quot;vendor/jquery.royalslider&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    shim: &#123;</span><br><span class="line">        &quot;jquery.migrate&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;jquery.mobile.events&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;jquery.royalslider&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Now run any initialization javascript for the site:</span><br><span class="line">require([&quot;jquery&quot;], function($) &#123;</span><br><span class="line">    // Init code here</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>This worked great in Sitecore 7.x, but in Sitecore 8 the page editor started breaking, lots of JavaScript errors. The reason for this is that the <strong>Prototype</strong> JavaScript library was used by the Experience Editor and conflicts with <strong>jQuery</strong>. <a href="https://kb.sitecore.net/articles/286042" target="_blank" rel="noopener">See this KB Article</a></p>
+<p>The obvious answer is to run jQuery in <strong>no-conflict</strong> mode. But how does that work with RequireJs?</p>
+<p>One option would be to take jQuery out of the require dependencies and load it at the top of the page, put it in no-conflict mode and use an <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/" target="_blank" rel="noopener">IIFE</a> to load jQuery into to the module:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function($) &#123;</span><br><span class="line">    // plugin load code here</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure>
+<p>Credits: <a href="http://kamsar.net/index.php/2013/10/sitecore-preview-mode-and-loading-jquery/" target="_blank" rel="noopener">Sitecore preview mode and loading jQuery</a></p>
+<p>But that kinda goes against the benefits and reasons for using RequireJs in the first place. Fortunately it is pretty easy to run jQuery in no-conflict mode using Require.</p>
+<h3 id="jQuery-as-an-AMD-Module"><a href="#jQuery-as-an-AMD-Module" class="headerlink" title="jQuery as an AMD Module"></a>jQuery as an AMD Module</h3><p>The first thing we need to do is define a new AMD module that puts jQuery into no conflict mode:</p>
+<h4 id="jquery-no-conflict-js"><a href="#jquery-no-conflict-js" class="headerlink" title="jquery.no-conflict.js"></a>jquery.no-conflict.js</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define([&quot;jquery&quot;], function(jq) &#123;</span><br><span class="line">  return jq.noConflict(false);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Now we can add that module to our requirejs paths and then map it to our <code>jquery</code> path that we setup earlier in the post:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">require.config(&#123;</span><br><span class="line">    baseUrl: &quot;/assets/js&quot;,</span><br><span class="line">    paths: &#123;</span><br><span class="line">        jquery: &quot;vendor/jquery.min&quot;,</span><br><span class="line">        &quot;jquery-private&quot;: &quot;modules/jquery.no-conflict&quot;,</span><br><span class="line">        &quot;jquery.migrate&quot;: &quot;vendor/migrate&quot;,</span><br><span class="line">        &quot;jquery.mobile.events&quot;: &quot;vendor/mobile.events&quot;,</span><br><span class="line">        &quot;jquery.royalslider&quot;: &quot;vendor/jquery.royalslider&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    shim: &#123;</span><br><span class="line">        &quot;jquery.migrate&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;jquery.mobile.events&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;jquery.royalslider&quot;: &#123;</span><br><span class="line">            deps: [&quot;jquery&quot;]</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    map: &#123;</span><br><span class="line">        // &apos;*&apos; means all modules will get &apos;jquery-private&apos;</span><br><span class="line">        // for their &apos;jquery&apos; dependency.</span><br><span class="line">        &apos;*&apos;: &#123;</span><br><span class="line">            &apos;jquery&apos;: &apos;jquery-private&apos;</span><br><span class="line">        &#125;,</span><br><span class="line">            // &apos;jquery-private&apos; wants the real jQuery module</span><br><span class="line">            // though. If this line was not here, there would</span><br><span class="line">            // be an unresolvable cyclic dependency.</span><br><span class="line">            &apos;jquery-private&apos;: &#123;</span><br><span class="line">            &apos;jquery&apos;: &apos;jquery&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// Now run any initialization javascript for the site:</span><br><span class="line">require([&quot;jquery&quot;], function($) &#123;</span><br><span class="line">    // Init code here</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Notice that everything else still references the <code>jquery</code> path. Its the map that does the magic here!</p>
+<p>So now you can still use jQuery and the Experience Editor without going and changing all your existing AMD Modules!</p>
+<p>Happy coding!</p>
+<p>–Richard</p>
+<p>References: <a href="http://requirejs.org/docs/jquery.html#noconflictmap" target="_blank" rel="noopener">Mapping Modules to Use NoConflict</a></p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/" data-id="cka5tzgao006igsvrypb6ug71" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RequireJS/">RequireJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/23/Rendering-Exception-Handling-The-Right-Way/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Rendering Exception Handling - The Right Way
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/10/14/Fortis-Model-Generation-with-Unicorn-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Fortis Model Generation with Unicorn 3</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

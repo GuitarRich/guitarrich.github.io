@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Use Nuget to Manage Your Sitecore Dependencies | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="One of the questions that occurs in every Sitecore project, is where to keep your Sitecore dependencies! How to make sure they are kept up to date when upgrading etc… Most developers go for the standa">
+<meta name="keywords" content="Nuget">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Use Nuget to Manage Your Sitecore Dependencies">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="One of the questions that occurs in every Sitecore project, is where to keep your Sitecore dependencies! How to make sure they are kept up to date when upgrading etc… Most developers go for the standa">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/Package-Sources-With-Custom-Feed.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.853Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Use Nuget to Manage Your Sitecore Dependencies">
+<meta name="twitter:description" content="One of the questions that occurs in every Sitecore project, is where to keep your Sitecore dependencies! How to make sure they are kept up to date when upgrading etc… Most developers go for the standa">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/Package-Sources-With-Custom-Feed.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Use-Nuget-to-Manage-Your-Sitecore-Dependencies" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Use Nuget to Manage Your Sitecore Dependencies
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/" class="article-date">
+  <time datetime="2015-08-18T02:47:22.000Z" itemprop="datePublished">2015-08-17</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>One of the questions that occurs in every Sitecore project, is where to keep your Sitecore dependencies! How to make sure they are kept up to date when upgrading etc…</p>
+<p>Most developers go for the standard solution of having a <strong>libs</strong> or <strong>dependecies</strong> folder. But really this has a number of downsides. First it can bloat the repo, especially when upgrading and new versions are added. Also, it means that each new project must have that folder setup and the correct versions of the binaries added. Also, if you are using Git as your VCS, you need to update the .gitignore to make sure that no binary files are missed. It all seems a bit unnecessary in these days of package libraries!</p>
+<h2 id="Enter-Nuget"><a href="#Enter-Nuget" class="headerlink" title="Enter Nuget"></a>Enter Nuget</h2><p>When Nuget first came on the scene, it breathed life into the world of controlling project dependencies! Finally a package manager for .net! So why not use it for Sitecore?</p>
+<p>While the Sitecore binaries are not public, it is relatively easy to setup an internal Nuget repository that can contain your Nuget packages. This gives a number of big advantages over keeping the Sitecore binaries in the repo.</p>
+<ul>
+<li>Reduces the size of the repo - no large binaries in there anymore</li>
+<li>Versioned packages - For each new version of Sitecore, the Nuget package only has to be built once. You no longer have to update a libs folder for every project, when it is time to upgrade, just upgrade the Nuget Package</li>
+<li>Targeted packages - Build the packages in to small units. Then it is simple for your projects to only reference the Sitecore binaries required.</li>
+<li>Build servers - Set the solution to Enable Nuget Package Restore on build, and your CI/CD build agents will just download the correct versions of your Sitecore dependencies for the project</li>
+</ul>
+<h2 id="How-to-do-it"><a href="#How-to-do-it" class="headerlink" title="How to do it?"></a>How to do it?</h2><h4 id="Step-1-Create-a-local-Nuget-repository"><a href="#Step-1-Create-a-local-Nuget-repository" class="headerlink" title="Step 1: Create a local Nuget repository"></a>Step 1: Create a local Nuget repository</h4><p>There are some very good step-by-step instructions on how to host your own <a href="https://docs.nuget.org/Create/Hosting-Your-Own-NuGet-Feeds#user-content-creating-remote-feeds" target="_blank" rel="noopener">Nuget repository</a>. There are a few options on where to host the Nuget repository. At <a href="http://lightmaker.com" target="_blank" rel="noopener">Lightmaker</a> we have our own internally hosted repository that is accessible to the internal network and all build servers. You could also host all the packages on a network share that is visible to everyone that needs it. </p>
+<p>Once the repository has been created, each developer will need to add the new feed to the <strong>Package Sources</strong> under the <strong>Package Manager</strong> node in the <strong>Options</strong> dialog.</p>
+
+<p>In the <strong>Name</strong> box, enter a name for your feed and in the <strong>Source</strong> box, enter the path of your feed. Either the local path or the url of your remote repo.</p>
+<img src="/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/Package-Sources-With-Custom-Feed.png" title="Custom Feed Added">
+<p>Click the <strong>Update</strong> button. You can now use this from the <strong>Package Manager</strong> console or the <strong>Manage NuGet Packages</strong> dialog.</p>
+<h4 id="Step-2-Create-your-Sitecore-Packages"><a href="#Step-2-Create-your-Sitecore-Packages" class="headerlink" title="Step 2: Create your Sitecore Packages"></a>Step 2: Create your Sitecore Packages</h4><p>Next you need to create your Sitecore NuGet packages, I used <a href="https://npe.codeplex.com/" target="_blank" rel="noopener">Nuget Package Explorer</a> to create the packages.</p>
+<p>Sitecore.Core:</p>
+<ul>
+<li>Sitecore.Kernel.dll</li>
+</ul>
+<p>Sitecore.Search</p>
+<ul>
+<li>Sitecore.ContentSearch.dll</li>
+<li>Sitecore.ContentSearch.Linq.dll</li>
+</ul>
+<p>Sitecore.Mvc</p>
+<ul>
+<li>Sitecore.Mvc.dll</li>
+</ul>
+<p>To cope with the different versions of the Sitecore binaries, the package version numbers are matched to the Sitecore release version.</p>
+<p>Sitecore 8 Initial Release : 8.0<br>Sitecore 8 Update 1 : 8.1 etc…</p>
+<h4 id="Step-3-Add-the-Dependencies-to-Your-Project"><a href="#Step-3-Add-the-Dependencies-to-Your-Project" class="headerlink" title="Step 3: Add the Dependencies to Your Project"></a>Step 3: Add the Dependencies to Your Project</h4><p>Now you can simply use the Nuget Package Manager to add the dependencies to your Visual Studio project.</p>
+<p>Happy coding…</p>
+<p>–Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/" data-id="cka5tzgao006fgsvrtkehgozm" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nuget/">Nuget</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/15/Sitecore-8-Bug-Uploading-Images-in-Zip-Files/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore 8 Bug Uploading Images in Zip Files
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/08/11/Sitecore-Instance-Manager-Tools-You-Might-Not-Know-About/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore Instance Manager - Tools You Might Not Know About</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/08/17/Use-Nuget-to-Manage-Your-Sitecore-Dependencies/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

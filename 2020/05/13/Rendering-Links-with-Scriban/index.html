@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Rendering Links with Scriban | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Rendering a General Link in Sitecore MVC is pretty simple using the FieldRenderer: 123&amp;lt;div&amp;gt;    @Html.Sitecore().Field(&amp;quot;LinkField&amp;quot;)&amp;lt;/div&amp;gt; It uses the attributes of the General Lin">
+<meta name="keywords" content="Sitecore,SxA,Scriban,Rendering Variants">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rendering Links with Scriban">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2020/05/13/Rendering-Links-with-Scriban/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Rendering a General Link in Sitecore MVC is pretty simple using the FieldRenderer: 123&amp;lt;div&amp;gt;    @Html.Sitecore().Field(&amp;quot;LinkField&amp;quot;)&amp;lt;/div&amp;gt; It uses the attributes of the General Lin">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-13T21:02:56.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rendering Links with Scriban">
+<meta name="twitter:description" content="Rendering a General Link in Sitecore MVC is pretty simple using the FieldRenderer: 123&amp;lt;div&amp;gt;    @Html.Sitecore().Field(&amp;quot;LinkField&amp;quot;)&amp;lt;/div&amp;gt; It uses the attributes of the General Lin">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header">uncategorized</h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Rendering-Links-with-Scriban" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Rendering Links with Scriban
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2020/05/13/Rendering-Links-with-Scriban/" class="article-date">
+  <time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Rendering a <code>General Link</code> in Sitecore MVC is pretty simple using the <code>FieldRenderer</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    @Html.Sitecore().Field(&quot;LinkField&quot;)</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>It uses the attributes of the <code>General Link</code> field to create an <code>&lt;a&gt;</code> tag as a text link. But what if you want to use something more complex, like an image as the link or an entire promo card?</p>
+<p>In MVC that is still pretty simple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    @Html.Sitecore().BeginField(&quot;LinkField&quot;)</span><br><span class="line">    @Html.Sitecore().Field(&quot;ImageField&quot;)</span><br><span class="line">    @Html.Sitecore().EndField()</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    @Html.Sitecore().Field(&quot;Link&quot;, new &#123;text = @Html.Sitecore().Field(&quot;Image&quot;)&#125;)</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Its-tricky-with-Scriban"><a href="#Its-tricky-with-Scriban" class="headerlink" title="Its tricky with Scriban"></a>Its tricky with Scriban</h2><p>But with SXA and Scriban rendering variants, it becomes a little more tricky to do that. With Scriban we have the <code>sc_link</code> object along with the standard field renderer. So there are a few ways to render a standard text link:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- Standard field render using the item object --&gt;</span><br><span class="line">&lt;div class=&quot;field-promolink&quot;&gt;</span><br><span class="line">    &#123;&#123; i_item.PromoLink &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Using the sc_link object --&gt;</span><br><span class="line">&lt;div class=&quot;field-promolink&quot;&gt;</span><br><span class="line">    &lt;a href=&quot;&#123;&#123; sc_link i_item &#125;&#125;&quot;&gt;&#123;&#123; i_item.display_name &#125;&#125;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>Using the <code>sc_link</code> object we can even add an image to the link:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;field-promolink&quot;&gt;</span><br><span class="line">    &lt;a href=&quot;&#123;&#123; sc_link i_item &#125;&#125;&quot;&gt;&#123;&#123; i_item.ImageField &#125;&#125;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>But that does limit what a content editor can do with a <code>General Link</code> field. It only uses the url attribute of the field and ignores things like the target, css class names, title text for ADA compliance etc… It also doesn’t allow for things like anchor links or email links etc…</p>
+<p>What we really need is a <code>BeginField</code> and <code>EndField</code> options for Scriban. Fortunately, this is Sitecore and as with most things in Sitecore, we can add that!</p>
+<h2 id="Adding-the-Processor"><a href="#Adding-the-Processor" class="headerlink" title="Adding the Processor"></a>Adding the Processor</h2><p>For the processor, we need to add 2 new functions to scriban, <code>sc_beginfield</code> and <code>sc_endfield</code>. <code>sc_endfield</code> is going to be very simple, no parameters will be passed to it. But <code>sc_beginfield</code> will need to have the same setup as the <code>sc_field</code> function that is out of the box. So let’s start by looking at that processor and creating the customisation there. To add a customization we have to implement <code>IGenerateScribanContextProcessor</code>, but also we want to derive our class from <code>FieldRendererBase</code>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BeginEndFieldProcessor</span> : <span class="title">FieldRendererBase</span>, <span class="title">IGenerateScribanContextProcessor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">readonly</span> IPageMode PageMode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IScribanRenderCache _scribanRenderCache;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">delegate</span> <span class="keyword">string</span> <span class="title">BeginRenderDelegate</span>(<span class="params">Item item, <span class="keyword">object</span> fieldName, ScriptArray parameters</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">delegate</span> <span class="keyword">string</span> <span class="title">EndRenderDelegate</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BeginEndFieldProcessor</span>(<span class="params">IPageMode pageMode, IScribanRenderCache scribanRenderCache</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        PageMode = pageMode;</span><br><span class="line">        _scribanRenderCache = scribanRenderCache;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">GenerateScribanContextPipelineArgs args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        RenderingWebEditingParams = args.RenderingWebEditingParams;</span><br><span class="line">        args.GlobalScriptObject.Import(<span class="string">"sc_beginfield"</span>, <span class="keyword">new</span> BeginRenderDelegate(BeginRenderImpl));</span><br><span class="line">        args.GlobalScriptObject.Import(<span class="string">"sc_endfield"</span>, <span class="keyword">new</span> EndRenderDelegate(EndRenderImpl));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">BeginRenderImpl</span>(<span class="params">Item item, <span class="keyword">object</span> field, ScriptArray parameters</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> parametersCollection = <span class="keyword">new</span> NameValueCollection();</span><br><span class="line">        <span class="keyword">if</span> (parameters != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">object</span> parameter <span class="keyword">in</span> parameters)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (parameter <span class="keyword">is</span> ScriptArray scriptArray &amp;&amp; scriptArray.Count &gt; <span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    parametersCollection.Add(scriptArray[<span class="number">0</span>].ToString(), scriptArray[<span class="number">1</span>].ToString());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">string</span> fieldName = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">switch</span> (field)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="keyword">string</span> fieldString:</span><br><span class="line">                fieldName = fieldString;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> ScriptArray array:</span><br><span class="line">                <span class="keyword">using</span> (List&lt;<span class="keyword">object</span>&gt;.Enumerator enumerator = array.GetEnumerator())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">while</span> (enumerator.MoveNext())</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span> (enumerator.Current <span class="keyword">is</span> <span class="keyword">string</span> current)</span><br><span class="line">                        &#123;</span><br><span class="line">                            fieldName = fieldName ?? current;</span><br><span class="line">                            <span class="keyword">bool</span> experienceEditorEditing = PageMode.IsExperienceEditorEditing;</span><br><span class="line">                            Field currentField = item.Fields[current];</span><br><span class="line">                            <span class="keyword">if</span> (currentField != <span class="literal">null</span>)</span><br><span class="line">                            &#123;</span><br><span class="line">                                <span class="keyword">if</span> (experienceEditorEditing)</span><br><span class="line">                                &#123;</span><br><span class="line">                                    fieldName = current;</span><br><span class="line">                                    <span class="keyword">break</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="keyword">if</span> (!IsNullOrWhiteSpace(currentField.GetValue(<span class="literal">true</span>)))</span><br><span class="line">                                &#123;</span><br><span class="line">                                    fieldName = current;</span><br><span class="line">                                    <span class="keyword">break</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        RenderFieldResult fieldRenderer = CreateFieldRenderer(item, fieldName, parametersCollection).RenderField();</span><br><span class="line">        _scribanRenderCache.PushEndFieldStack(fieldRenderer.LastPart ?? Empty);</span><br><span class="line">        <span class="keyword">return</span> fieldRenderer.FirstPart;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">EndRenderImpl</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> _scribanRenderCache.PopEndFieldStack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>So lets break that down. First we are creating 2 functions for the implementation of the 2 scriban functions and we are registering them with the <code>args.GlobalScriptObject</code>.</p>
+<p>The <code>BeginRenderImpl</code> implementation is mostly a copy of the <code>AddFieldRendererFunction.RenderFieldImpl</code> that adds the <code>sc_field</code> function to Scriban. This uses the item, field and parameters array to create a new <code>FieldRenderer</code> object:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RenderFieldResult fieldRenderer = CreateFieldRenderer(item, fieldName, parametersCollection).RenderField();</span><br></pre></td></tr></table></figure>
+<p>In the original, it just returns the <code>.Result()</code> of that, which contains the entire rendered out content. But we only want to return the <code>.FirstPart</code> in this call. But we also need to store the <code>.LastPart</code> so that when we call <code>sc_endfield</code>, it renders the correct closing tags for the field we are rendering.</p>
+<p>To do this I added and <code>IScribanRenderingCache</code> that is registered with the container as a <code>Scoped</code> object. This internally contains a stack that we can push the results of <code>.LastPart</code> onto, now when we call <code>sc_endfield</code>, that will pop the stack and get the corresponding closing tag. Using a stack means we can also nest <code>sc_beginfield</code> if we needed to, the call to <code>sc_endfield</code> will always provide the correct closing tag.</p>
+<h2 id="Using-the-Functions-in-a-Scriban-Template"><a href="#Using-the-Functions-in-a-Scriban-Template" class="headerlink" title="Using the Functions in a Scriban Template"></a>Using the Functions in a Scriban Template</h2><p>So how do we use these? Lets say we just want a simple Image Field rendered as the contents of an <code>&lt;a&gt;</code> tag:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; sc_beginrender i_item <span class="string">'Link'</span> [[<span class="string">'text'</span>, <span class="string">' '</span>]]&#125;&#125;</span><br><span class="line">    &#123;&#123; sc_field i_item <span class="string">'Image'</span>  &#125;&#125;</span><br><span class="line">&#123;&#123; sc_endrender &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>will render as:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/url/set/in/field"</span> <span class="attr">title</span>=<span class="string">"Alt text from general link attributes"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/-/media/myimage.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>What about something more complex?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; sc_beginrender i_item <span class="string">'Link'</span> [[<span class="string">'class'</span>, <span class="string">'font-uppercase font-bold'</span>], [<span class="string">'text'</span>, <span class="string">' '</span>]]&#125;&#125;</span><br><span class="line">    &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"font-icon &#123;&#123; sc_raw i_item.Icon.target 'Value' &#125;&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">    &lt;h5&gt;&#123;&#123; sc_link_text i_item <span class="string">'Link'</span> &#125;&#125; &lt;<span class="regexp">/h5&gt;</span></span><br><span class="line"><span class="regexp">&#123;&#123; sc_endrender &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>will render as:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/url/set/in/field"</span> <span class="attr">class</span>=<span class="string">"font-uppercase font-bold"</span> <span class="attr">title</span>=<span class="string">"Alt text from general link attributes"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"font-icon fa fa-box"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>The Link Description<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Notice that we can still pass in all the attributes to the <code>sc_beginrender</code> that you can with <code>sc_field</code>. You may also notice that we have passed in <code>[&#39;text&#39;, &#39; &#39;]</code> as an attribute. This tells the <code>FieldRenderer</code> to ignore the value set in the <code>Description</code> attribute of the general link. It replaces it with a space. If we leave that out, the first example would render as:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/url/set/in/field"</span> <span class="attr">title</span>=<span class="string">"Alt text from general link attributes"</span>&gt;</span>Link Description</span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/-/media/myimage.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This doesn’t just work with link fields either, it works with anything that can be rendered through the <code>FieldRenderer</code>, the actual outcome will depend on the field type used, YMMV.</p>
+<h2 id="tl-dr"><a href="#tl-dr" class="headerlink" title="tl/dr;"></a>tl/dr;</h2><p>Get the code here: <a href="https://github.com/GuitarRich/sxa-modules" target="_blank" rel="noopener">https://github.com/GuitarRich/sxa-modules</a> </p>
+<p>Enjoy</p>
+<ul>
+<li>Richard Seal</li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://doc.sitecore.com/developers/sxa/93/sitecore-experience-accelerator/en/the-embedded-functions-for-the-scriban-template.html#idm45208463571696_body" target="_blank" rel="noopener">The embedded functions for the Scriban template</a></li>
+</ul>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2020/05/13/Rendering-Links-with-Scriban/" data-id="cka5tzg99002ygsvrytxp8ayr" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2020/05/13/Rendering-Links-with-Scriban/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rendering-Variants/">Rendering Variants</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scriban/">Scriban</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SxA/">SxA</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore Docker: Making Those Urls Pretty</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2020/05/13/Rendering-Links-with-Scriban/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Sitecore.React - Getting Started - 1. Webpack | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Welcome to the Sitecore.React getting started guide. In this guide we will walk through getting webpack setup and the structure of our site. Over the next few tutorials we will build the front end sit">
+<meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sitecore.React - Getting Started - 1. Webpack">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Welcome to the Sitecore.React getting started guide. In this guide we will walk through getting webpack setup and the structure of our site. Over the next few tutorials we will build the front end sit">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/01-FolderSetup.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/helloworld.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitecore.React - Getting Started - 1. Webpack">
+<meta name="twitter:description" content="Welcome to the Sitecore.React getting started guide. In this guide we will walk through getting webpack setup and the structure of our site. Over the next few tutorials we will build the front end sit">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/01-FolderSetup.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Sitecore-React-Getting-Started" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Sitecore.React - Getting Started - 1. Webpack
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2017/07/04/Sitecore-React-Getting-Started/" class="article-date">
+  <time datetime="2017-07-04T13:35:00.000Z" itemprop="datePublished">2017-07-04</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Welcome to the Sitecore.React getting started guide. In this guide we will walk through getting webpack setup and the structure of our site. Over the next few tutorials we will build the front end site and then bring it all over to Sitecore!</p>
+<p>All the code for this tutorial can be found here: <a href="https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-1" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore.react.tutorial/tree/getting-started-1</a>.</p>
+<h1 id="Getting-Started-with-Webpack"><a href="#Getting-Started-with-Webpack" class="headerlink" title="Getting Started with Webpack"></a>Getting Started with Webpack</h1><h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>For this tutorial you need to have the following installed on your machine:</p>
+<ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></li>
+</ul>
+<p>I am also going to assume a level of knowledge on <a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack</a> and <a href="https://facebook.github.io/react/" target="_blank" rel="noopener">reactjs</a>. If you want to find out more on webpack - take a look at the <a href="https://webpack.js.org/guides/getting-started/" target="_blank" rel="noopener">getting started guide here</a>. You can get some good info on <a href="https://facebook.github.io/react/" target="_blank" rel="noopener">reactjs</a> <a href="https://facebook.github.io/react/docs/hello-world.html" target="_blank" rel="noopener">here</a>.</p>
+<p>There will be features of <a href="http://es6-features.org" target="_blank" rel="noopener">ES6</a> used too. You can see an <a href="https://github.com/lukehoban/es6features" target="_blank" rel="noopener">overview</a> of ES6 <a href="https://github.com/lukehoban/es6features" target="_blank" rel="noopener">here</a>. You will also hear the word <a href="https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them" target="_blank" rel="noopener">transpile</a> often - have a read of the article linked if you are unsure <a href="https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them" target="_blank" rel="noopener">what a transpiler does</a>.</p>
+<p>This tutorial will be based around how we can create the <a href="https://github.com/GuitarRich/sitecore.react.project" target="_blank" rel="noopener">sitecore.react.project</a> sample project. For those of you that have cloned it already, the repo is not fully complete yet. I will do my best to get the serialized items and the readme updated asap.</p>
+<h2 id="Basic-Setup"><a href="#Basic-Setup" class="headerlink" title="Basic Setup"></a>Basic Setup</h2><p>There are a few main components of a Sitecore.React web application. For the purposes of this tutorial we will assume that you are building a full web application with React. If you are just using it for a few components and mixing that up with standard MVC Controller and View renderings, the basics are still the same, just without the main front end application part.</p>
+<p>For the React components and front end build we will use webpack to transpile, bundle and minify the javascript. All the react components will be bundled into a single javascript file. To help with the differences between the front end react site and the Sitecore site we will build 3 versions of the main JavaScript file:</p>
+<ul>
+<li><strong>fed.js</strong>: This is the main source for the react front end application. It will be where we setup react, the FED router and our application that runs outside of Sitecore</li>
+<li><strong>client.js</strong>: This will be the main source for all JavaScript that is used in the Sitecore implementation. It will be referenced in the main layout and downloaded to the users browser. It will contain all the react components along with all the js for the application to run</li>
+<li><strong>server.js</strong>: This is the main source for all server side JavaScript. It will contain all the react components that ReactJS.Net needs to know about. Alot will be identical to the <strong>client.js</strong> file, but this file will exclude any DOM manipulation done outside of react. e.g. event handlers, jQuery DOM manupulation etc… That is only ever in the <strong>client.js</strong> as our server side rendering does not need to know about it.</li>
+</ul>
+<p>The front end react site will also conform to some standards to make the transition of the react files to Sitecore seamless. </p>
+<ul>
+<li>First, we will setup a static data store that the front end team can use to populate the react site with content before it is delivered by Sitecore. The structure of each data model should be defined and agreed up by both front and back end teams.</li>
+<li>The front end team will use a Sitecore placeholders module and the locations of the placeholders should also be agreed upon with input from Sitecore developers.</li>
+</ul>
+<p>It should become clear when going through the tutorials where each part fits in, so lets get on with configuring webpack and creating the obligatory <strong>Hello World</strong> application!</p>
+<h2 id="Setup-Webpack"><a href="#Setup-Webpack" class="headerlink" title="Setup Webpack"></a>Setup Webpack</h2><p>First lets create a directory, initialize npm and install webpack locally. For this tutorial we will assume you start in <code>C:\projects</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir sitecore.react.project &amp;&amp; cs sitecore.react.project</span><br><span class="line">npm init -t</span><br><span class="line">npm install --save-dev webpack</span><br></pre></td></tr></table></figure>
+<p>Now we want to setup our project structure. The finished project will have the following folder structure:</p>
+<img src="/2017/07/04/Sitecore-React-Getting-Started/01-FolderSetup.png" title="Project Folder Setup">
+<p>The <code>src/App</code> folder will contain all the React components. <code>src/Feature</code>, <code>src/Foundation</code> and <code>src/Project</code> contain all the helix modules for the project.</p>
+<p>To setup webpack we use the <code>webpack.config.js</code> file in the root of the project. Create this file and we will configure it like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debug = process.env.NODE_ENV !== <span class="string">"production"</span>;</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  context: path.join(__dirname, <span class="string">"src/app"</span>),</span><br><span class="line">  devtool: debug ? <span class="string">"inline-sourcemap"</span> : <span class="literal">null</span>,</span><br><span class="line">  entry: &#123;</span><br><span class="line">    fed: <span class="string">"./fed.js"</span>,</span><br><span class="line">    client: <span class="string">"./client.js"</span>,</span><br><span class="line">    server: <span class="string">"./server.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    loaders: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.json$/</span>,</span><br><span class="line">        loader: <span class="string">'json'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        query: &#123;</span><br><span class="line">          presets: [<span class="string">'react'</span>, <span class="string">'es2015'</span>, <span class="string">'stage-0'</span>],</span><br><span class="line">          plugins: [<span class="string">'react-html-attrs'</span>, <span class="string">'transform-decorators-legacy'</span>, <span class="string">'transform-class-properties'</span>],</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">'.js'</span>, <span class="string">'.jsx'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: __dirname + <span class="string">"/src/app"</span>,</span><br><span class="line">    filename: <span class="string">"[name].min.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: debug ? [] : [</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.DedupePlugin(),</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin()</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Lets break that down, most of it is a pretty standard webpack config. The bits to notice are:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123;</span><br><span class="line">  fed: <span class="string">"./fed.js"</span>,</span><br><span class="line">  client: <span class="string">"./client.js"</span>,</span><br><span class="line">  server: <span class="string">"./server.js"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>Here we are defining 3 entry points for webpack. This tells webpack that we are using those 3 files as our source for bundling. We have 3 seperate files for all <code>Sitecore.React</code> projects. These are the same files mentioned earlier: <code>fed.js</code>, <code>client.js</code> and <code>server.js</code>.</p>
+<p>We will create these files in the next step.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">  path: __dirname + <span class="string">"/src/app"</span>,</span><br><span class="line">  filename: <span class="string">"[name].min.js"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>This section just defines the output files generated by webpack. Using <code>[name]</code> means that it will generate 3 files that match the entry files names with <code>.min.js</code> appended.</p>
+<h2 id="Setting-Up-the-React-Application"><a href="#Setting-Up-the-React-Application" class="headerlink" title="Setting Up the React Application"></a>Setting Up the React Application</h2><p>It’s not the purpose of this tutorial to teach how to write a reactjs application. There are plenty of resources already out there for that. What we will do is use the <a href="https://github.com/GuitarRich/sitecore.react.project" target="_blank" rel="noopener">sitecore.react.project</a></p>
+<p>Now we can start with out react application. The application is made up of the main entry point - this sets up the react router and some routes.</p>
+<p>Make sure that your <code>package.json</code> file contains the following devDependencies:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">  <span class="string">"babel-core"</span>: <span class="string">"^6.17.0"</span>,</span><br><span class="line">  <span class="string">"babel-loader"</span>: <span class="string">"^6.2.0"</span>,</span><br><span class="line">  <span class="string">"babel-plugin-add-module-exports"</span>: <span class="string">"^0.1.2"</span>,</span><br><span class="line">  <span class="string">"babel-plugin-react-html-attrs"</span>: <span class="string">"^2.0.0"</span>,</span><br><span class="line">  <span class="string">"babel-plugin-transform-class-properties"</span>: <span class="string">"^6.3.13"</span>,</span><br><span class="line">  <span class="string">"babel-plugin-transform-decorators-legacy"</span>: <span class="string">"^1.3.4"</span>,</span><br><span class="line">  <span class="string">"babel-preset-es2015"</span>: <span class="string">"^6.3.13"</span>,</span><br><span class="line">  <span class="string">"babel-preset-react"</span>: <span class="string">"^6.3.13"</span>,</span><br><span class="line">  <span class="string">"babel-preset-stage-0"</span>: <span class="string">"^6.3.13"</span>,</span><br><span class="line">  <span class="string">"bootstrap"</span>: <span class="string">"^3.3.7"</span>,</span><br><span class="line">  <span class="string">"expose-loader"</span>: <span class="string">"^0.7.3"</span>,</span><br><span class="line">  <span class="string">"jquery"</span>: <span class="string">"^3.2.1"</span>,</span><br><span class="line">  <span class="string">"jquery-ui"</span>: <span class="string">"^1.12.1"</span>,</span><br><span class="line">  <span class="string">"react"</span>: <span class="string">"^15.6.1"</span>,</span><br><span class="line">  <span class="string">"react-bootstrap"</span>: <span class="string">"^0.31.0"</span>,</span><br><span class="line">  <span class="string">"react-dom"</span>: <span class="string">"^15.6.1"</span>,</span><br><span class="line">  <span class="string">"react-router"</span>: <span class="string">"^4.1.1"</span>,</span><br><span class="line">  <span class="string">"react-router-dom"</span>: <span class="string">"^4.1.1"</span>,</span><br><span class="line">  <span class="string">"webpack"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">  <span class="string">"webpack-dev-server"</span>: <span class="string">"^2.5.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Then run <code>npm install</code> in the root of your project.</p>
+<p>Next lets create our <code>index.html</code> file. This will contain the main dom elements that our react application will be rendered too. You can add your standard headers, css files etc… In the body make sure we have an app div element and include bundled fed javascript file:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/fed.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Now create the file <code>fed.js</code> in the <code>src/App</code> folder. We will import jQuery globally and add in React and the React Router:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global.jQuery = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'jquery-ui'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br></pre></td></tr></table></figure>
+<p>Now we can initialize the react application and render it to the div we created earlier:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;h1&gt;Hello World&lt;<span class="regexp">/h1&gt;,</span></span><br><span class="line"><span class="regexp">app);</span></span><br></pre></td></tr></table></figure>
+<p>As a final step - lets enable the webpack dev server. Open your <code>package.json</code> file and add the following entry to the <code>scripts</code> section:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dev"</span>: <span class="string">"webpack-dev-server --content-base src/App --inline --hot"</span></span><br></pre></td></tr></table></figure>
+<p>Finally we will run <code>npm run dev</code> in the console. This will run the webpack dev server on port 8080. Now in your browser go to <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> - if everything has worked you should see the hello world text being rendered by react:</p>
+<img src="/2017/07/04/Sitecore-React-Getting-Started/helloworld.png">
+<p>In the next tutorial we will start creating React components and learn how to setup placeholders.</p>
+<hr>
+<p>This is the first article in a series of tutorials on Sitecore.React:</p>
+<ol>
+<li><a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a></li>
+<li><a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" title="Sitecore.React - Getting Started - 2. Creating Components">Sitecore.React - Getting Started - 2. Creating Components</a></li>
+<li><a href="/2017/07/11/Sitecore-React-Getting-Started-3-Data/" title="Sitecore.React - Getting Started - 3. Data">Sitecore.React - Getting Started - 3. Data</a>
+</li>
+</ol>
+<p>If you have any questions - feel free to hit me up on <a href="https://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack</a> - my user is @GuitarRich!</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/" data-id="cka5tzga70058gsvrs68ls9z7" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-React/">Sitecore.React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/05/Sitecore-React-Getting-Started-Creating-Components/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore.React - Getting Started - 2. Creating Components
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2017/06/26/Sitecore-React-v2-0-Released/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore.React v2.0 - Released</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/07/04/Sitecore-React-Getting-Started/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

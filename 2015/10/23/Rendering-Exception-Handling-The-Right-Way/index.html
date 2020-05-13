@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Rendering Exception Handling - The Right Way | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I see a few different ways of handling errors and error pages in Sitecore. I really like the way that we do it at Lightmaker, it makes things nice and simple and easy to debug! It also allows us as de">
+<meta name="keywords" content="Sitecore,Renderings,Exceptions,MVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rendering Exception Handling - The Right Way">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/10/23/Rendering-Exception-Handling-The-Right-Way/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="I see a few different ways of handling errors and error pages in Sitecore. I really like the way that we do it at Lightmaker, it makes things nice and simple and easy to debug! It also allows us as de">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rendering Exception Handling - The Right Way">
+<meta name="twitter:description" content="I see a few different ways of handling errors and error pages in Sitecore. I really like the way that we do it at Lightmaker, it makes things nice and simple and easy to debug! It also allows us as de">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Rendering-Exception-Handling-The-Right-Way" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Rendering Exception Handling - The Right Way
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/10/23/Rendering-Exception-Handling-The-Right-Way/" class="article-date">
+  <time datetime="2015-10-23T16:02:08.000Z" itemprop="datePublished">2015-10-23</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>I see a few different ways of handling errors and error pages in Sitecore. I really like the way that we do it at <a href="http://www.lightmaker.com" target="_blank" rel="noopener">Lightmaker</a>, it makes things nice and simple and easy to debug! It also allows us as developers to follow good practice in our business and data layers and not worry about exception handling.</p>
+<h3 id="Don’t-Catch-Exceptions"><a href="#Don’t-Catch-Exceptions" class="headerlink" title="Don’t Catch Exceptions!"></a>Don’t Catch Exceptions!</h3><p><a href="https://msdn.microsoft.com/en-us/library/ms182137.aspx" target="_blank" rel="noopener">CA1031: Do not catch general exception types</a> - Best practice for exception handling says that we should never catch general exception types! If you have this in your code, its time to think again and refactor:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Do something </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(Exception ex)</span><br><span class="line">&#123;</span><br><span class="line">    Log.Error(<span class="string">"message"</span>, <span class="keyword">this</span>, ex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="The-first-rule-of-exception-handling-is-Do-not-do-exception-handling"><a href="#The-first-rule-of-exception-handling-is-Do-not-do-exception-handling" class="headerlink" title="The first rule of exception handling is: Do not do exception handling!"></a><a href="http://mikehadlow.blogspot.com/2009/08/first-rule-of-exception-handling-do-not.html" target="_blank" rel="noopener">The first rule of exception handling is: Do not do exception handling!</a></h4><blockquote>
+<p>Catching <code>System.Exception</code> is the worst possible exception handling strategy. What happens when the application continues executing? It’s probably now in an inconsistent state that will cause extremely hard to debug problems in some unrelated place, or even worse, inconsistent corrupt data that will live on in the database for years to come.</p>
+</blockquote>
+<p>It is so much better to simply allow any exceptins to bubble up to the top of the stack and leave a clear message and stack trace in the error log. Depending on the application, give some indication that there has been a problem in the UI.</p>
+<h3 id="How-can-we-do-this-with-Sitecore"><a href="#How-can-we-do-this-with-Sitecore" class="headerlink" title="How can we do this with Sitecore"></a>How can we do this with Sitecore</h3><p>In your Sitecore implementation, if you are following a good componentised practice, you probably have a few layers in your code. This is an example of what you might have in an MVC Sitecore project:</p>
+<p><strong>Business Layer</strong>: Handles getting data from Sitecore for searches or other complex functionality.</p>
+<p><strong>Controllers</strong>: Communicates with the business layer or Sitecore API to get build a view model and pass it to the view.</p>
+<p><strong>Presentation</strong>: Views, razor scripts that mix the markup and the data from the view model and present it to the user.</p>
+<p>At any point in this flow of data from the Sitecore database to the user and exception could occur. I’m sure you are all good developers and make sure that objects are not null before using them etc… But there are just something that are out of our control!</p>
+<p>Also some parts of our code might need to throw an exception. What if a required field has not been filled in by an editor. Somehow, despite validation, something has gone wrong. In these cases we <em>should</em> throw an exception, something <em>has</em> gone wrong and it should be logged and someone notified.</p>
+<h3 id="Where-should-we-handle-exceptions"><a href="#Where-should-we-handle-exceptions" class="headerlink" title="Where should we handle exceptions"></a>Where should we handle exceptions</h3><p>The best thing would be a global exception handler at the application level, that catches any unhandled exception that our application throws. In Sitecore MVC we can do this by overriding the <code>ExecuteRenderer</code> processor in the <code>mvc.renderRendering</code> pipeline. In the process method, we can wrap the <code>base.Process</code> method with a try/catch and then handle any exceptions that occur.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">RenderRenderingArgs args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">base</span>.Process(args);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        args.Cacheable = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> parametersException = GetRenderingParametersException(ex);</span><br><span class="line">        <span class="keyword">if</span> (parametersException != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.RenderParametersError(args, parametersException);</span><br><span class="line">            Log.Error(parametersException.Message, parametersException, <span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>.RenderError(args, ex);</span><br><span class="line">            Log.Error(ex.Message, ex, <span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Create this include file to override the processor:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">mvc.renderRendering</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">"Sitecore.Mvc.Pipelines.Response.RenderRendering.ExecuteRenderer, Sitecore.Mvc"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">patch:attribute</span> <span class="attr">name</span>=<span class="string">"type"</span>&gt;</span>Sitecore.Exception.Handler.Pipelines.Response.RenderRendering.RenderRendering.ExecuteRenderer, Sitecore.Exception.Handler<span class="tag">&lt;/<span class="name">patch:attribute</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">processor</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">mvc.renderRendering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>If we catch an exception, we can log the error and also render a custom view in place of the original view for the rendering. Doing this means that we can display meaningful error messages for predefined conditions. A standard setup at Lightmaker is to display the error message if we are in the Page/Experience editor or if <code>customErrors mode=&quot;Off&quot;</code></p>
+<p>To render the error view, we render the view to a string and use the <code>RenderRenderingsArgs.Writer</code> to output the reusult:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">RenderError</span>(<span class="params">RenderRenderingArgs args, Exception ex</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    args.Writer.Write(<span class="keyword">this</span>.RenderViewToString(<span class="string">"Errors/RenderingError"</span>, GetRenderingErrorModel(args, ex), GetControllerContext(args)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RenderViewToString:</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">RenderViewToString</span>(<span class="params"><span class="keyword">string</span> viewName, <span class="keyword">object</span> model, ControllerContext controllerContext</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(viewName))</span><br><span class="line">    &#123;</span><br><span class="line">        viewName = controllerContext.RouteData.GetRequiredString(<span class="string">"action"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    controllerContext.Controller.ViewData.Model = model;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> stringWriter = <span class="keyword">new</span> StringWriter())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> viewEngineResult = ViewEngines.Engines.FindView(controllerContext, viewName, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> viewContext = <span class="keyword">new</span> ViewContext(</span><br><span class="line">            controllerContext,</span><br><span class="line">            viewEngineResult.View,</span><br><span class="line">            controllerContext.Controller.ViewData,</span><br><span class="line">            controllerContext.Controller.TempData,</span><br><span class="line">            stringWriter);</span><br><span class="line"></span><br><span class="line">        viewEngineResult.View.Render(viewContext, stringWriter);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> stringWriter.GetStringBuilder().ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This means that in our controllers, we can throw a <code>RenderingParameterException</code> or a <code>DatasourceNotSet</code> exception if the datasource or rendering parameters have not been set correctly. In the page/experience editor, the user would get a message indicating that the data needs to be fixed. But on the delivery website, the error is hidden from the end users.</p>
+<p>Also when debugging the site locally or in a test/qa environment - where we can set custom errors to <code>Off</code>, we can see the errors being caught.</p>
+<p>The razor view for a rendering error would look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@model Sitecore.Exception.Handler.Models.RenderingErrorModel</span><br><span class="line">         </span><br><span class="line">@if (!Sitecore.Context.PageMode.IsNormal || !HttpContext.Current.IsCustomErrorEnabled)</span><br><span class="line">&#123;</span><br><span class="line">    &lt;div class=&quot;error-messages&quot;&gt;</span><br><span class="line">        &lt;h4 class=&quot;error-header&quot;&gt;</span><br><span class="line">            Error while rendering the view [@Model.RenderingName] Please, make sure the rendering is configured properly or contact your administrator.</span><br><span class="line">        &lt;/h4&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            @foreach (var line in Model.Exception.ToString().Split(new[] &#123; Environment.NewLine &#125;, StringSplitOptions.RemoveEmptyEntries).Select(x =&gt; x.Trim()))</span><br><span class="line">            &#123;</span><br><span class="line">                &lt;li @(line.StartsWith(&quot;at&quot;) ? &quot;style=padding-left:40px;&quot; : string.Empty)&gt;@line&lt;/li&gt;</span><br><span class="line">            &#125;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">    &lt;!-- Error while rendering the view [@Model.RenderingName] - [@Model.Exception] --&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>For full details of the code, including the methods that are referenced but not listed here - please see the project at <a href="https://github.com/GuitarRich/sitecore-exception-handler" target="_blank" rel="noopener">https://github.com/GuitarRich/sitecore-exception-handler</a>. This is currently being made into an installable Sitecore package and will be submitted to the Market Place this week.</p>
+<p>Happy coding!</p>
+<p>–Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/10/23/Rendering-Exception-Handling-The-Right-Way/" data-id="cka5tzg97002rgsvr27hj0gjb" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/10/23/Rendering-Exception-Handling-The-Right-Way/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exceptions/">Exceptions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Renderings/">Renderings</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/26/Sitecore-Render-Field-Before-and-After-Values/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore Render Field - Before and After Values Fixed
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Using RequireJs with Sitecore 8 - Update</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/10/23/Rendering-Exception-Handling-The-Right-Way/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

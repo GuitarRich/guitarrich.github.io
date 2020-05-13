@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Custom Fonts Not Downloading in SXA Theme | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A collegue of mine ran into a weird problem recently with getting a custom font to download properly in his SXA site theme. Once I looked at the theme items, I realized the problem right away, its a p">
+<meta name="keywords" content="Sitecore,SxA,Themes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Custom Fonts Not Downloading in SXA Theme">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="A collegue of mine ran into a weird problem recently with getting a custom font to download properly in his SXA site theme. Once I looked at the theme items, I realized the problem right away, its a p">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamfiles.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamsitecoreitems.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamsitecoreitemsfixed.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.685Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Custom Fonts Not Downloading in SXA Theme">
+<meta name="twitter:description" content="A collegue of mine ran into a weird problem recently with getting a custom font to download properly in his SXA site theme. Once I looked at the theme items, I realized the problem right away, its a p">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamfiles.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/SxA/">SxA</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Custom-Fonts-Not-Downloading-in-SXA-Theme" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Custom Fonts Not Downloading in SXA Theme
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="article-date">
+  <time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>A collegue of mine ran into a weird problem recently with getting a custom font to download properly in his SXA site theme. Once I looked at the theme items, I realized the problem right away, its a problem that I ran into and I have helped out a number of developers on <a href="https://sitecore.chat" target="_blank" rel="noopener">Sitecore Slack</a> with the same problem, so I thought it time to have a more permanent record of this:</p>
+<h2 id="The-problem-with-fonts-in-SXA"><a href="#The-problem-with-fonts-in-SXA" class="headerlink" title="The problem with fonts in SXA"></a>The problem with fonts in SXA</h2><p>Here is a pretty typical setup for a <code>font-face</code> definition in your sass files:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family: &apos;Gotham&apos;;</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-medium.eot&apos;);</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-medium.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-medium.woff&quot;) format(&quot;woff&quot;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-medium.otf&quot;) format(&quot;opentype&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@font-face &#123;</span><br><span class="line">    font-family: &apos;Gotham-Bold&apos;;</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-bold.eot&apos;);</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-bold.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-bold.woff&quot;) format(&quot;woff&quot;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-bold.otf&quot;) format(&quot;opentype&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@font-face &#123;</span><br><span class="line">    font-family: &apos;Gotham-Black&apos;;</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-black.eot&apos;);</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-black.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-black.woff&quot;) format(&quot;woff&quot;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-black.otf&quot;) format(&quot;opentype&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@font-face &#123;</span><br><span class="line">    font-family: &apos;Gotham-Book&apos;;</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-book.eot&apos;);</span><br><span class="line">    src: url(&apos;../fonts/gotham/gotham-book.eot?#iefix&apos;) format(&apos;embedded-opentype&apos;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-book.woff&quot;) format(&quot;woff&quot;),</span><br><span class="line">    url(&quot;../fonts/gotham/gotham-book.otf&quot;) format(&quot;opentype&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And here are the corresponding font files:</p>
+<img src="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamfiles.png" title="Gotham Font Files">
+<p>So far, nothing strange about that, and in a classic Sitecore site where the files are stored on the file system, that would be all you need to do. In fact, if your FED team are styling the theme using the static html files exported by Creative Exchange, everything will look great.</p>
+<p>But now lets import that theme into Sitecore and all of a sudden the font files stop downloading properly. The mime type is wrong and the browser can’t decode the fonts. So what gives?</p>
+<p>Let’s look at the items created in Sitecore and see if you can spot the problem:</p>
+<img src="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamsitecoreitems.png" title="Gotham Font Files as Sitecore Items">
+<p>Spot the problem? When the files are uploaded to Sitecore, the file extension is stripped off and just added as meta data on the media item. When the browser makes a request to <code>../fonts/gotham/gotham-medium.woff, Sitecore ignores the</code>.woff<code>extension and tries to resolve</code>gotham-medium<code>to an item. As there are 7 items called</code>gotham-medium<code>in the folder, Sitecore will always return the first one it finds. Which in my case was</code>gotham-medium.eot` and that is not going to work in Chrome!</p>
+<h2 id="Rename-Your-Font-Files"><a href="#Rename-Your-Font-Files" class="headerlink" title="Rename Your Font Files"></a>Rename Your Font Files</h2><p>The simple answer here is to append the extension to the font file before uploading:</p>
+<img src="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/gothamsitecoreitemsfixed.png" title="Fixed font file names">
+<p>and update your sass to reference the new font names, now Sitecore know’s which font file you want.</p>
+<p>Hope this helps someone who might be having a similar problem!</p>
+<p>– Richard</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" data-id="cka5tzg8k001hgsvrglaer743" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SxA/">SxA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Themes/">Themes</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Sitecore Docker: Making Those Urls Pretty
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2019/05/20/SXA-Security-Headers-1-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">SXA Security Headers 1.1</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

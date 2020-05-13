@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Searching the Media Framework Module | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A number of our clients partner with video providers like Brightcove or Ooyala. To sync the content between Sitecore and the video provider, Sitecore have provided a module called the Media Framework.">
+<meta name="keywords" content="Sitecore,Media Framework,Ooyala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Searching the Media Framework Module">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="A number of our clients partner with video providers like Brightcove or Ooyala. To sync the content between Sitecore and the video provider, Sitecore have provided a module called the Media Framework.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/MediaFrameworkTree.png">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/MediaFrameworkFields.png">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.713Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Searching the Media Framework Module">
+<meta name="twitter:description" content="A number of our clients partner with video providers like Brightcove or Ooyala. To sync the content between Sitecore and the video provider, Sitecore have provided a module called the Media Framework.">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/MediaFrameworkTree.png">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Searching-the-Media-Framework-Module" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Searching the Media Framework Module
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/11/19/Searching-the-Media-Framework-Module/" class="article-date">
+  <time datetime="2015-11-19T21:23:54.000Z" itemprop="datePublished">2015-11-19</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>A number of our clients partner with video providers like Brightcove or Ooyala. To sync the content between Sitecore and the video provider, Sitecore have provided a module called the <a href="https://sdn.sitecore.net/Products/Sitecore%20Media%20Framework.aspx" target="_blank" rel="noopener"><strong>Media Framework</strong></a>. We are using the Ooyala Edition. The framework adds a new template, <strong>OoyalaVideo</strong>, and the content items are stores in an Item Bucket inside the Media Library.</p>
+<img src="/2015/11/19/Searching-the-Media-Framework-Module/MediaFrameworkTree.png" title="Media Framework Content Tree">
+<p>Because the items are in a bucket, to display a list we will use the <code>SearchAPI</code> to get lists of video items for display. The examples here are using <strong><a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a></strong> and <strong>Lucene</strong>, but can easily be modified to Glass/Synthesis or straight Sitecore, and adapted to a SOLR implementation. Here is the code for a simple paged list of video items ordered by date descending or ascending:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> IEnumerable&lt;IOoyalaVideo&gt; <span class="title">GetVideos</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">int</span> page,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">int</span> pageSize,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">string</span> sortBy,</span></span></span><br><span class="line"><span class="function"><span class="params">	<span class="keyword">out</span> <span class="keyword">int</span> totalResults</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> searchContext = <span class="keyword">this</span>.SearchManager.SearchContext)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> query = <span class="keyword">this</span>.ItemSearchFactory.Search(</span><br><span class="line">            searchContext.GetQueryable&lt;IOoyalaVideo&gt;()</span><br><span class="line">                .ContainsAnd(item =&gt; item.LabelsListValue, labelIds)</span><br><span class="line">            );</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sortBy == <span class="string">""</span> || sortBy == PagedListHelper.SortByVideoDescending)</span><br><span class="line">        &#123;</span><br><span class="line">            query = query.OrderByDescending(x =&gt; x.CreatedAt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (sortBy == PagedListHelper.SortByVideoAscending)</span><br><span class="line">        &#123;</span><br><span class="line">            query = query.OrderBy(x =&gt; x.CreatedAt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> results = query.GetResults();</span><br><span class="line">        totalResults = results.TotalSearchResults;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> results.Hits.Skip(pageSize * (page - <span class="number">1</span>)).Take(pageSize).Select(x =&gt; x.Document).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>All seemed to be working ok, except the sorting. It had no effect on the results being returned at all. On further investigation it turns out that the <code>MediaFramework</code> adds some custom fields to Sitecore.</p>
+<img src="/2015/11/19/Searching-the-Media-Framework-Module/MediaFrameworkFields.png" title="Media Framework - Custom Fields">
+<p>On checking the index configuration - these new field types were not being added to the index, so none of the filters or sorts based on those filters were working.</p>
+<p>So we updated the index configuration to have the new field types:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">contentSearch</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">indexConfigurations</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">defaultLuceneIndexConfiguration</span> <span class="attr">type</span>=<span class="string">"Sitecore.ContentSearch.LuceneProvider.LuceneIndexConfiguration, Sitecore.ContentSearch.LuceneProvider"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">fieldMap</span> <span class="attr">type</span>=<span class="string">"Sitecore.ContentSearch.FieldMap, Sitecore.ContentSearch"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">fieldTypes</span> <span class="attr">hint</span>=<span class="string">"raw:AddFieldByFieldTypeName"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">fieldTypeName</span>=<span class="string">"readonlytext"</span> <span class="attr">storageType</span>=<span class="string">"YES"</span> <span class="attr">indexType</span>=<span class="string">"UN_TOKENIZED"</span> <span class="attr">vectorType</span>=<span class="string">"NO"</span> <span class="attr">boost</span>=<span class="string">"1f"</span> <span class="attr">type</span>=<span class="string">"System.String"</span>   <span class="attr">settingType</span>=<span class="string">"Sitecore.ContentSearch.LuceneProvider.LuceneSearchFieldConfiguration, Sitecore.ContentSearch.LuceneProvider"</span> /&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">fieldType</span> <span class="attr">fieldTypeName</span>=<span class="string">"readonlycheckbox"</span> <span class="attr">storageType</span>=<span class="string">"YES"</span> <span class="attr">indexType</span>=<span class="string">"UN_TOKENIZED"</span> <span class="attr">vectorType</span>=<span class="string">"NO"</span> <span class="attr">boost</span>=<span class="string">"1f"</span> <span class="attr">type</span>=<span class="string">"System.Boolean"</span>   <span class="attr">settingType</span>=<span class="string">"Sitecore.ContentSearch.LuceneProvider.LuceneSearchFieldConfiguration, Sitecore.ContentSearch.LuceneProvider"</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">fieldTypes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">fieldMap</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">defaultLuceneIndexConfiguration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">indexConfigurations</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">contentSearch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Rebuild the indexes and magically the sorting starts working again! Amazing what you can do when the fields are added into the index properly :)</p>
+<p>###TL;DR<br>When you are using the <strong>Media Framework</strong> module, Brightcode or Ooyala editions, make sure that any custom fields are included in the index configuration by <code>fieldType</code> if you want to use them in your search queries.</p>
+<p>####Credits:<br><a href="https://twitter.com/owenniblock" target="_blank" rel="noopener">@owenniblock</a> of <a href="http://www.kumquatcomputing.co.uk/" target="_blank" rel="noopener">http://www.kumquatcomputing.co.uk/</a> for helping get this issue fixed.</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/" data-id="cka5tzg9c003agsvr6v2uhnz3" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/#comments" class="article-comment-link">Comments</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Media-Framework/">Media Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ooyala/">Ooyala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/24/Powershell-from-your-current-folder/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Powershell from your current folder
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Always Include Server Url without a HttpContext</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/11/19/Searching-the-Media-Framework-Module/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>

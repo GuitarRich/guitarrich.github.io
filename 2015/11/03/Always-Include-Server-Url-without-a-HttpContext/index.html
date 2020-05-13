@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Always Include Server Url without a HttpContext | Sitecore Nuts &amp; Bolts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Recently we had a requirement to update an external API with content information when new items were published. The external source needed general content like titles, images etc… But also needed a fu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Always Include Server Url without a HttpContext">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="Recently we had a requirement to update an external API with content information when new items were published. The external source needed general content like titles, images etc… But also needed a fu">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-12T14:52:21.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Always Include Server Url without a HttpContext">
+<meta name="twitter:description" content="Recently we had a requirement to update an external API with content information when new items were published. The external source needed general content like titles, images etc… But also needed a fu">
+  
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+
+
+  
+
+<!--
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+-->
+</head>
+</html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
+            </h2>
+          
+          
+          <div class="mvp">
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+            <a href="http://www.sitecore.net/mvp" target="_blank">
+                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
+            </a>
+          </div>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-Always-Include-Server-Url-without-a-HttpContext" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      Always Include Server Url without a HttpContext
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/" class="article-date">
+  <time datetime="2015-11-03T16:59:14.000Z" itemprop="datePublished">2015-11-03</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <code>Estimated reading time:<span class="eta"></span></code>
+        <p>Recently we had a requirement to update an external API with content information when new items were published. The external source needed general content like titles, images etc… But also needed a full link to the page. The implementation is a multi-site install and any of the sites could send data to the external API.</p>
+<p>The plan was to use the <code>item:saved</code> event and if the database was the delivery database, add the item to a queue. Then on <code>publish:end</code> we can process the queue and send the data.</p>
+<p>###AlwaysIncludeServerUrl<br>Getting the full url to a page is nice and simple in Sitecore, we can just set the <code>LinkOptions.AlwaysIncludeServerUrl = true;</code>. </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = LinkManager.GetDefaultUrlOptions();</span><br><span class="line">options.AlwaysIncludeServerUrl = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> url = LinkManager.GetItemUrl(item, options):</span><br></pre></td></tr></table></figure>
+<p>But by default that uses the current <code>SiteContext</code> to get the host name. Because we are running this in an event, the <code>SiteContext</code> wouldn’t be our delivery site, it would be the <code>Shell</code> site. So we need to run the link manager in a different <code>SiteContext</code>. We can do this with a <code>SiteContextSwitcher</code>. So we created a method to work out the site based on the location of the item and then ran the link manager in that sites context:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> site = <span class="keyword">this</span>.ContentManager.GetSiteFromItem(item);</span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">new</span> SiteContextSwitcher(site))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> options = LinkManager.GetDefaultUrlOptions();</span><br><span class="line">    options.AlwaysIncludeServerUrl = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">var</span> url = LinkManager.GetItemUrl(item, options):</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>To make this work properly, we also need to set the <code>targetHostName</code> in our site definitions config:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sites</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"Site1"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">hostName</span>=<span class="string">"site1.local|www.site1.com"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/sites/site1/"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">allowDebug</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">cacheHtml</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">htmlCacheSize</span>=<span class="string">"10MB"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enablePreview</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableWebEdit</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableDebugger</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">disableClientData</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableCustomErrors</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">targetHostName</span>=<span class="string">"www.site1.com"</span></span></span><br><span class="line"><span class="tag">			/&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"Site2"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">hostName</span>=<span class="string">"site2.local|www.site2.com"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/sites/site2/"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">allowDebug</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">cacheHtml</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">htmlCacheSize</span>=<span class="string">"10MB"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enablePreview</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableWebEdit</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableDebugger</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">disableClientData</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableCustomErrors</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">targetHostName</span>=<span class="string">"www.site2.com"</span></span></span><br><span class="line"><span class="tag">			/&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- etc... --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">sites</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>And now everything works nicely - we can generate the correct Urls for our content and pass it over to our 3rd party… Or so I thought. Actually what happened was that the urls being generated did not include the scheme for the site. So instead of getting this:</p>
+<p><code>http://www.site1.com/page1/</code> we got <code>://www.site1.com/page1/</code></p>
+<p>My first thought was to include the scheme in the <code>targetHostName</code>. But that returned <code>://http://www.site1.com/page1/</code> - so somewhere in the Sitecore LinkProvider that <code>://</code> was being added and Sitecore could not work out the scheme.</p>
+<p>###WebUtil.GetScheme - HttpContext tightly coupled again…<br>So into dotPeek we go, lets have a look at what Sitecore is doing. The <code>GetItemUrl</code> method calls <code>LinkProvider.GetServerUrlElement</code> to build that server part. This is the code in question:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span> @<span class="keyword">string</span> = StringUtil.GetString(<span class="keyword">new</span> <span class="keyword">string</span>[<span class="number">2</span>]</span><br><span class="line">&#123;</span><br><span class="line">    siteInfo.Scheme,</span><br><span class="line">    <span class="keyword">this</span>.GetScheme()</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">string</span> str5 = @<span class="keyword">string</span> + <span class="string">"://"</span> + str4;</span><br><span class="line"><span class="keyword">return</span> str5;</span><br></pre></td></tr></table></figure>
+<p>And <code>GetScheme</code> calls <code>WebUtil.GetScheme()</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">GetScheme</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    HttpContext current = HttpContext.Current;</span><br><span class="line">    <span class="keyword">if</span> (current != <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> current.Request.Url.Scheme;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>.Empty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ah - now we see the problem, in the <code>publish:end</code> event <code>HttpContext.Current == null</code>. So the scheme is always going to be empty! Fortunately, it looks like we can set the scheme using the site definition, this line <code>siteInfo.Scheme</code> looks like it should help here. This is in the constructor on the <code>SiteInfo</code> class: </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.scheme = StringUtil.GetString(<span class="keyword">new</span> <span class="keyword">string</span>[<span class="number">1</span>]</span><br><span class="line">&#123;</span><br><span class="line">    properties[<span class="string">"scheme"</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>So now the site definition looks like this:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">sites</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"Site1"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">hostName</span>=<span class="string">"site1.local|www.site1.com"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/sites/site1/"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">allowDebug</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">cacheHtml</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">htmlCacheSize</span>=<span class="string">"10MB"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enablePreview</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableWebEdit</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableDebugger</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">disableClientData</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">enableCustomErrors</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">			  <span class="attr">targetHostName</span>=<span class="string">"www.site1.com"</span></span></span><br><span class="line">              scheme="http" &lt;!-- Scheme added for http --&gt;</span><br><span class="line">            /&gt;</span><br><span class="line">            <span class="comment">&lt;!-- etc... --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">sites</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Now the url is created correctly: <code>http://www.site1.com/page1/</code>. Yay!</p>
+<p>Its not the perfect solution, setting the <code>scheme</code> in the config will override the <code>HttpContext.Current.Request.Url.Scheme</code> value, so if you are on <code>https</code> and the site is set to <code>http</code> the links will not be generated correctly. Because our requirement will only ever run on the authoring server, we have a transform for the delivery servers that removes the scheme from the site definition for the delivery servers.</p>
+<p>###tl;dr</p>
+<ul>
+<li>Wrap the <code>LinkManager.GetItemUrl</code> in a <code>SiteContextSwitcher</code></li>
+<li>In the SiteDefinition, Make sure the <code>targetHostName</code> and the <code>scheme</code> proeprties are set</li>
+<li>Enjoy urls with the host name when there is no <code>HttpContext</code></li>
+</ul>
+<p>– Richard. </p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/" data-id="cka5tzg8v001sgsvr7x4i513k" class="article-share-link">Share</a>
+        
+          <a href="http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/#comments" class="article-comment-link">Comments</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </section>
+  
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>follow:</p>
+    <ul class="social-links">
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/19/Searching-the-Media-Framework-Module/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <p class="article-nav-title">
+        
+          Searching the Media Framework Module
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2015/10/26/Sitecore-Render-Field-Before-and-After-Values/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <p class="article-nav-title">Sitecore Render Field - Before and After Values Fixed</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2020 Richard Seal</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
+      </p></div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'sitecorenutsbolts';
+  
+  var disqus_url = 'http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+
+
+
+<script src="/js/html-patch.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/readingTime.min.js"></script>
+
+<script>
+  $(function() {
+    $('.article-entry').readingTime();
+  });
+</script>
+
+  </div>
+</body>
+</html>
