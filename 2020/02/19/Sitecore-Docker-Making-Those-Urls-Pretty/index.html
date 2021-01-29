@@ -1,144 +1,267 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Sitecore Docker: Making Those Urls Pretty | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Containers, Containers, Containers! Getting Sitecore running on containers using Docker seems to be the current craze/buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b">
-<meta name="keywords" content="Sitecore,Docker">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Sitecore Docker: Making Those Urls Pretty | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sitecore,Docker" />
+    
+    <meta name="description" content="Containers, Containers, Containers! Getting Sitecore running on containers using Docker seems to be the current craze&#x2F;buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sitecore Docker: Making Those Urls Pretty">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
-<meta property="og:description" content="Containers, Containers, Containers! Getting Sitecore running on containers using Docker seems to be the current craze/buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="Containers, Containers, Containers! Getting Sitecore running on containers using Docker seems to be the current craze&#x2F;buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/containerseverywhere.jpg">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/serverproxysettings.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/enablerp.png">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.792Z">
+<meta property="article:published_time" content="2020-02-19T14:13:24.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.792Z">
+<meta property="article:author" content="Richard Seal">
+<meta property="article:tag" content="Sitecore">
+<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sitecore Docker: Making Those Urls Pretty">
-<meta name="twitter:description" content="Containers, Containers, Containers! Getting Sitecore running on containers using Docker seems to be the current craze/buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/containerseverywhere.jpg">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Docker/">Docker</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Sitecore-Docker-Making-Those-Urls-Pretty" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Sitecore Docker: Making Those Urls Pretty
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="article-date">
-  <time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <h3 id="Containers-Containers-Containers"><a href="#Containers-Containers-Containers" class="headerlink" title="Containers, Containers, Containers!"></a>Containers, Containers, Containers!</h3><img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/containerseverywhere.jpg">
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Docker/">Docker</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Sitecore-Docker-Making-Those-Urls-Pretty" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Sitecore Docker: Making Those Urls Pretty
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="article-date">
+       <time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.792Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="tag-link-link" href="/tags/Sitecore/" rel="tag">Sitecore</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h3 id="Containers-Containers-Containers"><a href="#Containers-Containers-Containers" class="headerlink" title="Containers, Containers, Containers!"></a>Containers, Containers, Containers!</h3><img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/containerseverywhere.jpg" class="">
 <p>Getting Sitecore running on containers using Docker seems to be the current craze/buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and buzzwords, this one actually is useful!</p>
-<p>This blog post is not going to give you any tutorials or how-to’s on setting up Sitecore on Docker. Some people far cleverer than I have already done that. If you want a simple no frills intro, you can’t get much better than <a href="https://intothecloud.blog/" target="_blank" rel="noopener">Mark Cassidy’s</a> series:</p>
+<p>This blog post is not going to give you any tutorials or how-to’s on setting up Sitecore on Docker. Some people far cleverer than I have already done that. If you want a simple no frills intro, you can’t get much better than <a target="_blank" rel="noopener" href="https://intothecloud.blog/">Mark Cassidy’s</a> series:</p>
 <ul>
-<li><a href="https://intothecloud.blog/2019/09/14/Sitecore-Docker-for-Dummies/" target="_blank" rel="noopener">Docker for Dummies - Docker 101  or Docker Basics</a></li>
-<li><a href="https://intothecloud.blog/2019/09/16/Setting-up-Sitecore-Docker-Images/" target="_blank" rel="noopener">Docker for Dummies - Setting up Sitecore Docker images</a></li>
-<li><a href="https://intothecloud.blog/2019/09/21/Deploying-and-Debugging-Your-Visual-Studio-Solution-to-Your-Sitecore-Docker-Containers/" target="_blank" rel="noopener">Docker for Dummies - Deploying &amp; Debugging Visual Studio Solutions</a></li>
+<li><a target="_blank" rel="noopener" href="https://intothecloud.blog/2019/09/14/Sitecore-Docker-for-Dummies/">Docker for Dummies - Docker 101  or Docker Basics</a></li>
+<li><a target="_blank" rel="noopener" href="https://intothecloud.blog/2019/09/16/Setting-up-Sitecore-Docker-Images/">Docker for Dummies - Setting up Sitecore Docker images</a></li>
+<li><a target="_blank" rel="noopener" href="https://intothecloud.blog/2019/09/21/Deploying-and-Debugging-Your-Visual-Studio-Solution-to-Your-Sitecore-Docker-Containers/">Docker for Dummies - Deploying &amp; Debugging Visual Studio Solutions</a></li>
 </ul>
 <h3 id="So-What’s-with-the-Urls-Then"><a href="#So-What’s-with-the-Urls-Then" class="headerlink" title="So What’s with the Urls Then?"></a>So What’s with the Urls Then?</h3><p>Getting Sitecore running on Docker, turns out to be pretty simple. Follow the steps in the articles above and soon you’ll be loading up <code>http://localhost:44001</code> or <code>http://localhost:44002</code> in your browser. From this point, I’ll assume you have managed to get Sitecore running in Docker on your local machine.</p>
 <p>But here is where my problems started. First, if you are developing a multisite solution, <code>localhost</code> isn’t going to cut it for long. As soon as you need a second site, you need domain names. Also, if you are working on multple client projects, <code>localhost</code> can get hard to keep track. Sure, you might only be running containers for one client at a time, but in the CM, it would be nice to have a quick glance at the url to remind yourself which project/client you are on. You might run multiple containers at once. Finally, I just don’t like having to put the port number in the url. Yes, its just asthetics, and yes it does make me one of “those” people! But it is what it is, the port number is ugly - I like having pretty urls!</p>
 <p>One more thing that I like to have for local development, is my sites running under SSL. That might seem overkill, and I agree 90% of the time it is. But I’ve seen too many bugs make it into the codebase because everything was tested on HTTP locally and then broke as soon as the protocol changed. Both via the <code>LinkManager</code> screwing things up, and by lazy developers doing silly things like hard coding the protocol! (insert your fav Picard face palm gif here!), and yes I agree that these are things that <em>shouldn’t</em> happen, we have all seen stupid issues like that. So I like to be in a position to test those kind of things before pushing the code out to QA.</p>
-<h3 id="THIDI-Fixing-the-Url’s"><a href="#THIDI-Fixing-the-Url’s" class="headerlink" title="THIDI: Fixing the Url’s"></a>THIDI: Fixing the Url’s</h3><p>There are a few different approaches to “fixing” the urls for Docker to look pretty. <a href>Michael West</a> has a <a href="https://github.com/michaellwest/docker-https" target="_blank" rel="noopener">Docker Repo</a> that solves this using a <code>startup.ps1</code> PowerShell script that will modify the hosts file in the container, using a nifty little script by <a href="https://github.com/RAhnemann/windows-hosts-writer" target="_blank" rel="noopener">Rob Ahnemann</a>.</p>
-<p>My approach was slightly different. I ended up using IIS as a reverse proxy to the Docker containers. I had played around with other reverse proxies like <a href="https://containo.us/traefik/" target="_blank" rel="noopener">Traefik</a>. But to have those monitoring port 80, it meant that IIS had to be turned off. As not all of our projects are containerized yet, this is not an option.</p>
+<h3 id="THIDI-Fixing-the-Url’s"><a href="#THIDI-Fixing-the-Url’s" class="headerlink" title="THIDI: Fixing the Url’s"></a>THIDI: Fixing the Url’s</h3><p>There are a few different approaches to “fixing” the urls for Docker to look pretty. <a href="">Michael West</a> has a <a target="_blank" rel="noopener" href="https://github.com/michaellwest/docker-https">Docker Repo</a> that solves this using a <code>startup.ps1</code> PowerShell script that will modify the hosts file in the container, using a nifty little script by <a target="_blank" rel="noopener" href="https://github.com/RAhnemann/windows-hosts-writer">Rob Ahnemann</a>.</p>
+<p>My approach was slightly different. I ended up using IIS as a reverse proxy to the Docker containers. I had played around with other reverse proxies like <a target="_blank" rel="noopener" href="https://containo.us/traefik/">Traefik</a>. But to have those monitoring port 80, it meant that IIS had to be turned off. As not all of our projects are containerized yet, this is not an option.</p>
 <p>But getting IIS to act as a reverse proxy is pretty simple.</p>
 <h4 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h4><p>First, we need to make sure that we have the following modules installed. These can be installed by the Web Platform Installer:</p>
 <ul>
@@ -146,142 +269,356 @@
 <li>Application Request Routing v3 or higher</li>
 </ul>
 <p>Once installed, you get a new icon in IIS when you click on the server. <strong>Application Request Routing Cache</strong>. First thing to do is fire up IIS, open up the <code>Application Requet Routing Cache</code> and then click <code>Server Proxy Settings</code>:</p>
-<img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/serverproxysettings.png">
+<img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/serverproxysettings.png" class="">
 <p>Now tick the checkbox to enable reverse proxies:</p>
-<img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/enablerp.png">
+<img src="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/enablerp.png" class="">
 <h4 id="Docker-Compose-Modifications"><a href="#Docker-Compose-Modifications" class="headerlink" title="Docker Compose Modifications"></a>Docker Compose Modifications</h4><p>Now we have the basic setup in IIS. Its time to setup the <code>docker-compose.yml</code> file. I’ll just show the relavent parts here:</p>
 <p>At the bottom of the file, make sure you have your networks configured:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  default:</span></span><br><span class="line"><span class="attr">    external:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">nat</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">networks:</span></span><br><span class="line">  <span class="attr">default:</span></span><br><span class="line">    <span class="attr">external:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">nat</span></span><br></pre></td></tr></table></figure>
 <p>Now for the CD and CM, you can add aliases:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cm:</span></span><br><span class="line"><span class="attr">  image:</span> <span class="string">$&#123;REGISTRY&#125;sitecore-xp-sxa-standalone:$&#123;SITECORE_VERSION&#125;-windowsservercore-$&#123;WINDOWSSERVERCORE_VERSION&#125;</span></span><br><span class="line"><span class="attr">  entrypoint:</span> <span class="string">powershell.exe</span> <span class="bullet">-Command</span> <span class="string">"&amp; C:\\tools\\entrypoints\\iis\\Development.ps1"</span></span><br><span class="line"><span class="attr">  volumes:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">.\startup:C:\startup</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">..\build\Debug:C:\src</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">..\src:C:\inetpub\wwwroot\app_data\unicorn</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"44001:80"</span></span><br><span class="line"><span class="attr">  networks:</span></span><br><span class="line"><span class="attr">    default:</span></span><br><span class="line"><span class="attr">      aliases:</span></span><br><span class="line"><span class="bullet">        -</span> <span class="string">myproject-cm.dev.local</span></span><br><span class="line"><span class="attr">  environment:</span></span><br><span class="line"><span class="attr">    HOST_HEADER:</span> <span class="string">myproject-cm.dev.local</span></span><br><span class="line"><span class="attr">    SITECORE_LICENSE:</span> <span class="string">$&#123;SITECORE_LICENSE&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_APPSETTINGS_ROLE:</span><span class="attr">DEFINE:</span> <span class="string">Standalone</span></span><br><span class="line"><span class="attr">    SITECORE_APPSETTINGS_SXAXM:</span><span class="attr">DEFINE:</span> <span class="string">sxaxconnect</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_CORE:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Core;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_SECURITY:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Core;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_MASTER:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Master;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_WEB:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Web;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_EXPERIENCEFORMS:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.ExperienceForms;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_SOLR.SEARCH:</span> <span class="attr">http://solr:8983/solr</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_MESSAGING:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Messaging;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.MarketingAutomation;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.PROCESSING.POOLS:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Processing.Pools;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.ReferenceData;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.PROCESSING.TASKS:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Processing.Tasks;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_EXM.MASTER:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.EXM.Master;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line"><span class="attr">    SITECORE_CONNECTIONSTRINGS_REPORTING:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Reporting;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_SITECORE.REPORTING.CLIENT:</span> <span class="attr">http://xconnect</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XCONNECT.COLLECTION:</span> <span class="attr">http://xconnect</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION.OPERATIONS.CLIENT:</span> <span class="attr">http://xconnect</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION.REPORTING.CLIENT:</span> <span class="attr">http://xconnect</span></span><br><span class="line">    <span class="string">SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA.CLIENT:</span> <span class="attr">http://xconnect</span></span><br><span class="line">    <span class="string">SITECORE_APPSETTINGS_TELERIK.ASYNCUPLOAD.CONFIGURATIONENCRYPTIONKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line">    <span class="string">SITECORE_APPSETTINGS_TELERIK.UPLOAD.CONFIGURATIONHASHKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line">    <span class="string">SITECORE_APPSETTINGS_TELERIK.WEB.UI.DIALOGPARAMETERSENCRYPTIONKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line"><span class="attr">  depends_on:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">sql</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">solr</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">xconnect</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cm:</span></span><br><span class="line">  <span class="attr">image:</span> <span class="string">$&#123;REGISTRY&#125;sitecore-xp-sxa-standalone:$&#123;SITECORE_VERSION&#125;-windowsservercore-$&#123;WINDOWSSERVERCORE_VERSION&#125;</span></span><br><span class="line">  <span class="attr">entrypoint:</span> <span class="string">powershell.exe</span> <span class="string">-Command</span> <span class="string">&quot;&amp; C:\\tools\\entrypoints\\iis\\Development.ps1&quot;</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">.\startup:C:\startup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">..\build\Debug:C:\src</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">..\src:C:\inetpub\wwwroot\app_data\unicorn</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;44001:80&quot;</span></span><br><span class="line">  <span class="attr">networks:</span></span><br><span class="line">    <span class="attr">default:</span></span><br><span class="line">      <span class="attr">aliases:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">myproject-cm.dev.local</span></span><br><span class="line">  <span class="attr">environment:</span></span><br><span class="line">    <span class="attr">HOST_HEADER:</span> <span class="string">myproject-cm.dev.local</span></span><br><span class="line">    <span class="attr">SITECORE_LICENSE:</span> <span class="string">$&#123;SITECORE_LICENSE&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_APPSETTINGS_ROLE:DEFINE:</span> <span class="string">Standalone</span></span><br><span class="line">    <span class="attr">SITECORE_APPSETTINGS_SXAXM:DEFINE:</span> <span class="string">sxaxconnect</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_CORE:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Core;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_SECURITY:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Core;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_MASTER:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Master;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_WEB:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.Web;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_EXPERIENCEFORMS:</span> <span class="string">Data</span> <span class="string">Source=sql;Initial</span> <span class="string">Catalog=Sitecore.ExperienceForms;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_SOLR.SEARCH:</span> <span class="string">http://solr:8983/solr</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_MESSAGING:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Messaging;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.MarketingAutomation;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.PROCESSING.POOLS:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Processing.Pools;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.ReferenceData;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.PROCESSING.TASKS:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Processing.Tasks;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_EXM.MASTER:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.EXM.Master;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_REPORTING:</span> <span class="string">Data</span> <span class="string">Source=sql;Database=Sitecore.Reporting;User</span> <span class="string">ID=sa;Password=$&#123;SQL_SA_PASSWORD&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_SITECORE.REPORTING.CLIENT:</span> <span class="string">http://xconnect</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XCONNECT.COLLECTION:</span> <span class="string">http://xconnect</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION.OPERATIONS.CLIENT:</span> <span class="string">http://xconnect</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.MARKETINGAUTOMATION.REPORTING.CLIENT:</span> <span class="string">http://xconnect</span></span><br><span class="line">    <span class="attr">SITECORE_CONNECTIONSTRINGS_XDB.REFERENCEDATA.CLIENT:</span> <span class="string">http://xconnect</span></span><br><span class="line">    <span class="attr">SITECORE_APPSETTINGS_TELERIK.ASYNCUPLOAD.CONFIGURATIONENCRYPTIONKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_APPSETTINGS_TELERIK.UPLOAD.CONFIGURATIONHASHKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line">    <span class="attr">SITECORE_APPSETTINGS_TELERIK.WEB.UI.DIALOGPARAMETERSENCRYPTIONKEY:</span> <span class="string">$&#123;TELERIK_ENCRYPTION_KEY&#125;</span></span><br><span class="line">  <span class="attr">depends_on:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">sql</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">solr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">xconnect</span></span><br></pre></td></tr></table></figure>
 <h4 id="Configure-the-Reverse-Proxy"><a href="#Configure-the-Reverse-Proxy" class="headerlink" title="Configure the Reverse Proxy"></a>Configure the Reverse Proxy</h4><p>To setup the Reverse Proxy website. My repo has a folder in just called <code>proxy</code> with the following <code>web.config</code> file:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outboundRules</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"ReverseProxyOutboundRule_CM"</span> <span class="attr">preCondition</span>=<span class="string">"ResponseIsHtml1"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">filterByTags</span>=<span class="string">"A, Form, Img"</span> <span class="attr">pattern</span>=<span class="string">"^http(s)?://localhost:44001/(.*)"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">value</span>=<span class="string">"http&#123;R:1&#125;://myproject-cm.dev.local/&#123;R:2&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"ReverseProxyOutboundRule_CD"</span> <span class="attr">preCondition</span>=<span class="string">"ResponseIsHtml1"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">filterByTags</span>=<span class="string">"A, Form, Img"</span> <span class="attr">pattern</span>=<span class="string">"^http(s)?://localhost:44002/(.*)"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">value</span>=<span class="string">"http&#123;R:1&#125;://&#123;ORIGINAL_HOST&#125;/&#123;R:2&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">preConditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">preCondition</span> <span class="attr">name</span>=<span class="string">"ResponseIsHtml1"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"&#123;RESPONSE_CONTENT_TYPE&#125;"</span> <span class="attr">pattern</span>=<span class="string">"^text/html"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">preCondition</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">preConditions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">outboundRules</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"ReverseProxyInboundRule_CM"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"(.*)"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"&#123;HTTP_HOST&#125;"</span> <span class="attr">pattern</span>=<span class="string">"^(myproject-cm\.dev\.local)$"</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"&#123;REQUEST_FILENAME&#125;"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"http://localhost:44001/&#123;R:1&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">"ReverseProxyInboundRule_CD"</span> <span class="attr">stopProcessing</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">"(.*)"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">"MatchAll"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"&#123;HTTP_HOST&#125;"</span> <span class="attr">pattern</span>=<span class="string">"^((site1|site2|site3)\.dev\.local)$"</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">"&#123;REQUEST_FILENAME&#125;"</span> <span class="attr">matchType</span>=<span class="string">"IsFile"</span> <span class="attr">negate</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">"Rewrite"</span> <span class="attr">url</span>=<span class="string">"http://&#123;HTTP_HOST&#125;:44002/&#123;R:1&#125;"</span> <span class="attr">logRewrittenUrl</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">serverVariables</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"ORIGINAL_HOST"</span> <span class="attr">value</span>=<span class="string">"&#123;HTTP_HOST&#125;"</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">serverVariables</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">urlCompression</span> <span class="attr">doStaticCompression</span>=<span class="string">"false"</span> <span class="attr">doDynamicCompression</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">rewrite</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">outboundRules</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;ReverseProxyOutboundRule_CM&quot;</span> <span class="attr">preCondition</span>=<span class="string">&quot;ResponseIsHtml1&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">filterByTags</span>=<span class="string">&quot;A, Form, Img&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;^http(s)?://localhost:44001/(.*)&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">&quot;Rewrite&quot;</span> <span class="attr">value</span>=<span class="string">&quot;http&#123;R:1&#125;://myproject-cm.dev.local/&#123;R:2&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;ReverseProxyOutboundRule_CD&quot;</span> <span class="attr">preCondition</span>=<span class="string">&quot;ResponseIsHtml1&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">filterByTags</span>=<span class="string">&quot;A, Form, Img&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;^http(s)?://localhost:44002/(.*)&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">&quot;Rewrite&quot;</span> <span class="attr">value</span>=<span class="string">&quot;http&#123;R:1&#125;://&#123;ORIGINAL_HOST&#125;/&#123;R:2&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">preConditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">preCondition</span> <span class="attr">name</span>=<span class="string">&quot;ResponseIsHtml1&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">&quot;&#123;RESPONSE_CONTENT_TYPE&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;^text/html&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">preCondition</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">preConditions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">outboundRules</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;ReverseProxyInboundRule_CM&quot;</span> <span class="attr">stopProcessing</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">&quot;(.*)&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">&quot;MatchAll&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">&quot;&#123;HTTP_HOST&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;^(myproject-cm\.dev\.local)$&quot;</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">&quot;&#123;REQUEST_FILENAME&#125;&quot;</span> <span class="attr">matchType</span>=<span class="string">&quot;IsFile&quot;</span> <span class="attr">negate</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">&quot;Rewrite&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://localhost:44001/&#123;R:1&#125;&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;ReverseProxyInboundRule_CD&quot;</span> <span class="attr">stopProcessing</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">match</span> <span class="attr">url</span>=<span class="string">&quot;(.*)&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">conditions</span> <span class="attr">logicalGrouping</span>=<span class="string">&quot;MatchAll&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">&quot;&#123;HTTP_HOST&#125;&quot;</span> <span class="attr">pattern</span>=<span class="string">&quot;^((site1|site2|site3)\.dev\.local)$&quot;</span> /&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">add</span> <span class="attr">input</span>=<span class="string">&quot;&#123;REQUEST_FILENAME&#125;&quot;</span> <span class="attr">matchType</span>=<span class="string">&quot;IsFile&quot;</span> <span class="attr">negate</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">conditions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">action</span> <span class="attr">type</span>=<span class="string">&quot;Rewrite&quot;</span> <span class="attr">url</span>=<span class="string">&quot;http://&#123;HTTP_HOST&#125;:44002/&#123;R:1&#125;&quot;</span> <span class="attr">logRewrittenUrl</span>=<span class="string">&quot;false&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">serverVariables</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">&quot;ORIGINAL_HOST&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#123;HTTP_HOST&#125;&quot;</span> /&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">serverVariables</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">rewrite</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">urlCompression</span> <span class="attr">doStaticCompression</span>=<span class="string">&quot;false&quot;</span> <span class="attr">doDynamicCompression</span>=<span class="string">&quot;false&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>To create the IIS Website, a developer simply needs to run a couple of PowerShell scripts:</p>
 <p>First, <code>Create-WildcardCert.ps1</code>, this just creates a <code>*.dev.local</code> cert for local development. There are various versions of this script floating about. I can’t remember exactly the origins of this one, if its yours DM me on Slack and I’ll add a credit here!</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Param</span>(</span><br><span class="line">    <span class="variable">$WildCardDomain</span> = <span class="string">"*.dev.local"</span>,</span><br><span class="line">    <span class="variable">$RootDomain</span> = <span class="string">"dev.local"</span>,</span><br><span class="line">    <span class="variable">$WildCardCertName</span> = <span class="string">"DO NOT TRUST Sitecore Local Development dev.local"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">process</span> &#123;</span><br><span class="line">    <span class="comment"># Generate SSL cert</span></span><br><span class="line">    <span class="variable">$existingCert</span> = <span class="built_in">Get-ChildItem</span> Cert:\LocalMachine\Root | Where FriendlyName <span class="nomarkup">-eq</span> <span class="variable">$WildCardCertName</span></span><br><span class="line">    <span class="keyword">if</span>(!(<span class="variable">$existingCert</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">"Creating &amp; trusting an new SSL Cert for <span class="variable">$WildCardCertName</span>"</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># Generate a cert</span></span><br><span class="line">        <span class="comment"># https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps</span></span><br><span class="line">        <span class="variable">$cert</span> = New-SelfSignedCertificate -FriendlyName <span class="variable">$WildCardCertName</span> -Subject <span class="variable">$RootDomain</span> -DnsName <span class="variable">$RootDomain</span>,<span class="variable">$WildCardDomain</span> -CertStoreLocation <span class="string">"cert:\LocalMachine\My"</span> -Type SSLServerAuthentication -NotAfter (<span class="built_in">Get-Date</span>).AddYears(<span class="number">10</span>)</span><br><span class="line">        Export-Certificate -Cert <span class="variable">$cert</span> -FilePath <span class="string">"<span class="variable">$PSScriptRoot</span>\<span class="variable">$RootDomain</span>.cer"</span></span><br><span class="line">        Import-Certificate -Filepath <span class="string">"<span class="variable">$PSScriptRoot</span>\<span class="variable">$RootDomain</span>.cer"</span> -CertStoreLocation <span class="string">"cert:\LocalMachine\Root"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Param</span>(</span><br><span class="line">    <span class="variable">$WildCardDomain</span> = <span class="string">&quot;*.dev.local&quot;</span>,</span><br><span class="line">    <span class="variable">$RootDomain</span> = <span class="string">&quot;dev.local&quot;</span>,</span><br><span class="line">    <span class="variable">$WildCardCertName</span> = <span class="string">&quot;DO NOT TRUST Sitecore Local Development dev.local&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">process</span> &#123;</span><br><span class="line">    <span class="comment"># Generate SSL cert</span></span><br><span class="line">    <span class="variable">$existingCert</span> = <span class="built_in">Get-ChildItem</span> Cert:\LocalMachine\Root | <span class="built_in">Where</span> FriendlyName <span class="operator">-eq</span> <span class="variable">$WildCardCertName</span></span><br><span class="line">    <span class="keyword">if</span>(!(<span class="variable">$existingCert</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">&quot;Creating &amp; trusting an new SSL Cert for <span class="variable">$WildCardCertName</span>&quot;</span></span><br><span class="line"> </span><br><span class="line">        <span class="comment"># Generate a cert</span></span><br><span class="line">        <span class="comment"># https://docs.microsoft.com/en-us/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps</span></span><br><span class="line">        <span class="variable">$cert</span> = <span class="built_in">New-SelfSignedCertificate</span> <span class="literal">-FriendlyName</span> <span class="variable">$WildCardCertName</span> <span class="literal">-Subject</span> <span class="variable">$RootDomain</span> <span class="literal">-DnsName</span> <span class="variable">$RootDomain</span>,<span class="variable">$WildCardDomain</span> <span class="literal">-CertStoreLocation</span> <span class="string">&quot;cert:\LocalMachine\My&quot;</span> <span class="literal">-Type</span> SSLServerAuthentication <span class="literal">-NotAfter</span> (<span class="built_in">Get-Date</span>).AddYears(<span class="number">10</span>)</span><br><span class="line">        <span class="built_in">Export-Certificate</span> <span class="literal">-Cert</span> <span class="variable">$cert</span> <span class="literal">-FilePath</span> <span class="string">&quot;<span class="variable">$PSScriptRoot</span>\<span class="variable">$RootDomain</span>.cer&quot;</span></span><br><span class="line">        <span class="built_in">Import-Certificate</span> <span class="literal">-Filepath</span> <span class="string">&quot;<span class="variable">$PSScriptRoot</span>\<span class="variable">$RootDomain</span>.cer&quot;</span> <span class="literal">-CertStoreLocation</span> <span class="string">&quot;cert:\LocalMachine\Root&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Then we have <code>Create-ReverseProxy.ps1</code>. Pretty self explanitory, this script creates the AppPool and Web application in IIS:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">Import-Module</span> WebAdministration</span><br><span class="line"></span><br><span class="line">    <span class="variable">$iisAppPoolName</span> = <span class="string">"myproject-reverse-proxy-app"</span></span><br><span class="line">    <span class="variable">$iisAppPoolDotNetVersion</span> = <span class="string">"v4.0"</span></span><br><span class="line">    <span class="variable">$iisAppName</span> = <span class="string">"myproject-reverse-proxy"</span></span><br><span class="line">    <span class="variable">$directoryPath</span> = <span class="built_in">Get-Item</span> <span class="variable">$PSScriptRoot</span>\..\proxy | % &#123; <span class="variable">$_</span>.FullName &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#navigate to the app pools root</span></span><br><span class="line">    <span class="built_in">Set-Location</span> -Path IIS:\AppPools\</span><br><span class="line"></span><br><span class="line">    <span class="comment">#check if the app pool exists</span></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$iisAppPoolName</span> -pathType container))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">"Creating the application pool"</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#create the app pool</span></span><br><span class="line">        <span class="variable">$appPool</span> = <span class="built_in">New-Item</span> <span class="variable">$iisAppPoolName</span></span><br><span class="line">        <span class="variable">$appPool</span> | <span class="built_in">Set-ItemProperty</span> -Name <span class="string">"managedRuntimeVersion"</span> -Value <span class="variable">$iisAppPoolDotNetVersion</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Trying to create the Site"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#navigate to the sites root</span></span><br><span class="line">    <span class="built_in">Set-Location</span> -Path IIS:\Sites\</span><br><span class="line"></span><br><span class="line">    <span class="comment">#check if the site exists</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Test-Path</span> <span class="variable">$iisAppName</span> -pathType container)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">"Site already exists"</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#create the site</span></span><br><span class="line">    <span class="variable">$iisApp</span> = <span class="built_in">New-Item</span> <span class="variable">$iisAppName</span> -bindings @&#123;protocol=<span class="string">"http"</span>;bindingInformation=<span class="string">":80:"</span> + <span class="variable">$iisAppName</span>&#125; -physicalPath <span class="variable">$directoryPath</span></span><br><span class="line">    <span class="variable">$iisApp</span> | <span class="built_in">Set-ItemProperty</span> -Name <span class="string">"applicationPool"</span> -Value <span class="variable">$iisAppPoolName</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Adding Bindings"</span></span><br><span class="line"></span><br><span class="line">    New-WebBinding -Name <span class="variable">$iisAppName</span> -IPAddress <span class="string">"*"</span> -Port <span class="number">443</span> -Protocol https -HostHeader <span class="string">"site1.dev.local"</span></span><br><span class="line">    New-WebBinding -Name <span class="variable">$iisAppName</span> -IPAddress <span class="string">"*"</span> -Port <span class="number">443</span> -Protocol https -HostHeader <span class="string">"site2.dev.local"</span></span><br><span class="line">    New-WebBinding -Name <span class="variable">$iisAppName</span> -IPAddress <span class="string">"*"</span> -Port <span class="number">443</span> -Protocol https -HostHeader <span class="string">"site3.dev.local"</span></span><br><span class="line">    New-WebBinding -Name <span class="variable">$iisAppName</span> -IPAddress <span class="string">"*"</span> -Port <span class="number">443</span> -Protocol https -HostHeader <span class="string">"myproject-cm.dev.local"</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">"Done"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="built_in">Import-Module</span> WebAdministration</span><br><span class="line"></span><br><span class="line">    <span class="variable">$iisAppPoolName</span> = <span class="string">&quot;myproject-reverse-proxy-app&quot;</span></span><br><span class="line">    <span class="variable">$iisAppPoolDotNetVersion</span> = <span class="string">&quot;v4.0&quot;</span></span><br><span class="line">    <span class="variable">$iisAppName</span> = <span class="string">&quot;myproject-reverse-proxy&quot;</span></span><br><span class="line">    <span class="variable">$directoryPath</span> = <span class="built_in">Get-Item</span> <span class="variable">$PSScriptRoot</span>\..\proxy | % &#123; <span class="variable">$_</span>.FullName &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#navigate to the app pools root</span></span><br><span class="line">    <span class="built_in">Set-Location</span> <span class="literal">-Path</span> IIS:\AppPools\</span><br><span class="line"></span><br><span class="line">    <span class="comment">#check if the app pool exists</span></span><br><span class="line">    <span class="keyword">if</span> (!(<span class="built_in">Test-Path</span> <span class="variable">$iisAppPoolName</span> <span class="literal">-pathType</span> container))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">&quot;Creating the application pool&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#create the app pool</span></span><br><span class="line">        <span class="variable">$appPool</span> = <span class="built_in">New-Item</span> <span class="variable">$iisAppPoolName</span></span><br><span class="line">        <span class="variable">$appPool</span> | <span class="built_in">Set-ItemProperty</span> <span class="literal">-Name</span> <span class="string">&quot;managedRuntimeVersion&quot;</span> <span class="literal">-Value</span> <span class="variable">$iisAppPoolDotNetVersion</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;Trying to create the Site&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#navigate to the sites root</span></span><br><span class="line">    <span class="built_in">Set-Location</span> <span class="literal">-Path</span> IIS:\Sites\</span><br><span class="line"></span><br><span class="line">    <span class="comment">#check if the site exists</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Test-Path</span> <span class="variable">$iisAppName</span> <span class="literal">-pathType</span> container)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">Write-Host</span> <span class="string">&quot;Site already exists&quot;</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#create the site</span></span><br><span class="line">    <span class="variable">$iisApp</span> = <span class="built_in">New-Item</span> <span class="variable">$iisAppName</span> <span class="literal">-bindings</span> <span class="selector-tag">@</span>&#123;protocol=<span class="string">&quot;http&quot;</span>;bindingInformation=<span class="string">&quot;:80:&quot;</span> + <span class="variable">$iisAppName</span>&#125; <span class="literal">-physicalPath</span> <span class="variable">$directoryPath</span></span><br><span class="line">    <span class="variable">$iisApp</span> | <span class="built_in">Set-ItemProperty</span> <span class="literal">-Name</span> <span class="string">&quot;applicationPool&quot;</span> <span class="literal">-Value</span> <span class="variable">$iisAppPoolName</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;Adding Bindings&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">New-WebBinding</span> <span class="literal">-Name</span> <span class="variable">$iisAppName</span> <span class="literal">-IPAddress</span> <span class="string">&quot;*&quot;</span> <span class="literal">-Port</span> <span class="number">443</span> <span class="literal">-Protocol</span> https <span class="literal">-HostHeader</span> <span class="string">&quot;site1.dev.local&quot;</span></span><br><span class="line">    <span class="built_in">New-WebBinding</span> <span class="literal">-Name</span> <span class="variable">$iisAppName</span> <span class="literal">-IPAddress</span> <span class="string">&quot;*&quot;</span> <span class="literal">-Port</span> <span class="number">443</span> <span class="literal">-Protocol</span> https <span class="literal">-HostHeader</span> <span class="string">&quot;site2.dev.local&quot;</span></span><br><span class="line">    <span class="built_in">New-WebBinding</span> <span class="literal">-Name</span> <span class="variable">$iisAppName</span> <span class="literal">-IPAddress</span> <span class="string">&quot;*&quot;</span> <span class="literal">-Port</span> <span class="number">443</span> <span class="literal">-Protocol</span> https <span class="literal">-HostHeader</span> <span class="string">&quot;site3.dev.local&quot;</span></span><br><span class="line">    <span class="built_in">New-WebBinding</span> <span class="literal">-Name</span> <span class="variable">$iisAppName</span> <span class="literal">-IPAddress</span> <span class="string">&quot;*&quot;</span> <span class="literal">-Port</span> <span class="number">443</span> <span class="literal">-Protocol</span> https <span class="literal">-HostHeader</span> <span class="string">&quot;myproject-cm.dev.local&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">finally</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;Done&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>I’m not a PowerShell wizard, so I’m sure this script could be made better. Most of the time, adding those bindings will select the correct <code>*.dev.local</code> certificate. But it doesn’t everytime and my PowerShell skills haven’t been able to figure out why yet. I’m sure someone will have a better way of doing that.</p>
 <h3 id="Running-the-Sites"><a href="#Running-the-Sites" class="headerlink" title="Running the Sites"></a>Running the Sites</h3><p>Now that the reverse proxy is setup, all that remains is to run <code>docker-compose up</code>, wait for the conainers to start up and then hit one of those urls in your browser. You should see that Sitecore is responding nicely to the custom host names. There is no need to add a port number to the host and the Site Resolving should also work nicely.</p>
 <p>As I mentioned above, there are a few ways of doing this. This is just one way that I have found that works well for our development team. I think Sitecore on Docker is a fantastic thing, it allows us to onboard new developers in minutes vs hours, and with just a few simple PowerShell scripts instead of complex and time consuming Sitecore installs. </p>
-<p>Thanks to everyone that wrote blog posts on Docker and who helps out a lot on the <a href="https://sitecore.chat" target="_blank" rel="noopener">Sitecore Slack</a> channel for <code>#docker</code>, big thanks to Michael West and Mark Cassidy for blogs, git repos and answering stupid questions when I had them :)</p>
+<p>Thanks to everyone that wrote blog posts on Docker and who helps out a lot on the <a target="_blank" rel="noopener" href="https://sitecore.chat">Sitecore Slack</a> channel for <code>#docker</code>, big thanks to Michael West and Mark Cassidy for blogs, git repos and answering stupid questions when I had them :)</p>
 <p>Do you have another way, a better way to do this? Let me know in the comments or hit me up on Sitecore Slack - I’m <code>@guitarrich</code></p>
 <p>Thanks</p>
 <p>– Richard.</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" data-id="cka5tzg9v004egsvrh3912osj" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/#comments" class="article-comment-link">Comments</a>
-        
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+        </div>
+        <footer class="article-footer">
+            
 
-      </footer>
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Sitecore Docker: Making Those Urls Pretty",
+        "image": "http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/containerseverywhere.jpg",
+        "keywords": "Sitecore Docker",
+        "genre": "Docker",
+        "datePublished": "2020-02-19",
+        "dateCreated": "2020-02-19",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/",
+        "description": "Containers, Containers, Containers!
+Getting Sitecore running on containers using Docker seems to be the current craze/buzzword. It’s really gaining traction, but unlike a lot of fads, frameworks and b",
+        "wordCount": 3272
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2020/05/13/Rendering-Links-with-Scriban/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2020/05/13/Rendering-Links-with-Scriban/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Rendering Links with Scriban
+            Rendering Links with Scriban
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Custom Fonts Not Downloading in SXA Theme</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Custom Fonts Not Downloading in SXA Theme</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

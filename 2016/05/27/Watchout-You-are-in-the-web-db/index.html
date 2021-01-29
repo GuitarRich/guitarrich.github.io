@@ -1,261 +1,591 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Watchout! You are in the web db! | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Based on a vent by @cassidydotdk on the Sitecore Slack chat the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh web database to check something ou">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Watchout! You are in the web db! | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="Based on a vent by @cassidydotdk on the Sitecore Slack chat the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh web database to check something ou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Watchout! You are in the web db!">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
 <meta property="og:description" content="Based on a vent by @cassidydotdk on the Sitecore Slack chat the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh web database to check something ou">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/SitecoreExtensionsPlugin.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step2.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step3.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step4.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/ContentEditorWarning.png">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.860Z">
+<meta property="article:published_time" content="2016-05-27T22:51:25.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.860Z">
+<meta property="article:author" content="Richard Seal">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Watchout! You are in the web db!">
-<meta name="twitter:description" content="Based on a vent by @cassidydotdk on the Sitecore Slack chat the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh web database to check something ou">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/SitecoreExtensionsPlugin.png">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Watchout-You-are-in-the-web-db" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Watchout! You are in the web db!
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2016/05/27/Watchout-You-are-in-the-web-db/" class="article-date">
-  <time datetime="2016-05-27T22:51:25.000Z" itemprop="datePublished">2016-05-27</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <p>Based on a vent by <a href="https://twitter.com/cassidydotdk" target="_blank" rel="noopener">@cassidydotdk</a> on the <a href="http://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack chat</a> the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh <strong>web</strong> database to check something out, then forgot to switch back and edited some content. Only to find out that the content reverts when we publish… cos we are in the WEB db dummy!</p>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Sitecore/">Sitecore</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Watchout-You-are-in-the-web-db" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Watchout! You are in the web db!
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/05/27/Watchout-You-are-in-the-web-db/" class="article-date">
+       <time datetime="2016-05-27T22:51:25.000Z" itemprop="datePublished">2016-05-27</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/05/27/Watchout-You-are-in-the-web-db/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.860Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>Based on a vent by <a target="_blank" rel="noopener" href="https://twitter.com/cassidydotdk">@cassidydotdk</a> on the <a target="_blank" rel="noopener" href="http://sitecorechat.slack.com">Sitecore Slack chat</a> the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh <strong>web</strong> database to check something out, then forgot to switch back and edited some content. Only to find out that the content reverts when we publish… cos we are in the WEB db dummy!</p>
 <p>It has happened to me more times than I care to mention!</p>
-<h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h3><p>A few solutions are available: There is a nice Google Chrome plugin: <a href="https://alan-null.github.io/2016/05/sitecore-extensions_v1_0_0" target="_blank" rel="noopener">Sitecore Extensions</a>. This puts the DB name in the title bar of the Sitecore window. Makes it bright red if you are in the WEB database.</p>
-<img src="/2016/05/27/Watchout-You-are-in-the-web-db/SitecoreExtensionsPlugin.png" title="I" alt="m safe and in the master db! } {% asset_img SitecoreExtensionsPluginWebDB.png Danger Will Robinson! You are in the Web db } That seems to work nicely, but only for Chrome users. Then [@kam](https://twitter.com/kamsar) posted a quick content editor warning code snippet that works nicely on all browsers. But requires coding, deployment etc... ### Gotta be able to do that in SPE!! So I wondered if we can do that quicker in [Sitecore PowerShell Extensions](https://marketplace.sitecore.net/en/Modules/Sitecore_PowerShell_console.aspx). Turns out its really easy to create content editor warngings and other content editor goodies with SPE. If you have never installed SPE and had a play with it, you need to do it now. It is easily the best developer module you can get for Sitecore, it *will* make your life better :) #### Create a new module Let">
+<h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h3><p>A few solutions are available: There is a nice Google Chrome plugin: <a target="_blank" rel="noopener" href="https://alan-null.github.io/2016/05/sitecore-extensions_v1_0_0">Sitecore Extensions</a>. This puts the DB name in the title bar of the Sitecore window. Makes it bright red if you are in the WEB database.</p>
+<img src="/2016/05/27/Watchout-You-are-in-the-web-db/SitecoreExtensionsPlugin.png" class="" title="I" alt="m safe and in the master db! } {% asset_img SitecoreExtensionsPluginWebDB.png Danger Will Robinson! You are in the Web db } That seems to work nicely, but only for Chrome users. Then [@kam](https:&#x2F;&#x2F;twitter.com&#x2F;kamsar) posted a quick content editor warning code snippet that works nicely on all browsers. But requires coding, deployment etc... ### Gotta be able to do that in SPE!! So I wondered if we can do that quicker in [Sitecore PowerShell Extensions](https:&#x2F;&#x2F;marketplace.sitecore.net&#x2F;en&#x2F;Modules&#x2F;Sitecore_PowerShell_console.aspx). Turns out its really easy to create content editor warngings and other content editor goodies with SPE. If you have never installed SPE and had a play with it, you need to do it now. It is easily the best developer module you can get for Sitecore, it *will* make your life better :) #### Create a new module Let">
 <p>This actually runs a wizard (written in SPE btw) that guides you through setting up a new SPE Module.</p>
-<p>First give your module a name, then select the integration points to create. SPE can hook into a lot of area’s inside Sitecore, for this module we just want to select <code>Content Editor Warning</code>:<br><img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step2.png" title="Select the integration points"></p>
+<p>First give your module a name, then select the integration points to create. SPE can hook into a lot of area’s inside Sitecore, for this module we just want to select <code>Content Editor Warning</code>:<br><img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step2.png" class="" title="Select the integration points"></p>
 <p>Then click <em>Proceed</em>. Once the module is created, you can select your new item in the content tree and update some of the details in the about section.</p>
-<img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step3.png" title="Enable your module and add some details">
+<img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step3.png" class="" title="Enable your module and add some details">
 <p>Next, open up the tree until you see the <strong>Warning</strong> item, this is where you will add your PowerShell script items. Right click and create a new PowerShell script:</p>
-<img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step4.png" title="Create the script">
+<img src="/2016/05/27/Watchout-You-are-in-the-web-db/CreateNewModule-Step4.png" class="" title="Create the script">
 <p>Add a PowerShell Script item and load it up using PowerShell ISE. This is where the magic will happen! Because the SPE integration for content editor warning hooks into the <code>getContentEditorWarnings</code> pipeline, to set the warning title, text and icon in PowerShell we can just use the pipeline args object. That is passed into the PowerShell function for us:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$title</span> = <span class="string">"CE Warning Title"</span></span><br><span class="line"><span class="variable">$text</span> = <span class="string">"Some Text"</span></span><br><span class="line"><span class="variable">$icon</span> = @&#123;<span class="literal">$true</span>=<span class="string">"Office/32x32/information.png"</span>;<span class="literal">$false</span>=<span class="string">"Applications/16x16/warning.png"</span>&#125;[<span class="variable">$SitecoreVersion</span>.Major <span class="nomarkup">-gt</span> <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable">$warning</span> = <span class="variable">$pipelineArgs</span>.Add(<span class="variable">$title</span>, <span class="variable">$text</span>);</span><br><span class="line"><span class="variable">$warning</span>.Icon = <span class="variable">$icon</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$title</span> = <span class="string">&quot;CE Warning Title&quot;</span></span><br><span class="line"><span class="variable">$text</span> = <span class="string">&quot;Some Text&quot;</span></span><br><span class="line"><span class="variable">$icon</span> = <span class="selector-tag">@</span>&#123;<span class="variable">$true</span>=<span class="string">&quot;Office/32x32/information.png&quot;</span>;<span class="variable">$false</span>=<span class="string">&quot;Applications/16x16/warning.png&quot;</span>&#125;[<span class="variable">$SitecoreVersion</span><span class="type">.Major</span> -<span class="type">gt</span> <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable">$warning</span> = <span class="variable">$pipelineArgs</span>.Add(<span class="variable">$title</span>, <span class="variable">$text</span>);</span><br><span class="line"><span class="variable">$warning</span>.Icon = <span class="variable">$icon</span></span><br></pre></td></tr></table></figure>
 <p>Now we need to get the database for the current item being edited. Because we are in a pipeline <code>pipelineArgs.Item</code> gives us that. So lets check the <code>item.Database.Name</code> and if we are not in the master, show the warning:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$item</span> = <span class="variable">$pipelineArgs</span>.Item</span><br><span class="line"><span class="variable">$databaseName</span> = <span class="variable">$item</span>.Database.Name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$databaseName</span> <span class="nomarkup">-eq</span> <span class="string">"master"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$title</span> = <span class="string">"WARNING: YOU ARE NOT IN THE MASTER DATABASE!!!"</span></span><br><span class="line"><span class="variable">$text</span> = <span class="string">"You are currently editing this item while in the [$&#123;databaseName&#125;]! You should only do this if you really know what you are doing! Do you know what you are doing? Will you be my friend?"</span></span><br><span class="line"><span class="variable">$icon</span> = @&#123;<span class="literal">$true</span>=<span class="string">"Office/32x32/warning.png"</span>;<span class="literal">$false</span>=<span class="string">"Applications/16x16/information.png"</span>&#125;[<span class="variable">$SitecoreVersion</span>.Major <span class="nomarkup">-gt</span> <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable">$warning</span> = <span class="variable">$pipelineArgs</span>.Add(<span class="variable">$title</span>, <span class="variable">$text</span>)</span><br><span class="line"><span class="variable">$warning</span>.Icon = <span class="variable">$icon</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$item</span> = <span class="variable">$pipelineArgs</span>.Item</span><br><span class="line"><span class="variable">$databaseName</span> = <span class="variable">$item</span>.Database.Name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$databaseName</span> <span class="operator">-eq</span> <span class="string">&quot;master&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$title</span> = <span class="string">&quot;WARNING: YOU ARE NOT IN THE MASTER DATABASE!!!&quot;</span></span><br><span class="line"><span class="variable">$text</span> = <span class="string">&quot;You are currently editing this item while in the [<span class="variable">$</span>&#123;databaseName&#125;]! You should only do this if you really know what you are doing! Do you know what you are doing? Will you be my friend?&quot;</span></span><br><span class="line"><span class="variable">$icon</span> = <span class="selector-tag">@</span>&#123;<span class="variable">$true</span>=<span class="string">&quot;Office/32x32/warning.png&quot;</span>;<span class="variable">$false</span>=<span class="string">&quot;Applications/16x16/information.png&quot;</span>&#125;[<span class="variable">$SitecoreVersion</span><span class="type">.Major</span> -<span class="type">gt</span> <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable">$warning</span> = <span class="variable">$pipelineArgs</span>.Add(<span class="variable">$title</span>, <span class="variable">$text</span>)</span><br><span class="line"><span class="variable">$warning</span>.Icon = <span class="variable">$icon</span></span><br></pre></td></tr></table></figure>
 <p>And there you have it. Now when in the web or core database, a content editor warning appears at the top of the editor window:</p>
-<img src="/2016/05/27/Watchout-You-are-in-the-web-db/ContentEditorWarning.png" title="Content Editor Warning">
+<img src="/2016/05/27/Watchout-You-are-in-the-web-db/ContentEditorWarning.png" class="" title="Content Editor Warning">
 <p>To save you some time, here is a package file with the PowerShell Module: <a href="/2016/05/27/Watchout-You-are-in-the-web-db/WhatDbAreYouInWarning.zip" title="What db are you in SPE Module">What db are you in SPE Module</a></p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/" data-id="cka5tzgat006wgsvrer03xfvx" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/#comments" class="article-comment-link">Comments</a>
-        
-        
-      </footer>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Watchout! You are in the web db!",
+        "image": "http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/SitecoreExtensionsPlugin.png",
+        "keywords": "",
+        "genre": "Sitecore",
+        "datePublished": "2016-05-27",
+        "dateCreated": "2016-05-27",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/",
+        "description": "Based on a vent by @cassidydotdk on the Sitecore Slack chat the other day, we were all laughing about the (multiple)times when we forget that we have switched to teh web database to check something ou",
+        "wordCount": 713
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2016/06/02/Watch-your-Guid-format/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2016/06/02/Watch-your-Guid-format/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Watch your Guid format!
+            Watch your Guid format!
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2016/04/26/Advanced-Cache-Clearing/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Advanced Cache Clearing</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2016/04/26/Advanced-Cache-Clearing/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Advanced Cache Clearing</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2016/05/27/Watchout-You-are-in-the-web-db/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

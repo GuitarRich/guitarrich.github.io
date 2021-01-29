@@ -1,165 +1,287 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Sitecore SXA: Using HTTP Headers to Secure Your Site | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="I recently came across a nice post on Using HTTP Headers to Secure Your Site by Caleb Thompson. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using Observator">
-<meta name="keywords" content="Sitecore,SxA,Security">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Sitecore SXA: Using HTTP Headers to Secure Your Site | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sitecore,SxA,Security" />
+    
+    <meta name="description" content="I recently came across a nice post on Using HTTP Headers to Secure Your Site by Caleb Thompson. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using Observator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sitecore SXA: Using HTTP Headers to Secure Your Site">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
 <meta property="og:description" content="I recently came across a nice post on Using HTTP Headers to Secure Your Site by Caleb Thompson. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using Observator">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/templates.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/install.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicy.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicywizard.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/policyoptions.png">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.837Z">
+<meta property="article:published_time" content="2018-07-27T18:35:53.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.837Z">
+<meta property="article:author" content="Richard Seal">
+<meta property="article:tag" content="Sitecore">
+<meta property="article:tag" content="SxA">
+<meta property="article:tag" content="Security">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sitecore SXA: Using HTTP Headers to Secure Your Site">
-<meta name="twitter:description" content="I recently came across a nice post on Using HTTP Headers to Secure Your Site by Caleb Thompson. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using Observator">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/templates.png">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/SxA/">SxA</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Sitecore SXA: Using HTTP Headers to Secure Your Site
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/" class="article-date">
-  <time datetime="2018-07-27T18:35:53.000Z" itemprop="datePublished">2018-07-27</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <p>I recently came across a nice post on <a href="https://blog.heroku.com/using-http-headers-to-secure-your-site" target="_blank" rel="noopener">Using HTTP Headers to Secure Your Site</a> by <a href="https://blog.heroku.com/authors/caleb-thompson" target="_blank" rel="noopener">Caleb Thompson</a>. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using <a href="https://observatory.mozilla.org/" target="_blank" rel="noopener">Observatory</a> by mozilla, we can scan our site and using the results see what we need to configure to help with the security of the site.</p>
-<p>As the project I am working on right now is very security focused, the content here is very relevant. So I looked into how we can configure this in a Sitecore SXA build. From that came a new module which I will host on my github account: <a href="https://github.com/GuitarRich/SXA.SecurityHeaders" target="_blank" rel="noopener">SXA Security Headers</a>. As soon as Sitecore approves the module on the market place I will post a link here too.</p>
-<p>Now, this is not a completely new subject for Sitecore builds, both <a href="https://twitter.com/akshaysura13" target="_blank" rel="noopener">Akshay Sura</a> and <a href="https://twitter.com/BasLijten" target="_blank" rel="noopener">Bas Lijten</a>, addressed this a couple of years ago, their posts and module also served as inspiration for this:</p>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/SxA/">SxA</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Sitecore SXA: Using HTTP Headers to Secure Your Site
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/" class="article-date">
+       <time datetime="2018-07-27T18:35:53.000Z" itemprop="datePublished">2018-07-27</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.837Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Security/" rel="tag">Security</a>, <a class="tag-link-link" href="/tags/Sitecore/" rel="tag">Sitecore</a>, <a class="tag-link-link" href="/tags/SxA/" rel="tag">SxA</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>I recently came across a nice post on <a target="_blank" rel="noopener" href="https://blog.heroku.com/using-http-headers-to-secure-your-site">Using HTTP Headers to Secure Your Site</a> by <a target="_blank" rel="noopener" href="https://blog.heroku.com/authors/caleb-thompson">Caleb Thompson</a>. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using <a target="_blank" rel="noopener" href="https://observatory.mozilla.org/">Observatory</a> by mozilla, we can scan our site and using the results see what we need to configure to help with the security of the site.</p>
+<p>As the project I am working on right now is very security focused, the content here is very relevant. So I looked into how we can configure this in a Sitecore SXA build. From that came a new module which I will host on my github account: <a target="_blank" rel="noopener" href="https://github.com/GuitarRich/SXA.SecurityHeaders">SXA Security Headers</a>. As soon as Sitecore approves the module on the market place I will post a link here too.</p>
+<p>Now, this is not a completely new subject for Sitecore builds, both <a target="_blank" rel="noopener" href="https://twitter.com/akshaysura13">Akshay Sura</a> and <a target="_blank" rel="noopener" href="https://twitter.com/BasLijten">Bas Lijten</a>, addressed this a couple of years ago, their posts and module also served as inspiration for this:</p>
 <ul>
-<li><a href="https://www.akshaysura.com/2016/08/19/secure-sitecore-secure-headers-xss-protection/" target="_blank" rel="noopener">Secure Sitecore : Secure Headers XSS Protection</a></li>
-<li><a href="https://www.akshaysura.com/2016/08/02/secure-sitecore-headers-are-a-headache-but-nothing-we-cannot-solve/" target="_blank" rel="noopener">Secure Sitecore : Headers are a headache but nothing we cannot solve!</a></li>
-<li><a href="http://blog.baslijten.com/sitecore-security-3-prevent-xss-using-content-security-policy/" target="_blank" rel="noopener">Sitecore Security #3: Prevent XSS using Content Security Policy</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.akshaysura.com/2016/08/19/secure-sitecore-secure-headers-xss-protection/">Secure Sitecore : Secure Headers XSS Protection</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.akshaysura.com/2016/08/02/secure-sitecore-headers-are-a-headache-but-nothing-we-cannot-solve/">Secure Sitecore : Headers are a headache but nothing we cannot solve!</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.baslijten.com/sitecore-security-3-prevent-xss-using-content-security-policy/">Sitecore Security #3: Prevent XSS using Content Security Policy</a></li>
 </ul>
 <p>But my requirements needed a way have having this in a multisite environment, with custom headers per site. SXA does multisite very well, so lets follow their pattern.</p>
 <h2 id="What-do-the-Security-Headers-actually-do"><a href="#What-do-the-Security-Headers-actually-do" class="headerlink" title="What do the Security Headers actually do?"></a>What do the Security Headers actually do?</h2><p>So lets first look at what security headers we will be adding and a quick overview of what they are for. I’m not going into detail here, because there are many resources available already for this:</p>
 <h4 id="Content-Security-Policy-CSP"><a href="#Content-Security-Policy-CSP" class="headerlink" title="Content Security Policy (CSP)"></a>Content Security Policy (CSP)</h4><p>This is a pretty well known header. CSP gives us control over where scripts and resources we reference on our site can be loaded from. This normally would include your own site, and maybe a few external CDN sites, like Google Tag Manager. The header can be broken down to protect various types of assets, such as <code>scripts</code>, <code>images</code>, <code>css</code> etc…</p>
-<p>A list of the policy options for the Content Security Policy and what each one does can be found here: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank" rel="noopener">Mozilla: Content Security Policy</a>.</p>
-<p>This header also helps to protect against XSS attacks, by controlling who is allowed to load scripts on to our site. You can add the source for <code>frame-ancestors</code>, this prevents our site from being loaded into an iFrame on any site, except those that we allow. It helps prevent <a href="https://www.owasp.org/index.php/Clickjacking" target="_blank" rel="noopener">clickjacking attacks</a>.</p>
-<h4 id="HTTP-Strict-Transport-Security-HSTS"><a href="#HTTP-Strict-Transport-Security-HSTS" class="headerlink" title="HTTP Strict Transport Security (HSTS)"></a>HTTP Strict Transport Security (HSTS)</h4><p>HSTS tells the browser that our site should <em>only</em> be viewed over https. The details of the attributes are on the <a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet" target="_blank" rel="noopener">OWASP Cheat Sheet for HSTS</a>. Enable this if you only want https traffic… which… should be everyone by now!</p>
+<p>A list of the policy options for the Content Security Policy and what each one does can be found here: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Mozilla: Content Security Policy</a>.</p>
+<p>This header also helps to protect against XSS attacks, by controlling who is allowed to load scripts on to our site. You can add the source for <code>frame-ancestors</code>, this prevents our site from being loaded into an iFrame on any site, except those that we allow. It helps prevent <a target="_blank" rel="noopener" href="https://www.owasp.org/index.php/Clickjacking">clickjacking attacks</a>.</p>
+<h4 id="HTTP-Strict-Transport-Security-HSTS"><a href="#HTTP-Strict-Transport-Security-HSTS" class="headerlink" title="HTTP Strict Transport Security (HSTS)"></a>HTTP Strict Transport Security (HSTS)</h4><p>HSTS tells the browser that our site should <em>only</em> be viewed over https. The details of the attributes are on the <a target="_blank" rel="noopener" href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet">OWASP Cheat Sheet for HSTS</a>. Enable this if you only want https traffic… which… should be everyone by now!</p>
 <h4 id="X-Content-Type-Options"><a href="#X-Content-Type-Options" class="headerlink" title="X-Content-Type-Options"></a>X-Content-Type-Options</h4><p>This will tell the browser not to load scripts or styleshees if the MIME type as indicated by the server is not correct.</p>
 <h4 id="X-Frame-Options"><a href="#X-Frame-Options" class="headerlink" title="X-Frame-Options"></a>X-Frame-Options</h4><p>This is a fallback for older browsers that do not obey the <code>frame-ancestors &#39;none&#39;</code> CSP. It will prevent your site from being loaded into an iFrame.</p>
 <h4 id="X-XSS-Protection"><a href="#X-XSS-Protection" class="headerlink" title="X-XSS-Protection"></a>X-XSS-Protection</h4><p>Again, a fallback for older browser and provides similar protection against XSS attacks as the CSP will.</p>
 <h4 id="Referrer-Policy"><a href="#Referrer-Policy" class="headerlink" title="Referrer Policy"></a>Referrer Policy</h4><p>The referrer policy defines whether the referrer header is sent to the destination when a user clicks a link.</p>
 <h2 id="Lets-do-this-with-SXA-Security-Headers"><a href="#Lets-do-this-with-SXA-Security-Headers" class="headerlink" title="Lets do this with SXA Security Headers"></a>Lets do this with SXA Security Headers</h2><p>So how does the module work? The module works on a Site basis, so if you are multisite, you can specify your security headers per site. It adds a new <code>Settings</code> item that contains child items for each of the above headers.</p>
-<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/templates.png" title="SXA Security Headers Templates">
+<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/templates.png" class="" title="SXA Security Headers Templates">
 <p>Each of these items is responsible for setting a security header when added to an SXA Site.</p>
 <h3 id="Installing-the-module"><a href="#Installing-the-module" class="headerlink" title="Installing the module"></a>Installing the module</h3><p>To install the module, just download the package and install using the Sitecore Package Installer. It is setup to follow the standard SXA patterns, so once installed, you can right click your Tenant/Site and add the module. </p>
 <p>Once the package is installed you will be able to add the module to your tennent and then site. Once it is added, navigate to your SXA Site Settings item. A new settings item called  <code>Security Headers</code> will have been created. An insert option rule included in the package will enable the right-click insert ability:</p>
-<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/install.png" title="Settings Item after install">
+<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/install.png" class="" title="Settings Item after install">
 <p>Once you have that, you can select which security headers you want to include in the site. Simply, right-click the <strong>Security Headers</strong> item, go to insert, and select from the available options.</p>
 <p>A basic set of default header items will be created when you add the feature to your site.</p>
 <h3 id="Content-Security-Policy"><a href="#Content-Security-Policy" class="headerlink" title="Content Security Policy"></a>Content Security Policy</h3><p>The Content Security Policy header allows you to either enforce or just report violations. Set the checkbox on the item. To configure the different CSP options, you must insert a child item for each source type you want to control. Right-Click the CSP item and insert a <strong>New Policy</strong>:</p>
-<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicy.png" title="Insert new Content Security Policy">
+<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicy.png" class="" title="Insert new Content Security Policy">
 <p>This runs a Sitecore PowerShell script that displays a dialog, giving you all the available options for the policies. It also detects which policies you have already added and removes those from the list. Simply select the required policy and then set the hosts you want to allow on your site. </p>
-<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicywizard.png" title="Select a policy type">
+<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/newpolicywizard.png" class="" title="Select a policy type">
 <p>The module comes with a set of predefined hosts/options that you can select from, but there is also a free text field for you to add any extras:</p>
-<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/policyoptions.png" title="Content Security Policy Options">
+<img src="/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/policyoptions.png" class="" title="Content Security Policy Options">
 <h3 id="Other-Headers"><a href="#Other-Headers" class="headerlink" title="Other Headers"></a>Other Headers</h3><p>The other insert options will give you the ability to add the following headers to your site:</p>
 <ul>
 <li>HTTP Strict Transport Security (HSTS)</li>
@@ -172,119 +294,332 @@
 <h2 id="Useful"><a href="#Useful" class="headerlink" title="Useful?"></a>Useful?</h2><p>Hopefully someone else will find this useful, although this is a problem that has options already in the Sitecore world, with the new world of SXA and multi-tennancy/multi-sites, this should provide enough flexibility to help make our implementations secure. This is only one of the many steps we may need to take, but its something that we should all be implementing for our clients.</p>
 <p>Let me know your thoughts.</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/" data-id="cka5tzgab005hgsvr57640q19" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/#comments" class="article-comment-link">Comments</a>
-        
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Security/">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SxA/">SxA</a></li></ul>
+        </div>
+        <footer class="article-footer">
+            
 
-      </footer>
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Sitecore SXA: Using HTTP Headers to Secure Your Site",
+        "image": "http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/templates.png",
+        "keywords": "Sitecore SxA Security",
+        "genre": "SxA",
+        "datePublished": "2018-07-27",
+        "dateCreated": "2018-07-27",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/",
+        "description": "I recently came across a nice post on Using HTTP Headers to Secure Your Site by Caleb Thompson. Now while the blog post was targeted at Ruby, the principles here apply to any website. Using Observator",
+        "wordCount": 1078
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2018/10/23/Sitecore-SXA-Using-Placeholders-with-NVelocity-Templates/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Sitecore SXA: Using Placeholders with NVelocity Templates
+            Sitecore SXA: Using Placeholders with NVelocity Templates
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2018/03/16/Sitecore-SXA-Custom-PageList-data-sources/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Sitecore SXA: Custom PageList Datasources</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2018/03/16/Sitecore-SXA-Custom-PageList-data-sources/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Sitecore SXA: Custom PageList Datasources</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2018/07/27/Sitecore-SXA-Using-HTTP-Headers-to-Secure-Your-Site/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

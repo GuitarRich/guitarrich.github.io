@@ -1,132 +1,258 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Habitat Dependency Injection with Sitecore 8.2 | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="If you attended @seanholmseby’s session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the H">
-<meta name="keywords" content="Sitecore,Habitat,Helix,Dependency Injection">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Habitat Dependency Injection with Sitecore 8.2 | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sitecore,Habitat,Helix,Dependency Injection" />
+    
+    <meta name="description" content="If you attended @seanholmseby’s session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the H">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Habitat Dependency Injection with Sitecore 8.2">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
 <meta property="og:description" content="If you attended @seanholmseby’s session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the H">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/happydance.gif">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/guitarrich.jpg">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.691Z">
+<meta property="article:published_time" content="2016-09-17T20:21:20.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.691Z">
+<meta property="article:author" content="Richard Seal">
+<meta property="article:tag" content="Sitecore">
+<meta property="article:tag" content="Habitat">
+<meta property="article:tag" content="Helix">
+<meta property="article:tag" content="Dependency Injection">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Habitat Dependency Injection with Sitecore 8.2">
-<meta name="twitter:description" content="If you attended @seanholmseby’s session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the H">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/happydance.gif">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Habitat-Dependency-Injection-with-Sitecore-8-2" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Habitat Dependency Injection with Sitecore 8.2
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/" class="article-date">
-  <time datetime="2016-09-17T20:21:20.000Z" itemprop="datePublished">2016-09-17</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <p>If you attended <a href="http://www.seanholmesby.com" target="_blank" rel="noopener">@seanholmseby’s</a> session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the <a href="https://github.com/Sitecore/Habitat" target="_blank" rel="noopener">Habitat</a> Demo project or a <a href="http://helix.sitecore.net/" target="_blank" rel="noopener">Helix</a> based project. One of the options discussed was to pass the container around in a pipeline and let each project register its own dependencies. This approach was also discussed by <a href="https://ctor.io/one-way-to-implement-dependency-injection-for-sitecore-habitat/" target="_blank" rel="noopener">Kevin Brechbühl</a> (@aquasonic for those on the slack chat). A new pipeline was created and called from the <code>Initialize</code> pipeline and the container was part of the pipeline args. While this approach does work it breaks some of the principles that govern good DI practice.</p>
-<h4 id="Composition-Root"><a href="#Composition-Root" class="headerlink" title="Composition Root"></a>Composition Root</h4><p>In Mark Seemann’s book he describes the <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/" target="_blank" rel="noopener"><em>Composition Root</em></a> pattern. Most agree that we <em>should</em> be using the <em>Constructor Injection</em> pattern when requiring dependencies, we have to also define an area that is responsible for composing those classes and their dependencies. Where should that be? Mark points out that this should be <em>As close as possible to the application’s entry point</em>. This place is called the <a href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/" target="_blank" rel="noopener"><em>Composition Root</em></a> and is usually defined as:</p>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Sitecore/">Sitecore</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Habitat-Dependency-Injection-with-Sitecore-8-2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Habitat Dependency Injection with Sitecore 8.2
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/" class="article-date">
+       <time datetime="2016-09-17T20:21:20.000Z" itemprop="datePublished">2016-09-17</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.691Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Dependency-Injection/" rel="tag">Dependency Injection</a>, <a class="tag-link-link" href="/tags/Habitat/" rel="tag">Habitat</a>, <a class="tag-link-link" href="/tags/Helix/" rel="tag">Helix</a>, <a class="tag-link-link" href="/tags/Sitecore/" rel="tag">Sitecore</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>If you attended <a target="_blank" rel="noopener" href="http://www.seanholmesby.com">@seanholmseby’s</a> session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the <a target="_blank" rel="noopener" href="https://github.com/Sitecore/Habitat">Habitat</a> Demo project or a <a target="_blank" rel="noopener" href="http://helix.sitecore.net/">Helix</a> based project. One of the options discussed was to pass the container around in a pipeline and let each project register its own dependencies. This approach was also discussed by <a target="_blank" rel="noopener" href="https://ctor.io/one-way-to-implement-dependency-injection-for-sitecore-habitat/">Kevin Brechbühl</a> (@aquasonic for those on the slack chat). A new pipeline was created and called from the <code>Initialize</code> pipeline and the container was part of the pipeline args. While this approach does work it breaks some of the principles that govern good DI practice.</p>
+<h4 id="Composition-Root"><a href="#Composition-Root" class="headerlink" title="Composition Root"></a>Composition Root</h4><p>In Mark Seemann’s book he describes the <a target="_blank" rel="noopener" href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/"><em>Composition Root</em></a> pattern. Most agree that we <em>should</em> be using the <em>Constructor Injection</em> pattern when requiring dependencies, we have to also define an area that is responsible for composing those classes and their dependencies. Where should that be? Mark points out that this should be <em>As close as possible to the application’s entry point</em>. This place is called the <a target="_blank" rel="noopener" href="http://blog.ploeh.dk/2011/07/28/CompositionRoot/"><em>Composition Root</em></a> and is usually defined as:</p>
 <blockquote>
 <p>A Composition Root is a (preferably) unique location in an application where modules are composed together.</p>
 </blockquote>
@@ -134,157 +260,369 @@
 <blockquote>
 <p>A DI Container should only be referenced from the Composition Root. All other modules should have no reference to the container.</p>
 </blockquote>
-<p>And this makes sense - one of the purposes of <a href="https://en.wikipedia.org/wiki/Dependency_injection" target="_blank" rel="noopener">Dependency Injection</a> is to remove tightly coupled dependencies. Adding in a dependency to the container in our libraries goes against that purpose.</p>
-<h4 id="Pre-Habitat-Helix"><a href="#Pre-Habitat-Helix" class="headerlink" title="Pre-Habitat/Helix"></a>Pre-Habitat/Helix</h4><p>Pre-<a href="https://github.com/Sitecore/Habitat" target="_blank" rel="noopener">Habitat</a>/<a href="http://helix.sitecore.net/" target="_blank" rel="noopener">Helix</a> it was a fairly simple process to create a class in <code>App_Start</code> or if you wanted to keep things ‘Sitecorey’ (not the same as <a href="https://twitter.com/sitecorey" target="_blank" rel="noopener">@SiteCorey</a>!) you could add a new processor to the <code>Initialize</code> pipeline.</p>
+<p>And this makes sense - one of the purposes of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dependency_injection">Dependency Injection</a> is to remove tightly coupled dependencies. Adding in a dependency to the container in our libraries goes against that purpose.</p>
+<h4 id="Pre-Habitat-Helix"><a href="#Pre-Habitat-Helix" class="headerlink" title="Pre-Habitat/Helix"></a>Pre-Habitat/Helix</h4><p>Pre-<a target="_blank" rel="noopener" href="https://github.com/Sitecore/Habitat">Habitat</a>/<a target="_blank" rel="noopener" href="http://helix.sitecore.net/">Helix</a> it was a fairly simple process to create a class in <code>App_Start</code> or if you wanted to keep things ‘Sitecorey’ (not the same as <a target="_blank" rel="noopener" href="https://twitter.com/sitecorey">@SiteCorey</a>!) you could add a new processor to the <code>Initialize</code> pipeline.</p>
 <p>You <em>can</em> still do this with Helix. But with the Helix design patterns, we have multiple features/projects that all have dependencies. Also - we need to be able to easily add new features, remove features without having to update the main application project each time. In fact, if you look at the website project file for Habitat - it does not contain references to <em>all</em> the feature or foundation libraries.</p>
 <p>Dependency Injection really fits in the Foundation layer just as in Kevin’s example. So how can we do this, but <em>not</em> add a dependency to the container in all the projects</p>
 <h4 id="Microsoft-Dependency-Injection-Abstractions"><a href="#Microsoft-Dependency-Injection-Abstractions" class="headerlink" title="Microsoft Dependency Injection Abstractions"></a>Microsoft Dependency Injection Abstractions</h4><p>With 8.2, Sitecore have embraced DI at last!</p>
-<img src="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/happydance.gif" title="Wooooooo">
-<p>I wont go into the details here. <a href="http://kamsar.net/index.php/2016/08/Dependency-Injection-in-Sitecore-8-2/" target="_blank" rel="noopener">@Kamsar</a> and <a href="http://www.akshaysura.com/2016/09/15/microsoft-extensions-dependency-injection-di-with-sitecore-8-2-sample-project/" target="_blank" rel="noopener">@Akshay</a> have already done that for you.</p>
-<p>One of the features of the MS DI Abstractions is the new interface <a href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/IServiceCollection/" target="_blank" rel="noopener"><code>IServiceCollection</code></a> - this specifies the contract for a collection of service descriptors.</p>
+<img src="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/happydance.gif" class="" title="Wooooooo">
+<p>I wont go into the details here. <a target="_blank" rel="noopener" href="http://kamsar.net/index.php/2016/08/Dependency-Injection-in-Sitecore-8-2/">@Kamsar</a> and <a target="_blank" rel="noopener" href="http://www.akshaysura.com/2016/09/15/microsoft-extensions-dependency-injection-di-with-sitecore-8-2-sample-project/">@Akshay</a> have already done that for you.</p>
+<p>One of the features of the MS DI Abstractions is the new interface <a target="_blank" rel="noopener" href="https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/IServiceCollection/"><code>IServiceCollection</code></a> - this specifies the contract for a collection of service descriptors.</p>
 <p>This will enable us to build a collection of our dependencies and services, without a direct reference to the container. Also the registrations are not created in our feature. The Sitecore application or our own pipeline can take care of that, obeying the <em>Composition Root</em> pattern.</p>
 <p>So how does that work? We have a few options!</p>
 <h4 id="Option-1-Just-use-Sitecore’s-Container"><a href="#Option-1-Just-use-Sitecore’s-Container" class="headerlink" title="Option 1: Just use Sitecore’s Container"></a>Option 1: Just use Sitecore’s Container</h4><p>The simplest method to register your dependencies is to just use Sitecore’s own DI abstractions and container. Each foundation and feature project just needs a single class and some config. This has been covered in other posts, but for completeness here is the method. Lets update the Accounts Feature from the Habitat demo project.</p>
 <p>First we need a configurator, this will add our registrations to the <code>IServiceCollection</code> for the application:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.Feature.Accounts</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> Microsoft.Extensions.DependencyInjection;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.DependencyInjection;</span><br><span class="line">    <span class="keyword">using</span> Sitecore.Foundation.DependencyInjection;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RegisterDependencies</span> : <span class="title">IServicesConfigurator</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IServiceCollection serviceCollection</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            serviceCollection.AddTransient&lt;IAccountRepository, AccountRepository&gt;();</span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> Add any other registrations here</span></span><br><span class="line"></span><br><span class="line">            serviceCollection.AddMvcControllersInCurrentAssembly();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Then we need to add the config for Sitecore to know about the configurator:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">services</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">configurator</span> <span class="attr">type</span>=<span class="string">"Sitecore.Feature.Accounts.RegisterDependencies, Sitecore.Feature.Accounts"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">services</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>So simple right? </p>
-<p>But why might we choose this option? The MS DI Container that Sitecore uses is fast, in <a href="http://www.akshaysura.com/2016/08/31/ioc-container-benchmark-comparison-2016-including-microsoft-extensions-dependencyinjection/" target="_blank" rel="noopener">test’s it is at least as fast as Simple Injector</a>. Also - it’s Sitecore’s officially supported container. Sitecore use this to test their own code and so you are more likely to get a good response from support if you are using the same container as they do.</p>
+<p>Then we need to add the config for Sitecore to know about the configurator:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">&quot;http://www.sitecore.net/xmlconfig/&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">services</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">configurator</span> <span class="attr">type</span>=<span class="string">&quot;Sitecore.Feature.Accounts.RegisterDependencies, Sitecore.Feature.Accounts&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">services</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure><br>So simple right? </p>
+<p>But why might we choose this option? The MS DI Container that Sitecore uses is fast, in <a target="_blank" rel="noopener" href="http://www.akshaysura.com/2016/08/31/ioc-container-benchmark-comparison-2016-including-microsoft-extensions-dependencyinjection/">test’s it is at least as fast as Simple Injector</a>. Also - it’s Sitecore’s officially supported container. Sitecore use this to test their own code and so you are more likely to get a good response from support if you are using the same container as they do.</p>
 <p>Another really good reason is if you want to use any of the Sitecore registrations in your code. These might be <code>ISettings</code>, <code>IFactory</code>, <code>BasePublishManager</code> etc… There are a lot of them! They will all be available in the container.</p>
 <p>But the conforming container used in the MS DI Abstractions does not have some advanced container features that you might want to use. So….</p>
 <h4 id="Option-2-Use-your-own-Container"><a href="#Option-2-Use-your-own-Container" class="headerlink" title="Option 2: Use your own Container"></a>Option 2: Use your own Container</h4><p>Many people already have DI setup in pre-8.2 projects. This could be using AutoFac, Simple Injector, Structure Map - there are a lot of options. So why keep your own container? Familiarity? Performance… or you might use some of the advanced container features that are not available in the MS DI container.</p>
 <p>Also there is the argument that you should keep your framework and application containers separate. Whatever your reason, how can you do this and keep the composition root principle.</p>
 <p>First we need to make sure that we register our dependencies and set the container <em>before</em> Sitecore does its thing. Why? Here is the code for the Sitecore dependency resolver:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SitecoreDependencyResolver</span> : <span class="title">IDependencyResolver</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">readonly</span> IDependencyResolver _innerResolver;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SitecoreDependencyResolver</span>(<span class="params">IDependencyResolver innerResolver</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    <span class="keyword">this</span>._innerResolver = innerResolver;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">GetService</span>(<span class="params">Type serviceType</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    <span class="keyword">return</span> ServiceLocator.ServiceProvider.GetService(serviceType) ?? <span class="keyword">this</span>._innerResolver.GetService(serviceType);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> IEnumerable&lt;<span class="keyword">object</span>&gt; <span class="title">GetServices</span>(<span class="params">Type serviceType</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    IEnumerable&lt;<span class="keyword">object</span>&gt; source = (IEnumerable&lt;<span class="keyword">object</span>&gt;) ServiceLocator.ServiceProvider.GetService(<span class="keyword">typeof</span> (IEnumerable&lt;&gt;).MakeGenericType(serviceType));</span><br><span class="line">    <span class="keyword">object</span>[] objArray = source <span class="keyword">as</span> <span class="keyword">object</span>[] ?? source.ToArray&lt;<span class="keyword">object</span>&gt;();</span><br><span class="line">    <span class="keyword">if</span> (source != <span class="literal">null</span> &amp;&amp; ((IEnumerable&lt;<span class="keyword">object</span>&gt;) objArray).Any&lt;<span class="keyword">object</span>&gt;())</span><br><span class="line">      <span class="keyword">return</span> (IEnumerable&lt;<span class="keyword">object</span>&gt;) objArray;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._innerResolver.GetServices(serviceType);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SitecoreDependencyResolver</span> : <span class="title">IDependencyResolver</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">readonly</span> IDependencyResolver _innerResolver;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SitecoreDependencyResolver</span>(<span class="params">IDependencyResolver innerResolver</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    <span class="keyword">this</span>._innerResolver = innerResolver;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="built_in">object</span> <span class="title">GetService</span>(<span class="params">Type serviceType</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    <span class="keyword">return</span> ServiceLocator.ServiceProvider.GetService(serviceType) ?? <span class="keyword">this</span>._innerResolver.GetService(serviceType);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> IEnumerable&lt;<span class="built_in">object</span>&gt; <span class="title">GetServices</span>(<span class="params">Type serviceType</span>)</span></span><br><span class="line"><span class="function"></span>  &#123;</span><br><span class="line">    IEnumerable&lt;<span class="built_in">object</span>&gt; source = (IEnumerable&lt;<span class="built_in">object</span>&gt;) ServiceLocator.ServiceProvider.GetService(<span class="keyword">typeof</span> (IEnumerable&lt;&gt;).MakeGenericType(serviceType));</span><br><span class="line">    <span class="built_in">object</span>[] objArray = source <span class="keyword">as</span> <span class="built_in">object</span>[] ?? source.ToArray&lt;<span class="built_in">object</span>&gt;();</span><br><span class="line">    <span class="keyword">if</span> (source != <span class="literal">null</span> &amp;&amp; ((IEnumerable&lt;<span class="built_in">object</span>&gt;) objArray).Any&lt;<span class="built_in">object</span>&gt;())</span><br><span class="line">      <span class="keyword">return</span> (IEnumerable&lt;<span class="built_in">object</span>&gt;) objArray;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._innerResolver.GetServices(serviceType);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>You can see that the current <code>DependencyResolver</code> is passed in and then stored as the <code>_innerResolver</code> - then if the Sitecore container cannot resolve the type, it falls back to the <code>_innerResolver</code>. This may have performance implications on your code, so you could write your own dependency resolver and fall back the other way if you prefer.</p>
 <p>Now we can take Kevin’s approach and modify it so that instead of passing the container in the args, we pass an <code>IServiceCollection</code> and use that to build our service descriptors.</p>
 <p>The pipeline args now look like this:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.Foundation.DependencyInjection.Pipelines.InitializeDepdencyInjection</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">using</span> Microsoft.Extensions.DependencyInjection;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Pipelines;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">InitializeDependencyInjectionArgs</span> : <span class="title">PipelineArgs</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">public</span> IServiceCollection ServiceCollection &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InitializeDependencyInjectionArgs</span>(<span class="params">IServiceCollection serviceCollection</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">      <span class="keyword">this</span>.ServiceCollection = serviceCollection;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>We have to modify the <code>initialize</code> processor to create a new <code>ServiceCollection</code> and pass it into the args. Then after the pipeline has finished running, we will take those service descriptors and register them with the container. In conforming containers you can do <code>container.Populate</code> and pass in the <code>IServiceCollecion</code>. Simple Injector is not conforming right now so we have to do this bit ourselves. Here is the processor:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.Foundation.DependencyInjection.Pipelines.Initialize</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">using</span> System;</span><br><span class="line">  <span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line">  <span class="keyword">using</span> System.Linq;</span><br><span class="line">  <span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line">  <span class="keyword">using</span> Microsoft.Extensions.DependencyInjection;</span><br><span class="line">  <span class="keyword">using</span> SimpleInjector;</span><br><span class="line">  <span class="keyword">using</span> SimpleInjector.Integration.Web.Mvc;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Diagnostics;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Foundation.DependencyInjection.Pipelines.InitializeDepdencyInjection;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Pipelines;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IntializeDepdencyInjection</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">PipelineArgs args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">      Log.Info(<span class="string">"Start dependency injection initialization"</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> serviceCollection = <span class="keyword">new</span> ServiceCollection();</span><br><span class="line">      <span class="keyword">var</span> container = <span class="keyword">new</span> Container();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// start the pipeline to register all dependencies</span></span><br><span class="line">      <span class="keyword">var</span> dependencyInjectionArgs = <span class="keyword">new</span> InitializeDependencyInjectionArgs(serviceCollection);</span><br><span class="line">      CorePipeline.Run(<span class="string">"initializeDependencyInjection"</span>, dependencyInjectionArgs);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> containerCache = <span class="keyword">new</span> List&lt;Type&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">foreach</span> (<span class="keyword">var</span> serviceDescriptor <span class="keyword">in</span> dependencyInjectionArgs.ServiceCollection)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// Safety check so we don't try to register the same type twice</span></span><br><span class="line">        <span class="keyword">if</span> (containerCache.Contains(serviceDescriptor.ServiceType))</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Lifestyle siScope;</span><br><span class="line">        <span class="keyword">switch</span> (serviceDescriptor.Lifetime)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Singleton:</span><br><span class="line">            siScope = Lifestyle.Singleton;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Transient:</span><br><span class="line">            siScope = Lifestyle.Transient;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Scoped:</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            siScope = Lifestyle.Scoped;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        container.Register(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationType, siScope);</span><br><span class="line">        containerCache.Add(serviceDescriptor.ServiceType);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Verify our registrations</span></span><br><span class="line">      container.Verify();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Set the ASP.NET dependency resolver</span></span><br><span class="line">      DependencyResolver.SetResolver(<span class="keyword">new</span> SimpleInjectorDependencyResolver(container));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">Sitecore.Foundation.DependencyInjection.Pipelines.Initialize</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">using</span> System;</span><br><span class="line">  <span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line">  <span class="keyword">using</span> System.Linq;</span><br><span class="line">  <span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line">  <span class="keyword">using</span> Microsoft.Extensions.DependencyInjection;</span><br><span class="line">  <span class="keyword">using</span> SimpleInjector;</span><br><span class="line">  <span class="keyword">using</span> SimpleInjector.Integration.Web.Mvc;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Diagnostics;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Foundation.DependencyInjection.Pipelines.InitializeDepdencyInjection;</span><br><span class="line">  <span class="keyword">using</span> Sitecore.Pipelines;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IntializeDepdencyInjection</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">PipelineArgs args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">      Log.Info(<span class="string">&quot;Start dependency injection initialization&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> serviceCollection = <span class="keyword">new</span> ServiceCollection();</span><br><span class="line">      <span class="keyword">var</span> container = <span class="keyword">new</span> Container();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// start the pipeline to register all dependencies</span></span><br><span class="line">      <span class="keyword">var</span> dependencyInjectionArgs = <span class="keyword">new</span> InitializeDependencyInjectionArgs(serviceCollection);</span><br><span class="line">      CorePipeline.Run(<span class="string">&quot;initializeDependencyInjection&quot;</span>, dependencyInjectionArgs);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> containerCache = <span class="keyword">new</span> List&lt;Type&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">foreach</span> (<span class="keyword">var</span> serviceDescriptor <span class="keyword">in</span> dependencyInjectionArgs.ServiceCollection)</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// Safety check so we don&#x27;t try to register the same type twice</span></span><br><span class="line">        <span class="keyword">if</span> (containerCache.Contains(serviceDescriptor.ServiceType))</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Lifestyle siScope;</span><br><span class="line">        <span class="keyword">switch</span> (serviceDescriptor.Lifetime)</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Singleton:</span><br><span class="line">            siScope = Lifestyle.Singleton;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Transient:</span><br><span class="line">            siScope = Lifestyle.Transient;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">case</span> ServiceLifetime.Scoped:</span><br><span class="line">          <span class="literal">default</span>:</span><br><span class="line">            siScope = Lifestyle.Scoped;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        container.Register(serviceDescriptor.ServiceType, serviceDescriptor.ImplementationType, siScope);</span><br><span class="line">        containerCache.Add(serviceDescriptor.ServiceType);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Verify our registrations</span></span><br><span class="line">      container.Verify();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Set the ASP.NET dependency resolver</span></span><br><span class="line">      DependencyResolver.SetResolver(<span class="keyword">new</span> SimpleInjectorDependencyResolver(container));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Finally we have to register the processor:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">initialize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">"Sitecore.Foundation.DependencyInjection.Pipelines.Initialize.InitializeDependencyInjection, Sitecore.Foundation.DependencyInjection"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">patch:before</span>=<span class="string">"processor[@type='Sitecore.Mvc.Pipelines.Loader.InitializeControllerFactory, Sitecore.Mvc']"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">initialize</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">&quot;http://www.sitecore.net/xmlconfig/&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">initialize</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">&quot;Sitecore.Foundation.DependencyInjection.Pipelines.Initialize.InitializeDependencyInjection, Sitecore.Foundation.DependencyInjection&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">patch:before</span>=<span class="string">&quot;processor[@type=&#x27;Sitecore.Mvc.Pipelines.Loader.InitializeControllerFactory, Sitecore.Mvc&#x27;]&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">initialize</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="Configure-your-dependencies"><a href="#Configure-your-dependencies" class="headerlink" title="Configure your dependencies"></a>Configure your dependencies</h4><p>Now DI is setup for our own container, but the features need to configure thier own dependencies. So lets look at the Accounts module again and see how our configurator changes:</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RegisterServices</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Process</span>(<span class="params">InitializeDependencyInjectionArgs args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        args.ServiceCollection.AddTransient&lt;IAccountRepository, AccountRepository&gt;();</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Add any other registrations here</span></span><br><span class="line"></span><br><span class="line">        args.ServiceCollection.AddMvcControllersInCurrentAssembly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>and our configuration changes to add the processor to the pipeline:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">initializeDependencyInjection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">"Sitecore.Feature.Accounts.Pipelines.InitializeDependencyInjection.RegisterServices, Sitecore.Feature.Accounts"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">initializeDependencyInjection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">&quot;http://www.sitecore.net/xmlconfig/&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pipelines</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">initializeDependencyInjection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">processor</span> <span class="attr">type</span>=<span class="string">&quot;Sitecore.Feature.Accounts.Pipelines.InitializeDependencyInjection.RegisterServices, Sitecore.Feature.Accounts&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">initializeDependencyInjection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pipelines</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>With the new DI features in 8.2, it is possible to build a Helix based site and still obey good DI principles. While we are adding a dependency on the MS DI Abstractions, we are not adding a dependency on the container and we are still registering as close to the application’s entry point as we can. At the same time we are keeping the component/modular based architecture of Helix intact and unpoluted.</p>
-<p>So which option should you choose? Well I can’t make that descision for you, I think there are pro’s and con’s for both options presented here. There is also a 3rd option that I haven’t gone into where you can replace Sitecore’s container for another conforming container…. if you really really wanted to do that, it is an option. For me I think the safe option is to just use Sitecore’s own resolver/container. It is fast and makes the configuration simple. But if you want to use advanced features like Simple Injectors <a href="http://simpleinjector.readthedocs.io/en/latest/howto.html#verify-the-container-s-configuration" target="_blank" rel="noopener"><code>.Verify()</code></a> method (which btw has saved my bacon many times!) - option 2 is a good alternative.</p>
-<p>I would love to hear your comments, suggestions on what you think or how this could be improved. Just add below or give me a shout on the <a href="http://sitecorechat.slack.com" target="_blank" rel="noopener">Sitecore Slack</a> channels - I’m @guitarrich. All the code for option 2 can be found on my fork of the habitat source: <a href="https://github.com/GuitarRich/Habitat/tree/feature/dependency-injetion-8.2" target="_blank" rel="noopener">https://github.com/GuitarRich/Habitat/tree/feature/dependency-injetion-8.2</a>.</p>
-<img src="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/guitarrich.jpg" title="@guitarrich">
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/" data-id="cka5tzg920029gsvr25aq4pig" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/#comments" class="article-comment-link">Comments</a>
-        
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dependency-Injection/">Dependency Injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Habitat/">Habitat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Helix/">Helix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li></ul>
+<p>So which option should you choose? Well I can’t make that descision for you, I think there are pro’s and con’s for both options presented here. There is also a 3rd option that I haven’t gone into where you can replace Sitecore’s container for another conforming container…. if you really really wanted to do that, it is an option. For me I think the safe option is to just use Sitecore’s own resolver/container. It is fast and makes the configuration simple. But if you want to use advanced features like Simple Injectors <a target="_blank" rel="noopener" href="http://simpleinjector.readthedocs.io/en/latest/howto.html#verify-the-container-s-configuration"><code>.Verify()</code></a> method (which btw has saved my bacon many times!) - option 2 is a good alternative.</p>
+<p>I would love to hear your comments, suggestions on what you think or how this could be improved. Just add below or give me a shout on the <a target="_blank" rel="noopener" href="http://sitecorechat.slack.com">Sitecore Slack</a> channels - I’m @guitarrich. All the code for option 2 can be found on my fork of the habitat source: <a target="_blank" rel="noopener" href="https://github.com/GuitarRich/Habitat/tree/feature/dependency-injetion-8.2">https://github.com/GuitarRich/Habitat/tree/feature/dependency-injetion-8.2</a>.</p>
+<img src="/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/guitarrich.jpg" class="" title="@guitarrich">
+        </div>
+        <footer class="article-footer">
+            
 
-      </footer>
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Habitat Dependency Injection with Sitecore 8.2",
+        "image": "http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/happydance.gif",
+        "keywords": "Sitecore Habitat Helix Dependency Injection",
+        "genre": "Sitecore",
+        "datePublished": "2016-09-17",
+        "dateCreated": "2016-09-17",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/",
+        "description": "If you attended @seanholmseby’s session on making Habitat your home at Sitecore Symposium 2016, you will have heard him discuss dependency injection with Sitecore 8.2 and how you can use this in the H",
+        "wordCount": 2698
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Right Click Unlock Item with Sitecore PowerShell Extensions
+            Right Click Unlock Item with Sitecore PowerShell Extensions
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2016/08/02/Sitecore-React-a-new-Sitecore-module/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Sitecore.React - a new Sitecore module</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2016/08/02/Sitecore-React-a-new-Sitecore-module/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Sitecore.React - a new Sitecore module</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2016/09/17/Habitat-Dependency-Injection-with-Sitecore-8-2/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

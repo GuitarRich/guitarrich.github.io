@@ -1,262 +1,596 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Fortis V4 Beta Changes | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Fortis V4 Beta Changes | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue&#x2F;request on Github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fortis V4 Beta Changes">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
-<meta property="og:description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.689Z">
+<meta property="og:description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue&#x2F;request on Github">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-03-28T19:45:19.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.689Z">
+<meta property="article:author" content="Richard Seal">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fortis V4 Beta Changes">
-<meta name="twitter:description" content="We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Fortis/">Fortis</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Fortis-V4-Beta-Changes" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Fortis V4 Beta Changes
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2016/03/28/Fortis-V4-Beta-Changes/" class="article-date">
-  <time datetime="2016-03-28T19:45:19.000Z" itemprop="datePublished">2016-03-28</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <p>We are working on new version of <a href="http://fortis.ws" target="_blank" rel="noopener">Fortis</a> so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github: <a href="https://github.com/Fortis-Collection/fortis/issues" target="_blank" rel="noopener">https://github.com/Fortis-Collection/fortis/issues</a>.</p>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Fortis/">Fortis</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Fortis-V4-Beta-Changes" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Fortis V4 Beta Changes
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/03/28/Fortis-V4-Beta-Changes/" class="article-date">
+       <time datetime="2016-03-28T19:45:19.000Z" itemprop="datePublished">2016-03-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/03/28/Fortis-V4-Beta-Changes/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.689Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>We are working on new version of <a target="_blank" rel="noopener" href="http://fortis.ws">Fortis</a> so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github: <a target="_blank" rel="noopener" href="https://github.com/Fortis-Collection/fortis/issues">https://github.com/Fortis-Collection/fortis/issues</a>.</p>
 <p>###Supporting Habitat<br>A breaking change to Fortis is how the configuration is handled. Previously, the core Fortis package modified the <code>web.config</code> to add a section that allowed the developer to identify the assembley that the Fortis model classes were held in. This limited the development team to a single assembly for all the models. </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configSections</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span> <span class="attr">name</span>=<span class="string">"fortis"</span> <span class="attr">type</span>=<span class="string">"System.Configuration.NameValueSectionHandler"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configSections</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">"assembly"</span> <span class="attr">value</span>=<span class="string">"LM.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configSections</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">section</span> <span class="attr">name</span>=<span class="string">&quot;fortis&quot;</span> <span class="attr">type</span>=<span class="string">&quot;System.Configuration.NameValueSectionHandler&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configSections</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">add</span> <span class="attr">key</span>=<span class="string">&quot;assembly&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LM.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>This was limiting to the development team. It meant that you could not build a module using Fortis and install that to a Sitecore implementation without serializing the templates for the module in your site and having the model classes for the module in your own project.</p>
-<p>Recently the big talking point has been <a href="https://github.com/Sitecore/Habitat" target="_blank" rel="noopener">Sitecore Habitat</a> and how that is archtected into Features/Components. Again, having a single assembly forces all the model classes and interfaces to live in the same project, breaking the architectural pattern.</p>
+<p>Recently the big talking point has been <a target="_blank" rel="noopener" href="https://github.com/Sitecore/Habitat">Sitecore Habitat</a> and how that is archtected into Features/Components. Again, having a single assembly forces all the model classes and interfaces to live in the same project, breaking the architectural pattern.</p>
 <p>In Fortis V4 this has all been changed. To be more aligned with standard Sitecore modules, we have moved the configuration out of the <code>Web.config</code> and into an include file. This file lives by default in <code>/app_config/include/fortis/fortis.config</code>.</p>
 <p>Also the models can now live in multiple assemblies. This is done by adding each assembly to the <code>models</code> list in the config. Because this is now inside the Sitecore config, you can do this via an include file for each of your modules:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">"Fortis.Model"</span> <span class="attr">assembley</span>=<span class="string">"Fortis.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">"MyFeature.Model"</span> <span class="attr">assembley</span>=<span class="string">"MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Patch example:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">"http://www.sitecore.net/xmlconfig/"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">model</span> <span class="attr">patch:after</span>=<span class="string">"*[name='Fortis.Model']"</span> <span class="attr">name</span>=<span class="string">"MyFeature.Model"</span> <span class="attr">assembley</span>=<span class="string">"MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">&quot;Fortis.Model&quot;</span> <span class="attr">assembley</span>=<span class="string">&quot;Fortis.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">model</span> <span class="attr">name</span>=<span class="string">&quot;MyFeature.Model&quot;</span> <span class="attr">assembley</span>=<span class="string">&quot;MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Patch example:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">xmlns:patch</span>=<span class="string">&quot;http://www.sitecore.net/xmlconfig/&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">sitecore</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fortis</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">models</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">model</span> <span class="attr">patch:after</span>=<span class="string">&quot;*[name=&#x27;Fortis.Model&#x27;]&quot;</span> <span class="attr">name</span>=<span class="string">&quot;MyFeature.Model&quot;</span> <span class="attr">assembley</span>=<span class="string">&quot;MyFeature.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">models</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fortis</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">sitecore</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>###Custom Field Types<br>Another bug bear has been dealing with custom field types in Fortis. Previously the field type support was hard coded into the <code>SpawnProvider</code>. To support a custom field type you would have to roll your own <code>SpawnProvider</code> and implement the <code>GetField</code> method for your field type.</p>
 <p>This has now been moved to the configuration:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldTypes</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"checkbox"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.BooleanFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"image"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ImageFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"date"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.DateTimeFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"datetime"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.DateTimeFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"checklist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelistex"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multilist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multilist with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"treelist with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.ListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"file"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.FileFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droplink"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.LinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droptree"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.LinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"general link"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"general link with search"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"single-line text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"multi-line text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"droplist"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.TextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"rich text"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.RichTextFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"number"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.NumberFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"integer"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.IntegerFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">"name value list"</span> <span class="attr">type</span>=<span class="string">"Fortis.Model.Fields.NameValueListFieldWrapper, Fortis"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldTypes</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">fieldTypes</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.BooleanFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;image&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ImageFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;date&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.DateTimeFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;datetime&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.DateTimeFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;checklist&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;treelist&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;treelistex&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;multilist&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;multilist with search&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;treelist with search&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.ListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.FileFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;droplink&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.LinkFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;droptree&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.LinkFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;general link&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;general link with search&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.GeneralLinkFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;text&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.TextFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;single-line text&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.TextFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;multi-line text&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.TextFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;droplist&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.TextFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;rich text&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.RichTextFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;number&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.NumberFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;integer&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.IntegerFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">field</span> <span class="attr">name</span>=<span class="string">&quot;name value list&quot;</span> <span class="attr">type</span>=<span class="string">&quot;Fortis.Model.Fields.NameValueListFieldWrapper, Fortis&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fieldTypes</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Now its as simple as adding a new <code>field</code> to the config to support a custom field type. Again, this can be patched in via an include file. If the custom field type stores its Raw Value in the same way as one of the in built fields, you can just use one of the existing <code>IFieldWrapper</code> classes. Or you can roll your own field wrapper as long as it implements <code>IFieldWrapper</code>.</p>
 <p>###Other changes</p>
 <p>Issues from GitHub:</p>
 <ul>
-<li><a href="https://github.com/Fortis-Collection/fortis/issues/23" target="_blank" rel="noopener">#23</a>: The <code>.Value</code> property on the <code>TextFieldWrapper</code> now returns the raw value as a string rather than running through the <code>FieldRenderer</code>. The <code>RichTextFieldWrapper.Value</code> property has been changed to return an <code>IHtmlString</code> and renders the rich text content with <code>Editing</code> set to false.</li>
-<li><a href="https://github.com/Fortis-Collection/fortis/issues/19" target="_blank" rel="noopener">#19</a>: The <code>IItemFactory.Save</code> method has new overloads to match the <code>.Save(bool silent)</code> and <code>.Save(bool updateStatistics, bool silent)</code>.</li>
-<li><a href="https://github.com/Fortis-Collection/fortis/issues/18" target="_blank" rel="noopener">#18</a>: Added a new <code>.HasValue</code> property that can be used to check if a value is blank or has not been assigned.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Fortis-Collection/fortis/issues/23">#23</a>: The <code>.Value</code> property on the <code>TextFieldWrapper</code> now returns the raw value as a string rather than running through the <code>FieldRenderer</code>. The <code>RichTextFieldWrapper.Value</code> property has been changed to return an <code>IHtmlString</code> and renders the rich text content with <code>Editing</code> set to false.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Fortis-Collection/fortis/issues/19">#19</a>: The <code>IItemFactory.Save</code> method has new overloads to match the <code>.Save(bool silent)</code> and <code>.Save(bool updateStatistics, bool silent)</code>.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Fortis-Collection/fortis/issues/18">#18</a>: Added a new <code>.HasValue</code> property that can be used to check if a value is blank or has not been assigned.</li>
 </ul>
-<p>###Unit Testing Changes<br>Finally we have made some changes to the unit tests. Previously the unit tests had been created using Microsoft Fakes, but this relied on the developer having a Visual Studio Ultimate edition or higher. These tests have been removed in favor of using <a href="https://github.com/sergeyshushlyapin/Sitecore.FakeDb" target="_blank" rel="noopener">Sitecore FakeDb</a>. This will make the unit tests more accessible to developers that do not have access to the ultimate editions of VS. More tests will be ported to the new version in the coming weeks.</p>
-<p>This has now been released on Nuget as <a href="https://www.nuget.org/packages/Fortis/4.0.0-beta3" target="_blank" rel="noopener">v4.0.0-beta3</a> - have a play and let us know what you think!</p>
+<p>###Unit Testing Changes<br>Finally we have made some changes to the unit tests. Previously the unit tests had been created using Microsoft Fakes, but this relied on the developer having a Visual Studio Ultimate edition or higher. These tests have been removed in favor of using <a target="_blank" rel="noopener" href="https://github.com/sergeyshushlyapin/Sitecore.FakeDb">Sitecore FakeDb</a>. This will make the unit tests more accessible to developers that do not have access to the ultimate editions of VS. More tests will be ported to the new version in the coming weeks.</p>
+<p>This has now been released on Nuget as <a target="_blank" rel="noopener" href="https://www.nuget.org/packages/Fortis/4.0.0-beta3">v4.0.0-beta3</a> - have a play and let us know what you think!</p>
 <p>Well thats all for now - there will be more updates coming soon, please submit issues or feature requests on Github or hit us up on Slack!</p>
 <p>– Richard.</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/" data-id="cka5tzg910027gsvrppdibd10" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/#comments" class="article-comment-link">Comments</a>
-        
-        
-      </footer>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Fortis V4 Beta Changes",
+        "image": "http://www.sitecorenutsbolts.net",
+        "keywords": "",
+        "genre": "Fortis",
+        "datePublished": "2016-03-28",
+        "dateCreated": "2016-03-28",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/",
+        "description": "We are working on new version of Fortis so I’m going to do a few posts to highlight the new improvements. If you have any feature requests please make sure they are added as an issue/request on Github",
+        "wordCount": 1241
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2016/04/26/Advanced-Cache-Clearing/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2016/04/26/Advanced-Cache-Clearing/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Advanced Cache Clearing
+            Advanced Cache Clearing
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2016/03/18/Site-Definition-Gotcha/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Site Definition Gotcha</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2016/03/18/Site-Definition-Gotcha/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Site Definition Gotcha</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/28/Fortis-V4-Beta-Changes/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

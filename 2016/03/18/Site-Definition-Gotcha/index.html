@@ -1,264 +1,599 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Site Definition Gotcha | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…  The client in question has a fairly simple">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Site Definition Gotcha | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…  The client in question has a fairly simple">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Site Definition Gotcha">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
 <meta property="og:description" content="Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…  The client in question has a fairly simple">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/hours.jpg">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/workedin.jpg">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.741Z">
+<meta property="article:published_time" content="2016-03-18T06:04:01.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.741Z">
+<meta property="article:author" content="Richard Seal">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Site Definition Gotcha">
-<meta name="twitter:description" content="Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…  The client in question has a fairly simple">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/hours.jpg">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore/">Sitecore</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Site-Definition-Gotcha" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Site Definition Gotcha
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2016/03/18/Site-Definition-Gotcha/" class="article-date">
-  <time datetime="2016-03-18T06:04:01.000Z" itemprop="datePublished">2016-03-18</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <p>Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…</p>
-<img src="/2016/03/18/Site-Definition-Gotcha/hours.jpg">
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Sitecore/">Sitecore</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Site-Definition-Gotcha" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Site Definition Gotcha
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2016/03/18/Site-Definition-Gotcha/" class="article-date">
+       <time datetime="2016-03-18T06:04:01.000Z" itemprop="datePublished">2016-03-18</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2016/03/18/Site-Definition-Gotcha/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.741Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…</p>
+<img src="/2016/03/18/Site-Definition-Gotcha/hours.jpg" class="">
 <p>The client in question has a fairly simple multisite setup. Some of the content is shared between sites, other content is local to each site. Also, because the sites are all in the same family, Site B can list articles from Site A. But these article listings must provide links back to the article page on Site A, not display them with Site B’s domain. Should be simple right…</p>
-<p>Now Sitecore does have settings for site resolving and the link provider should be able to handle this. But I have found that just setting the <code>SiteResolving</code> setting does not always work. Others have also found this (<a href="http://stackoverflow.com/questions/29774360/sitecore-link-manager-url-options-site-resolving-is-not-set" target="_blank" rel="noopener">Sitecore Link Manager Url Options Site Resolving is not Set</a>). Also the site already has a custom link provider, so we modified the link provider to check if the item was part of the current site. If it was not, make sure the <code>SiteResolving</code> flag was set correctly and then generate the Url. We also set the <code>targetHostName</code> to make sure that the urls are generated with the correct domain.</p>
+<p>Now Sitecore does have settings for site resolving and the link provider should be able to handle this. But I have found that just setting the <code>SiteResolving</code> setting does not always work. Others have also found this (<a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/29774360/sitecore-link-manager-url-options-site-resolving-is-not-set">Sitecore Link Manager Url Options Site Resolving is not Set</a>). Also the site already has a custom link provider, so we modified the link provider to check if the item was part of the current site. If it was not, make sure the <code>SiteResolving</code> flag was set correctly and then generate the Url. We also set the <code>targetHostName</code> to make sure that the urls are generated with the correct domain.</p>
 <p>All was well… or so we thought. We did our local testing and sure enough navigating to <strong>Site B</strong> and loading the page with the article listing from <strong>Site A</strong> rendered links pointing to <code>http://sitea.local/news/article-name</code> - perfect. Run through a few more tests and its all looking great. Code gets committed and deployed out to the internal QA site.</p>
 <h4 id="All-was-not-well"><a href="#All-was-not-well" class="headerlink" title="All was not well!!"></a>All was not well!!</h4><p>After deploying and making sure everything was published, all the indexes were updated etc… I hit the page on <strong>Site B</strong> that listed articles from <strong>Site A</strong>… problem… the links were pointing to the content, but with <strong>Site B</strong>‘s domain name.</p>
 <p>All the config looked ok. The custom link provider was being used, the Site Definitions had the <code>targetHostName</code> and <code>host</code> values set correctly. Everything matched my local environment, but it was not working. I double checked my local and that did work.</p>
 <p>Eventually after dotPeek’ing through the link provider in Sitecore I narrowed it down to this method in <code>Sitecore.Links.LinkProvider.LinkBuilder</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">protected virtual string GetServerUrlElement(SiteInfo siteInfo)</span><br><span class="line">&#123;</span><br><span class="line">    SiteContext site = Context.Site;</span><br><span class="line">    string str1 = site != null ? site.Name : string.Empty;</span><br><span class="line">    string hostName = this.GetHostName();</span><br><span class="line">    string str2 = this.AlwaysIncludeServerUrl ? WebUtil.GetServerUrl() : string.Empty;</span><br><span class="line">    if (siteInfo == null)</span><br><span class="line">        return str2;</span><br><span class="line">    string str3;</span><br><span class="line">    if (string.IsNullOrEmpty(siteInfo.HostName) || string.IsNullOrEmpty(hostName) || !siteInfo.Matches(hostName))</span><br><span class="line">        str3 = StringUtil.GetString(new string[2]</span><br><span class="line">        &#123;</span><br><span class="line">        this.GetTargetHostName(siteInfo),</span><br><span class="line">        hostName</span><br><span class="line">        &#125;);</span><br><span class="line">    else</span><br><span class="line">        str3 = hostName;</span><br><span class="line">    string str4 = str3;</span><br><span class="line">    if (!this.AlwaysIncludeServerUrl &amp;&amp; siteInfo.Name.Equals(str1, StringComparison.OrdinalIgnoreCase) &amp;&amp; hostName.Equals(str4, StringComparison.OrdinalIgnoreCase) || (str4 == string.Empty || str4.IndexOf(&apos;*&apos;) &gt;= 0))</span><br><span class="line">        return str2;</span><br><span class="line">    string @string = StringUtil.GetString(new string[2]</span><br><span class="line">    &#123;</span><br><span class="line">        siteInfo.Scheme,</span><br><span class="line">        this.GetScheme()</span><br><span class="line">    &#125;);</span><br><span class="line">    int @int = MainUtil.GetInt(siteInfo.Port, WebUtil.GetPort());</span><br><span class="line">    int port = WebUtil.GetPort();</span><br><span class="line">    string scheme = this.GetScheme();</span><br><span class="line">    StringComparison comparisonType = StringComparison.OrdinalIgnoreCase;</span><br><span class="line">    if (str4.Equals(hostName, comparisonType) &amp;&amp; @int == port &amp;&amp; @string.Equals(scheme, comparisonType))</span><br><span class="line">        return str2;</span><br><span class="line">    string str5 = @string + &quot;://&quot; + str4;</span><br><span class="line">    if (@int &gt; 0 &amp;&amp; @int != 80)</span><br><span class="line">        str5 = str5 + (object) &quot;:&quot; + (string) (object) @int;</span><br><span class="line">    return str5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">protected virtual string GetServerUrlElement(SiteInfo siteInfo)</span><br><span class="line">&#123;</span><br><span class="line">    SiteContext site &#x3D; Context.Site;</span><br><span class="line">    string str1 &#x3D; site !&#x3D; null ? site.Name : string.Empty;</span><br><span class="line">    string hostName &#x3D; this.GetHostName();</span><br><span class="line">    string str2 &#x3D; this.AlwaysIncludeServerUrl ? WebUtil.GetServerUrl() : string.Empty;</span><br><span class="line">    if (siteInfo &#x3D;&#x3D; null)</span><br><span class="line">        return str2;</span><br><span class="line">    string str3;</span><br><span class="line">    if (string.IsNullOrEmpty(siteInfo.HostName) || string.IsNullOrEmpty(hostName) || !siteInfo.Matches(hostName))</span><br><span class="line">        str3 &#x3D; StringUtil.GetString(new string[2]</span><br><span class="line">        &#123;</span><br><span class="line">        this.GetTargetHostName(siteInfo),</span><br><span class="line">        hostName</span><br><span class="line">        &#125;);</span><br><span class="line">    else</span><br><span class="line">        str3 &#x3D; hostName;</span><br><span class="line">    string str4 &#x3D; str3;</span><br><span class="line">    if (!this.AlwaysIncludeServerUrl &amp;&amp; siteInfo.Name.Equals(str1, StringComparison.OrdinalIgnoreCase) &amp;&amp; hostName.Equals(str4, StringComparison.OrdinalIgnoreCase) || (str4 &#x3D;&#x3D; string.Empty || str4.IndexOf(&#39;*&#39;) &gt;&#x3D; 0))</span><br><span class="line">        return str2;</span><br><span class="line">    string @string &#x3D; StringUtil.GetString(new string[2]</span><br><span class="line">    &#123;</span><br><span class="line">        siteInfo.Scheme,</span><br><span class="line">        this.GetScheme()</span><br><span class="line">    &#125;);</span><br><span class="line">    int @int &#x3D; MainUtil.GetInt(siteInfo.Port, WebUtil.GetPort());</span><br><span class="line">    int port &#x3D; WebUtil.GetPort();</span><br><span class="line">    string scheme &#x3D; this.GetScheme();</span><br><span class="line">    StringComparison comparisonType &#x3D; StringComparison.OrdinalIgnoreCase;</span><br><span class="line">    if (str4.Equals(hostName, comparisonType) &amp;&amp; @int &#x3D;&#x3D; port &amp;&amp; @string.Equals(scheme, comparisonType))</span><br><span class="line">        return str2;</span><br><span class="line">    string str5 &#x3D; @string + &quot;:&#x2F;&#x2F;&quot; + str4;</span><br><span class="line">    if (@int &gt; 0 &amp;&amp; @int !&#x3D; 80)</span><br><span class="line">        str5 &#x3D; str5 + (object) &quot;:&quot; + (string) (object) @int;</span><br><span class="line">    return str5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>And more specifically, this line:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (string.IsNullOrEmpty(siteInfo.HostName) || string.IsNullOrEmpty(hostName) || !siteInfo.Matches(hostName))</span><br></pre></td></tr></table></figure>
 <p>On my local, that line always returned true - and the <code>targetHostName</code> was used for the server url part. But on the QA servers, this always returned false.</p>
 <p>The part that was giving me the trouble was <code>!siteInfo.Matches(hostName)</code> - This check tries to match the <code>HttpContext.Current.Request.Url.Host</code> with the values set in the Site Definition <code>host</code> property. If there is a match, then it assumes the <code>hostName</code> <em>is</em> the right domain for the item and generates the link under that <em>hostName</em>. If there is <em>NO</em> match, it uses the <code>targetHostName</code> property to set the domain for the Url.</p>
 <p>On my local, the site definitions were:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"siteB"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">"siteb.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/siteB"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">"master"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">"siteb.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">"https"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"siteA"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">"sitea.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/siteA"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">"master"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">"sitea.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">"https"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">&quot;siteB&quot;</span> <span class="attr">patch:before</span>=<span class="string">&quot;site[@name=&#x27;website&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">&quot;siteb.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">&quot;/sitecore/content/siteB&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">&quot;/home&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">&quot;web&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">&quot;master&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">&quot;en&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">&quot;siteb.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">&quot;https&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">&quot;siteA&quot;</span> <span class="attr">patch:before</span>=<span class="string">&quot;site[@name=&#x27;website&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">&quot;sitea.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">&quot;/sitecore/content/siteA&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">&quot;/home&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">&quot;web&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">&quot;master&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">&quot;en&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">&quot;sitea.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">&quot;https&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p>but on the QA servers, we has a slightly different setup - see if you can see what caused us the problem:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"siteB"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">"qa-siteb.sitea.com|siteb.sitea.com"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/siteB"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">"master"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">"siteb.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">"https"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">"siteA"</span> <span class="attr">patch:before</span>=<span class="string">"site[@name='website']"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">"*.sitea.com"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">"/"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">"/sitecore/content/siteA"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">"/home"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">"web"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">"master"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">"en"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">"sitea.local"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">"https"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">&quot;siteB&quot;</span> <span class="attr">patch:before</span>=<span class="string">&quot;site[@name=&#x27;website&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">&quot;qa-siteb.sitea.com|siteb.sitea.com&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">&quot;/sitecore/content/siteB&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">&quot;/home&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">&quot;web&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">&quot;master&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">&quot;en&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">&quot;siteb.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">&quot;https&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">site</span> <span class="attr">name</span>=<span class="string">&quot;siteA&quot;</span> <span class="attr">patch:before</span>=<span class="string">&quot;site[@name=&#x27;website&#x27;]&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">hostName</span>=<span class="string">&quot;*.sitea.com&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">virtualFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">physicalFolder</span>=<span class="string">&quot;/&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">rootPath</span>=<span class="string">&quot;/sitecore/content/siteA&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">startItem</span>=<span class="string">&quot;/home&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">database</span>=<span class="string">&quot;web&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">content</span>=<span class="string">&quot;master&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">language</span>=<span class="string">&quot;en&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">targetHostName</span>=<span class="string">&quot;sitea.local&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">scheme</span>=<span class="string">&quot;https&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p>The problem here was the wildcard Url for SiteA. On the QA environment, we only had the domain for <code>sitea.com</code>. <strong>Site B</strong> was setup as a sub-domain of Site A. This meant that when the LinkProvider checked to see if the <code>hostName</code>, which was <code>http://siteb.sitea.com/</code> matched the <code>host</code> property on <code>Site A</code> definition, it returned true, because the wildcard host <code>*.sitea.com</code> was a valid match.</p>
 <h4 id="Moral-of-the-story-or-TL-DR"><a href="#Moral-of-the-story-or-TL-DR" class="headerlink" title="Moral of the story or TL/DR;"></a>Moral of the story or TL/DR;</h4><p>If you have a multisite setup and some sites use subdomains of the main site. Becareful with using wildcard matches in the <code>host</code> property. For us the fix was a simple change, <code>*.sitea.com</code> became <code>qa.sitea.com</code> and the cross site links started working on the QA site just as they had done locally.</p>
 <p>Hopefully this helps someone else keep thier hair and not spend an afternoon feeling like you are going crazy! :D</p>
 <p>Of course you could always have this attitude:</p>
-<img src="/2016/03/18/Site-Definition-Gotcha/workedin.jpg">
+<img src="/2016/03/18/Site-Definition-Gotcha/workedin.jpg" class="">
 <p>– Richard</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/" data-id="cka5tzg9j003sgsvrh29fflk7" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/#comments" class="article-comment-link">Comments</a>
-        
-        
-      </footer>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Site Definition Gotcha",
+        "image": "http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/hours.jpg",
+        "keywords": "",
+        "genre": "Sitecore",
+        "datePublished": "2016-03-18",
+        "dateCreated": "2016-03-18",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/",
+        "description": "Don’t you just love those problems that end up with you tearing your hair out! I ran into just such a problem this week with a client. Let me set the scene…
+
+The client in question has a fairly simple",
+        "wordCount": 1613
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2016/03/28/Fortis-V4-Beta-Changes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2016/03/28/Fortis-V4-Beta-Changes/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Fortis V4 Beta Changes
+            Fortis V4 Beta Changes
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Octopus Deploy Step for Unicorn Sync</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2016/03/14/Octopus-Deploy-Step-for-Unicorn-Sync/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Octopus Deploy Step for Unicorn Sync</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2016/03/18/Site-Definition-Gotcha/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

@@ -1,181 +1,298 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>Sitecore.React - Getting Started - 4. Sitecore Integration | Sitecore Nuts &amp; Bolts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
-<meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js">
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Sitecore.React - Getting Started - 4. Sitecore Integration | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sitecore,Sitecore.React,ReactJS,node.js" />
+    
+    <meta name="description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sitecore.React - Getting Started - 4. Sitecore Integration">
 <meta property="og:url" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/index.html">
 <meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
 <meta property="og:description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newinstance.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/templates.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject1.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject2.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/websiteproject.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/foundationproject.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/featureproject.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/visualstudiosolution.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/defaultlayout.png">
-<meta property="og:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/mainlayout.png">
-<meta property="og:updated_time" content="2020-05-12T14:52:21.803Z">
+<meta property="article:published_time" content="2017-10-30T22:50:31.000Z">
+<meta property="article:modified_time" content="2020-05-12T14:52:21.803Z">
+<meta property="article:author" content="Richard Seal">
+<meta property="article:tag" content="Sitecore">
+<meta property="article:tag" content="Sitecore.React">
+<meta property="article:tag" content="ReactJS">
+<meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sitecore.React - Getting Started - 4. Sitecore Integration">
-<meta name="twitter:description" content="OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos">
 <meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
-  
-  
+    
 
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
-  
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
 
-  
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<!--
-  
-    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
--->
-</head>
-</html>
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body>
-  <div id="wrap">
-    <header id="header">
-  <div id="header-outer" class="outer">
-    <div class="container">
-      <div class="container-inner">
-        <div id="header-title">
-          <h1 class="logo-wrap">
-            <a href="/" class="logo"></a>
-          </h1>
-          
-            <h2 class="subtitle-wrap">
-              <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore!</p>
-            </h2>
-          
-          
-          <div class="mvp">
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-              <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-            <a href="http://www.sitecore.net/mvp" target="_blank">
-                <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2020">
-            </a>
-          </div>
-          
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-        <div id="header-inner" class="nav-container">
-          <a id="main-nav-toggle" class="nav-icon"></a>
-          <div class="nav-container-inner">
-            <ul id="main-nav">
-              
-            </ul>
-            <nav id="sub-nav">
-              <div id="search-form-wrap">
-                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://www.sitecorenutsbolts.net"></form>
-              </div>
-            </nav>
-          </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-      </div>
     </div>
-  </div>
-</header>
-    <div class="container">
-      <div class="main-body container-inner">
-        <div class="main-body-inner">
-          <section id="main">
-            <div class="main-body-header">
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a></h1>
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="main-body-content">
-              
-  <article id="post-Sitecore-React-Getting-Started-4-Sitecore-Integration" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-      <!--  -->
-      
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      Sitecore.React - Getting Started - 4. Sitecore Integration
-    </h1>
-  
+        </div>
+    </div>
+</header>
 
-        </header>
-      
-      <p class="article-byline">
-        <a href="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" class="article-date">
-  <time datetime="2017-10-30T22:50:31.000Z" itemprop="datePublished">2017-10-30</time>
-</a>
-      </p>
-      <div class="article-entry" itemprop="articleBody">
-        <code>Estimated reading time:<span class="eta"></span></code>
-        <h3 id="OPENING-CAVEAT"><a href="#OPENING-CAVEAT" class="headerlink" title="OPENING CAVEAT"></a>OPENING CAVEAT</h3><p>So many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclosure this is why its taken so long. The main reason is - ReactJS.net appears to not work very well with React 15.5 and above. Most of the reason for this delay is that I cannot get my tutorial repo to work with the versions of react that were used in parts 1-3. That said, it does work with earlier versions of React, so I thought it best right now to at least finish off the tutorial so you can see the Sitecore parts and then hopefully as a collective we can work out the issues with the newer versions of React.</p>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Sitecore-React/">Sitecore.React</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Sitecore-React-Getting-Started-4-Sitecore-Integration" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Sitecore.React - Getting Started - 4. Sitecore Integration
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" class="article-date">
+       <time datetime="2017-10-30T22:50:31.000Z" itemprop="datePublished">2017-10-30</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" class="article-date">
+     <time datetime="2020-05-12T14:52:21.803Z" itemprop="dateModified">2020-05-12</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ReactJS/" rel="tag">ReactJS</a>, <a class="tag-link-link" href="/tags/Sitecore/" rel="tag">Sitecore</a>, <a class="tag-link-link" href="/tags/Sitecore-React/" rel="tag">Sitecore.React</a>, <a class="tag-link-link" href="/tags/node-js/" rel="tag">node.js</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h3 id="OPENING-CAVEAT"><a href="#OPENING-CAVEAT" class="headerlink" title="OPENING CAVEAT"></a>OPENING CAVEAT</h3><p>So many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclosure this is why its taken so long. The main reason is - ReactJS.net appears to not work very well with React 15.5 and above. Most of the reason for this delay is that I cannot get my tutorial repo to work with the versions of react that were used in parts 1-3. That said, it does work with earlier versions of React, so I thought it best right now to at least finish off the tutorial so you can see the Sitecore parts and then hopefully as a collective we can work out the issues with the newer versions of React.</p>
 <p>Another big part of me is wondering about the benefit of this implementation of React with Sitecore now that JSS has gone into tech preview. So let me know if you think this module is still helpful to keep going or whether most of you will just move to JSS once it is available.</p>
 <h2 id="Episode-4-A-New-Hope"><a href="#Episode-4-A-New-Hope" class="headerlink" title="Episode 4 - A New Hope:"></a>Episode 4 - A New Hope:</h2><p>FINALLY!!! We have got to some Sitecore stuffs!! All the front end is in place now and we can start the integration into Sitecore.</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg">
-<p>This is the 4th tutorial in the series on <a href="https://github.com/GuitarRich/sitecore.react" target="_blank" rel="noopener">Sitecore.React</a>. If you have not read the previous 3 yet, start here: <a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a> first. This turorial is going to be pretty image heavy to get the Visual Studio part setup!</p>
-<h2 id="Lets-get-the-Sitecore-environment-setup"><a href="#Lets-get-the-Sitecore-environment-setup" class="headerlink" title="Lets get the Sitecore environment setup"></a>Lets get the Sitecore environment setup</h2><p>For the purposes of this tutorial I will assume you are familiar with <a href="https://github.com/Sitecore/Sitecore-Instance-Manager" target="_blank" rel="noopener">SIM</a> and have the latest version installed. Using SIM install Sitecore with the following setup:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newinstance.png" title="installing the new instance">
-<p>Once Sitecore is installed we need to install the <a href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx" target="_blank" rel="noopener">Sitecore.React</a> package. You can download this from the Sitecore Marketplace: <a href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx" target="_blank" rel="noopener">https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx</a>.</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg" class="">
+<p>This is the 4th tutorial in the series on <a target="_blank" rel="noopener" href="https://github.com/GuitarRich/sitecore.react">Sitecore.React</a>. If you have not read the previous 3 yet, start here: <a href="/2017/07/04/Sitecore-React-Getting-Started/" title="Sitecore.React - Getting Started - 1. Webpack">Sitecore.React - Getting Started - 1. Webpack</a> first. This turorial is going to be pretty image heavy to get the Visual Studio part setup!</p>
+<h2 id="Lets-get-the-Sitecore-environment-setup"><a href="#Lets-get-the-Sitecore-environment-setup" class="headerlink" title="Lets get the Sitecore environment setup"></a>Lets get the Sitecore environment setup</h2><p>For the purposes of this tutorial I will assume you are familiar with <a target="_blank" rel="noopener" href="https://github.com/Sitecore/Sitecore-Instance-Manager">SIM</a> and have the latest version installed. Using SIM install Sitecore with the following setup:</p>
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newinstance.png" class="" title="installing the new instance">
+<p>Once Sitecore is installed we need to install the <a target="_blank" rel="noopener" href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx">Sitecore.React</a> package. You can download this from the Sitecore Marketplace: <a target="_blank" rel="noopener" href="https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx">https://marketplace.sitecore.net/Modules/S/SitecoreReact.aspx</a>.</p>
 <p>This package contains the Sitecore templates required to get up and running. Once installed you should see the following templates installed:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/templates.png" title="Sitcore.React templates">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/templates.png" class="" title="Sitcore.React templates">
 <blockquote>
 <p>Note that the <code>React View Rendering</code> is for a future version, it is not currently supported!</p>
 </blockquote>
-<h2 id="Visual-Studio-Setup"><a href="#Visual-Studio-Setup" class="headerlink" title="Visual Studio Setup"></a>Visual Studio Setup</h2><p>For this tutorial we are going to use <a href="https://twitter.com/AndersLaub" target="_blank" rel="noopener">Anders Laub’s</a> awesome Visual Studio templates (<a href="https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates" target="_blank" rel="noopener">https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates</a>). If you haven’t used them yet and are building Helix based Sitecore implementations, then I guarantee you need to install them!</p>
+<h2 id="Visual-Studio-Setup"><a href="#Visual-Studio-Setup" class="headerlink" title="Visual Studio Setup"></a>Visual Studio Setup</h2><p>For this tutorial we are going to use <a target="_blank" rel="noopener" href="https://twitter.com/AndersLaub">Anders Laub’s</a> awesome Visual Studio templates (<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates">https://marketplace.visualstudio.com/items?itemName=AndersLaublaubplusco.SitecoreHelixVisualStudioTemplates</a>). If you haven’t used them yet and are building Helix based Sitecore implementations, then I guarantee you need to install them!</p>
 <p>In Visual Studio, create a new project, find the <strong>Sitecore Helix Modules and Solutions</strong>, set the project name and folder setup as follows. <strong>Important - Make sure that the folder you select is the folder where you have been building your Sitecore.React front end project</strong></p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject1.png">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject1.png" class="">
 <p>On the next screen, set the project up like this:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject2.png">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/newproject2.png" class="">
 <p>This will go away and setup all your solution, folders and gulp scripts etc… all along side your existing React application files.</p>
 <p>Using the same templates, add a Project module, a Foundation module and a Feature module. Here are the values you should use for each:</p>
 <hr>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/websiteproject.png" title="Project.Sitecore.React.Website module">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/websiteproject.png" class="" title="Project.Sitecore.React.Website module">
 <hr>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/foundationproject.png" title="Foundation.React module">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/foundationproject.png" class="" title="Foundation.React module">
 <hr>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/featureproject.png" title="Feature.Content module">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/featureproject.png" class="" title="Feature.Content module">
 <hr>
 <p>Once you have set all that up - your visual studio project should look like this:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/visualstudiosolution.png" title="Visual Studio Solution">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/visualstudiosolution.png" class="" title="Visual Studio Solution">
 <blockquote>
 <p>Alternatively, checkout the <code>gettingstarted-4</code> branch in the tutorial git repository!</p>
 </blockquote>
 <h2 id="Setup-Sitecore-React"><a href="#Setup-Sitecore-React" class="headerlink" title="Setup Sitecore.React"></a>Setup Sitecore.React</h2><p>Now we need to setup <code>Sitecore.React</code> and add the nuget packages. First in the <code>Foundation.React</code> project, add the <code>Sitecore.React.Web</code> nuget package:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package Sitecore.React.Web</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Sitecore.React.Web</span><br></pre></td></tr></table></figure>
 <p>For the other 2 projects, just install the <code>Sitecore.React</code> package:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package Sitecore.React</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Package</span> Sitecore.React</span><br></pre></td></tr></table></figure>
 <p>The <code>.web</code> version contains all the configuration files for <code>Sitecore.React</code>, so this should go into the foundation project.</p>
 <h3 id="Create-a-default-layout"><a href="#Create-a-default-layout" class="headerlink" title="Create a default layout"></a>Create a default layout</h3><p>Once the references are all setup, we need to create a default layout for Sitecore. This will be the main layout that we use in presentation and the part where we add our react components. It replaces the <code>index.html</code> file from the react application.</p>
 <p>In the <code>Project.Sitecore.React.Website</code> web project, add a <code>DefaultLayout.cshtml</code> razor file to <code>/views/Website/Layout</code>:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/defaultlayout.png" title="DefaultLayout.cshtml">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/defaultlayout.png" class="" title="DefaultLayout.cshtml">
 <p>In here we will copy the contents of the <code>index.html</code> file, but replace the app div element with a Sitecore placeholder. Also we are removing the front end script tag and adding in the script tag from the Sitecore.React module:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@using Sitecore.Mvc</span><br><span class="line">@using Sitecore.React.Configuration</span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sitecore React | Front End Files<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">integrity</span>=<span class="string">"sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Custom Fonts --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  @Html.Sitecore().Placeholder("app")</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"@Url.Content(ReactSettingsProvider.Current.ClientScript)"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@using Sitecore.Mvc</span><br><span class="line">@using Sitecore.React.Configuration</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sitecore React | Front End Files<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;//maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">integrity</span>=<span class="string">&quot;sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3&quot;</span> <span class="attr">crossorigin</span>=<span class="string">&quot;anonymous&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Custom Fonts --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  @Html.Sitecore().Placeholder(&quot;app&quot;)</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;@Url.Content(ReactSettingsProvider.Current.ClientScript)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>A couple of things here that some have had problems with. Just because I used a single placeholder here and called it <code>app</code> doesn’t mean that you have too - Sitecore.React works just like a standard Sitecore MVC implementation. It has a layout and renderings for each page, renderings are added to placeholder keys - just like a regular MVC Sitecore application.</p>
 <p>Now we need to create the Sitecore item. In the content editor, navigate to <code>/sitecore/layout/Layouts/</code> Create a folder called <code>Project</code> and then create a new <code>MVC Layout</code> item called <code>DefaultLayout</code>. Make sure that the <strong>Path</strong> field is pointing at the razor view we just created.</p>
 <h3 id="Creating-the-Scaffolding"><a href="#Creating-the-Scaffolding" class="headerlink" title="Creating the Scaffolding"></a>Creating the Scaffolding</h3><p>In our React application, the first component we created was the <code>MainLayout.jsx</code> component. This provided some scaffolding for the site. So lets create that one.</p>
@@ -185,13 +302,13 @@
 <p>NOTE: Currently view react renderings are not supported with the <code>Sitecore.React</code> module. This is on the roadmap for a future enhancement.</p>
 </blockquote>
 <p>Your controller should look like this:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Project.Sitecore.React.Website.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScaffoldingController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">MainLayout</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"MainLayout"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Project.Sitecore.React.Website.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScaffoldingController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">MainLayout</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">&quot;MainLayout&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Next create the <code>React Controller Rendering</code> item in <code>/sitecore/layout/Renderings/Project/Website/MainLayout</code>. You can leave the <code>JSX File</code> field empty for this. Fill in the <code>Controller</code> and <code>Controller Action</code> fields like this:</p>
-<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/mainlayout.png" title="Main Layout Rendering Item">
+<img src="/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/mainlayout.png" class="" title="Main Layout Rendering Item">
 <p>Notice that instead of returning <code>this.View()</code> we are using <code>this.React()</code> - this is the extension method that tells the application to use the React view engine instead of the razor script view engine.</p>
 <h3 id="Page-Title-amp-Body-Components"><a href="#Page-Title-amp-Body-Components" class="headerlink" title="Page Title &amp; Body Components"></a>Page Title &amp; Body Components</h3><p>Now we can get into creating some data driven components. Remember for our react application, we created <code>Page Title</code> and <code>Page Body</code> components. So lets create those in the <code>Feature.Content</code> project. First create a controller for the components, lets create <code>ContentController</code>, again make sure it derives from <code>System.Web.Mvc.Controller</code>.</p>
 <p>We will create 2 <code>ActionResult</code> methods - <code>PageTitle</code> and <code>PageBody</code>. In this tutorial we wont use an ORM or Mapper, so we will hit the Sitecore API directly. In the <code>Feature.Content</code> Visual Studio project, lets create the controller and add actin result methods for both of the components:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"><span class="keyword">using</span> Feature.Content.Models;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Mvc.Presentation;</span><br><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Web.UI.WebControls;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Feature.Content.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ContentController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageTitle</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageTitleViewMode</span><br><span class="line">            &#123;</span><br><span class="line">                PageTitle = FieldRenderer.Render(item, <span class="string">"PageTitle"</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"PageTitle"</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageBody</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageBodyViewTitle</span><br><span class="line">            &#123;</span><br><span class="line">                PageBody = FieldRenderer.Render(item, <span class="string">"PageBody"</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">"PageBody"</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"><span class="keyword">using</span> Feature.Content.Models;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Mvc.Presentation;</span><br><span class="line"><span class="keyword">using</span> Sitecore.React.Mvc.Controllers;</span><br><span class="line"><span class="keyword">using</span> Sitecore.Web.UI.WebControls;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Feature.Content.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ContentController</span> : <span class="title">Controller</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageTitle</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageTitleViewMode</span><br><span class="line">            &#123;</span><br><span class="line">                PageTitle = FieldRenderer.Render(item, <span class="string">&quot;PageTitle&quot;</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">&quot;PageTitle&quot;</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">PageBody</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(RenderingContext.Current.Rendering.DataSource))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> item = RenderingContext.Current.Rendering.Item;</span><br><span class="line">            <span class="keyword">var</span> viewModel = <span class="keyword">new</span> PageBodyViewTitle</span><br><span class="line">            &#123;</span><br><span class="line">                PageBody = FieldRenderer.Render(item, <span class="string">&quot;PageBody&quot;</span>)</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.React(<span class="string">&quot;PageBody&quot;</span>, viewModel);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>So let’s again break down the 2 controller actions. If you are used to using the Sitecore API directly, this may look fairly familiar, React controller actions are almost identical to a standard MVC controller action. The first parts are fairly standard Sitecore, we are just getting the rendering item. Next we build the view model - here is where it gets a little different. In a standard controller, we might just add the Sitecore field to the view model, or Glass/Fortis/Synthesis model to our view model, and then use the <code>FieldRenderer</code> to render the contents of that field in the razor view.</p>
 <p>The problem is that with React, we can’t put server side code into the <code>jsx</code> comonent. So we are using the <code>FieldRenderer</code> in the controller action and populating our view model with the rendered output of the field. This means that when rendered by React, we still get Experience Editor capabilities.</p>
 <p>Now we need to create the 2 components in Sitecore - in your <code>sitecore/Layout/Renderings/Feature/Content</code> folder, create 2 <code>React Controller Renderings</code> - <code>PageTitle</code> and <code>PageBody</code>. Make sure that the controller and action fields are set with a fully qualified controller. This is what I have: Both renderings have the <code>Controller</code> field set to: <code>Feature.Content.Controllers.ContentController, Feature.Content</code> and then the <code>Action</code> fields set respectively.</p>
@@ -207,119 +324,332 @@
 <h3 id="What-is-next"><a href="#What-is-next" class="headerlink" title="What is next"></a>What is next</h3><p>Well as mentioned earlier, currently this only works with earlier versions of React, so I will be looking into that more if people find value in this module. Also JSS is in tech preview now - so more focus will be on that.</p>
 <p>What do you want to see with Sitecore and React? Lets take the discussion to the Slack channels and see what the future holds!</p>
 
-      </div>
-      <footer class="article-footer">
-        <a data-url="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/" data-id="cka5tzga50051gsvryzg9ysip" class="article-share-link">Share</a>
-        
-          <a href="http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/#comments" class="article-comment-link">Comments</a>
-        
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore/">Sitecore</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sitecore-React/">Sitecore.React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+        </div>
+        <footer class="article-footer">
+            
 
-      </footer>
+
+
+        </footer>
     </div>
-  </article>
-  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "Sitecore.React - Getting Started - 4. Sitecore Integration",
+        "image": "http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/yayfinally.jpg",
+        "keywords": "Sitecore Sitecore.React ReactJS node.js",
+        "genre": "Sitecore.React",
+        "datePublished": "2017-10-30",
+        "dateCreated": "2017-10-30",
+        "dateModified": "2020-05-12",
+        "url": "http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/",
+        "description": "OPENING CAVEATSo many people have been asking for this next part in the tutorial series and I apologise for not getting it done sooner. BUT there are valid reasons, so in the interests of full disclos",
+        "wordCount": 2520
+    }
+</script>
+
+</article>
+
     <section id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-      </div>
-    </section>
-  
-
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55d6161f325b85fa" async="async"></script>
-            </div>
-          </section>
-          <aside id="sidebar">
-  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
-  <div class="sidebar-top">
-    <p>follow:</p>
-    <ul class="social-links">
-      
-    </ul>
-  </div>
-  
     
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
 <nav id="article-nav">
-  
-    <a href="/2017/11/02/Share-Your-Data-Between-Components/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <p class="article-nav-title">
+    
+        <a href="/2017/11/02/Share-Your-Data-Between-Components/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
         
-          Share Your Data Between Components
+            Share Your Data Between Components
         
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
-  
-  
-    <a href="/2017/10/17/Sitecore-9-Dynamic-Placeholders-At-Last/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">older</strong>
-      <p class="article-nav-title">Sitecore 9: Dynamic Placeholders At Last!</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
+    
+    
+        <a href="/2017/10/17/Sitecore-9-Dynamic-Placeholders-At-Last/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Sitecore 9: Dynamic Placeholders At Last!</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-  
-  <div class="widgets-container">
     
-  </div>
-</aside>
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
-      </div>
     </div>
-    <footer id="footer">
-  
-  <div class="container">
-    <div class="container-inner">
-      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
-      <div class="credit">
-        <h1 class="logo-wrap">
-          <a href="/" class="logo"></a>
-        </h1>
-        <p>&copy; 2020 Richard Seal</p>
-        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>.
-      </p></div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
     </div>
-  </div>
-</footer>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
     
-<script>
-  var disqus_shortname = 'sitecorenutsbolts';
-  
-  var disqus_url = 'http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/';
-  
-  (function(){
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2017/10/30/Sitecore-React-Getting-Started-4-Sitecore-Integration/';
+    
+    (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-
-
-
-  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    })();
+    </script>
 
 
 
 
 
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script src="/js/html-patch.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/readingTime.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
 <script>
-  $(function() {
-    $('.article-entry').readingTime();
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
   });
 </script>
 
-  </div>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
 </body>
 </html>

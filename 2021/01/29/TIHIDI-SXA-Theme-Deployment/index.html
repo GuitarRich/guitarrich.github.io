@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>TIHIDI: SXA Theme Deployment | Sitecore Nuts &amp; Bolts</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sitecore,SxA,FED,TIHIDI" />
+    
+    <meta name="description" content="With the release of SXA 10 the tooling around creating an SXA theme took a leap forward and added new functionality that made the development and delivery of themes much better. No more fighting with">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TIHIDI: SXA Theme Deployment">
+<meta property="og:url" content="http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/index.html">
+<meta property="og:site_name" content="Sitecore Nuts &amp; Bolts">
+<meta property="og:description" content="With the release of SXA 10 the tooling around creating an SXA theme took a leap forward and added new functionality that made the development and delivery of themes much better. No more fighting with">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/themefiles.png">
+<meta property="article:published_time" content="2021-01-29T16:02:43.000Z">
+<meta property="article:modified_time" content="2021-01-29T16:02:43.252Z">
+<meta property="article:author" content="Richard Seal">
+<meta property="article:tag" content="Sitecore">
+<meta property="article:tag" content="SxA">
+<meta property="article:tag" content="FED">
+<meta property="article:tag" content="TIHIDI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/themefiles.png">
+    
+
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W7C3J3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W7C3J3');</script>
+<!-- End Google Tag Manager -->
+    
+    
+    
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Design it, Code it, Build it. C# &amp; Sitecore</p>
+                        </h2>
+                    
+                    <div class="mvp">
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/MVP2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2021.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2020.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2019.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                          <img src="/about/index/Technology2018.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2017.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                        <a href="http://www.sitecore.net/mvp" target="_blank">
+                            <img src="/about/index/Technology2016.jpg" alt="Sitecore MVP 2016-2021" />
+                        </a>
+                    </div>
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Docker/">Docker</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Fortis/">Fortis</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/General/">General</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/PowerShell/">PowerShell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore/">Sitecore</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-9/">Sitecore 9</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Sitecore-React/">Sitecore.React</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/SxA/">SxA</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/SxA/">SxA</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-TIHIDI-SXA-Theme-Deployment" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        TIHIDI: SXA Theme Deployment
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="article-date">
+       <time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="article-date">
+     <time datetime="2021-01-29T16:02:43.252Z" itemprop="dateModified">2021-01-29</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/FED/" rel="tag">FED</a>, <a class="tag-link-link" href="/tags/Sitecore/" rel="tag">Sitecore</a>, <a class="tag-link-link" href="/tags/SxA/" rel="tag">SxA</a>, <a class="tag-link-link" href="/tags/TIHIDI/" rel="tag">TIHIDI</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>With the release of SXA 10 the tooling around creating an SXA theme took a leap forward and added new functionality that made the development and delivery of themes much better. No more fighting with the ASP.Net bundler to minify and concatenate your files, now we can pre-optimize the files before they get imported into Sitecore.</p>
+<p>This gives us a number of advantages, but how do we deploy a theme now? Do we import it into a live site? What does the development workflow look like?</p>
+<p>Well, there are a few options, but in this post, I’m going to talk about how we do it at <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>.</p>
+<h3 id="Pre-Requisites"><a href="#Pre-Requisites" class="headerlink" title="Pre-Requisites"></a>Pre-Requisites</h3><p>Just a few caveates for this method. At <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>, we use <a target="_blank" rel="noopener" href="https://github.com/SitecoreUnicorn/Unicorn">Unicorn</a> exclusively for item serialization. This method <em>could</em> work for Sitecore Content Serialization, _if_ Sitecore gets feature parity with Unicorn and adds things like Field level exclusions.</p>
+<p>Also, we are using Azure DevOps pipelines for build and release, with some PowerShell commands and Git as our source control system. The principles for this method could be applied to other setups, but I will be focusing on our setup.</p>
+<p>This solution also makes use of environment variables to denote whether the environment is for local dev or non-local dev.</p>
+<h3 id="Source-Control-Setup"><a href="#Source-Control-Setup" class="headerlink" title="Source Control Setup"></a>Source Control Setup</h3><p>For the theme, there are 2 parts that we include in source control. First we have the static files, the SASS and JS files created by the SXA CLI. We make sure that any file that is generated by the CLI, e.g. all the CSS files, are excluded from source control. This helps prevent annoying merge conflicts and these files do not need source control anyway.</p>
+<img src="/2021/01/29/TIHIDI-SXA-Theme-Deployment/themefiles.png" class="">
+<p>Secondly, we have the serialized Theme items. This includes all the items that are part of a theme, the fonts, images, CSS and JS items.</p>
+<img src="/2021/01/29/TIHIDI-SXA-Theme-Deployment/themeunicornfiles.png" class="" title="Theme Static Files">
+<h3 id="Unicorn-Setup"><a href="#Unicorn-Setup" class="headerlink" title="Unicorn Setup"></a>Unicorn Setup</h3><p>The Unicorn setup is where this gets interesting, and a big thanks to <a target="_blank" rel="noopener" href="https://twitter.com/cassidydotdk">Mark Cassidy</a> for all the feature additions and maintenance he has done on Unicorn since taking it over from Kam, even with SCS - Unicorn is still the best option for item serialization.</p>
+<p>We have 2 configurations for the theme. It may seem overkill, but the reasons will become apparent.</p>
+<p>The first configuration, is a basic always deploy configuration for the main theme files.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">name</span>=<span class="string">&quot;Project.MyTheme.Theme&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">description</span>=<span class="string">&quot;Main theme scaffolding items&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">extends</span>=<span class="string">&quot;Helix&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">dependencies</span>=<span class="string">&quot;Foundation.Serialization&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">patch:after</span>=<span class="string">&quot;configuration[@name=&#x27;Foundation.Serialization&#x27;]&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">targetDataStore</span> <span class="attr">physicalRootPath</span>=<span class="string">&quot;$(sourceFolder)\$(layer)\$(module)\serialization\theme&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">predicate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">&quot;Theme&quot;</span> <span class="attr">database</span>=<span class="string">&quot;master&quot;</span> <span class="attr">path</span>=<span class="string">&quot;/sitecore/media library/Themes/Tenant/MyTheme&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">path</span>=<span class="string">&quot;MyTheme/styles/pre-optimized-min&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">path</span>=<span class="string">&quot;MyTheme/Scripts/pre-optimized-min&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">predicate</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Notice that we are excluding the <code>pre-optimized-min</code> files for both CSS and JS here.</p>
+<p>The second configuration has the magic:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">name</span>=<span class="string">&quot;Project.MyTheme.Theme.FED.Placeholders&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">description</span>=<span class="string">&quot;Placeholders for files which are populated from FED folder&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">extends</span>=<span class="string">&quot;Helix&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">dependencies</span>=<span class="string">&quot;Project.MyTheme.Theme&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">patch:after</span>=<span class="string">&quot;configuration[@name=&#x27;Foundation.Serialization&#x27;]&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">targetDataStore</span> <span class="attr">physicalRootPath</span>=<span class="string">&quot;$(sourceFolder)\$(layer)\$(module)\serialization\fed.placeholder&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">predicate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">&quot;Scripts&quot;</span> <span class="attr">database</span>=<span class="string">&quot;master&quot;</span> <span class="attr">path</span>=<span class="string">&quot;/sitecore/media library/Themes/Tenant/MyTheme/MyTheme/Scripts/pre-optimized-min&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">&quot;Styles&quot;</span> <span class="attr">database</span>=<span class="string">&quot;master&quot;</span> <span class="attr">path</span>=<span class="string">&quot;/sitecore/media library/Themes/Tenant/MyTheme/MyTheme/styles/pre-optimized-min&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">predicate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fieldFilter</span> <span class="attr">type</span>=<span class="string">&quot;Rainbow.Filtering.ConfigurationFieldFilter, Rainbow&quot;</span> <span class="attr">singleInstance</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;40E50ED9-BA07-4702-992E-A912738D32DC&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;Blob&#x27; field on /sitecore/templates/System/Media/Unversioned/File template &quot;</span> <span class="attr">env:require</span>=<span class="string">&quot;Local&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;6954B7C7-2487-423F-8600-436CB3B6DC0E&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;Size&#x27; field on /sitecore/templates/System/Media/Unversioned/File&quot;</span> <span class="attr">env:require</span>=<span class="string">&quot;Local&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;B1E16562-F3F9-4DDD-84CA-6E099950ECC0&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;Last run&#x27; field on Schedule template (used to register tasks)&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;52807595-0F8F-4B20-8D2A-CB71D28C6103&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;__Owner&#x27; field on Standard Template&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;8CDC337E-A112-42FB-BBB4-4143751E123F&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;__Revision&#x27; field on Standard Template&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;D9CF14B1-FA16-4BA6-9288-E8A174D4D522&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;__Updated&#x27; field on Standard Template&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;__Updated by&#x27; field on Standard Template&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">fieldID</span>=<span class="string">&quot;&#123;001DD393-96C5-490B-924A-B0F25CD9EFD8&#125;&quot;</span> <span class="attr">note</span>=<span class="string">&quot;&#x27;__Lock&#x27; field on Standard Template&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fieldFilter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The field filter is what helps us out here. We are serializing the <code>pre-optimized-min</code> JS and CSS files, but <em>excluding</em> the <code>Blob</code> and <code>Size</code> fields. Notice that those field filters have <code>env:require=&quot;Local&quot;</code>, this means that these fields will only be excluded for local development. When this is deployed to the upper environments - dev/qa/stage/production etc… these fields will be included in any sync tasks.</p>
+<p>What this gives us locally is a way to serialize the theme and prepare it for deployment, without having to worry about merge conflicts caused by the base64 encoded blob data in the <code>pre-optimized</code> items being updated when the themes are updated during development.</p>
+<p>You <em>could</em> do all this with a single theme serialization config, but everytime a developer imported the latest theme, it would update the values in source control and becuase the <code>blob</code> data is a base64 encoded string, it will cause merge conflicts a lot. To get around that, your developers could just ignore changes to that file, but that relies on developers having a good memory… and I would forget frequently! Having the field filter just makes the process seamless and means there isn’t anything extra for developers to do day to day.</p>
+<h3 id="The-final-piece…-Build-and-Deploy-scripts"><a href="#The-final-piece…-Build-and-Deploy-scripts" class="headerlink" title="The final piece…. Build and Deploy scripts"></a>The final piece…. Build and Deploy scripts</h3><p>To tie this all together, we use the build and deploy scripts in the <code>azure-pipelines.yml</code> file. First we need to make sure the theme is built using the SXA CLI. We could use the NPM tasks in in the azure pipelines, but its easier to just use a PowerShell script to do it:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">task:</span> <span class="string">PowerShell@2</span></span><br><span class="line">  <span class="attr">condition:</span> <span class="string">and(eq(variables[&#x27;Build.SourceBranch&#x27;],</span> <span class="string">&#x27;refs/heads/master&#x27;</span><span class="string">),</span> <span class="string">not(canceled()))</span></span><br><span class="line">  <span class="attr">displayName:</span> <span class="string">&quot;Run Creative Exchange tasks&quot;</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">filePath:</span> <span class="string">&#x27;$(Build.SourcesDirectory)\scripts\Invoke-ThemeOptimization.ps1&#x27;</span></span><br><span class="line">    <span class="attr">arguments:</span> <span class="string">&#x27;-BuildSourcesDirectory $(Build.SourcesDirectory) -ProjectPaths \src\Project\Site1\,\src\Project\Site2\,\src\Project\Site3\&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>This is the task, notice that we can use this to build multiple themes if we are a multi-site implementation. Just pass in the path to the static theme files for each sites theme you want to build.</p>
+<p>Once we have built the theme into the <code>pre-optimized-min</code> CSS and JS files, we can use those files to populate the <code>Blob</code> and <code>Size</code> fields in the serialized <code>scripts\pre-optimized-min.yml</code> and <code>styles\pre-optimized-min.yml</code>. This effectively gives us a complete serialized file ready to be sync’d as part of the deployment process. This script assumes that your theme and theme serialization folders are at the same level.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">param</span> (</span><br><span class="line">    [<span class="type">Parameter</span>(<span class="type">Mandatory</span> = <span class="variable">$true</span>)][<span class="built_in">string</span>] <span class="variable">$BuildSourcesDirectory</span> = <span class="string">&quot;C:\Projects\Sitecore9x\&quot;</span>,</span><br><span class="line">    [<span class="type">Parameter</span>(<span class="type">Mandatory</span> = <span class="variable">$true</span>)][<span class="built_in">string</span>[]] <span class="variable">$ProjectPaths</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SetThemeYml</span></span>&#123;</span><br><span class="line">    <span class="keyword">param</span>(</span><br><span class="line">    [<span class="type">Parameter</span>(<span class="type">Mandatory</span> = <span class="variable">$true</span>)][<span class="built_in">string</span>]<span class="variable">$themeFolder</span>,</span><br><span class="line">    [<span class="type">Parameter</span>(<span class="type">Mandatory</span> = <span class="variable">$true</span>)][<span class="built_in">string</span>]<span class="variable">$ymlFolder</span>,</span><br><span class="line">    [<span class="type">Parameter</span>(<span class="type">Mandatory</span> = <span class="variable">$true</span>)][<span class="built_in">string</span>]<span class="variable">$sourceFile</span></span><br><span class="line">)   </span><br><span class="line">    &amp; <span class="string">&quot;<span class="variable">$BuildSourcesDirectory</span>\src\Azure\Navistar.Deployment\Set-ThemeYaml.ps1&quot;</span> <span class="literal">-SourceFile</span> <span class="string">&quot;<span class="variable">$themeFolder</span>\<span class="variable">$sourceFile</span>&quot;</span> <span class="literal">-DestFile</span> <span class="string">&quot;<span class="variable">$ymlFolder</span>\pre-optimized-min.yml&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Only need to install the global SXA CLI once.</span></span><br><span class="line">npm config <span class="built_in">set</span> @sxa:registry=https://sitecore.myget.org/F/<span class="built_in">sc</span><span class="literal">-npm</span><span class="literal">-packages</span>/npm/</span><br><span class="line">npm install <span class="literal">-g</span> @sxa/<span class="built_in">CLI</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$projectPath</span> <span class="keyword">in</span> <span class="variable">$ProjectPaths</span>)&#123;</span><br><span class="line">    <span class="variable">$projectPath</span> = <span class="variable">$BuildSourcesDirectory</span> + <span class="variable">$projectPath</span></span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;`r`nStarting Optimization for: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">   </span><br><span class="line">    [<span class="built_in">string</span>]<span class="variable">$ThemeFolder</span>=<span class="built_in">Get-ChildItem</span> <span class="literal">-Filter</span> <span class="string">&quot;gulpfile.js&quot;</span> <span class="literal">-Path</span> <span class="string">&quot;<span class="variable">$projectPath</span>\theme&quot;</span> | <span class="built_in">Select-Object</span> <span class="literal">-ExpandProperty</span> DirectoryName <span class="literal">-Unique</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$null</span> <span class="operator">-eq</span> <span class="variable">$ThemeFolder</span> <span class="operator">-Or</span> <span class="variable">$ThemeFolder</span> <span class="operator">-eq</span> <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        <span class="built_in">Write-Warning</span> <span class="string">&quot;SXA 10 Theme not found for directory: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">        <span class="built_in">Write-Warning</span> <span class="string">&quot;Exited Optimization for: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    [<span class="type">System.Collections.ArrayList</span>]<span class="variable">$ymlFolders</span>=<span class="built_in">Get-ChildItem</span> <span class="literal">-Filter</span> <span class="string">&quot;pre-optimized-min.yml&quot;</span> <span class="literal">-Path</span> <span class="string">&quot;<span class="variable">$projectPath</span>\serialization&quot;</span> <span class="literal">-Recurse</span> | <span class="built_in">Select-Object</span> <span class="literal">-ExpandProperty</span> DirectoryName <span class="literal">-Unique</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$null</span> <span class="operator">-eq</span> <span class="variable">$ymlFolders</span> <span class="operator">-Or</span> <span class="variable">$ymlFolders</span>.Count <span class="operator">-eq</span> <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">Write-Warning</span> <span class="string">&quot;Destination YML files not found for directory: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">        <span class="built_in">Write-Warning</span> <span class="string">&quot;Exited Optimization for: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Set-Location</span> <span class="variable">$ThemeFolder</span></span><br><span class="line"></span><br><span class="line">    npm install</span><br><span class="line">    sxa build SassStyles -<span class="literal">-debug</span></span><br><span class="line">    sxa build All -<span class="literal">-debug</span></span><br><span class="line"></span><br><span class="line">    <span class="variable">$scriptFolder</span> = <span class="variable">$ymlFolders</span> | <span class="built_in">Where-Object</span> &#123;<span class="variable">$_</span>.ToUpper().Contains(<span class="string">&quot;SCRIPTS&quot;</span>)  &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$null</span> <span class="operator">-ne</span> <span class="variable">$scriptFolder</span> <span class="operator">-and</span> <span class="variable">$scriptFolder</span> <span class="operator">-ne</span> <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SetThemeYml <span class="literal">-themeFolder</span> <span class="variable">$ThemeFolder</span> <span class="literal">-ymlFolder</span> <span class="variable">$scriptFolder</span> <span class="literal">-sourceFile</span> <span class="string">&#x27;scripts\pre-optimized-min.js&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">Write-Warning</span> <span class="string">&quot;Script Optimization Failed&quot;</span></span><br><span class="line">            <span class="built_in">Write-Warning</span> <span class="variable">$_</span>.Exception.Message</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$stylesFolder</span> = <span class="variable">$ymlFolders</span> | <span class="built_in">Where-Object</span> &#123;<span class="variable">$_</span>.ToUpper().Contains(<span class="string">&quot;STYLES&quot;</span>)  &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$null</span> <span class="operator">-ne</span> <span class="variable">$stylesFolder</span> <span class="operator">-and</span> <span class="variable">$stylesFolder</span> <span class="operator">-ne</span> <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SetThemeYml <span class="literal">-themeFolder</span> <span class="variable">$ThemeFolder</span> <span class="literal">-ymlFolder</span> <span class="variable">$stylesFolder</span> <span class="literal">-sourceFile</span> <span class="string">&#x27;styles\pre-optimized-min.css&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">Write-Warning</span> <span class="string">&quot;Style Optimization Failed&quot;</span></span><br><span class="line">            <span class="built_in">Write-Warning</span> <span class="variable">$_</span>.Exception.Message</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Write-Host</span> <span class="string">&quot;`r`nFinished Optimization for: <span class="variable">$projectPath</span>&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Set-Location</span>  <span class="variable">$</span>&#123;PSScriptRoot&#125;</span><br></pre></td></tr></table></figure>
+<p>And now for the magic…. your deployment process doesn’t change. Assuming you already have release steps in place to sync Unicorn when you deploy your CM instance, this will automatically deploy your CSS and JS pre-optimized theme, nothing else to do!</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This process may initially seem a bit daunting, but when you look at the implementation, its actually pretty simple and once it is setup it doesn’t take any effort to maintain. Its easy to apply to multiple projects and makes deploying the theme to QA/Stage and Production sites a breeze.</p>
+<p>A big thanks to (Ben Lipson)[<a target="_blank" rel="noopener" href="https://twitter.com/bllipson]">https://twitter.com/bllipson]</a> for working out some of the implementation details around the Field filters.</p>
+<ul>
+<li>Richard</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Richard Seal"
+        },
+        "headline": "TIHIDI: SXA Theme Deployment",
+        "image": "http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/themefiles.png",
+        "keywords": "Sitecore SxA FED TIHIDI",
+        "genre": "SxA",
+        "datePublished": "2021-01-29",
+        "dateCreated": "2021-01-29",
+        "dateModified": "2021-01-29",
+        "url": "http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/",
+        "description": "With the release of SXA 10 the tooling around creating an SXA theme took a leap forward and added new functionality that made the development and delivery of themes much better. No more fighting with ",
+        "wordCount": 2330
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/rich_seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="https://sitecore.stackexchange.com/users/70/richard-seal" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/GuitarRich" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="linkedin" href="https://www.linkedin.com/in/richardseal/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/05/13/Rendering-Links-with-Scriban/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Rendering Links with Scriban</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2021/01/29/TIHIDI-SXA-Theme-Deployment/" class="title">TIHIDI: SXA Theme Deployment</a></p>
+                            <p class="item-date"><time datetime="2021-01-29T16:02:43.000Z" itemprop="datePublished">2021-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/05/13/Rendering-Links-with-Scriban/" class="title">Rendering Links with Scriban</a></p>
+                            <p class="item-date"><time datetime="2020-05-13T21:02:56.000Z" itemprop="datePublished">2020-05-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Docker/">Docker</a></p>
+                            <p class="item-title"><a href="/2020/02/19/Sitecore-Docker-Making-Those-Urls-Pretty/" class="title">Sitecore Docker: Making Those Urls Pretty</a></p>
+                            <p class="item-date"><time datetime="2020-02-19T14:13:24.000Z" itemprop="datePublished">2020-02-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/08/09/Custom-Fonts-Not-Downloading-in-SXA-Theme/" class="title">Custom Fonts Not Downloading in SXA Theme</a></p>
+                            <p class="item-date"><time datetime="2019-08-09T19:34:39.000Z" itemprop="datePublished">2019-08-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/SxA/">SxA</a></p>
+                            <p class="item-title"><a href="/2019/05/20/SXA-Security-Headers-1-1/" class="title">SXA Security Headers 1.1</a></p>
+                            <p class="item-date"><time datetime="2019-05-20T18:06:15.000Z" itemprop="datePublished">2019-05-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Backbonejs/" style="font-size: 10px;">Backbonejs</a> <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Cache/" style="font-size: 10px;">Cache</a> <a href="/tags/Caching/" style="font-size: 10px;">Caching</a> <a href="/tags/Components/" style="font-size: 10px;">Components</a> <a href="/tags/Datasource/" style="font-size: 10px;">Datasource</a> <a href="/tags/Dependency-Injection/" style="font-size: 10px;">Dependency Injection</a> <a href="/tags/Developer-Tools/" style="font-size: 10px;">Developer Tools</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Dynamic-Placeholders/" style="font-size: 11.67px;">Dynamic Placeholders</a> <a href="/tags/Errors/" style="font-size: 10px;">Errors</a> <a href="/tags/Exceptions/" style="font-size: 10px;">Exceptions</a> <a href="/tags/FED/" style="font-size: 10px;">FED</a> <a href="/tags/FXM/" style="font-size: 10px;">FXM</a> <a href="/tags/Fortis/" style="font-size: 13.33px;">Fortis</a> <a href="/tags/Habitat/" style="font-size: 13.33px;">Habitat</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Installation/" style="font-size: 10px;">Installation</a> <a href="/tags/IoC/" style="font-size: 11.67px;">IoC</a> <a href="/tags/Item-Buckets/" style="font-size: 10px;">Item Buckets</a> <a href="/tags/JavaScript/" style="font-size: 11.67px;">JavaScript</a> <a href="/tags/Log4Net/" style="font-size: 10px;">Log4Net</a> <a href="/tags/MVC/" style="font-size: 11.67px;">MVC</a> <a href="/tags/Marketplace/" style="font-size: 10px;">Marketplace</a> <a href="/tags/Media-Framework/" style="font-size: 10px;">Media Framework</a> <a href="/tags/Module/" style="font-size: 10px;">Module</a> <a href="/tags/NVelocity/" style="font-size: 10px;">NVelocity</a> <a href="/tags/Nuget/" style="font-size: 10px;">Nuget</a> <a href="/tags/ORM/" style="font-size: 10px;">ORM</a> <a href="/tags/Ooyala/" style="font-size: 10px;">Ooyala</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/Pipelines/" style="font-size: 11.67px;">Pipelines</a> <a href="/tags/Placeholders/" style="font-size: 10px;">Placeholders</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Presentation/" style="font-size: 10px;">Presentation</a> <a href="/tags/Questions/" style="font-size: 10px;">Questions</a> <a href="/tags/ReactJS/" style="font-size: 18.33px;">ReactJS</a> <a href="/tags/Render-Field/" style="font-size: 10px;">Render Field</a> <a href="/tags/Rendering-Variants/" style="font-size: 11.67px;">Rendering Variants</a> <a href="/tags/Renderings/" style="font-size: 10px;">Renderings</a> <a href="/tags/RequireJS/" style="font-size: 10px;">RequireJS</a> <a href="/tags/SIM/" style="font-size: 10px;">SIM</a> <a href="/tags/SOLR/" style="font-size: 13.33px;">SOLR</a> <a href="/tags/SSE/" style="font-size: 13.33px;">SSE</a> <a href="/tags/SUGCON/" style="font-size: 10px;">SUGCON</a> <a href="/tags/Scriban/" style="font-size: 10px;">Scriban</a> <a href="/tags/Security/" style="font-size: 13.33px;">Security</a> <a href="/tags/Single-Page-Application/" style="font-size: 10px;">Single Page Application</a> <a href="/tags/Sitecore/" style="font-size: 20px;">Sitecore</a> <a href="/tags/Sitecore-8/" style="font-size: 11.67px;">Sitecore 8</a> <a href="/tags/Sitecore-9/" style="font-size: 13.33px;">Sitecore 9</a> <a href="/tags/Sitecore-PowerShell-Extensions/" style="font-size: 10px;">Sitecore PowerShell Extensions</a> <a href="/tags/Sitecore-Powershell-Extensions/" style="font-size: 10px;">Sitecore Powershell Extensions</a> <a href="/tags/Sitecore-React/" style="font-size: 15px;">Sitecore.React</a> <a href="/tags/Slack/" style="font-size: 10px;">Slack</a> <a href="/tags/Stack-Overflow/" style="font-size: 11.67px;">Stack Overflow</a> <a href="/tags/SxA/" style="font-size: 16.67px;">SxA</a> <a href="/tags/TIHIDI/" style="font-size: 10px;">TIHIDI</a> <a href="/tags/Themes/" style="font-size: 10px;">Themes</a> <a href="/tags/Unit-Testing/" style="font-size: 10px;">Unit Testing</a> <a href="/tags/Upload/" style="font-size: 10px;">Upload</a> <a href="/tags/Users/" style="font-size: 10px;">Users</a> <a href="/tags/Visual-Studio-Code/" style="font-size: 10px;">Visual Studio Code</a> <a href="/tags/WFFM/" style="font-size: 10px;">WFFM</a> <a href="/tags/node-js/" style="font-size: 15px;">node.js</a> <a href="/tags/requirejs/" style="font-size: 10px;">requirejs</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.sitecore.com">Sitecore</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://www.perficient.com">Perficient</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Richard Seal</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'sitecorenutsbolts';
+    
+    
+    var disqus_url = 'http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#f0f0f0",
+        "text": "#777777"
+      },
+      "button": {
+        "background": "#82b965",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "edgeless"
+  });
+</script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.sitecorenutsbolts.net/about/index.html</loc>
+    
+    <lastmod>2021-01-29T16:50:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/</loc>
+    
+    <lastmod>2021-01-29T16:37:33.686Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.sitecorenutsbolts.net/2021/01/29/TIHIDI-SXA-Theme-Deployment/</loc>
+    
+    <lastmod>2021-01-29T16:02:43.252Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.sitecorenutsbolts.net/2020/05/13/Rendering-Links-with-Scriban/</loc>
     
-    <lastmod>2020-05-13T21:02:56.469Z</lastmod>
+    <lastmod>2020-05-13T21:07:53.367Z</lastmod>
     
   </url>
   
@@ -12,13 +33,6 @@
     <loc>http://www.sitecorenutsbolts.net/the-about-me-page/index.html</loc>
     
     <lastmod>2020-05-12T14:52:21.882Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.sitecorenutsbolts.net/about/index.html</loc>
-    
-    <lastmod>2020-05-12T14:52:21.873Z</lastmod>
     
   </url>
   
@@ -37,14 +51,14 @@
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/</loc>
     
     <lastmod>2020-05-12T14:52:21.859Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2014/11/03/Using-Require-to-Organize-Your-Sitecore-Javascript/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2015/10/19/Using-RequireJs-with-Sitecore-8-Update/</loc>
     
     <lastmod>2020-05-12T14:52:21.859Z</lastmod>
     
@@ -100,14 +114,14 @@
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2017/04/28/Sitecore-Stack-Exchange-The-First-6-Months/</loc>
     
     <lastmod>2020-05-12T14:52:21.843Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2017/04/28/Sitecore-Stack-Exchange-The-First-6-Months/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2014/11/06/Sitecore-Sorting-by-Date-with-SOLR/</loc>
     
     <lastmod>2020-05-12T14:52:21.843Z</lastmod>
     
@@ -317,13 +331,6 @@
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2016/11/01/Right-Click-Unlock-Item-with-Sitecore-PowerShell-Extensions/</loc>
-    
-    <lastmod>2020-05-12T14:52:21.707Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.sitecorenutsbolts.net/2015/11/24/Powershell-from-your-current-folder/</loc>
     
     <lastmod>2020-05-12T14:52:21.705Z</lastmod>
@@ -408,14 +415,14 @@
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2015/07/24/Cleaning-up-the-log-files/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/</loc>
     
     <lastmod>2020-05-12T14:52:21.684Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.sitecorenutsbolts.net/2015/11/03/Always-Include-Server-Url-without-a-HttpContext/</loc>
+    <loc>http://www.sitecorenutsbolts.net/2015/07/24/Cleaning-up-the-log-files/</loc>
     
     <lastmod>2020-05-12T14:52:21.684Z</lastmod>
     
